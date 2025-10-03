@@ -1,0 +1,26 @@
+\documentclass[12pt,a4paper]{report}
+
+% Set lang (support for xelatex and lualatex)
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{spanish}
+
+% Enhanced font: Computer Modern Unicode
+\setmainfont{CMU Serif}
+\setsansfont{CMU Sans Serif}
+\setmonofont{CMU Typewriter Text}
+
+% Math environments and fonts
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Cálculo IV}
+\author{Elio Valentino Anci}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\include{chapters/1_fvc/main}
+
+\end{document}

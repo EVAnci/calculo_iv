@@ -43,9 +43,9 @@ Si ya tienes experiencia usando $\LaTeX$ entonces es muy sencillo:
 
 ### Justificación de `lualatex`
 
-Bueno, lo más probable es que la mayoría de los que leen este README no estén interesados en esta explicación. Sin embargo, me resulta importante dejarla a modo documentativo. En [este documento](https://br.mirrors.cicku.me/ctan/info/lshort/english/lshort.pdf) introductorio a $\LaTeX$ (recomiendo leerlo) dan varios consejos y sugerencias para mejorar la experiencia al usar $\LaTeX$. 
+Bueno, lo más probable es que la mayoría de los que leen este README no estén interesados en esta explicación. Sin embargo, me resulta importante dejarla a modo documentativo. En [este documento](https://br.mirrors.cicku.me/ctan/info/lshort/english/lshort.pdf) introductorio a $\LaTeX$ (recomiendo leerlo) dan varios consejos y sugerencias para mejorar la experiencia al usar $\LaTeX$. Una de las sugerencias es utilizar nuevos compiladores y sus nuevas características, ya que proporcionan ventajas y comodidad.
 
-Evidentemente, el español no es un idioma sin acentos, tildes y símbolos que no se encuentran en la lista de caracteres ASCII. Usualmente para lograr una buena composición en $\LaTeX$ se usa `\usepackage[spanish]{babel}` acompañado de codificación UTF-8 y algunas configuraciones extra para obtener un buen resultado. Sin embargo, hay cosas que no se integraran del todo como el silabeado (o hyphenation), el soporte para ligaduras y fuentes OpenType (Unicode). Para este propósito surge `\usepackage{polyglossia}`, que no solo permite soporte para múltiples idiomas en el mismo documento, sino también caracteres unicode usados directamente en el texto. Esto hace más cómoda la escritura y mejora el resultado final. 
+Evidentemente, el español no es un idioma libre de acentos, tildes y símbolos que no se encuentran en la lista de caracteres ASCII. Usualmente para lograr una buena composición en $\LaTeX$ se usa `\usepackage[spanish]{babel}` acompañado de codificación UTF-8 y algunas configuraciones extra para obtener un buen resultado. Sin embargo, hay cosas que no se integraran del todo como el silabeado (o hyphenation), el soporte para ligaduras y fuentes OpenType (Unicode). Para este propósito surge `\usepackage{polyglossia}`, que no solo permite soporte para múltiples idiomas en el mismo documento, sino también caracteres unicode usados directamente en el texto. Esto hace más cómoda la escritura y mejora el resultado final. 
 
 No estoy intentando venderte `polyglossia` ya que es gratuito. Tampoco soy fanático de `polyglossia` y tampoco me interesa que lo uses en tus proyectos. Si te gusta `babel` es totalmente válido usarlo. De hecho, este ha sido mi primer proyecto $\LaTeX$ usando `lualatex` y `polyglossia`.
 
@@ -57,6 +57,6 @@ Según mis lecturas, hay algunos comandos que deben ser aplicados de forma disti
 
 ## Licencia
 
-Como el código y el documento en $\LaTeX$ son considerados piezas de software, el documento (y el código $\LaTeX$) está sujeto a **CC BY-SA**. Ver [LICENSE](LICENSE)
+Como el código incluido en este proyecto y el documento en $\LaTeX$ no son considerados piezas de software, sino documentos de texto, el documento en formato pdf (y el código $\LaTeX$) está sujeto a **CC BY-SA**. Ver [LICENSE](LICENSE)
 
-Puedes usar, modificar, distribuir e incluso comercializar los contenidos de este documento, siempre y cuando hagas mención del creador.
+Puedes usar, modificar, distribuir e incluso comercializar los contenidos de este documento, siempre y cuando hagas mención del creador y no cambies el tipo de licencia.
