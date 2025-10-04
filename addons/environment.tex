@@ -1,0 +1,14 @@
+% This file keeps the main.tex file clean. Here is the declaration 
+% of every environment I use in the document
+
+% Definition environment. Follows the structure
+% Definición <chapter><section><number>
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+
+% Example environment. Follows the structure
+% Ejemplo <chapter><section><A,B,C,...> 
+% A,B,C requieres a new counter.
+\theoremstyle{remark}
+\newtheorem{example}{Ejemplo}[section]
+\renewcommand{\theexample}{\thesection.\Alph{example}}

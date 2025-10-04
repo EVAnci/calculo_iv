@@ -13,9 +13,29 @@
 % Math environments and fonts
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
 
+% pgfplots and tikz for graphs
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{babel}
+% this line is recomended by the pgfplots lastes stable version
+% see https://pgfplots.sourceforge.net/pgfplots.pdf
+\pgfplotsset{compat=1.18}
+
+% Minimal Titlepage 
 \title{Cálculo IV}
 \author{Elio Valentino Anci}
+
+% Addon files. Contain environment definitions and
+% custom styles
+\input{addons/environment.tex}
+\input{addons/styles.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       The Document      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 \maketitle
