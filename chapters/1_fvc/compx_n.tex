@@ -280,4 +280,79 @@ Realizar el cociente usando alguna expresión polar es, al igual que el producto
 
 Cuando vimos los exponentes racionales, estos pueden resolverse aplicando radicación. Sin embargo, si no definimos cómo se resuelve la radicación para números complejos, entonces no podríamos encontrar la solución.
 
+La radicación para números complejos se define como la operación inversa de la exponenciación. Dado un número complejo \( z \neq 0 \) y un entero positivo \( n \), las raíces \( n \)-ésimas de \( z \) son todos los números complejos \( w \) que satisfacen la ecuación:
+\[
+w^n = z.
+\]
+A diferencia de los números reales, donde las raíces pueden ser únicas o dos (dependiendo de la paridad de \( n \)), para números complejos siempre hay exactamente \( n \) raíces distintas (excepto cuando \( z = 0 \), que tiene una única raíz: \( 0 \)).
 
+Cualquier número complejo \( z \neq 0 \) puede escribirse como:
+\[
+ z = r e^{j\theta},
+\]
+
+Si \( w = \rho e^{j\phi} \), entonces:
+\[
+ w^n = \rho^n e^{j n \phi}.
+\]
+Para que \( w^n = z \), debe cumplirse:
+\[
+ \rho^n e^{j n \phi} = r e^{j\theta}.
+\]
+De aquí, comparando vemos rápidamente que $\rho^n=r$, entonces $\rho=\sqrt[n]{r}$. Con respecto a los argumentos tenemos: \( e^{j n \phi} = e^{j\theta} \Rightarrow n\phi = \theta + 2\pi k \), para \( k \in \mathbb{Z} \). Esto se debe a la periodicidad de \( e^{j\phi} \) (periodo \( 2\pi \)).
+
+Entonces, las soluciones para \( \phi \):
+\[
+\phi = \frac{\theta + 2\pi k}{n}, \quad k \in \mathbb{Z}.
+\]
+Donde 
+\[
+k = 0, 1, 2, \dots, n-1.
+\]
+
+Juntando todo, las \( n \) raíces \( n \)-ésimas de \( z \) son:
+\[
+w_k = \sqrt[n]{r} \, e^{j \frac{\theta + 2\pi k}{n}}, \quad k = 0, 1, \dots, n-1.
+\]
+En forma cartesiana:
+\[
+w_k = \sqrt[n]{r} \left( \cos\left( \frac{\theta + 2\pi k}{n} \right) + j \sin\left( \frac{\theta + 2\pi k}{n} \right) \right).
+\]
+
+Veamos un ejemplo.
+\begin{example}
+Raíces cúbicas de \( z = 8j \)
+\begin{itemize}
+  \item Paso 1: Escribir \( z \) en forma polar:
+    \begin{itemize}
+      \item Módulo: \( r = |8j| = 8 \).
+      \item Argumento: \( \theta = \frac{\pi}{2} \).
+    \end{itemize}
+  \item Paso 2: Aplicar la fórmula con \( n = 3 \):
+    \[
+    w_k = \sqrt[3]{8} \, e^{j \frac{\pi/2 + 2\pi k}{3}} = 2 \, e^{j \frac{\pi + 4\pi k}{6}}.
+    \]
+    \begin{itemize}
+      \item Para \( k = 0 \): \( w_0 = 2 e^{j\pi/6} = 2\left( \cos\frac{\pi}{6} + j\sin\frac{\pi}{6} \right) = \sqrt{3} + j \).
+      \item Para \( k = 1 \): \( w_1 = 2 e^{j5\pi/6} = 2\left( \cos\frac{5\pi}{6} + j\sin\frac{5\pi}{6} \right) = -\sqrt{3} + j \).
+      \item Para \( k = 2 \): \( w_2 = 2 e^{j3\pi/2} = 2\left( \cos\frac{3\pi}{2} + j\sin\frac{3\pi}{2} \right) = -2j \).
+    \end{itemize}
+\end{itemize}
+\end{example}
+
+\subsection{Logaritmo natural de un número complejo}
+
+Sea el número complejo $w=re^{j\theta}$, dado en su forma exponencial, el logaritmo natural de $w$, será $z=x+yj$ si y solo si $e^z=w$.
+
+Como $w=re^{j\theta} = e^z$. Reemplazando resulta
+\begin{align*}
+  w &= e^{x+yj}=e^x\cdot e^{jy} \\ 
+  re^{j\theta} &= e^{x+yj} \\ 
+  re^{j\theta} &=e^x\cdot e^{jy}
+\end{align*}
+Comparando tenemos que $r=e^{x}\Rightarrow \ln(r)=x$ y $y=\theta + 2k\pi$, por la periodicidad de $e^{j\theta}$. Entonces
+\begin{align*}
+  \ln(w)&=z \\ 
+  \ln(re^{j\theta}) &= x+yj \\ 
+  \ln(re^{j\theta}) &= \ln(r) + j(\theta + 2k\pi)
+\end{align*}
