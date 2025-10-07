@@ -38,6 +38,7 @@ se cumple para todo punto $z$ dentro de $C$; es decir, \ref{eq:inter_circ} repre
   \lvert z-a \rvert \leqslant \rho
 \end{equation*}
 el cual consta del interior de $C$ y la propia $C$. El disco circular abierto \ref{eq:inter_circ} se denomina también \textbf{vecindad} del punto $a$. Resulta evidente que $a$ tiene una infinidad de tales vecindades, cada una de las cuales corresponde a un cierto valor de $\rho$ (>0), y $a$ es un punto de cada una de tales vecindades.
+\label{word:vecindad}
 
 De manera semejante, la desigualdad 
 \begin{equation*}
@@ -80,9 +81,9 @@ en donde $a$ es el centro de los círculos. Tal región se denomina \textit{anil
 
 Veamos un ejemplo.
 \begin{example}
-  Determinar la región en el plano complejo definida por $\lvert z-3+i\rvert\leqslant4$.
+  Determinar la región en el plano complejo definida por $\lvert z-3+j\rvert\leqslant4$.
 
-  \textbf{Solución}: La desigualdad es válida precisamente para todos los $z$ cuya distancia a $a=3-i$ no es mayor que $4$. Por tanto, se trata de un disco circular cerrado de radio $4$ con centro en $3-i$.
+  \textbf{Solución}: La desigualdad es válida precisamente para todos los $z$ cuya distancia a $a=3-j$ no es mayor que $4$. Por tanto, se trata de un disco circular cerrado de radio $4$ con centro en $3-j$.
 
   Gráficamente tenemos
   \begin{figure}[ht]
@@ -102,3 +103,52 @@ Veamos un ejemplo.
     \end{tikzpicture}
   \end{figure}
 \end{example}
+
+\subsection{Semiplanos}
+
+Por semiplano superior (abierto) se entiende el conjunto de todos los puntos $z=x+jy$ tales que $y>0$. De manera semejante, la condición $y<0$ define el semiplano inferior, $x>0$ el semiplano derecho y $x<0$ el semiplano izquierdo.
+
+\subsection{Conceptos relacionados con conjuntos en el plano complejo}
+
+Por último, a continuación se enumeran brevemente algunos conceptos de interés general que serán usados posteriormente; aquí se plantean para referencias según sean necesarios.
+
+El término \textbf{conjunto de puntos} en el plano complejo significa cualquier colección finita o infinita de tales puntos. Por ejemplo, las soluciones de una ecuación cuadrática, los puntos de una recta y los puntos en el interior de un circulo son conjuntos de puntos.
+
+Un conjunto $S$ se denomina \textbf{abierto} si cualquier punto de $S$ tiene una vecindad (definido en \ref{word:vecindad}) que consta completamente de puntos que pertenecen a $S$. Matemáticamente hablando, el conjunto $S \subset \mathbb{C}$ es abierto si para todo punto $a \in S$ existe un número $\rho > 0$ tal que toda la vecindad
+\[
+V(a,\rho) = {z \in \mathbb{C} : |z - a| < \rho}
+\]
+está completamente contenida en \( S \).
+
+Dicho más gráficamente: si te colocas sobre cualquier punto de \( S \), puedes dibujar un pequeño círculo alrededor tuyo que no se salga de \( S \). Veamos un ejemplo.
+\begin{example}
+  Supongamos un conjunto de puntos $\lvert z-a\rvert \leqslant r$
+  \[
+  S = {z \in \mathbb{C} : |z - a| \leqslant r}.
+  \]
+  Este es el disco cerrado de radio \(r\) centrado en \(a\). Incluye todos los puntos dentro del círculo y también los puntos del borde donde \(|z - a| = r\).
+
+  La pregunta es: ¿cumple la definición de conjunto abierto? Analicemos:
+  \begin{itemize}
+  \item Toma un punto \(z_0\) en el interior, es decir con \(|z_0 - a| < r\).
+   Aquí sí puedes encontrar un \(\rho > 0\) tal que todo \(z\) con \(|z - z_0| < \rho\) también satisfaga \(|z - a| < r\).
+   Es decir, los puntos interiores cumplen la condición.
+
+  \item Toma ahora un punto \(z_0\) en el borde, con \(|z_0 - a| = r\).
+    No importa cuán pequeño elijas \(\rho > 0\), siempre habrá puntos dentro del círculo \(|z - z_0| < \rho\) que estén fuera del disco, es decir que satisfagan \(|z - a| > r\).
+    Por tanto, ninguna vecindad de \(z_0\) está completamente contenida en \(S\).
+  \end{itemize}
+  Así que el conjunto falla la condición para los puntos del borde.
+
+  Conclusión:
+  \[
+  \boxed{{z : |z - a| \le r} \text{ no es abierto.}}
+  \]
+  Es un conjunto cerrado, porque contiene a todos sus puntos frontera. En cambio,
+  \[
+  {z : |z - a| < r}
+  \]
+  sí es abierto, porque todo punto dentro tiene una vecindad contenida en el conjunto.
+\end{example}
+
+Se dice que un conjunto abierto $S$ es \textbf{conexo} si dos puntos cualesquiera de $S$ pueden unirse mediante una línea quebrada constituida por un número finito de segmentos de recta completamente contenidos en $S$. Un conjunto conexo abierto se denomina \textbf{dominio}. Así un disco abierto o una corona abierta (como la figura \ref{fig:corona_complx}) son dominios. Un cuadrado abierto sin una diagonal no es un dominio (¿por qué?)
