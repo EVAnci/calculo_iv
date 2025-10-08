@@ -1,11 +1,23 @@
-\section{Funciones de variable compleja}
+\section{Límite, derivada y función analítica}
 
-Las funciones de variable compleja (FVC), se caracterizan por tener argumento complejo en lugar de argumento real.
+El análisis complejo estudia funciones complejas que son diferenciables en algún dominio. Por lo tanto, primero es necesario establecer qué se entiende por función compleja y luego definir los conceptos de límite y derivada en los complejos.
 
-Por esta razón, la propia función se constituye también en una magnitud compleja, ya que, al ser así, dispondrá de parte real y parte imaginaria.
+\subsection{Función Compleja}
 
-Se definen en general como
-$$
-w=w(z)
-$$
-donde la variable independiente $z$ es de naturaleza compleja, vale decir que es $z=x+jy$ donde $x$ e $y$ son valores reales que constituyen las partes real e imaginaria de la variable respectivamente.
+Recordando las funciones reales, una función real $f$ definida sobre un conjunto $S$ de números reales es una regla de correspondencia que asigna a todo $x$ en $S$ un número real $f(x)$, denominado \textit{valor} de $f$ en $x$.
+
+Ahora, en los complejos, $S$ es un conjunto de números \textit{complejos}, y una \textbf{función} $f$ definida sobre $S$ es una regla que asigna a cada $z$ en $S$ un número complejo $w$, denominado \textit{valor} de $f$ en $z$. Se escribe
+\begin{equation*}
+  w=f(z)
+\end{equation*}
+Aquí, $z$ varía en $S$ y se denomina \textbf{variable compleja}. El conjunto $S$ se denomina \textbf{dominio} \textit{de definición} de $f$.
+
+\begin{example}
+  $w=f(z)=z^2+3z$ es una función compleja definida para todo $z$; es decir, su dominio $S$ es todo el plano complejo.
+\end{example}
+
+El conjunto de todos los valores de una función $f$ se denomina rango de $f$. $w$ es complejo y se escribe $w=u+jv$, donde $u$ y $v$ son las partes real e imaginaria, respectivamente. Así, $w$ depende de $z=x+jy$. Por tanto, $u$ se vuelve una función real de $x$ y de $y$, así como lo hace $v$. Por tanto, es posible escribir
+\begin{equation*}
+  \boxed{w=f(z)=u(x,y)+jv(x,y)}
+\end{equation*}
+Lo anterior muestra que una función compleja $f(z)$ es equivalente a un par de funciones reales $u(x,y)$ y $v(x,y)$, cada una de las cuales depende de las otras dos variables reales $x$ e $y$.

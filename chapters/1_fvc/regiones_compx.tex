@@ -116,15 +116,15 @@ El término \textbf{conjunto de puntos} en el plano complejo significa cualquier
 
 Un conjunto $S$ se denomina \textbf{abierto} si cualquier punto de $S$ tiene una vecindad (definido en \ref{word:vecindad}) que consta completamente de puntos que pertenecen a $S$. Matemáticamente hablando, el conjunto $S \subset \mathbb{C}$ es abierto si para todo punto $a \in S$ existe un número $\rho > 0$ tal que toda la vecindad
 \[
-V(a,\rho) = {z \in \mathbb{C} : |z - a| < \rho}
+V(a,\rho) = \{z \in \mathbb{C} : |z - a| < \rho\}
 \]
 está completamente contenida en \( S \).
 
 Dicho más gráficamente: si te colocas sobre cualquier punto de \( S \), puedes dibujar un pequeño círculo alrededor tuyo que no se salga de \( S \). Veamos un ejemplo.
-\begin{example}
+\begin{example}\label{ej:conjunto_cerrado}
   Supongamos un conjunto de puntos $\lvert z-a\rvert \leqslant r$
   \[
-  S = {z \in \mathbb{C} : |z - a| \leqslant r}.
+  S = \{z \in \mathbb{C} : |z - a| \leqslant r\}.
   \]
   Este es el disco cerrado de radio \(r\) centrado en \(a\). Incluye todos los puntos dentro del círculo y también los puntos del borde donde \(|z - a| = r\).
 
@@ -142,7 +142,7 @@ Dicho más gráficamente: si te colocas sobre cualquier punto de \( S \), puedes
 
   Conclusión:
   \[
-  \boxed{{z : |z - a| \le r} \text{ no es abierto.}}
+  \boxed{{z : |z - a| \leqslant r} \text{ no es abierto.}}
   \]
   Es un conjunto cerrado, porque contiene a todos sus puntos frontera. En cambio,
   \[
@@ -151,4 +151,28 @@ Dicho más gráficamente: si te colocas sobre cualquier punto de \( S \), puedes
   sí es abierto, porque todo punto dentro tiene una vecindad contenida en el conjunto.
 \end{example}
 
-Se dice que un conjunto abierto $S$ es \textbf{conexo} si dos puntos cualesquiera de $S$ pueden unirse mediante una línea quebrada constituida por un número finito de segmentos de recta completamente contenidos en $S$. Un conjunto conexo abierto se denomina \textbf{dominio}. Así un disco abierto o una corona abierta (como la figura \ref{fig:corona_complx}) son dominios. Un cuadrado abierto sin una diagonal no es un dominio (¿por qué?)
+Se dice que un conjunto abierto $S$ es \textbf{conexo} si dos puntos cualesquiera de $S$ pueden unirse mediante una línea quebrada constituida por un número finito de segmentos de recta completamente contenidos en $S$. Un conjunto conexo abierto se denomina \textbf{dominio}. Así un disco abierto o una corona abierta (como la figura \ref{fig:corona_complx}) son dominios. Un cuadrado abierto sin una diagonal no es un dominio (¿por qué?). Como se ve en la figura \ref{fig:cuadrado_abierto}, podemos colocar dos puntos tales que el la línea quebrada deba cortar la diagonal faltante. Esto significa que el conjunto no es conexo.
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[scale=0.7]
+    \draw[->] (-0.5,0) -- (5,0) node[below right] {$\Re(z)$};
+    \draw[->] (0,-0.5) -- (0,5) node[above left] {$\Im(z)$};
+
+    \fill[red!15, even odd rule]
+          (1,1) rectangle (4,4)  % exterior: el cuadrado
+          (1,1) -- (4,4) -- (3.9,4) -- (1,1.1) -- cycle;
+    \draw[dashed, red] (1,1) rectangle (4,4);
+    \draw[white, line width=2pt] (1,1) -- (4,4); % “borra” una línea ancha
+
+    \draw[red, dashed] (1.1,1) -- (4,3.9);
+    \draw[red, dashed] (1,1.1) -- (3.9,4);
+  \end{tikzpicture}
+  \caption{Región cuadrada abierta sin una diagonal}
+  \label{fig:cuadrado_abierto}
+\end{figure}
+
+El \textbf{complemento} de un conjunto $S$ en el plano complejo es el conjunto de todos los puntos del plano complejo que \textit{no} pertenecen a $S$. Un conjunto $S$ se denomina cerrado si su complemento es abierto. Por ejemplo, los puntos sobre y en el interior del círculo unitario constituyen un conjunto cerrado (``disco unitario cerrado''), ya que su complemento $\lvert z \rvert > 1$ es abierto.
+
+Un \textbf{punto frontera} de un conjunto $S$ es aquel para el que toda vecindad contiene puntos que pertenecen a $S$ y puntos que \textit{no} pertenecen a $S$. En el ejemplo \ref{ej:conjunto_cerrado} vimos que los puntos del borde de la circunferencia son puntos frontera, ya que la vecindad de cada punto incluye puntos que pertenecen a $S$ y puntos que no pertenecen a $S$.
+
+Una \textbf{región} es un conjunto que consta de un dominio más, quizá, algunos o todos sus puntos frontera. 
