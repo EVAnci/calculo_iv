@@ -144,3 +144,30 @@ Las \textbf{reglas de diferenciación} son las mismas que en cálculo real, ya q
 y también se cumple la regla de la cadena.
 
 También, si $f(z)$ es diferenciable en $z_0$, entonces es continua en $z_0$.
+
+\begin{example}
+  Es importante observar que existen muchas funciones simples que no tienen derivada en ningún punto. Por ejemplo, $f(z)=\bar{z}=x-jy$ es una de estas funciones. De hecho, si se escribe $\Delta z = \Delta x - j\Delta y$, se tiene 
+  \begin{align}
+    \frac{f(z+\Delta z) - f(z)}{\Delta z} = \frac{\bar{(z+\Delta z)-\bar[z]}}{\Delta z} = frac{\bar{\Delta z}}{\Delta z} = \frac{\Delta x - j\Delta y}{\Delta x + j\Delta y}
+    \label{ej:eq_no_diferenciable}
+  \end{align}
+  Si $\Delta y = 0$, lo anterior es 1. Contrariamente, si $\Delta x = 0$ entonces es $-1$. Por tanto, \ref{ej:eq_no_diferenciable} tiende a dos valores distintos cuando se toman distintas trayectorias, y, en consecuencia, el límite no existe.
+\end{example}
+
+El ejemplo que se acaba de analizar puede ser sorprendente, aunque simplemente ilustra que la diferenciabilidad de una función compleja es más bien un requisito estricto.
+
+\subsection{Funciones analíticas}
+
+Se trata de funciones que son diferenciables en algún dominio, de modo que es posible hacer ``cálculo en los complejos''. Constituyen el tema fundamental del análisis complejo, y su introducción es el objetivo principal de esta sección. 
+
+\subsection{Definición de analiticidad}
+
+Se dice que una función $f(z)$ es \textit{analítica en un dominio D} si $f(z)$ está definida y es diferenciable en todos los puntos de \textit{D}. Se dice que una función $f(z)$ es analítica en un punto $z=z_0$ en $D$ si $f(z)$ es analítica en una vecindad de $z_0$. Es decir, 
+\begin{gather*}
+  \text{``}f \text{ es analítica en }z_0 \Leftrightarrow f \text{ es diferenciable en una vecindad de }z_0\text{''} \\ 
+  \text{``}f \text{ es analítica en }D \Leftrightarrow f \text{ es diferenciable en todos los puntos de }D\text{''}
+\end{gather*}
+
+También se llama función analítica a una función que es analítica en algún dominio.
+
+Así, la analiticidad de $f(z)$ en $z_0$ significa que $f(z)$ tiene una derivada en todos los puntos en alguna vecindad de $z_0$ (incluyendo $z_0$ mismo ya que, por definición, $z_0$ es un punto que pertenece a todas sus vecindades). Este concepto es motivado por el hecho de que carece de interés práctico el hecho de que una función sea diferenciable simplemente en un solo punto $z_0$ pero no en toda una vecindad completa de $z_0$.
