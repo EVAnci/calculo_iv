@@ -21,3 +21,126 @@ El conjunto de todos los valores de una función $f$ se denomina rango de $f$. $
   \boxed{w=f(z)=u(x,y)+jv(x,y)}
 \end{equation*}
 Lo anterior muestra que una función compleja $f(z)$ es equivalente a un par de funciones reales $u(x,y)$ y $v(x,y)$, cada una de las cuales depende de las otras dos variables reales $x$ e $y$.
+\begin{example}
+  Sea $w(z)=z^2 + 3z$, encontrar $u$ y $v$ y calcular el valor de $f$ en $z=1+3j$
+
+  \textit{Solución}:
+  \begin{align*}
+    z^2 &= (x+jy)^2 = x^2 - y^2 + j\,2xy \\ 
+    z^2 &= (x^2 - y^2) + j\, (2xy)
+  \end{align*}
+  Y por otro lado
+  \begin{align*}
+    3z = 3(x+jy)
+  \end{align*}
+  Entonces se tiene que
+  \begin{align*}
+    \operatorname{Re}(z) =& u(x,y) = x^2 - y^2 + 3x \\ 
+    \operatorname{Im}(z) =& v(x,y) = 2xy + 3y
+  \end{align*}
+  Luego, $f(x,y)= (x^2-y^2+3x) + j(2xy+3y)$. Para $z=1+3j$ se reemplaza:
+  \begin{align*}
+    f(1,3)=(1^2-3^2+3) + j(2\cdot 3 + 3\cdot 3) \\ 
+    f(1,3)=-5+15j
+  \end{align*}
+  Lo anterior muestra que: $u(1,3)=-5$ y $v(1,3)=15$
+\end{example}
+
+\subsection{Límite y continuidad}
+
+Se dice que $L$ es el \textbf{límite} de una función $f(z)$ cuando $z$ tiende al punto $z_0$, lo que se escribe
+\begin{equation}
+  \lim_{z\to z_0}f(z)=L
+\end{equation}
+si $f$ está definida en una vecindad de $z_0$ (excepto quizá en $z_0$ mismo) y si los valores de $f$ están ``próximos'' a $L$ para todo $z$ ``próximo'' a $z_0$.
+
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.7, remember picture]
+      % Ejes
+      \draw[->] (0,0) -- (0,5) node[above left] {$\Im(z)$};
+      \draw[->] (0,0) -- (5,0) node[below right] {$\Re(z)$};
+
+      % Vecindad en el dominio
+      \filldraw[blue] (2.5,2.5) circle (2pt) node[below right] {$z_0$};
+      \draw[->] (2.5,2.5)--++(200:2) node[midway, above] {$\delta$};
+      \draw[red, dashed] (2.5,2.5) circle (2);
+      \filldraw (2.2,3.5) circle (2pt) node[left] {$z$};
+      \coordinate (zpoint) at (2.2,3.5);
+    \end{tikzpicture}
+    \caption{Vecindad de $z_0$ en el dominio.}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.7, remember picture]
+      % Ejes
+      \draw[->] (0,0) -- (0,5) node[above left] {$v$};
+      \draw[->] (0,0) -- (6,0) node[below right] {$u$};
+
+      % Vecindad en la imagen
+      \filldraw[teal] (2.5,1.5) circle (2pt) node[below right] {$L$};
+      \draw[->] (2.5,1.5)--++(190:2.4) node[midway, above] {$\varepsilon$};
+      \draw[red, dashed] (2.5,1.5) circle (2.4);
+      \filldraw (3.5,1.7) circle (2pt) node[right] {$f(z)$};
+      \coordinate (fpoint) at (3.5,1.7);
+    \end{tikzpicture}
+    \caption{Vecindad de $L=f(z_0)$ en el codominio.}
+  \end{subfigure}
+
+  \begin{tikzpicture}[remember picture, overlay]
+    \draw[->, dashed, gray!60!black]
+      ($(zpoint)$)
+      .. controls ($(zpoint)+(3,0.3)$) ..
+      ($(fpoint)$)
+      node[midway, above, sloped=false] {$f$};
+  \end{tikzpicture}
+  \caption{Relación entre la vecindad en el dominio y su imagen por $f$.}
+  \label{fig:limite_complejo}
+\end{figure}
+Aquí la definición de límite es parecida a el límite para funciones de varias variables reales; es decir, aquí por definición, $z$ puede tender a $z_0$ \textbf{desde cualquier dirección} (como muestra la figura \ref{fig:limite_complejo}) en el plano complejo. Al igual que para variable real, si existe un límite, entonces es único.
+
+Se dice que una función $f(z)$ es \textbf{continua} en $z=z_0$ si
+\begin{itemize}
+  \item Existe el límite en $z_0$: $\lim_{z\to z_0} f(z) = L$
+  \item Existe $f$ en $z_0$: $\exists f(z_0) $ para $z_0 \in\text{D}(f)$
+  \item El límite y $f(z_0)$ son iguales: $\lim_{z\to z_0} f(z) = L = f(z_0)$
+\end{itemize}
+
+Se dice que $f(z)$ es continua en un dominio si es continua en cada uno de los puntos de este dominio.
+
+\subsection{Derivada}
+
+La derivada de una función compleja $f$ en un punto $z_0$ se denota por $f'(z_0)$ y se define como
+\begin{equation}
+  \boxed{f'(z_0)=\lim_{\Delta z \to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}}
+\end{equation}
+en el supuesto de que este límite existe. Así, se dice entonces que $f$ es diferenciable en $z_0$. Si se escribe $\Delta z = z-z_0$, entonces también se tiene que, como $z=z_0+\Delta z$,
+\begin{equation}
+  f'(z_0) = \lim_{z\to z_0} \frac{f(z)-f(z_0)}{z-z_0}
+  \label{eq:derivada}
+\end{equation}
+Recuérsede que, por la definición del límite, $f(z)$ está definida en alguna vecindad de $z_0$ y, por tanto, $z$ puede aproximarse a $z_0$ (como indica la ecuación \ref{eq:derivada}) desde cualquier dirección y con cualquier trayectoria. Por tanto, diferenciabilidad en $z_0$ significa que, a lo largo de cualquier trayectorial por la cual $z$ tienda a $z_0$, el cociente en \ref{eq:derivada} siempre tiende a un cierto valor, y todos esos valores son iguales. 
+\begin{example}
+  La función $f(z)=z^2$ es diferenciable para todo $z$ y su derivada es $f'(z)=2z$ porque
+  \begin{align*}
+    f'(z)&=\lim_{\Delta z \to 0} \frac{(z+\Delta z)^2-z^2}{\Delta z} \\
+         &=\lim_{\Delta z \to 0} \frac{\cancel{z^2}+2z\Delta z + \Delta z^2 - \cancel{z^2}}{\Delta z} \\ 
+         &=\lim_{\Delta z \to 0} \frac{2z\cancel{\Delta z}}{\cancel{\Delta z}} + \frac{\Delta z^{\cancel{2}}}{\cancel{\Delta z}} \\ 
+    f'(z)&=2z
+  \end{align*}
+  \label{ej:derivada}
+\end{example}
+
+Las \textbf{reglas de diferenciación} son las mismas que en cálculo real, ya que sus demostraciones son literalmente iguales. Entonces, generalizando las reglas de derivación tenemos:
+\begin{itemize}
+  \item $(cf)'=cf'$ 
+  \item $(f+g)'=f'+g'$
+  \item $(fg)'=f'g+fg'$
+  \item $\left(\frac{f}{g}\right)'=\frac{f'g-fg'}{g^2}$
+\end{itemize}
+y también se cumple la regla de la cadena.
+
+También, si $f(z)$ es diferenciable en $z_0$, entonces es continua en $z_0$.
