@@ -276,3 +276,74 @@ Así, la existencia de la derivada $f'(z)$ implica la existencia de las cuatro d
   \end{gather*}
   Observar el ahorro en esfuerzo de cómputo
 \end{example}
+
+Las ecuaciones de Cauchy-Riemann son fundamentales debido a que no sólo son necesarias sino también suficientes para que una función sea analítica. Con más precisión, se cumple el siguiente teorema.
+
+\begin{theorem}[Ecuaciones de Cauchy-Riemann]
+  Si dos funciones continuas con valores reales $u(x,y)$ y $v(x,y)$ de dos variables reales $x$ e $y$ tienen primeras derivadas parciales continuas que satisfacen las ecuaciones de Cauchy-Riemann en algún dominio $D$, entonces la función compleja $f(z)=u(x,y)+jv(x,y)$ es analítica en $D$.
+\end{theorem}
+
+La demostración de este teorema es más complicada que la del teorema \ref{teo:ecuaciones_de_cr} por lo tanto no se verá.
+
+Veamos un ejemplo más de otra clase de problemas que pueden resolverse con las ecuaciones de CR.
+\begin{example}
+  Encontrar la función analítica más general $f(z)$ cuya parte real sea $u=x^2-y^2-x$.
+
+  \textit{Solución}: Por la primera ecuación de CR,
+  \[
+    v_y = u_x = 2x-1
+  \]
+  Entonces, podemos integrar respecto de $y$:
+  \begin{align*}
+    \int v_y \, dy &= \int 2x -1 \, dy \\ 
+    v(x,y) + c_1 &= (2x-1)(y+g(x)) \\ 
+    v(x,y) + c_1 &= 2xy - y + 2xg(x) - g(x) 
+  \end{align*}
+  y si escribimos $k_1=-c_1$, resulta
+  \begin{equation}\label{eq:ejemplo_cr_eq_1}
+    v(x,y) = 2xy - y + 2xg(x) - g(x) + k_1
+  \end{equation}
+  donde $g(x)$ es una posible función de $x$ que se ha perdido al derivar $v$ respecto de $y$. Por otra parte, de la segunda ecuación de CR, obtenemos
+  \begin{align*}
+    v_x &= -u_y = 2y \\ 
+    \int v_x \,dx &= \int 2y \, dx \\ 
+    v(x,y) + c_2 &= 2y (x + h(y)) 
+  \end{align*}
+  y si escribimos $k_2=-c_2$, resulta
+  \begin{equation}\label{eq:ejemplo_cr_eq_2}
+    v(x,y) = 2yx + 2yh(y) + k_2
+  \end{equation}
+  Aquí vemos que, comparando las ecuaciones \ref{eq:ejemplo_cr_eq_1} y \ref{eq:ejemplo_cr_eq_2}, tenemos que $g(x)=0$ y $h(y)=-1/2$. Por otro lado vemos que $k_1 = k_2 = k$, es una constante arbitraria. Entonces $v(x,y)=2xy - y + k$. Por lo tanto resulta:
+  \begin{align*}
+    f(x,y) &= u(x,y) + jv(x,y) \\ 
+    f(x,y) &= (x^2-y^2-x) + j(2xy - y + k) \\ 
+    f(x,y) &= (x^2 + j2xy - y^2) - (x+jy) + jk \\ 
+    f(x,y) &= (x+jy)^2 - (x+jy) + jk
+  \end{align*}
+  Entonces, reemplazando $z=(x+jy)$ en la ecuación, resulta
+  \[
+    \boxed{f(z) = z^2 - z + jk}
+  \]
+  donde $k$ es una constante arbitraria.
+\end{example}
+
+\subsection{Forma polar de las ecuaciones de CR}
+
+A veces, es conveniente usar coordenadas polares, por tanto, es útil tener una expresión de las ecuaciones de Cauchy-Riemann usando este sistema.
+
+En coordenadas polares, tenemos que $z=re^{j\theta}$, donde $r=\sqrt{x^2+y^2}$ y $\theta=\arctan(\frac{y}{x})$. En este caso, la función $f(z)$ se puede escribir en términos de $r$ y $\theta$, así que denotamos $f(z)=u(r,\theta)+jv(r,\theta)$.
+
+Para encontrar la expresión de las ecuaciones de CR en coordenadas polares, partimos de las ecuaciones originales, para coordenadas cartesianas:
+\[
+  u_x = v_y \qquad u_y = -v_x
+\]
+donde $f(z)=u(x,y)+jv(x,y)$ y $z=x+jy$. En base a ello, escribimos
+\[
+  x=r\cos(\theta),\quad y=r\sin(\theta)
+\]
+Ahora, consideramos las derivadas parciales de $u$ y de $v$ con respecto a $x$ e $y$, y se expresan en términos de $r$ y $\theta$.
+
+Para $u$ tenemos
+\begin{align*}
+  \frac{\partial u}{\partial x} = \frac{\partial u}{\partial r}\frac{\partial r}{\partial x} + \frac{\partial u}{\partial \theta}\frac{\partial \theta}{\partial x}
+\end{align*}
