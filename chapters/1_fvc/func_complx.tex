@@ -329,21 +329,59 @@ Veamos un ejemplo más de otra clase de problemas que pueden resolverse con las 
 
 \subsection{Forma polar de las ecuaciones de CR}
 
-A veces, es conveniente usar coordenadas polares, por tanto, es útil tener una expresión de las ecuaciones de Cauchy-Riemann usando este sistema.
-
-En coordenadas polares, tenemos que $z=re^{j\theta}$, donde $r=\sqrt{x^2+y^2}$ y $\theta=\arctan(\frac{y}{x})$. En este caso, la función $f(z)$ se puede escribir en términos de $r$ y $\theta$, así que denotamos $f(z)=u(r,\theta)+jv(r,\theta)$.
-
-Para encontrar la expresión de las ecuaciones de CR en coordenadas polares, partimos de las ecuaciones originales, para coordenadas cartesianas:
+Recordemos las definiciones
 \[
-  u_x = v_y \qquad u_y = -v_x
+  r = \sqrt{x^2 + y^2}, \qquad \theta = \arctan\left(\frac{y}{x}\right)
 \]
-donde $f(z)=u(x,y)+jv(x,y)$ y $z=x+jy$. En base a ello, escribimos
-\[
-  x=r\cos(\theta),\quad y=r\sin(\theta)
-\]
-Ahora, consideramos las derivadas parciales de $u$ y de $v$ con respecto a $x$ e $y$, y se expresan en términos de $r$ y $\theta$.
 
-Para $u$ tenemos
+Entonces para obtener las ecuaciones de CR partimos de hacer $r_x$
+\[
+  \frac{\partial}{\partial x}\sqrt{x^2+y^2}=\frac{x}{\sqrt{x^2+y^2}} = \frac{x}{r}
+\]
+Y como $\cos\theta = x/r$, resulta
+\[
+  \frac{\partial r}{\partial x} = \cos \theta
+\]
+Ahora hacemos lo mismo respecto de $y$:
+\[
+  \frac{\partial r}{\partial y} = \frac{y}{\sqrt{x^2+y^2}} = \frac{y}{r} = \sin \theta
+\]
+
+Ahora hacemos $\theta_x$ y $\theta_y$. Es importante notar que $\arctan(y/x)$ es válido siempre que $x\neq 0$. En algunos libros avanzados usan \href{https://en.wikipedia.org/wiki/Atan2}{$\text{atan}2(y,x)$}, que es válida para todo $x$. Sin embargo, por facilidad de derivación, podemos usar $\arctan$ que es válido localmente si $x\neq 0$.
+
+Entonces, sea $u=\frac{y}{x}$
+\[
+  \frac{\partial \theta}{\partial x} = \frac{d}{du}\arctan(u)\cdot\frac{\partial u}{\partial x} = \frac{1}{1+u^2}\cdot \frac{\partial}{\partial x}\left(\frac{y}{x}\right)
+\]
+Como $y$ es constante,
+\[
+  \frac{\partial \theta}{\partial x} = \frac{1}{1+(y/x)^2}\cdot \left(-\frac{y}{x^2}\right)
+\]
+Resultando
+\[
+  \frac{\partial \theta}{\partial x} = -\frac{y}{x^2 + y^2}
+\]
+Pero $x^2 + y^2=r^2$ y $\sin \theta = y/r$, así que 
+\[
+  \frac{\partial \theta}{\partial x} = -\frac{y}{r^2} = -\frac{\sin\theta}{r}
+\]
+Misma idea, ahora derivando a $\theta$ con respecto de $y$:
 \begin{align*}
-  \frac{\partial u}{\partial x} = \frac{\partial u}{\partial r}\frac{\partial r}{\partial x} + \frac{\partial u}{\partial \theta}\frac{\partial \theta}{\partial x}
+  \frac{\partial \theta}{\partial y} &= \frac{d}{du}\arctan(u)\cdot\frac{\partial u}{\partial y} \\ 
+  \frac{\partial \theta}{\partial y} &= \frac{\cos \theta}{r}
 \end{align*}
+Entonces, los cuatro resultados obtenidos son
+\begin{align*}
+  r_x &= \cos \theta &r_y = \sin \theta \\ 
+  \theta_x &= -\frac{\sin \theta}{r} &\theta_y =\frac{\cos \theta}{r}
+\end{align*}
+
+Ahora, reemplazamos en $f(z)=u(x,y)+jv(x,y)$ por $f(z)=u(r,\theta)+jv(r,\theta)$ y buscamos $u_x$, $u_y$, $v_x$ y $v_y$.
+\begin{align*}
+  \frac{\partial u}{\partial r}\frac{\partial r}{\partial x}
+\end{align*}
+
+Juntando los resultados obtenidos, obtenemos las ecuaciones de Cauchy-Riemann en coordenadas polares
+\begin{equation}
+  u_r = \frac{1}{r}v_\theta, \qquad v_r =  -\frac{1}{r}u_\theta
+\end{equation} 
