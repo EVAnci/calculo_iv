@@ -101,7 +101,7 @@ Así, la existencia de la derivada $f'(z)$ implica la existencia de las cuatro d
     u_x=1 \quad v_y = -1 \\ 
     u_x \neq v_y
   \end{gather*}
-  Observar el ahorro en esfuerzo de cómputo
+  Observar el ahorro en esfuerzo de cómputo.
 \end{example}
 
 Las ecuaciones de Cauchy-Riemann son fundamentales debido a que no sólo son necesarias sino también suficientes para que una función sea analítica. Con más precisión, se cumple el siguiente teorema.
@@ -219,8 +219,53 @@ con $r>0$.
 Una de las razones principales de la gran importancia práctica del análisis complejo en las matemáticas aplicadas a la ingeniería resulta del hecho que tanto la parte real como la parte imaginaria de una función analítica satisfacen la ecuación diferencial más importante en física, la ecuación de Laplace, que aparece en la teoría de la gravitación, electrostática, dinámica de fluidos, conducción del calor, etc.
 
 \begin{theorem}[Ecuación de Laplace]
-  Si $f(z)=u(x,y)+jv(x,y)$ es analítica en un dominio $D$, entonces $u$ y $v$ satisfacen la ecuación de Laplace
-  \begin{equation}
-    \nabla^2 u = u_{xx} + v_{yy} = 0
+  Si $f(z)=u(x,y)+jv(x,y)$ es analítica en un dominio $D$, entonces $u$ y $v$ satisfacen la ecuación de Laplace en $D$ y tienen segundas derivadas parciales continuas en $D$. Es decir, se cumple que
+  \begin{equation}\label{eq:laplace_u}
+    \nabla^2 u = u_{xx} + u_{yy} = 0
+  \end{equation}
+  (aquí $\nabla^2$ es el \href{https://en.wikipedia.org/wiki/Laplace_operator}{operador laplaciano}) y,
+  \begin{equation}\label{eq:laplace_v}
+    \nabla^2 = v_{xx} + v_{yy} = 0
   \end{equation}
 \end{theorem}
+
+\begin{proof}
+  Al derivar $u_x = v_y$ con respecto a $x$ y $u_y=-v_x$ con respecto a $y$, se tiene
+  \begin{equation}\label{eq:cr_laplace_proof}
+    u_{xx}=v_{xy}, \qquad u_{yy} = -v_{xy}
+  \end{equation}
+  Así, la derivada de una función analítica es en sí misma analítica, como se demostrará después. Lo anterior implica que $u$ y $v$ tienen derivadas parciales continuas de todos los órdenes; en particular, las segundas derivadas parciales mezcladas son iguales; $v_{yx}= v_{xy}$. Al sumar \ref{eq:cr_laplace_proof} se obtiene entonces \ref{eq:laplace_u}.
+  \begin{gather*}
+    u_{xx}-v_{xy}=0, \qquad u_{yy}+v_{xy}=0 \\ 
+    u_{xx}+u_{yy}+v_{xy}-v_{xy}=0 \\ 
+    u_{xx}+u_{yy}=\nabla^2 u=0 
+  \end{gather*}
+  De manera semejante, \ref{eq:laplace_v} se obtiene al derivar $u_x=v_y$ con respecto a $y$ y $u_y=-v_x$ con respecto a $x$ y restando, usando $u_{xy}=u_{yx}$.
+\end{proof}
+
+Las soluciones de la ecuación de Laplace que tienen derivadas parciales de segundo orden continuas se denominan \textbf{funciones armónicas} y su teoría se denomina \textit{teoría del potencial}. Por tanto, las partes real e imaginaria de una función analítica son funciones armónicas.
+
+Si dos funciones armónicas $u$ y $v$ satisfacen las ecuaciones de Cauchy-Riemann en un dominio $D$, entonces son las partes real e imaginaria de una función analítica $f$ en $D$. Entonces, se dice que $v$ es la \textbf{función armónica conjugada} de $u$ en $D$.\footnote{Aquí, el uso de la palabra ``conjugada'' es diferente al empleado para definir $\bar{z}$.} Veamos esto con un ejemplo.
+
+\begin{example}[Función armónica conjugada]
+  Comprobar que $u=x^2-y^2 -y$ es armónica en todo el plano complejo y encontrar una función armónica conjugada $v$ de $u$.
+
+  \textit{Solución}: $\nabla^2 u =0$ por cálculo directo. Luego, $u_x=2x$, y por otro lado, $u_y=-2y-1$. Por tanto, una conjugada $v$ de $u$ debe satisfacer
+  \begin{equation*}
+    v_y = u_x = 2x,\qquad v_x=-u_y = 2y+1
+  \end{equation*}
+  Al integrar la primera ecuación con respecto a $y$, y derivando el resultado con respecto a $x$, se obtiene
+  \begin{equation*}
+    v=2xy + h(x), \qquad v_x = 2y + \frac{dh}{dx}
+  \end{equation*}
+  Al comparar el resultado anterior con la segunda ecuación se observa que $dh/dx=1$. Con lo anterior se obtiene $h(x)=x+c$. Así $v=2xy+x+c$ es la armónica conjugada más general de una $u$ dada. La función analítica correspondiente es
+  \[
+    f(z)=u+jv=x^2-y^2-y+j(2xy+x+c)=z^2 +jz +jc
+  \]
+\end{example}
+
+Entonces, a modo de resumen decimos que $u$ y $v$
+\begin{itemize}
+  \item son armónicas si verifican la ecuación de Laplace y tienen derivadas segundas continuas,
+  \item son armónicas conjugadas si, además, están dispuestas como parte real e imaginaria de una función de variable compleja analítica (y por ende verifican las ecuaciones de Cauchy-Riemann).
+\end{itemize}
