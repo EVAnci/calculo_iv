@@ -8,7 +8,7 @@ Las ecuaciones de Cauchy-Riemann (CR) nos permiten saber si una función es anal
 en todos los puntos de $D$. Las ecuaciones \ref{eq:cauchy-riemann} se denominan las ecuaciones de Cauchy-Riemann.\footnote{Usualmente se usa la notación $u_x=\frac{\partial u}{\partial x}$ para indicar la derivada parcial respecto a $x$ en este caso. Lo mismo se usa para la variable $y$ y para la función $v$.}
 
 \begin{example}
-  $f(z)=z^2=x^2=y^2+2jxy$ es analítica para todo $z$ y $u=x^2-y^2$ y $v=2xy$. Verificamos que cumple con las ecuaciones \ref{eq:cauchy-riemann}:
+  $f(z)=z^2=x^2-y^2+2jxy$ es analítica para todo $z$ y $u=x^2-y^2$ y $v=2xy$. Verificamos que cumple con las ecuaciones \ref{eq:cauchy-riemann}:
   \begin{gather*}
     u_x = 2x \quad u_y = -2y \qquad v_x = 2y \quad v_y = 2x
   \end{gather*}
@@ -104,15 +104,18 @@ Así, la existencia de la derivada $f'(z)$ implica la existencia de las cuatro d
   Observar el ahorro en esfuerzo de cómputo.
 \end{example}
 
-Las ecuaciones de Cauchy-Riemann son fundamentales debido a que no sólo son necesarias sino también suficientes para que una función sea analítica. Con más precisión, se cumple el siguiente teorema.
-
 \begin{theorem}[Ecuaciones de Cauchy-Riemann]
   Si dos funciones continuas con valores reales $u(x,y)$ y $v(x,y)$ de dos variables reales $x$ e $y$ tienen primeras derivadas parciales continuas que satisfacen las ecuaciones de Cauchy-Riemann en algún dominio $D$, entonces la función compleja $f(z)=u(x,y)+jv(x,y)$ es analítica en $D$.
+  \label{teo:eq_cr_necesaria_suficiente}
 \end{theorem}
 
-La demostración de este teorema es más complicada que la del teorema \ref{teo:ecuaciones_de_cr} por lo tanto no se verá.
+Las ecuaciones de Cauchy-Riemann constituyen la condición necesaria para que una función sea analítica en un punto. Diremos que es necesaria pero no suficiente, aunque algunos textos las consideran condición necesaria y suficiente por el teorema \ref{teo:eq_cr_necesaria_suficiente}. Veremos a continuación que la restricción de analiticidad se puede perfeccionar. 
 
-Veamos un ejemplo más de otra clase de problemas que pueden resolverse con las ecuaciones de CR.
+Si una función $f(z)$ es analítica en un dominio $D$ entonces $u$ y $v$ satisfacen la ecuación de \textit{Laplace}. Así, diremos que satisfacer la ecuación de Laplace es suficiente para ser analítica, y satisfacer las ecuaciones de Cauchy-Riemann es necesario. He aquí, la condición \textit{necesaria y suficiente}. 
+
+De momento no se preocupe por la ecuación de Laplace. Su enunciado y demostración se verá en la sección \ref{sec:laplace_eq}
+
+Antes de ver la condición suficiente, veamos un ejemplo más de otra clase de problemas que pueden resolverse con las ecuaciones de CR.
 \begin{example}
   Encontrar la función analítica más general $f(z)$ cuya parte real sea $u=x^2-y^2-x$.
 
@@ -156,65 +159,13 @@ Veamos un ejemplo más de otra clase de problemas que pueden resolverse con las 
 
 \subsection{Forma polar de las ecuaciones de CR}
 
-Recordemos las definiciones
-\[
-  r = \sqrt{x^2 + y^2}, \qquad \theta = \arctan\left(\frac{y}{x}\right)
-\]
-
-Entonces para obtener las ecuaciones de CR partimos de hacer $r_x$
-\[
-  \frac{\partial}{\partial x}\sqrt{x^2+y^2}=\frac{x}{\sqrt{x^2+y^2}} = \frac{x}{r}
-\]
-Y como $\cos\theta = x/r$, resulta
-\[
-  \frac{\partial r}{\partial x} = \cos \theta
-\]
-Ahora hacemos lo mismo respecto de $y$:
-\[
-  \frac{\partial r}{\partial y} = \frac{y}{\sqrt{x^2+y^2}} = \frac{y}{r} = \sin \theta
-\]
-
-Ahora hacemos $\theta_x$ y $\theta_y$. Es importante notar que $\arctan(y/x)$ es válido siempre que $x\neq 0$. En algunos libros avanzados usan \href{https://en.wikipedia.org/wiki/Atan2}{$\text{atan}2(y,x)$}, que es válida para todo $x$. Sin embargo, por facilidad de derivación, podemos usar $\arctan$ que es válido localmente si $x\neq 0$.
-
-Entonces, sea $u=\frac{y}{x}$
-\[
-  \frac{\partial \theta}{\partial x} = \frac{d}{du}\arctan(u)\cdot\frac{\partial u}{\partial x} = \frac{1}{1+u^2}\cdot \frac{\partial}{\partial x}\left(\frac{y}{x}\right)
-\]
-Como $y$ es constante,
-\[
-  \frac{\partial \theta}{\partial x} = \frac{1}{1+(y/x)^2}\cdot \left(-\frac{y}{x^2}\right)
-\]
-Resultando
-\[
-  \frac{\partial \theta}{\partial x} = -\frac{y}{x^2 + y^2}
-\]
-Pero $x^2 + y^2=r^2$ y $\sin \theta = y/r$, así que 
-\[
-  \frac{\partial \theta}{\partial x} = -\frac{y}{r^2} = -\frac{\sin\theta}{r}
-\]
-Misma idea, ahora derivando a $\theta$ con respecto de $y$:
-\begin{align*}
-  \frac{\partial \theta}{\partial y} &= \frac{d}{du}\arctan(u)\cdot\frac{\partial u}{\partial y} \\ 
-  \frac{\partial \theta}{\partial y} &= \frac{\cos \theta}{r}
-\end{align*}
-Entonces, los cuatro resultados obtenidos son
-\begin{align*}
-  r_x &= \cos \theta &r_y = \sin \theta \\ 
-  \theta_x &= -\frac{\sin \theta}{r} &\theta_y =\frac{\cos \theta}{r}
-\end{align*}
-
-Ahora, reemplazamos en $f(z)=u(x,y)+jv(x,y)$ por $f(z)=u(r,\theta)+jv(r,\theta)$ y buscamos $u_x$, $u_y$, $v_x$ y $v_y$.
-\begin{align*}
-  \frac{\partial u}{\partial r}\frac{\partial r}{\partial x}
-\end{align*}
-
-Juntando los resultados obtenidos y operando algebráicamente, obtenemos las ecuaciones de Cauchy-Riemann en coordenadas polares
+Las ecuaciones de Cauchy-Riemann también pueden ser expresadas en coordenadas polares. En general trabajaremos con la forma binómica, sin embargo se deja la expresión de las ecuaciones en coordenadas polares ya que puede ser útil para algunos casos.
 \begin{equation}
   u_r = \frac{1}{r}v_\theta, \qquad v_r =  -\frac{1}{r}u_\theta
 \end{equation} 
 con $r>0$.
 
-\subsection{Ecuación de Laplace. Funciones armónicas}
+\subsection{Ecuación de Laplace. Funciones armónicas}\label{sec:laplace_eq}
 
 Una de las razones principales de la gran importancia práctica del análisis complejo en las matemáticas aplicadas a la ingeniería resulta del hecho que tanto la parte real como la parte imaginaria de una función analítica satisfacen la ecuación diferencial más importante en física, la ecuación de Laplace, que aparece en la teoría de la gravitación, electrostática, dinámica de fluidos, conducción del calor, etc.
 
@@ -267,5 +218,9 @@ Si dos funciones armónicas $u$ y $v$ satisfacen las ecuaciones de Cauchy-Rieman
 Entonces, a modo de resumen decimos que $u$ y $v$
 \begin{itemize}
   \item son armónicas si verifican la ecuación de Laplace y tienen derivadas segundas continuas,
-  \item son armónicas conjugadas si, además, están dispuestas como parte real e imaginaria de una función de variable compleja analítica (y por ende verifican las ecuaciones de Cauchy-Riemann).
+  \item $v$ es la armónica conjugada de $u$ si $u$ y $v$ están dispuestas como parte real e imaginaria de una función de variable compleja analítica (y por ende verifican las ecuaciones de Cauchy-Riemann).
 \end{itemize}
+
+Un detalle importante es que si tenemos una función $f(x,y)=u(x,y)+jv(x,y)$, entonces $u$ no puede ser armónica conjugada de $v$. Solo $v$ puede ser armónica conjugada de $u$. La definición implica que la conjugada armónica es específicamente la parte imaginaria ($v$) cuando la parte real ($u$) es la función dada. 
+
+Si se nos proporciona la parte compleja de $f$ ($v$), y se nos pide encontrar la conjugada o la función que hace a $v$ la conjugada de otra función incógnita $u$, entonces se procede de la misma forma, pero en vez de buscar la conjugada $v$, buscamos la función que hace a $v$ la conjugada de otra función $u$.
