@@ -1,0 +1,19 @@
+\subsection{Derivada de una función vectorial}
+
+Se define como el límite del cociente incremental para el incremento tendiendo a cero. La derivada existe si el siguiente límite existe
+$$
+\lim_{\Delta t \to 0} \frac{r(t+\Delta t)- r(t)}{\Delta t}
+$$
+Y para calcular la derivada, se incrementan sus funciones componentes.
+$$
+\vec{r'} (t) = \lim_{\Delta t \to 0} \frac{f(t+\Delta t)- f(t)}{\Delta t}\hat{\imath} + \frac{g(t+\Delta t)- g(t)}{\Delta t}\hat{\jmath}
+$$
+Si las funciones componentes de $r$ (ya sea en $\mathbb{R}^2$ o $\mathbb{R}^3$) son derivables y la curva $C$ que representa a $r$ es suave, entonces $r$ es derivable.
+
+\subsection{Curva regular o suave}
+
+La curva $C$ representada por $r(t)=f(t)\hat{\imath} + g(t)\hat{\jmath}$ es regular en un intervalo $I$ si: $f'(t)$ y $g'(t)$ son continuas en $I$ (excepto  probablemente en los extremos de $C$), $r'(t)\neq 0\hat{\imath} + 0 \hat{\jmath} \quad \forall t \in I$
+
+Es decir, en los puntos donde se anular $f'$ y $g'$ simultaneamente, la curva presenta cambios bruscos.
+
+A veces una curva no es completamente suave, sin embargo, puede ser suave a trozos. Esto significa que pueden definirse intervalos donde la curva es suave.

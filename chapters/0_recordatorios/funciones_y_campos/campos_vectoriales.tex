@@ -1,0 +1,100 @@
+\section{Campos vectoriales}
+
+Un campo vectorial sobre $D^2 \subset \mathbb{R}^2$ (subconjunto de $\mathbb{R}^2$) es una función $\vec F$ que a cada punto $(x,y)\in D^2$ le asigna un único vector en $\mathbb{R}^2$ (esta definición también se extiende a  $\mathbb{R}^3$).
+
+En el plano, podemos definir a un campo vectorial de la siguiente manera:
+\begin{align*}
+&\vec F :D^2\mapsto \mathbb{R}^2 \\
+&(x,y)\rightarrow F(x,y)=M(x,y)\hat{\imath} + N(x,y)\hat{\jmath}
+\end{align*}
+Donde $F$ es la letra asignada al campo vectorial y $M$ y $N$ son campos escalares.
+
+Decimos que $F$ será continuo si $M$ y $N$ lo son y $F$ será diferenciable si $M$ y $N$ lo son. Para $\mathbb{R}^3$ incluimos otro campo escalar (llámese $P$).
+
+\subsection{Derivadas de un campo vectorial}
+
+Asociados a las derivadas de un campo vectorial, hay dos campos, uno escalar y otro vectorial. Estos son:
+\begin{itemize}
+\item Divergencia
+\item Rotacional
+\end{itemize}
+
+\subsection{Divergencia}
+
+Sea $F(x,y,z)$ un campo vectorial definido en $\mathbb{R}^3$, para el que existen $\frac{\partial M}{\partial x},\frac{\partial N}{\partial y}$ y $\frac{\partial P}{\partial z}$ 
+Entonces
+$$
+\text{div }F = \nabla \cdot F = \frac{\partial M}{\partial x} + \frac{\partial N}{\partial y} + \frac{\partial P}{\partial z}
+$$
+donde $\nabla$ es el operador nabla (o laplaciano) que equivale a $\vec \nabla = \left(\frac{\partial }{\partial x},\frac{\partial }{\partial y},\frac{\partial }{\partial z} \right)$ para $\mathbb{R}^3$ (para $\mathbb{R}^2$ no se tiene la última componente).
+
+La divergencia nos dice si, en determinada zona, el campo vectorial entra o sale. Si sale $\text{div }F>0$; si entra $\text{div }F<0$.
+
+\subsection{Rotacional}
+
+Se define en $\mathbb{R}^3$ como:
+$$
+\text{rot }F = \nabla \times F = \left( \frac{\partial P}{\partial y}-\frac{\partial N}{\partial z}, \frac{\partial M}{\partial z}-\frac{\partial P}{\partial x}, \frac{\partial N}{\partial x}-\frac{\partial M}{\partial y} \right)
+$$
+
+El rotor nos dice si en un punto, el campo vectorial tiende a arremolinarse, y si lo hace de forma horaria o antihoraria.
+\begin{itemize}
+  \item Componente $k>0 \rightarrow$ antihorario,
+  \item Componente $k<0\rightarrow$ horario.
+\end{itemize}
+
+Podemos construir el vector $\text{rot }F$ usando la forma de calculo del producto vectorial:
+$$
+\nabla \times F = \begin{vmatrix}
+\hat{\imath} & \hat{\jmath} & \hat k \\
+\frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+M & N & P
+\end{vmatrix}
+$$
+
+\subsection{Campo conservativo}
+
+Un campo vectorial $F$ es conservativo si existe una función escalar $f$ tal que, su gradiente $\nabla f = F$. Es decir $F$ es el gradiente de alguna función escalar. Si $f$ existe, se le llama función potencial de $F$.
+
+Recordemos: El gradiente de $f$ es el operador nabla aplicado a el campo escalar $f$. Es decir:
+$$
+\nabla f(x_1,x_2,\cdots,x_n) = \left(\frac{\partial f}{\partial x_1},\frac{\partial f}{\partial x_2},\cdots,\frac{\partial f}{\partial x_n}\right)
+$$
+
+\subsubsection*{Para $\mathbb{R}^2$}
+
+Demostraremos que, si $F$ es conservativo, entonces 
+$$
+\frac{\partial N}{\partial x} = \frac{\partial M}{\partial y}
+$$
+
+Partimos suponiendo que $F=M\hat{\imath} + N\hat{\jmath}$ es conservativo, lo que quiere decir que
+$$
+\exists f \quad \text{tal que} \quad F = \nabla f = \frac{\partial f}{\partial x}\hat{\imath} + \frac{\partial f}{\partial y} \hat{\jmath} 
+$$
+Por ende
+$$
+M=\frac{\partial f}{\partial x} \qquad N=\frac{\partial f}{\partial y}
+$$
+Como la condición establece continuidad de las derivadas y como hemos partido de que el campo es conservativo, entonces es suave y diferenciable. Por lo tanto:
+\begin{itemize}
+\item Derivamos $M$ respecto de $y$: $\displaystyle \frac{\partial M}{\partial y} = \frac{\partial^2 f}{\partial y \partial x}$
+\item Derivamos $N$ respecto de $x$: $\displaystyle \frac{\partial N}{\partial x} = \frac{\partial^2 f}{\partial x \partial y}$
+\end{itemize}
+Y por el teorema de derivadas cruzadas $N_x = M_y$.
+
+Con esto hemos demostrado que para que $\vec F$ sea conservativo necesita derivadas cruzadas iguales.
+
+Que necesite derivadas cruzadas iguales entre $M$ y $N$ es necesario, pero esto no nos garantiza que sea conservativo. Además debe cumplirse que:
+$$
+\oint_c M\,dx + N \,dy = 0
+$$
+porque, por el Teorema de Green:
+$$
+\oint M\,dx + N\,dy = \iint_D \frac{\partial N}{\partial x}-\frac{\partial M}{\partial y}dA
+$$
+Como $\frac{\partial N}{\partial x}=\frac{\partial M}{\partial y}$, entonces se tiene que:
+$$
+\iint_D \frac{\partial N}{\partial x}-\frac{\partial M}{\partial y}dA = 0
+$$
+Y, por tanto, la integral de linea sobre una curva cerrada también será cero. Luego, $F$ es conservativo.

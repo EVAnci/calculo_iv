@@ -1,0 +1,243 @@
+\section{Funciones vectoriales}
+
+Una función con valores vectoriales es una función del tipo
+$$
+r:[a,b]\rightarrow \mathbb{R}^n / t \rightarrow r(t) = (f_1(t),f_2(t),\cdots, f_n(t))
+$$
+donde:
+\begin{itemize}
+\item $r$ es el nombre de la función
+\item $[a,b]$ es el dominio (puede ser $\mathbb{R}$ o un subconjunto de este)
+\item $\mathbb{R}^n$ es el codominio, donde $n$ está indicando la dimensión
+\end{itemize}
+Las $f_i, ~ i=1,2,\dots,n$ son las componentes del vector posición $r(t)\in\mathbb{R}^n$ en el tiempo $t$ y cada una es una función escalar.
+
+En notación funcional 
+\begin{center}
+  \begin{tabular}{c|c}
+    Para $\mathbb{R}^2$ & Para $\mathbb{R}^3$ \\ 
+    \hline 
+    $r:\mathbb{R} \mapsto \mathbb{R}^2$ & $r:\mathbb{R} \mapsto \mathbb{R}^3$ \\
+    $t \rightarrow r(t)=f(t)\hat{\imath} + g(t) \hat{\jmath}$ & $t \rightarrow r(t)=f(t)\hat{\imath} + g(t) \hat{\jmath} + h(t) \hat k$
+  \end{tabular}
+\end{center}
+Si bien el conjunto imagen puede ser $\mathbb{R}^n$, solo veremos vectores en el plano. $f$ y $g$ son funciones escalares y son las componentes de $r(t)$.
+\begin{itemize}
+\item En notación combinación lineal: $r(t)=f(t)\hat{\imath} + g(t)\hat{\jmath}$
+\item Como par ordenado: $r(t)=(f(t),g(t))$
+\end{itemize}
+El \textbf{dominio} de una función vectorial es la intersección de los dominios de sus funciones componentes.
+
+\subsection{Límite de una función vectorial}
+
+Se define en términos de sus componentes
+$$
+\lim_{t\to a} r(t) = \lim_{t\to a} f(t)\hat{\imath} + \lim_{t\to a}g(t) \hat{\jmath}
+$$
+\begin{quote}
+``El límite para $t$ tendiendo a $a$ de $r$ es el límite para $t$ tendiendo a $a$ de sus funciones componentes'' (se extiende a $\mathbb{R}^3$)
+\end{quote}
+
+La existencia de este límite depende de la existencia de los límites de $f$ y $g$.
+
+\subsection{Continuidad de una función vectorial}
+
+Supongamos que $\vec r:[a,b]\rightarrow \mathbb{R}^n$ es una función vectorial tal que $\vec r = (f_1,f_2,\cdots,f_n)$ y $t_0 \in [a,b]$, se cumple que $\vec r$ es continua en $t_0 \Leftrightarrow f_i$ es continua en $t_0. \quad (i=1,2,\cdots,n)$
+$$
+\lim_{t\to t_0}r(t) = r(t_0) = (f_1(t_0),f_2(t_0),\cdots,f_n(t_0))
+$$
+
+\textbf{Colorario:} $\vec r$ es continua en $I$ si sus funciones componentes lo son
+
+\subsection{Representación gráfica}
+
+La representación gráfica de una \textbf{función vectorial} $\vec r(t)$ es una \textbf{curva $C$} en el plano ($\mathbb{R}^2$) o en el espacio ($\mathbb{R}^3$), como se muestra en la Figura \ref{fig:curva_parametrica}.
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[>=Stealth] % Define el estilo de flecha por defecto
+
+  \draw [->, thick, gray] (-1,0) -- (6,0) node[right, black] {$x$};
+  \draw [->, thick, gray] (0,-0.5) -- (0,4) node[above, black] {$y$};
+  \node at (0,0) [below left, black] {$O$}; % Origen
+
+  \draw [thick, blue,
+      postaction={decorate,
+          decoration={markings,
+          mark=at position 0.55 with {\arrow{>}}}
+      }
+  ] 
+  (1, 1) coordinate (A) .. controls (2, 5) and (5, 4) .. (5.5, 1.5) coordinate (B)
+  % Colocar la etiqueta C cerca de la curva
+  node[pos=0.4, above, black] {$\color{blue}C$};
+
+  % Punto inicial r(a)
+  \fill (A) circle (2pt) node[left] {$r(a)$};
+
+  % Punto final r(b)
+  \fill (B) circle (2pt) node[right] {$r(b)$};
+
+  % Punto genérico P = r(t) en la curva 
+  \coordinate (P) at (4.77,3);
+  \fill (P) circle (2pt) node[right] {$P = r(t)$};
+
+  % Flecha desde el origen (0,0) hasta el punto P
+  \draw [->, red, thick] (0,0) -- (P) node[midway, below] {$r(t)$};
+
+  \end{tikzpicture}
+  \caption{Curva paramétrica en $\mathbb{R}^2$}
+  \label{fig:curva_parametrica}
+\end{figure}
+
+Consideremos una función vectorial bidimensional continua en el intervalo $[a,b]$, dada por:
+$$\vec r (t) = f(t) \hat{\imath} + g(t)\hat{\jmath}$$
+
+Las componentes de este vector se definen como $x(t)=f(t)$ e $y(t)=g(t)$, que son las ecuaciones paramétricas de $C$.
+
+Al variar el parámetro $t$ dentro del intervalo $[a,b]$, la posición del punto $(x,y)=(x(t),y(t))$ cambia, trazando la curva $C$. Por ello, $C$ se denomina una curva paramétrica con parámetro $t$.
+
+Para cualquier valor $t$, el vector $\vec r(t)$ es el vector de posición cuyo punto final está sobre la curva $C$.
+
+Si tomamos un valor específico $t=t_0$, obtenemos un punto $P_0=(x_0,y_0)$ en la curva. El vector asociado, $\vec r(t_0) = f(t_0) \hat{\imath} + g(t_0) \hat{\jmath}$, une el origen con $P_0$.
+
+La curva $C$ se define, por lo tanto, como el lugar geométrico de los puntos finales de todos los vectores de posición $\vec r(t)$ generados a medida que $t$ recorre el intervalo $[a,b]$.
+
+El siguiente video proporciona una excelente visualización de este concepto de curva paramétrica, especialmente útil para entender el contexto de integrales de línea: \href{[https://www.youtube.com/watch?v=wCphv9dCswg](https://www.youtube.com/watch?v=wCphv9dCswg)}{\texttt{Ver video (YouTube)}}
+
+\subsubsection{Sentido de circulación}
+
+Al parametrizar una curva, se le asigna automáticamente un sentido de recorrido (u orientación), determinado por la dirección en la que crece el parámetro $t$. Este sentido es fundamental, especialmente en el contexto de integrales de línea.
+
+\begin{example}[Sentido Antihorario]
+Consideremos la función vectorial $\vec r$:
+$$
+\vec r(t)=\cos(t)\hat{\imath} + \sin(t)\hat{\jmath} \quad t\in[0,2\pi]
+$$
+Esta función describe una circunferencia unitaria centrada en el origen $(0,0)$. Dado que $t$ varía de $0$ a $2\pi$, el recorrido se realiza en sentido antihorario (o positivo).
+\end{example}
+
+Para orientar la curva en sentido contrario al original, basta con reparametrizar la función $\vec r(t)$ utilizando una sustitución que invierta el orden de los límites del intervalo $[a,b]$.
+
+La sustitución general para invertir la orientación es:
+$$
+t \longrightarrow a+b-\tau
+$$
+Donde $\tau$ es el nuevo parámetro. Al hacer esta sustitución, cuando el nuevo parámetro $\tau$ varía de $a$ a $b$, el parámetro original $t$ varía de $b$ a $a$, revirtiendo el sentido de la curva.
+
+\subsection{Parametrización}
+
+La parametrización consiste en tomar una función conocida $y=f(x)$ y obtener otra función $r(t)$. Por ejemplo, supongamos que una partícula toma un camino senoidal. Eso significa que los puntos de la trayectoria están dados por la curva
+$$
+y = \sin(x).
+$$
+Es decir, en el plano cartesiano la curva está definida por los pares $(x, \sin x)$. Si quiero expresar eso como \textbf{función vectorial} $r(t)$, lo que hago es introducir un parámetro (llamado $t$). La manera más sencilla es:
+$$
+r(t) = (t, \sin t), \quad t\in \mathbb{R}.
+$$
+\begin{itemize}
+\item Aquí \textbf{decidí} que el parámetro $t$ sea justamente el valor de $x$.
+\item Entonces la primera componente de $r$ es $x(t)=t$.
+\item Y la segunda es $y(t)=\sin(t)$.
+\end{itemize}
+Cuando $t$ aumenta, la partícula recorre la curva $(x,\sin x)$ en el plano. Lo interesante es que \textbf{no hay una única forma} de parametrizar. Por ejemplo, podría usar $t=2x$. Entonces:
+$$
+r(t) = \Bigl(\tfrac{t}{2}, \sin\bigl(\tfrac{t}{2}\bigr)\Bigr).
+$$
+Esta describe la \textbf{misma curva} $y=\sin(x)$, pero la partícula se mueve ``más rápido'' en el eje $x$. Podría restringir $t$ a un intervalo, digamos $t\in[0,2\pi]$. En ese caso, la partícula solo recorre \textbf{un arco} de la curva seno. Incluso podría invertir el recorrido:
+$$
+r(t) = (-t, \sin(-t)) = (-t, -\sin t), \quad t\in\mathbb{R}.
+$$
+Aquí se recorre la misma curva pero en sentido contrario.
+
+Entonces \textbf{Parametrizar} significa elegir una forma de describir la curva como una \textbf{función vectorial del parámetro $t$}. La curva geométrica (su forma) no cambia: sigue siendo $y=\sin(x)$. Lo que sí cambia con la parametrización es el \textbf{intervalo recorrido}, \textbf{sentido de circulación} (antihorario, horario, izquierda a derecha, etc.) y la \textbf{velocidad de recorrido} (cómo avanza a medida que $t$ crece).
+
+\begin{example}{Parametrización:}
+  Por si aún no queda claro cómo y para qué parametrizar una curva, vamos a hacer otro ejemplo.
+
+  Supongamos que deseamos describir con una función vectorial la órbita de la Tierra alrededor del Sol. Si realizamos una busqueda por internet podemos extraer algunos datos.
+
+  Si consideramos al Sol como una partícula puntual fija en el origen del sistema de referencia $(0,0)$ y a la Tierra como una partícula puntual que se mueve bajo la fuerza gravitatoria inversa al cuadrado, la trayectoria resultante es una \textbf{elipse} con el Sol en uno de sus focos.
+  \begin{table}[ht]
+    \begin{tabular}{c|c}
+      Parámetro & Valor (en unidades astronómicas, UA) \\
+      \hline
+      Semieje mayor $a$ & $1\;\text{UA}$ (distancia media Tierra‑Sol) \\
+      Excentricidad $e$ & $\displaystyle e \approx 0.0167$ \\
+      Semieje menor $b$ & $\displaystyle b = a\sqrt{1-e^{2}} \approx 0.99986\;\text{UA}$ \\
+      Posición del centro de la elipse & $(-ae,0) \approx (-0.0167,0)$ 
+    \end{tabular}
+    \caption{Parámetros orbitales}
+  \end{table}
+
+  \textbf{Forma cartesiana (con el Sol en el foco)}: Colocando el foco (el Sol) en el origen y el centro de la elipse en $(-ae,0)$ (figura \ref{fig:orbita_conceptual}), la ecuación cartesiana de la órbita es 
+  $$
+  \boxed{\frac{(x+ae)^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1}
+  $$
+  Sustituyendo los valores numéricos:
+  $$
+  \frac{(x+0.0167)^{2}}{1^{2}}+\frac{y^{2}}{(0.99986)^{2}}=1 .
+  $$
+  \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[
+        >=Stealth   % Estilo de flecha
+      ]
+        
+        % --- 1. Definir parámetros (un poco exagerados para claridad) ---
+        \def\a{3}     % Semieje mayor (a)
+        \def\e{0.3}   % Excentricidad (e)
+        
+        % --- 2. Calcular valores derivados ---
+        % b = a * sqrt(1 - e^2)
+        \pgfmathsetmacro{\b}{\a * sqrt(1 - \e*\e)} 
+        % c = ae (distancia del centro al foco)
+        \pgfmathsetmacro{\c}{\a * \e}
+        
+        % --- 3. Dibujar Ejes ---
+        \draw [->, thick, gray!60] (-4.5,0) -- (2.6,0) node[right, black] {$x$ (UA)};
+        \draw [->, thick, gray!60] (0,-3.5) -- (0,3.5) node[above, black] {$y$ (UA)};
+        
+        % --- 4. Dibujar Sol (Foco) y Centro ---
+        % Sol en el Origen (Foco 1)
+        \node[label=below:{\color{orange!80!black}\scriptsize Sol (Foco)}, circle, fill=orange, inner sep=3pt] at (0,0) {};
+        
+        % Centro de la elipse en (-c, 0)
+        \coordinate (C) at (-\c, 0);
+        \node[label=above left:{\scriptsize Centro $(-\!ae, 0)$}, circle, fill, inner sep=1.5pt] at (C) {};
+
+        \draw [dashed, gray] (-\c,0) circle (3); 
+        
+        % --- 5. Dibujar la Elipse ---
+        \draw [thick, blue, rotate around={0:(C)}] (C) ellipse [x radius=\a, y radius=\b];
+        \node at (0, 2.8) [blue,above right] {Órbita $C$};
+        
+        % --- 6. (Opcional) Dibujar semiejes ---
+        \draw [dashed, gray] (C) -- node[above, midway, black] {$a$} ++(\a, 0);
+        \draw [dashed, gray] (C) -- node[right, midway, black] {$b$} ++(0, \b);
+        
+    \end{tikzpicture}
+    \caption{Órbita elíptica de la Tierra. El Sol se sitúa en un foco (el origen).}
+    \label{fig:orbita_conceptual}
+  \end{figure}
+  La en figura \ref{fig:orbita_conceptual} se ha exagerado la excentricidad de la órbita para que se logre apreciar la diferencia entre una órbita perfectamente circular (línea de puntos) de la órbita real (línea azul).
+
+  \textbf{Parametrización de la curva}: Nótese que hablamos de \textbf{curva}, no función. Esto es muy importante porque una elipse no es una función, solo es una relación.
+
+  Para poder encontrar una expresión paramétrica y poder representar la curva como función vectorial vamos a proponer un parametro $t=y$ (pero se puede proponer de cualquier otra forma). Con esto despejamos $x$ e $y$ de la relación elíptica.
+
+  A $y$ ya lo tenemos despejado, ya que $t=y$, falta $x$.
+  \begin{gather*}
+  t^2 = \left[1 - (x + 0.0167)^2\right]\cdot 0.99986^2 \\
+  \left(\frac{t}{0.99986}\right)^2 = 1 - (x + 0.0167)^2 \\
+  x+0.0167 = \pm\sqrt{1-\left(\frac{t}{0.99986}\right)^2} \\
+  x = \pm\sqrt{1-\left(\frac{t}{0.99986}\right)^2} - 0.0167
+  \end{gather*}
+  Aquí tenemos una expresión para $x$, el único problema es que como tenemos una raíz, entonces podemos representar la curva en 2 mitades. Sin embargo es una expresión válida. Entonces $r(t)$ nos queda
+  $$
+  r_d(t)= \left[ \sqrt{1-\left(\frac{t}{0.99986}\right)^2} - 0.0167 \right]\hat{\imath} + t \hat{\jmath}
+  $$
+  para la rama derecha de la elipse y 
+  $$
+  r_i(t)= -\left[ \sqrt{1-\left(\frac{t}{0.99986}\right)^2} + 0.0167 \right]\hat{\imath} + t \hat{\jmath}
+  $$
+  para la rama izquierda. Al graficar cada una de las ramas, vemos que se forma la elipse (cada ecuación constituye una rama). Obviamente existen mejores formas de parametrizar esta función pero esto es más que suficiente para los contenidos de la materia.
+\end{example}
