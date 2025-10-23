@@ -46,18 +46,48 @@ Una integral de línea escalar es la generalización de la integral de Riemann a
 
 \subsection{Integral de línea vectorial}
 
-Para poder realizar una \textit{integral de línea vectorial} necesitamos operar con vectores. Por tanto, sea un campo vectorial en el plano
+Sea un campo vectorial en el plano
 $$
 \vec{F}(x,y) = M(x,y)\,\hat{\imath} + N(x,y)\,\hat{\jmath},
 $$
-y sea $C$ una curva parametrizada por $\vec{r}(t) = (x(t),y(t))$, con $t \in [a,b]$. La integral de línea de $\vec{F}$ a lo largo de $C$ se define como
+y sea $C$ una curva suave (continuamente derivable) parametrizada por un vector de posición
+$$
+\vec{r}(t) = x(t)\,\hat{\imath} + y(t)\,\hat{\jmath}, \quad \text{con } t \in [a,b].
+$$
+La integral de línea de $\vec{F}$ a lo largo de $C$ representa, por ejemplo, el trabajo realizado por el campo $\vec{F}$ al mover una partícula a lo largo de la curva $C$. Se define como:
+$$
+\int_C \vec{F}\cdot d\vec{r}
+$$
+Para evaluar esta integral, debemos expresar todos los componentes en términos del parámetro $t$.
+
+\begin{enumerate}
+    \item \textbf{El campo} $\vec{F}$ se evalúa a lo largo de la curva $C$, por lo que sustituimos $x=x(t)$ y $y=y(t)$:
+    $$
+    \vec{F}(\vec{r}(t)) = M(x(t),y(t))\,\hat{\imath} + N(x(t),y(t))\,\hat{\jmath}.
+    $$
+
+    \item \textbf{El diferencial de trayectoria} $d\vec{r}$ representa un cambio infinitesimal en la posición a lo largo de la curva. Lo obtenemos derivando la parametrización $\vec{r}(t)$ respecto a $t$:
+    $$
+    d\vec{r} = \frac{d\vec{r}}{dt}\,dt = \vec{r}\,'(t)\,dt = \left( \frac{dx}{dt}\,\hat{\imath} + \frac{dy}{dt}\,\hat{\jmath} \right)\,dt = \big( x'(t)\,\hat{\imath} + y'(t)\,\hat{\jmath} \big)\,dt.
+    $$
+\end{enumerate}
+
+Ahora, sustituimos ambos en la integral, calculando el producto punto:
+\begin{align*}
+\int_C \vec{F}\cdot d\vec{r} &= \int_a^b \vec{F}(\vec{r}(t)) \cdot \vec{r}\,'(t)\,dt \\
+&= \int_a^b \Big( M(x(t),y(t))\,\hat{\imath} + N(x(t),y(t))\,\hat{\jmath} \Big) \cdot \Big( x'(t)\,\hat{\imath} + y'(t)\,\hat{\jmath} \Big)\,dt
+\end{align*}
+Resolviendo el producto punto $(\hat{\imath}\cdot\hat{\imath}=1, \hat{\jmath}\cdot\hat{\jmath}=1, \hat{\imath}\cdot\hat{\jmath}=0)$, llegamos a la fórmula computacional:
+$$
+\int_C \vec{F}\cdot d\vec{r} \;=\; \int_a^b \Big( M(x(t),y(t))\,x'(t) + N(x(t),y(t))\,y'(t) \Big)\,dt.
+$$
+
+\textbf{Notación diferencial alternativa:}
+Si utilizamos la notación de diferenciales $dx = x'(t)\,dt$ y $dy = y'(t)\,dt$, podemos reescribir la integral paramétrica de forma compacta. 
 $$
 \int_C \vec{F}\cdot d\vec{r} \;=\; \int_C M(x,y)\,dx + N(x,y)\,dy.
 $$
-Si parametrizamos $x=x(t), y=y(t)$, entonces
-$$
-\int_C \vec{F}\cdot d\vec{r} \;=\; \int_a^b \Big( P(x(t),y(t))\,x'(t) + Q(x(t),y(t))\,y'(t) \Big)\,dt.
-$$
+Ambas expresiones son equivalentes, pero la forma paramétrica es la que se utiliza para el cálculo directo.
 
 Si el campo $\vec{F}$ es conservativo, es decir, existe un potencial $\nabla f(x,y)$ tal que
 $$
@@ -84,3 +114,8 @@ $$
 \oint_C \vec{F}\cdot d\vec{r} = 0.
 $$
 Esto conecta la idea de conservatividad con el teorema de Green. También, puedes obtener mejor intuición visual de la integral de línea vectorial a través del siguiente \href{https://youtu.be/eNUwFNg2yEQ?si=v1UCN24Bqt7mTakh}{\texttt{video de YouTube}}.
+
+\section{El teorema de Green}
+
+El teorema de Green conecta dos tipos de integrales. Relaciona la integral de línea de un campo vectorial alrededor de una curva cerrada simple $C$ (que es el borde de una región) con una integral doble sobre la región plana $D$ que esa curva encierra.:w
+
