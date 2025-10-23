@@ -42,108 +42,45 @@ $$
 \int_C f(x,y)\, ds \;=\; \int_a^b f(x(t), y(t)) \,\|\mathbf{r}'(t)\|\,dt.
 $$
 
-Una integral de línea escalar es la generalización de la integral de Riemann al caso en que el dominio de integración no es un intervalo recto, sino una curva en el espacio. Se construye sumando valores de $f$ en la curva, multiplicados por trozos de longitud de arco, y tomando el límite para cada trozo tendiendo a cero. Para una intuición gráfica se puede consultar el siguiente \href{https://www.youtube.com/watch?v=wCphv9dCswg}{\texttt{video de YouTube}}.
+Una integral de línea escalar es la generalización de la integral de Riemann al caso en que el dominio de integración no es un intervalo recto, sino una curva en el espacio. Se construye sumando valores de $f$ en la curva, multiplicados por trozos de longitud de arco, y tomando el límite para cada trozo tendiendo a cero. Para una intuición gráfica se puede consultar el siguiente \href{https://www.youtube.com/watch?v=wCphv9dCswg}{\texttt{vídeo de YouTube}}.
 
+\subsection{Integral de línea vectorial}
 
-% # Integral de línea vectorial
+Para poder realizar una \textit{integral de línea vectorial} necesitamos operar con vectores. Por tanto, sea un campo vectorial en el plano
+$$
+\vec{F}(x,y) = M(x,y)\,\hat{\imath} + N(x,y)\,\hat{\jmath},
+$$
+y sea $C$ una curva parametrizada por $\vec{r}(t) = (x(t),y(t))$, con $t \in [a,b]$. La integral de línea de $\vec{F}$ a lo largo de $C$ se define como
+$$
+\int_C \vec{F}\cdot d\vec{r} \;=\; \int_C M(x,y)\,dx + N(x,y)\,dy.
+$$
+Si parametrizamos $x=x(t), y=y(t)$, entonces
+$$
+\int_C \vec{F}\cdot d\vec{r} \;=\; \int_a^b \Big( P(x(t),y(t))\,x'(t) + Q(x(t),y(t))\,y'(t) \Big)\,dt.
+$$
 
-% ## 1. Integral de línea de un campo vectorial
+Si el campo $\vec{F}$ es conservativo, es decir, existe un potencial $\nabla f(x,y)$ tal que
+$$
+\nabla f(x,y) = \vec{F}(x,y),
+$$
+entonces:
+$$
+\int_C \vec{F}\cdot d\vec{r} \;=\; f(\vec{r}(b)) - f(\vec{r}(a)).
+$$
+Es decir, la integral de línea solo depende de los extremos de la curva, y no de la trayectoria.
 
-% Sea un campo vectorial en el plano
+\subsubsection{Relación con el Teorema de Green}
 
-% $$
-% \vec{F}(x,y) = P(x,y)\,\hat{i} + Q(x,y)\,\hat{j},
-% $$
-
-% y sea $C$ una curva parametrizada por $\vec{r}(t) = (x(t),y(t))$, con $t \in [a,b]$.
-
-% La integral de línea de $\vec{F}$ a lo largo de $C$ se define como
-
-% $$
-% \int_C \vec{F}\cdot d\vec{r} \;=\; \int_C P(x,y)\,dx + Q(x,y)\,dy.
-% $$
-
-% Si parametrizamos $x=x(t), y=y(t)$, entonces
-
-% $$
-% \int_C \vec{F}\cdot d\vec{r} \;=\; \int_a^b \Big( P(x(t),y(t))\,x'(t) + Q(x(t),y(t))\,y'(t) \Big)\,dt.
-% $$
-
-% ---
-
-% ## 2. Relación con un campo conservativo
-
-% Si el campo $\vec{F}$ es conservativo, es decir, existe un potencial $\phi(x,y)$ tal que
-
-% $$
-% \nabla \phi(x,y) = \vec{F}(x,y),
-% $$
-
-% entonces:
-
-% $$
-% \int_C \vec{F}\cdot d\vec{r} \;=\; \phi(\vec{r}(b)) - \phi(\vec{r}(a)).
-% $$
-
-% Es decir, la integral de línea solo depende de los extremos de la curva, y no de la trayectoria.
-
-% ---
-
-% ### 3. Relación con el Teorema de Green
-
-% Si la curva $C$ es cerrada (recorre el borde de una región $D$ en sentido antihorario), el teorema de Green nos da:
-
-% $$
-% \oint_C \vec{F}\cdot d\vec{r} \;=\; \iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\, dA.
-% $$
-
-% \item Si $\vec{F}$ es conservativo, entonces se cumple
-
-%   $$
-%   \frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y},
-%   $$
-
-%   lo que implica que la integral de línea cerrada es cero:
-
-%   $$
-%   \oint_C \vec{F}\cdot d\vec{r} = 0.
-%   $$
-
-% Esto conecta la idea de conservatividad con el teorema de Green.
-
-% ---
-
-% ### 4. Resumen intuitivo
-
-% \item La integral de línea mide el "trabajo" hecho por el campo al moverte a lo largo de una curva.
-% \item Si el campo es conservativo, el trabajo depende solo del inicio y del fin.
-% \item Si además la curva es cerrada, ese trabajo es cero.
-% \item El teorema de Green da una forma de calcular la integral de línea cerrada transformándola en una integral doble sobre la región encerrada.
-
-% [Video en youtube](https://youtu.be/eNUwFNg2yEQ?si=v1UCN24Bqt7mTakh)
-
-
-% ## 5. Formas de cálculo para cada una
-
-% Resolución de una integral de línea:
-
-% Una integral de línea evalúa una función a lo largo de una curva. Como ya vimos existen dos tipos:
-
-% 1. Integral de línea escalar:  
-%    Para una función escalar $f(x,y,z)$ y una curva $C$, se sigue:
-%    - Parametrizar $C$: Expresar la curva como $\mathbf{r}(t) = (x(t), y(t), z(t))$, con $t \in [a, b]$.
-%    - Calcular $ds$: $ds = \|\mathbf{r}'(t)\| dt = \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2} \, dt$.
-%    - Integrar:  
-%      $$
-%      \int_C f \, ds = \int_a^b f(x(t), y(t), z(t)) \cdot \|\mathbf{r}'(t)\| \, dt.
-%      $$
-
-% 2. Integral de línea vectorial:  
-%    Para un campo vectorial $\mathbf{F}(x,y,z)$ y curva $C$:
-%    - Parametrizar $C$ como antes.
-%    - Calcular $\mathbf{F} \cdot d\mathbf{r}$:  
-%      $$
-%      \int_C \mathbf{F} \cdot d\mathbf{r} = \int_a^b \mathbf{F}(x(t), y(t), z(t)) \cdot \mathbf{r}'(t) \, dt.
-%      $$
-%    - Si $\mathbf{F}$ es conservativo ($\mathbf{F} = \nabla f$), la integral es $f(\text{punto final}) - f(\text{punto inicial})$.
-
+Si la curva $C$ es cerrada (recorre el borde de una región $D$ en sentido antihorario), el teorema de Green nos da:
+$$
+\oint_C \vec{F}\cdot d\vec{r} \;=\; \iint_D \left( \frac{\partial N}{\partial x} - \frac{\partial M}{\partial y} \right)\, dA.
+$$
+Si $\vec{F}$ es conservativo, entonces se cumple
+$$
+\frac{\partial N}{\partial x} = \frac{\partial M}{\partial y},
+$$
+lo que implica que la integral de línea cerrada es cero:
+$$
+\oint_C \vec{F}\cdot d\vec{r} = 0.
+$$
+Esto conecta la idea de conservatividad con el teorema de Green. También, puedes obtener mejor intuición visual de la integral de línea vectorial a través del siguiente \href{https://youtu.be/eNUwFNg2yEQ?si=v1UCN24Bqt7mTakh}{\texttt{video de YouTube}}.
