@@ -1,0 +1,84 @@
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[
+    % Definimos un estilo para los puntos, para no repetir código
+    dot/.style={circle, fill=black, inner sep=1.5pt},
+    dotast/.style={circle, fill=teal, inner sep=1.5pt}
+  ]
+    \draw[gray,->] (-1,0) -- (10,0) node[right] {$x$};
+    \draw[gray,->] (-0.5,-0.5) -- (-0.5,4) node[above] {$y$};
+
+    \draw[thick, red,
+      decoration={
+        markings,
+        mark=at position 0 with {
+          \node (A) [dot, label=right:\footnotesize$a$] {};
+        },
+        mark=at position 0.03 with {
+          \node (PAast) [dotast, label=right:\scriptsize$\color{teal}P_1^\ast$] {};
+        },
+        mark=at position 0.06 with {
+          \node (PA) [dot, label=right:\scriptsize$\color{orange!70!black}P_1$] {};
+        },
+        mark=at position 0.35 with {
+          \node (P1) [dot, label=below:\scriptsize$\color{orange!70!black}P_{i-1}$] {}; 
+        },
+        mark=at position 0.4 with {
+          \node (Pstar1) [dotast, label=below:\scriptsize$\color{teal}P_{i}^*$] {};
+        },
+        mark=at position 0.45 with {
+          \node (P2) [dot, label=below:\scriptsize$\color{orange!70!black}P_i$] {};
+        },
+        mark=at position 0.5 with {
+          \node (Pstar2) [dotast, label=below:\scriptsize$\color{teal}P_{i+1}^*$] {};
+        },
+        mark=at position 0.55 with {
+          \node (P3) [dot, label=below:\scriptsize$\color{orange!70!black}\quad P_{i+1}$] {};
+        },
+        mark=at position 0.93 with {
+          \node (PB) [dot, label=right:\scriptsize$\color{orange!70!black}P_n$] {};
+        },
+        mark=at position 0.96 with {
+          \node (PBast) [dotast, label=right:\scriptsize$\color{teal}P_n^\ast$] {};
+        },
+        mark=at position 0.999 with {
+          \node (B) [dot, label=right:\footnotesize$b$] {};
+        }
+      },
+      postaction={decorate} % Aplica la decoración DESPUÉS de dibujar la curva
+    ] 
+    (0.5,1) to [out=80,in=90+55] (5,1.5) 
+    to [out=-35,in=260] (9,3) node[above left] {C};
+
+    % --- Definir coordenadas primero ---
+    \path ($(A)-(0.3,0)$) coordinate (A_up);
+    \path ($(PA)-(0.3,0)$) coordinate (PA_up);
+    \path ($(P1)+(0,0.3)$) coordinate (P1_up);
+    \path ($(P2)+(0,0.3)$) coordinate (P2_up);
+    \path ($(P3)+(0,0.3)$) coordinate (P3_up);
+    \path ($(PB)-(0.3,0)$) coordinate (PB_up);
+    \path ($(B)-(0.3,0)$) coordinate (B_up);
+
+    % --- Dibujar segmentos ---
+    \draw[blue, thick] (A_up) -- (PA_up)
+      node[midway, left] {\scriptsize$\Delta S_1$};
+    \draw[blue, thick] (P1_up) -- (P2_up)
+      node[midway, above, xshift=2mm] {\scriptsize$\Delta S_i$};
+    \draw[blue, thick] (P2_up) -- (P3_up)
+      node[midway, above, xshift=2mm] {\scriptsize$\Delta S_{i+1}$};
+    \draw[blue, thick] (B_up) -- (PB_up)
+      node[midway, left] {\scriptsize$\Delta S_n$};
+
+    % --- Dibujar líneas conectoras ---
+    \draw[blue] (A) -- ($(A_up)-(0.1,0)$);
+    \draw[blue] (PA) -- ($(PA_up)-(+0.1,0)$);
+    \draw[blue] (P1) -- ($(P1_up)+(0,0.1)$);
+    \draw[blue] (P2) -- ($(P2_up)+(0,0.1)$);
+    \draw[blue] (P3) -- ($(P3_up)+(0,0.1)$);
+    \draw[blue] (PB) -- ($(PB_up)-(0.1,0)$);
+    \draw[blue] (B) -- ($(B_up)-(0.1,0)$);
+    
+  \end{tikzpicture}
+  \caption{Curva paramétrica en el plano.}
+  \label{fig:curva_c_integral}
+\end{figure}

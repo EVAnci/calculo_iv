@@ -1,0 +1,149 @@
+\section{Integrales de línea}
+
+Como se explica en \textcite{openstax_line_integral}, hay dos tipos de integrales de línea: integrales de línea escalares e integrales de línea vectoriales. Las integrales de línea escalares son integrales de una función escalar sobre una curva en un plano o en el espacio. Las integrales de líneas vectoriales son integrales de un campo vectorial sobre una curva en un plano o en el espacio.
+
+\subsection{Integral de línea escalar}
+
+En cálculo de una variable, una integral de Riemann
+$$
+\int_a^b g(x)\,dx
+$$
+se construye sumando ``rectángulos'' $g(x_i^\ast)\Delta x$. En el caso de una integral de línea escalar, la idea es la misma, pero en lugar de intervalos en la recta, tenemos trozos de una curva en el espacio.
+
+Sea una curva $C$ parametrizada por:
+$$
+\mathbf{r}(t) = (x(t), y(t)), \quad a \leq t \leq b.
+$$
+donde $t$ es el parámetro (como el ``tiempo''). A medida que $t$ cambia de $a$ a $b$, recorremos la curva.
+
+Queremos integrar una función escalar $f(x,y)$ a lo largo de la curva $C$. Primero dividimos la curva en pedacitos pequeños de longitud $\Delta s_i$ (ver figura \ref{fig:curva_c_integral}). En cada pedacito, elegimos un punto cualquiera, llamado $P_i^\ast$. Evaluamos $f(P_i^\ast)$. Multiplicamos por la longitud del pedacito:
+$$
+f(P_i^\ast)\,\Delta s_i.
+$$
+La suma de todos esos productos
+$$
+\sum_{i=1}^n f(P_i^\ast)\Delta s_i
+$$
+se parece muchísimo a una suma de Riemann.
+
+Cuando los pedacitos se hacen infinitamente pequeños ($\Delta s_i \to 0$), esa suma converge y se define la integral de línea escalar.
+\input{chapters/0_recordatorios/funciones_y_campos/figures/line_integral_curve.tex}
+
+La integral de línea escalar de $f$ a lo largo de la curva $C$ es:
+$$
+\int_C f(x,y)\, ds.
+$$
+Aquí $ds$ es el elemento diferencial de longitud de arco. En términos de la parametrización,
+$$
+ds = \lvert\mathbf{r}'(t)\rvert\,dt = \sqrt{\Big(\frac{dx}{dt}\Big)^2 + \Big(\frac{dy}{dt}\Big)^2}\,dt.
+$$
+Por lo tanto:
+$$
+\int_C f(x,y)\, ds \;=\; \int_a^b f(x(t), y(t)) \,\|\mathbf{r}'(t)\|\,dt.
+$$
+
+Una integral de línea escalar es la generalización de la integral de Riemann al caso en que el dominio de integración no es un intervalo recto, sino una curva en el espacio. Se construye sumando valores de $f$ en la curva, multiplicados por trozos de longitud de arco, y tomando el límite para cada trozo tendiendo a cero. Para una intuición gráfica se puede consultar el siguiente \href{https://www.youtube.com/watch?v=wCphv9dCswg}{\texttt{video de YouTube}}.
+
+
+% # Integral de línea vectorial
+
+% ## 1. Integral de línea de un campo vectorial
+
+% Sea un campo vectorial en el plano
+
+% $$
+% \vec{F}(x,y) = P(x,y)\,\hat{i} + Q(x,y)\,\hat{j},
+% $$
+
+% y sea $C$ una curva parametrizada por $\vec{r}(t) = (x(t),y(t))$, con $t \in [a,b]$.
+
+% La integral de línea de $\vec{F}$ a lo largo de $C$ se define como
+
+% $$
+% \int_C \vec{F}\cdot d\vec{r} \;=\; \int_C P(x,y)\,dx + Q(x,y)\,dy.
+% $$
+
+% Si parametrizamos $x=x(t), y=y(t)$, entonces
+
+% $$
+% \int_C \vec{F}\cdot d\vec{r} \;=\; \int_a^b \Big( P(x(t),y(t))\,x'(t) + Q(x(t),y(t))\,y'(t) \Big)\,dt.
+% $$
+
+% ---
+
+% ## 2. Relación con un campo conservativo
+
+% Si el campo $\vec{F}$ es conservativo, es decir, existe un potencial $\phi(x,y)$ tal que
+
+% $$
+% \nabla \phi(x,y) = \vec{F}(x,y),
+% $$
+
+% entonces:
+
+% $$
+% \int_C \vec{F}\cdot d\vec{r} \;=\; \phi(\vec{r}(b)) - \phi(\vec{r}(a)).
+% $$
+
+% Es decir, la integral de línea solo depende de los extremos de la curva, y no de la trayectoria.
+
+% ---
+
+% ### 3. Relación con el Teorema de Green
+
+% Si la curva $C$ es cerrada (recorre el borde de una región $D$ en sentido antihorario), el teorema de Green nos da:
+
+% $$
+% \oint_C \vec{F}\cdot d\vec{r} \;=\; \iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\, dA.
+% $$
+
+% \item Si $\vec{F}$ es conservativo, entonces se cumple
+
+%   $$
+%   \frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y},
+%   $$
+
+%   lo que implica que la integral de línea cerrada es cero:
+
+%   $$
+%   \oint_C \vec{F}\cdot d\vec{r} = 0.
+%   $$
+
+% Esto conecta la idea de conservatividad con el teorema de Green.
+
+% ---
+
+% ### 4. Resumen intuitivo
+
+% \item La integral de línea mide el "trabajo" hecho por el campo al moverte a lo largo de una curva.
+% \item Si el campo es conservativo, el trabajo depende solo del inicio y del fin.
+% \item Si además la curva es cerrada, ese trabajo es cero.
+% \item El teorema de Green da una forma de calcular la integral de línea cerrada transformándola en una integral doble sobre la región encerrada.
+
+% [Video en youtube](https://youtu.be/eNUwFNg2yEQ?si=v1UCN24Bqt7mTakh)
+
+
+% ## 5. Formas de cálculo para cada una
+
+% Resolución de una integral de línea:
+
+% Una integral de línea evalúa una función a lo largo de una curva. Como ya vimos existen dos tipos:
+
+% 1. Integral de línea escalar:  
+%    Para una función escalar $f(x,y,z)$ y una curva $C$, se sigue:
+%    - Parametrizar $C$: Expresar la curva como $\mathbf{r}(t) = (x(t), y(t), z(t))$, con $t \in [a, b]$.
+%    - Calcular $ds$: $ds = \|\mathbf{r}'(t)\| dt = \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2} \, dt$.
+%    - Integrar:  
+%      $$
+%      \int_C f \, ds = \int_a^b f(x(t), y(t), z(t)) \cdot \|\mathbf{r}'(t)\| \, dt.
+%      $$
+
+% 2. Integral de línea vectorial:  
+%    Para un campo vectorial $\mathbf{F}(x,y,z)$ y curva $C$:
+%    - Parametrizar $C$ como antes.
+%    - Calcular $\mathbf{F} \cdot d\mathbf{r}$:  
+%      $$
+%      \int_C \mathbf{F} \cdot d\mathbf{r} = \int_a^b \mathbf{F}(x(t), y(t), z(t)) \cdot \mathbf{r}'(t) \, dt.
+%      $$
+%    - Si $\mathbf{F}$ es conservativo ($\mathbf{F} = \nabla f$), la integral es $f(\text{punto final}) - f(\text{punto inicial})$.
+

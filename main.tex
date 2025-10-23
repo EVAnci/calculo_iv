@@ -10,6 +10,10 @@
 \setsansfont{CMU Sans Serif}
 \setmonofont{CMU Typewriter Text}
 
+% Bibliography
+\usepackage[backend=biber, style=apa, sorting=nyt]{biblatex}
+\addbibresource{main.bib}
+
 % Math environments and fonts
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -19,7 +23,6 @@
 % pgfplots and tikz for graphs
 \usepackage{tikz}
 \usepackage{pgfplots}
-\usetikzlibrary{babel}
 \usetikzlibrary{calc}
 \usetikzlibrary{arrows.meta, decorations.markings}
 % this line is recomended by the pgfplots lastes stable version
@@ -52,4 +55,6 @@
 \include{chapters/2_integracion_fvc/main}
 
 \include{chapters/0_recordatorios/main}
+
+\printbibliography
 \end{document}
