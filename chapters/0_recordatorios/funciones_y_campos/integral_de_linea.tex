@@ -42,7 +42,7 @@ $$
 \int_C f(x,y)\, ds \;=\; \int_a^b f(x(t), y(t)) \,\|\mathbf{r}'(t)\|\,dt.
 $$
 
-Una integral de línea escalar es la generalización de la integral de Riemann al caso en que el dominio de integración no es un intervalo recto, sino una curva en el espacio. Se construye sumando valores de $f$ en la curva, multiplicados por trozos de longitud de arco, y tomando el límite para cada trozo tendiendo a cero. Para una intuición gráfica se puede consultar el siguiente \href{https://www.youtube.com/watch?v=wCphv9dCswg}{\texttt{vídeo de YouTube}}.
+Una integral de línea escalar es la generalización de la integral de Riemann al caso en que el dominio de integración no es un intervalo recto, sino una curva en el espacio. Se construye sumando valores de $f$ en la curva, multiplicados por trozos de longitud de arco, y tomando el límite para cada trozo tendiendo a cero. Para una intuición gráfica se puede consultar el siguiente vídeo: \parencite{scalar_line_integral}.
 
 \subsection{Integral de línea vectorial}
 
@@ -113,9 +113,104 @@ lo que implica que la integral de línea cerrada es cero:
 $$
 \oint_C \vec{F}\cdot d\vec{r} = 0.
 $$
-Esto conecta la idea de conservatividad con el teorema de Green. También, puedes obtener mejor intuición visual de la integral de línea vectorial a través del siguiente \href{https://youtu.be/eNUwFNg2yEQ?si=v1UCN24Bqt7mTakh}{\texttt{video de YouTube}}.
+Esto conecta la idea de conservatividad con el teorema de Green. También, puedes obtener mejor intuición visual de la integral de línea vectorial a través del siguiente vídeo: \parencite{vector_line_integral}.
 
 \section{El teorema de Green}
 
-El teorema de Green conecta dos tipos de integrales. Relaciona la integral de línea de un campo vectorial alrededor de una curva cerrada simple $C$ (que es el borde de una región) con una integral doble sobre la región plana $D$ que esa curva encierra.:w
+El teorema de Green conecta dos tipos de integrales. Relaciona la integral de línea de un campo vectorial alrededor de una curva cerrada simple $C$ (que es el borde de una región) con una integral doble sobre la región plana $D$ que esa curva encierra.
 
+Supongamos una región $D$ está dividida en muchos cuadrados pequeños (llamados $dA$). Ahora, pensemos en la integral de línea del campo vectorial alrededor de cada uno de esos cuadraditos. La integral de línea la recorremos siempre en sentido antihorario.
+
+Los cuadraditos están pegados unos a otros en el interior de la región. Entonces, todos los cuadraditos internos tienen un lado en común con sus cuadrados vecinos. Al recorrer estos lados comunes, en un momento recorreremos el segmento hacia abajo, y luego, al recorrer el cuadrado del lado, recorreremos el mismo segmento pero hacia arriba, como se muestra en la figura \ref{fig:cuadrados_comunes_greeen}. Esta misma idea sucede con los cuadrados ubicados verticalmente, donde su segmento común es horizontal.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+    
+    % Región D (forma simple dividida en dos)
+    \draw[thick, fill=blue!5] (0,0) rectangle (4,2);
+    
+    % Línea divisoria (el segmento común)
+    \draw[red, line width=2.5pt] (2, 0) -- (2, 2);
+    
+    % Etiqueta del segmento común
+    \node[red, right=3pt, font=\Large] at (2, 1) {I};
+    
+    % Sombreado diferente para cada mitad
+    \fill[blue!10] (0,0) rectangle (2,2);
+    \fill[green!10] (2,0) rectangle (4,2);
+    
+    % Contornos de cada cuadrado con flechas antihorarias
+    % Cuadrado izquierdo (azul)
+    \draw[->,blue!80, line width=0.7pt] (0.1, 2) -- (1.8, 2);
+    \draw[->,blue!80, line width=0.7pt] (1.9, 0) -- (0.2, 0);
+    \draw[->,blue!80, line width=0.7pt] (0, 0.1) -- (0, 1.8);
+    
+    % Cuadrado derecho (verde)
+    \draw[->,green!70!black, line width=0.7pt] (2.1, 2) -- (3.8, 2);
+    \draw[->,green!70!black, line width=0.7pt] (4, 1.9) -- (4, 0.3);
+    \draw[->,green!70!black, line width=0.7pt] (3.9, 0) -- (2.2, 0);
+    
+    \draw[orange!80, line width=1.3pt] (2, 1.9) -- (2, 0.1);
+
+    % Etiquetas de los cuadrados
+    \node[blue!80, below] at (1, 1) {$D_1$};
+    \node[green!70!black, above] at (3, 1) {$D_2$};
+    
+    % Flechas grandes indicando dirección en el segmento I
+    \draw[->,red!70, line width=1pt] (1.7, 1.2) -- (1.7, 0.8);
+    \node[red!70, above left, font=\small] at (1.65, 1) {baja};
+    
+    \draw[->,red!70, line width=1pt] (2.3, 0.8) -- (2.3, 1.2);
+    \node[red!70, below right, font=\small] at (2.35, 1) {sube};
+    
+    % Etiquetas dA
+    \node[blue!60, font=\footnotesize] at (0.4, 1.7) {$dA$};
+    \node[green!60!black, font=\footnotesize] at (3.7, 1.7) {$dA$};
+    
+\end{tikzpicture}
+\caption{Al integrar sobre una región $D$ los segmentos internos se cancelan y solo queda la contribución del perímetro exterior.}
+\label{fig:cuadrados_comunes_greeen}
+\end{figure}
+
+Como el campo vectorial a lo largo del segmento común es el mismo para las dos integrales, pero recorremos el camino en direcciones opuestas, esas dos integrales de línea (solo en ese lado común) se cancelan, ya que tienen el mismo valor pero el signo opuesto.
+
+Todos los lados internos se anulan por pares, y lo único que sobrevive es la ``cáscara'' exterior: el borde $C$ de la región $D$ completa.
+
+Así que, intuitivamente, hemos llegado a esto: la suma de todos los pequeños ``remolinos'' dentro de la región $D$ es igual a la circulación total en el borde exterior $C$. Esta es la esencia del Teorema de Green.
+
+\subsection{Definición del teorema}
+
+Ahora, pongámosle matemáticas a esa idea. El teorema se escribe así:
+$$\oint_C (P\,dx + Q\,dy) = \iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA$$
+Vamos a diseccionar esto, conectándolo con nuestra intuición. 
+
+El lado izquierdo: $\oint_C (P\,dx + Q\,dy)$ es el término que ya conoces, la integral de línea vectorial (o circulación) del campo $\vec{F} = \langle P, Q \rangle$ a lo largo de la curva cerrada $C$. Esta es la circulación total en el borde exterior que no se canceló.
+
+El lado derecho: $\iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA$ es una integral doble sobre la región $D$ (la superficie interior). En nuestra analogía, esta es la suma de todos los pequeños remolinos dentro de la región. Justamente $\text{rot }F=Q_x-P_y$, de modo que es la integral del rotacional en cada pequeño $dA$.
+
+\subsection{Aplicación a campos conservativos}
+
+Si el campo $\vec{F}$ es conservativo, la integral de línea sobre cualquier curva cerrada $C$ es cero. 
+
+El Teorema de Green nos da la igualdad:
+$$\oint_C (P\,dx + Q\,dy) = \iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA$$
+Ahora, conectemos las dos ideas:
+\begin{enumerate}
+\item Sabemos que el lado izquierdo (la integral de línea) debe ser 0 para cualquier curva cerrada $C$, porque el campo es conservativo.
+\item Por lo tanto, el lado derecho (la integral doble) también debe ser 0 para cualquier región $D$.
+\end{enumerate}
+
+Aquí vemos que si la integral $\iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA$ es cero para toda región D posible (sin importar qué tan pequeña o grande la dibujemos)\dots~ ¿qué nos dice eso sobre la propia expresión que estamos integrando?
+
+¿A qué debe ser igual $\left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)$ en todos los puntos de la región? El Teorema de Green nos permite construir este puente lógico; si $\vec{F}$ es conservativo, por definición, $\oint_C \vec{F} \cdot d\vec{r} = 0$ para cualquier curva cerrada $C$. La única forma de que una integral doble sea cero para toda región posible (grande, pequeña, etc.) es que la función que estamos integrando (el integrando) sea cero en todos los puntos.
+Por lo tanto:
+$$\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 0 \implies \frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}$$
+
+Esto coincide perfectamente con lo que ya sabíamos: si $\vec{F} = \nabla f$ (es decir, $\vec{F} = \langle f_x, f_y \rangle = \langle P, Q \rangle$), entonces la igualdad de las derivadas cruzadas nos dice que forzosamente $P_y = Q_x$.
+
+\subsection{Condiciones Necesarias y Suficientes}
+
+Hemos establecido una condición necesaria: Si un campo $\vec{F}$ es conservativo, necesariamente debe cumplir que $Q_x = P_y$. Ahora, la pregunta inversa: ¿Es esta una condición suficiente? Es decir, si encuentro un campo donde $Q_x = P_y$, ¿puedo garantizar que es conservativo?
+
+La respuesta es ``casi''. Es suficiente siempre y cuando la región $D$ donde el campo está definido no tenga ``agujeros''. A esto se le llama una región simplemente conexa.
