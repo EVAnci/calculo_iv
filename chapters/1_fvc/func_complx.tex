@@ -117,13 +117,13 @@ Se dice que $f(z)$ es continua en un dominio si es continua en cada uno de los p
 La derivada de una función compleja $f$ en un punto $z_0$ se denota por $f'(z_0)$ y se define como
 \begin{equation}
   \boxed{f'(z_0)=\lim_{\Delta z \to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}}
-\end{equation}
-en el supuesto de que este límite existe. Así, se dice entonces que $f$ es diferenciable en $z_0$. Si se escribe $\Delta z = z-z_0$, entonces también se tiene que, como $z=z_0+\Delta z$,
-\begin{equation}
-  f'(z_0) = \lim_{z\to z_0} \frac{f(z)-f(z_0)}{z-z_0}
   \label{eq:derivada}
 \end{equation}
-Recuérsede que, por la definición del límite, $f(z)$ está definida en alguna vecindad de $z_0$ y, por tanto, $z$ puede aproximarse a $z_0$ (como indica la ecuación \ref{eq:derivada}) desde cualquier dirección y con cualquier trayectoria. Por tanto, diferenciabilidad en $z_0$ significa que, a lo largo de cualquier trayectorial por la cual $z$ tienda a $z_0$, el cociente en \ref{eq:derivada} siempre tiende a un cierto valor, y todos esos valores son iguales. 
+en el supuesto de que este límite existe. Así, se dice entonces que $f$ es diferenciable en $z_0$. 
+
+Si $f$ es diferenciable en cada punto de un conjunto, entonces $f$ es diferenciable en ese conjunto.
+
+Recuérsede que, por la definición del límite, $f(z)$ está definida en alguna vecindad de $z_0$ y, por tanto, $z$ puede aproximarse a $z_0$ (como indica la ecuación \ref{eq:derivada}) desde cualquier dirección y con cualquier trayectoria. Por tanto, diferenciabilidad en $z_0$ significa que, a lo largo de cualquier trayectoria por la cual $z$ tienda a $z_0$, el cociente en \ref{eq:derivada} siempre tiende a un cierto valor, y todos esos valores son iguales. 
 \begin{example}
   La función $f(z)=z^2$ es diferenciable para todo $z$ y su derivada es $f'(z)=2z$ porque
   \begin{align*}
@@ -132,17 +132,19 @@ Recuérsede que, por la definición del límite, $f(z)$ está definida en alguna
          &=\lim_{\Delta z \to 0} \frac{2z\cancel{\Delta z}}{\cancel{\Delta z}} + \frac{\Delta z^{\cancel{2}}}{\cancel{\Delta z}} \\ 
     f'(z)&=2z
   \end{align*}
-  \label{ej:derivada}
 \end{example}
 
 Las \textbf{reglas de diferenciación} son las mismas que en cálculo real, ya que sus demostraciones son literalmente iguales. Entonces, generalizando las reglas de derivación tenemos:
 \begin{itemize}
-  \item $(cf)'=cf'$ 
-  \item $(f+g)'=f'+g'$
-  \item $(fg)'=f'g+fg'$
-  \item $\left(\frac{f}{g}\right)'=\frac{f'g-fg'}{g^2}$
+  \item $(cf)'(z)=cf(z)'$ 
+  \item $(f+g)'(z)=f'(z)+g'(z)$
+  \item $(fg)'(z)=f'(z)g(z)+f(z)g'(z)$
+  \item $\left(\frac{f}{g}\right)'(z)=\frac{f'(z)g(z)-f(z)g'(z)}{g(z)^2}\qquad g\neq 0$
+  \item $(f\circ g)'(z) = f'(g(z))g'(z)$
 \end{itemize}
-y también se cumple la regla de la cadena.
+suponiendo que $f$ y $g$ son diferenciables en $z$ y, en el último ítem $f$ es diferenciable en $g(z)$.
+
+Para funciones familiares tales como los polinomios, se aplican las reglas usuales para derivadas. Por ejemplo, si $n$ es un entero positivo y $f(z)=z^n$, entonces $f'(z)=nz^{n-1}$. Cuando desarrolle la función compleja $f(z)=\sin(z)$, verá que $f'(z)=\cos(z)$. 
 
 También, si $f(z)$ es diferenciable en $z_0$, entonces es continua en $z_0$.
 
