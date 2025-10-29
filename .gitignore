@@ -19,4 +19,6 @@
 *.synctex.gz
 .vscode
 */venv*
+*.auxlock
+media/*.pdf
 main.pdf

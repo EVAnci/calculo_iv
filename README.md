@@ -36,9 +36,13 @@ Si ya tienes experiencia usando $\LaTeX$ entonces es muy sencillo:
 2. Este documento ha sido realizado respetando (o al menos intentando respetar) las mejores prácticas para que la composición sea lo más profesional posible. Debido a ello no se hace uso de `pdflatex` sino `lualatex` (más adelante se explica el por qué de esto en detalle).
 3. Por `2.` entonces, nos situamos en la raíz del proyecto y usamos el siguiente comando
     ```sh
+    lualatex -shell-escape main.tex
+    ```
+    para poder compilar las figuras `TikZ` standalone. Luego, ejecutamos 2 veces el comando
+    ```sh
     lualatex main.tex
     ```
-    obviamente, este comando debe ejecutarse unas 3 veces para obtener las referencias cruzadas e indices correctos.
+    para obtener las referencias cruzadas e indices correctos.
 4. Listo, era todo jajaja. Con esto ya esta listo para comenzar a trabajar modificando o agregando lo que desee.
 
 ### Justificación de `lualatex`

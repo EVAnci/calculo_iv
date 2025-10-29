@@ -21,6 +21,7 @@
 \usepackage{cancel}
 
 % pgfplots and tikz for graphs
+\usepackage[mode=buildnew]{standalone}
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usetikzlibrary{calc}
@@ -47,7 +48,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\maketitle
+\begin{titlepage}
+  \centering
+  \vspace*{\fill}
+  {\Huge \ttfamily Cálculo IV \par}
+  \vspace{2cm}
+  \begin{figure}[ht]
+    \centering
+    \includestandalone[height=7cm]{./media/enderman}
+  \end{figure}
+  \vspace{2cm}
+  {\large \itshape Elio Valentino Anci \par}
+  \vspace*{\fill}
+\end{titlepage}
 \tableofcontents
 
 \include{chapters/1_fvc/main}
