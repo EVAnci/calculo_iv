@@ -8,7 +8,9 @@ Las ecuaciones de Cauchy-Riemann (CR) nos permiten saber si una función es anal
 en todos los puntos de $D$. Las ecuaciones \ref{eq:cauchy-riemann} se denominan las ecuaciones de Cauchy-Riemann.\footnote{Usualmente se usa la notación $u_x=\frac{\partial u}{\partial x}$ para indicar la derivada parcial respecto a $x$ en este caso. Lo mismo se usa para la variable $y$ y para la función $v$.}
 
 \begin{example}
-  $f(z)=z^2=x^2-y^2+2jxy$ es analítica para todo $z$ y $u=x^2-y^2$ y $v=2xy$. Verificamos que cumple con las ecuaciones \ref{eq:cauchy-riemann}:
+  Analizar si $f(z)=z^2$ es analítica para todo $z$. 
+
+  Expresamos $f$ como $f(x,y)=x^2-y^2+2jxy$, donde $u=x^2-y^2$ y $v=2xy$ y verificamos que cumple con las ecuaciones \ref{eq:cauchy-riemann}:
   \begin{gather*}
     u_x = 2x \quad u_y = -2y \qquad v_x = 2y \quad v_y = 2x
   \end{gather*}
@@ -95,7 +97,11 @@ Debido a que $f'(z_0)$ existe, entonces los dos límites de la derecha existen y
 \end{equation}
 Así, la existencia de la derivada $f'(z)$ implica la existencia de las cuatro derivadas parciales en \ref{eq:demostracion_cr_parcial_de_x} y \ref{eq:demostracion_cr_parcial_de_y}. Al igualar las partes de $u_x$ y $v_y$ en \ref{eq:demostracion_cr_parcial_de_x} y \ref{eq:demostracion_cr_parcial_de_y} es posible obtener la primera ecuación de CR. Al igualar las partes imaginarias, se obtiene la segunda ecuación. Lo anterior demuestra la primera afirmación del teorema \ref{teo:ecuaciones_de_cr} e implica la segunda debido a la definición de analiticidad.
 
+Aquí se ha demostrado que la existencia de la derivada \textbf{en un punto} depende de la existencia de las cuatro derivadas parciales vistas en el mismo punto. Ahora, para un dominio \textit{D}, decimos que la existencia de la derivada $f'(z)$ en $D$ depende de la existencia de las cuatro derivadas parciales en todos los puntos del dominio \textit{D}.
+
 \begin{example}
+  Probar, usando las ecuaciones de CR, que la función del ejemplo \ref{ej:funcion_no_analitica} ($f(z)=\bar{z}$) no es analítica.
+
   Para $f(z)=\bar{z}=x-jy$ se tiene $u=x$, $v=-y$ y se observa que
   \begin{gather*}
     u_x=1 \quad v_y = -1 \\ 
@@ -104,12 +110,30 @@ Así, la existencia de la derivada $f'(z)$ implica la existencia de las cuatro d
   Observar el ahorro en esfuerzo de cómputo.
 \end{example}
 
-\begin{theorem}[Ecuaciones de Cauchy-Riemann]
-  Si dos funciones continuas con valores reales $u(x,y)$ y $v(x,y)$ de dos variables reales $x$ e $y$ tienen primeras derivadas parciales continuas que satisfacen las ecuaciones de Cauchy-Riemann en algún dominio $D$, entonces la función compleja $f(z)=u(x,y)+jv(x,y)$ es analítica en $D$.
-  \label{teo:eq_cr_necesaria_suficiente}
-\end{theorem}
+Un resultado extra que se obtiene de la demostración del teorema \ref{teo:ecuaciones_de_cr} es que también se han obtenido fórmulas para calcular $f'(z)$ en términos de las partes real e imaginaria de $f(z)$. Veamos un ejemplo.
+\begin{example}
+  Derivar $f(z)=z^3$. 
 
-Las ecuaciones de Cauchy-Riemann constituyen la condición necesaria para que una función sea analítica en un punto. Diremos que es necesaria pero no suficiente, aunque algunos textos las consideran condición necesaria y suficiente por el teorema \ref{teo:eq_cr_necesaria_suficiente}. Veremos a continuación que la restricción de analiticidad se puede perfeccionar. 
+  Entonces, la función podemos expresarla como: 
+  \begin{equation*}
+    f(z)=f(x+jy)=(x+jy)^3 = x^3-3xy^2 + j(3x^2y-y^3)
+  \end{equation*}
+  donde 
+  \begin{equation*}
+    u(x,y)=x^3-3xy^2 \quad \text{y} \quad v(x,y)=3x^2y-y^3
+  \end{equation*}
+  de manera que
+  \begin{align*}
+    f'(z)&=u_x+jv_x = 3x^2 - 3y^2 + j6xy \\ 
+         &=-ju_y+v_y = 3x^2-3y^2 + j6xy
+  \end{align*}
+  Esto muestra automáticamente las partes real e imaginaria de la derivada $f'(z)$. Por supuesto, para esta función sencilla es igualmente fácil escribir directamente
+  \begin{equation*}
+    f'(z)=3z^2=3(x+jy)^2=3(x^2-y^2)+j6xy
+  \end{equation*}
+\end{example}
+
+Las ecuaciones de Cauchy-Riemann constituyen la condición necesaria para que una función sea analítica en un punto. Si no se satisfacen, entonces $f'(z)$ no existe en ese punto. Entonces, diremos que es necesaria pero no suficiente, aunque algunos textos las consideran condición necesaria y suficiente, veremos a continuación que la restricción de analiticidad se puede perfeccionar.
 
 Si una función $f(z)$ es analítica en un dominio $D$ entonces $u$ y $v$ satisfacen la ecuación de \textit{Laplace}. Así, diremos que satisfacer la ecuación de Laplace es suficiente para ser analítica, y satisfacer las ecuaciones de Cauchy-Riemann es necesario. He aquí, la condición \textit{necesaria y suficiente}. 
 
@@ -154,7 +178,6 @@ Antes de ver la condición suficiente, veamos un ejemplo más de otra clase de p
   \[
     \boxed{f(z) = z^2 - z + jk}
   \]
-  donde $k$ es una constante arbitraria.
 \end{example}
 
 \subsection{Forma polar de las ecuaciones de CR}

@@ -149,12 +149,13 @@ Para funciones familiares tales como los polinomios, se aplican las reglas usual
 También, si $f(z)$ es diferenciable en $z_0$, entonces es continua en $z_0$.
 
 \begin{example}
-  Es importante observar que existen muchas funciones simples que no tienen derivada en ningún punto. Por ejemplo, $f(z)=\bar{z}=x-jy$ es una de estas funciones. De hecho, si se escribe $\Delta z = \Delta x - j\Delta y$, se tiene 
+  Es importante observar que existen muchas funciones simples que no tienen derivada en ningún punto. Por ejemplo, $f(z)=\bar{z}=x-jy$ es una de estas funciones. De hecho, si se escribe $\Delta z = \Delta x + j\Delta y$, se tiene 
   \begin{align}
-    \frac{f(z+\Delta z) - f(z)}{\Delta z} = \frac{\bar{(z+\Delta z)-\bar{z}}}{\Delta z} = \frac{\bar{\Delta z}}{\Delta z} = \frac{\Delta x - j\Delta y}{\Delta x + j\Delta y}
+    \frac{f(z+\Delta z) - f(z)}{\Delta z} = \frac{\overline{(z+\Delta z)}-\bar{z}}{\Delta z} = \frac{{\Delta \bar{z}}}{\Delta z} = \frac{\Delta x - j\Delta y}{\Delta x + j\Delta y}
     \label{ej:eq_no_diferenciable}
   \end{align}
-  Si $\Delta y = 0$, lo anterior es 1. Contrariamente, si $\Delta x = 0$ entonces es $-1$. Por tanto, \ref{ej:eq_no_diferenciable} tiende a dos valores distintos cuando se toman distintas trayectorias, y, en consecuencia, el límite no existe.
+  Si $\Delta y = 0$, lo anterior es 1. Contrariamente, si $\Delta x = 0$ entonces es $-1$. Por tanto, \ref{ej:eq_no_diferenciable} tiende a dos valores distintos cuando se toman distintas trayectorias y, en consecuencia, el límite no existe.
+  \label{ej:funcion_no_analitica}
 \end{example}
 
 El ejemplo que se acaba de analizar puede ser sorprendente, aunque simplemente ilustra que la diferenciabilidad de una función compleja es más bien un requisito estricto.
@@ -173,3 +174,18 @@ Se dice que una función $f(z)$ es \textit{analítica en un dominio D} si $f(z)$
 
 Así, la analiticidad de $f(z)$ en $z_0$ significa que $f(z)$ tiene una derivada en todos los puntos en alguna vecindad de $z_0$ (incluyendo $z_0$ mismo ya que, por definición, $z_0$ es un punto que pertenece a todas sus vecindades). En palabras simples, decimos que ser analítica en $D$ es ser diferenciable (u holomorfa) en $D$. Es decir, vamos a estudiar funciones que sean diferenciables en un entorno.
 
+En el plano complejo hablar de función holomorfa es equivalente a decir que la función es analítica. Esto, en funciones de variable real no siempre se cumple. Pero ¿Cuál es la diferencia entre función \textit{analítica} y función \textit{holomorfa}? 
+
+Se dice que una función $f$ es \textbf{holomorfa} en un dominio \textit{D} si es diferenciable en dicho dominio $D$. Es decir, tiene derivadas para todo su dominio.
+
+Por otro lado, decimos que una función $f$ es \textbf{analítica} en un dominio $D$ si puede ser representada por una serie de potencias convergente en cada punto de $D$. 
+
+Y es natural preguntarse: ¿Para qué necesito saber si una función es analítica u holomorfa (o ambas cosas a la vez)? Como veremos en el capítulo \ref{chpt:residuos}, el poder expresar una función como serie de potencias nos permite resolver integrales de una forma muy práctica.
+
+Lo curioso, es que en funciones de variable compleja, toda función holomorfa es analítica. En variable real esto no siempre se cumple. Un típico ejemplo es la función definida por partes: $f(x)=e^{-1/x}$ si $x\neq0$; $0$ si $x=0$. Esta función no puede ser representada como serie de potencias en todo su dominio. En particular no tiene un desarrollo en serie de Taylor centrado en $x=0$, ya que su polinomio de Taylor en $x=0$ es:
+\begin{equation*}
+  f(x) = T(x) = 0 + 0x + 0x^2 + \cdots
+\end{equation*}
+que solo converge a $f$ en un único punto $x=0$, pero para cualquier otro valor nunca converge. 
+
+En variable compleja, si una función es holomorfa (o diferenciable), decimos que también es analítica.
