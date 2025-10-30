@@ -95,7 +95,7 @@ Debido a que $f'(z_0)$ existe, entonces los dos límites de la derecha existen y
 \begin{equation}\label{eq:demostracion_cr_parcial_de_y}
   \boxed{f'(z_0) = -j[u_y]_{y_0} + [v_y]_{y_0}}
 \end{equation}
-Así, la existencia de la derivada $f'(z)$ implica la existencia de las cuatro derivadas parciales en \ref{eq:demostracion_cr_parcial_de_x} y \ref{eq:demostracion_cr_parcial_de_y}. Al igualar las partes de $u_x$ y $v_y$ en \ref{eq:demostracion_cr_parcial_de_x} y \ref{eq:demostracion_cr_parcial_de_y} es posible obtener la primera ecuación de CR. Al igualar las partes imaginarias, se obtiene la segunda ecuación. Lo anterior demuestra la primera afirmación del teorema \ref{teo:ecuaciones_de_cr} e implica la segunda debido a la definición de analiticidad.
+Así, la existencia de la derivada $f'(z)$ implica la existencia de las cuatro derivadas parciales en \ref{eq:demostracion_cr_parcial_de_x} y \ref{eq:demostracion_cr_parcial_de_y}. Al igualar las partes reales de $f'(z)$ en \ref{eq:demostracion_cr_parcial_de_x} y \ref{eq:demostracion_cr_parcial_de_y} es posible obtener la primera ecuación de CR. Al igualar las partes imaginarias, se obtiene la segunda ecuación (ya que los límites deben ser iguales). Lo anterior demuestra la primera afirmación del teorema \ref{teo:ecuaciones_de_cr} e implica la segunda debido a la definición de analiticidad.
 
 Aquí se ha demostrado que la existencia de la derivada \textbf{en un punto} depende de la existencia de las cuatro derivadas parciales vistas en el mismo punto. Ahora, para un dominio \textit{D}, decimos que la existencia de la derivada $f'(z)$ en $D$ depende de la existencia de las cuatro derivadas parciales en todos los puntos del dominio \textit{D}.
 
@@ -137,7 +137,7 @@ Las ecuaciones de Cauchy-Riemann constituyen la condición necesaria para que un
 
 Si una función $f(z)$ es analítica en un dominio $D$ entonces $u$ y $v$ satisfacen la ecuación de \textit{Laplace}. Así, diremos que satisfacer la ecuación de Laplace es suficiente para ser analítica, y satisfacer las ecuaciones de Cauchy-Riemann es necesario. He aquí, la condición \textit{necesaria y suficiente}. 
 
-De momento no se preocupe por la ecuación de Laplace. Su enunciado y demostración se verá en la sección \ref{sec:laplace_eq}
+De momento no se preocupe por la ecuación de Laplace. Su enunciado y demostración se verá en la sección \ref{sec:laplace_eq}.
 
 Antes de ver la condición suficiente, veamos un ejemplo más de otra clase de problemas que pueden resolverse con las ecuaciones de CR.
 \begin{example}
@@ -199,22 +199,23 @@ Una de las razones principales de la gran importancia práctica del análisis co
   \end{equation}
   (aquí $\nabla^2$ es el \href{https://en.wikipedia.org/wiki/Laplace_operator}{operador laplaciano}) y,
   \begin{equation}\label{eq:laplace_v}
-    \nabla^2 = v_{xx} + v_{yy} = 0
+    \nabla^2 v = v_{xx} + v_{yy} = 0
   \end{equation}
 \end{theorem}
 
 \begin{proof}
-  Al derivar $u_x = v_y$ con respecto a $x$ y $u_y=-v_x$ con respecto a $y$, se tiene
+  Como $f$ es una función analítica (por hipótesis), entonces es necesario que cumpla con las ecuaciones de CR.
+
+  Al derivar la primera ecuación ($u_x = v_y$) con respecto a $x$ y la segunda ($u_y=-v_x$) con respecto a $y$, se tiene
   \begin{equation}\label{eq:cr_laplace_proof}
     u_{xx}=v_{xy}, \qquad u_{yy} = -v_{xy}
   \end{equation}
-  Así, la derivada de una función analítica es en sí misma analítica, como se demostrará después. Lo anterior implica que $u$ y $v$ tienen derivadas parciales continuas de todos los órdenes; en particular, las segundas derivadas parciales mezcladas son iguales; $v_{yx}= v_{xy}$. Al sumar \ref{eq:cr_laplace_proof} se obtiene entonces \ref{eq:laplace_u}.
+  Así, la derivada de una función analítica también es analítica, como se demostrará después. Lo anterior implica que $u$ y $v$ tienen derivadas parciales continuas de todos los órdenes; en particular, las derivadas cruzadas son iguales. Al aplicar esta igualdad de derivadas cruzadas a \ref{eq:cr_laplace_proof} se obtiene entonces \ref{eq:laplace_u}.
   \begin{gather*}
-    u_{xx}-v_{xy}=0, \qquad u_{yy}+v_{xy}=0 \\ 
-    u_{xx}+u_{yy}+v_{xy}-v_{xy}=0 \\ 
+    \text{Como } v_{xy} = v_{yx} \quad \Rightarrow \quad u_{xx} = -u_{yy} \\
     u_{xx}+u_{yy}=\nabla^2 u=0 
   \end{gather*}
-  De manera semejante, \ref{eq:laplace_v} se obtiene al derivar $u_x=v_y$ con respecto a $y$ y $u_y=-v_x$ con respecto a $x$ y restando, usando $u_{xy}=u_{yx}$.
+  De manera semejante, \ref{eq:laplace_v} se obtiene al derivar $u_x=v_y$ con respecto a $y$ y $u_y=-v_x$ con respecto a $x$ y usando $u_{xy}=u_{yx}$.
 \end{proof}
 
 Las soluciones de la ecuación de Laplace que tienen derivadas parciales de segundo orden continuas se denominan \textbf{funciones armónicas} y su teoría se denomina \textit{teoría del potencial}. Por tanto, las partes real e imaginaria de una función analítica son funciones armónicas.
@@ -232,7 +233,7 @@ Si dos funciones armónicas $u$ y $v$ satisfacen las ecuaciones de Cauchy-Rieman
   \begin{equation*}
     v=2xy + h(x), \qquad v_x = 2y + \frac{dh}{dx}
   \end{equation*}
-  Al comparar el resultado anterior con la segunda ecuación se observa que $dh/dx=1$. Con lo anterior se obtiene $h(x)=x+c$. Así $v=2xy+x+c$ es la armónica conjugada más general de una $u$ dada. La función analítica correspondiente es
+  Al comparar el resultado anterior con la segunda ecuación se observa que $dh/dx=1$. Con lo anterior se obtiene $h(x)=x+c$. Así $v=2xy+x+c$ es la armónica conjugada más general de la función $u$ dada. La función analítica correspondiente es
   \[
     f(z)=u+jv=x^2-y^2-y+j(2xy+x+c)=z^2 +jz +jc
   \]
