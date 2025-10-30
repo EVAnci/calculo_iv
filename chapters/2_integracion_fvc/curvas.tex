@@ -1,0 +1,42 @@
+\section{Curvas paramétricas en el plano}
+
+Si bien en la sección \ref{sec:1_curvas_y_regiones_en_el_plano_complejo} dimos una noción de lo que son las curvas y las regiones en el plano complejo para definir el dominio de una función compleja, en esta sección vamos a profundizar un poco sobre los conceptos de curvas cerradas, abiertas, suaves, entre otras propiedades que pueden tener. 
+
+Una curva en el plano complejo es una función $\Gamma :[a,b]\to\mathbb{C}$, definida en un intervalo real $[a,b]$ y que toma valores complejos\footnote{$\Gamma$: letra griega Gamma mayúscula.}. Para cada número $t$ en $[a,b]$, $\Gamma(t)$ es un número complejo, o un punto en el plano. El lugar geométrico de tales puntos es la gráfica de la curva. Sin embargo, la curva es más que un lugar geométrico de puntos en el plano. $\Gamma$ tiene una orientación natural, que es la dirección en la que el punto $\Gamma(t)$ se mueve a lo largo de la gráfica conforme $t$ crece de $a$ a $b$. En este sentido, es natural referirse a $\Gamma(a)$ como el \textit{punto inicial} de la curva y a $\Gamma(b)$ como el \textit{punto final}.
+
+Si $\Gamma(t)=x(t)+jy(t)$, entonces la gráfica de $\Gamma$ es el lugar geométrico de los puntos $(x(t),y(t))$ para $a\leqslant t\leqslant b$. El punto inicial de $\Gamma$ es $(x(a),y(a))$ y el punto final es $(x(b),y(b))$ y $(x(t),y(t))$ se mueve del punto inicial al punto final conforme varía $t$ de $a$ a $b$. Las funciones $x(t)$ e $y(t)$ son todas las \textit{funciones coordenadas} de $\Gamma$.
+
+\begin{example}
+  Sea $\Gamma (t) = 2t + jt^2$ para $0\leqslant t\leqslant 2$. Entonces:
+  $$
+  \Gamma (t)=x(t)+jy(t),
+  $$
+  donde $x(t)=2t$ y $y(t)=t^2$. La gráfica de esta curva es la parte de la parábola $y=(x/2)^2$, que se muestra en la figura \ref{fig:ejemplo_parabola_gamma}.
+  \input{chapters/2_integracion_fvc/media/parabola.tex}
+  Conforme $t$ varía de $0$ a $2$, el punto $\Gamma (t)=(2t,t^2)$ se mueve a lo largo de esta gráfica del punto inicial $\Gamma(0)=(0,0)$ al punto final $\Gamma(2)=(4,4)$. Las flechas indican esta orientación.
+\end{example}
+
+\begin{example}
+  Sea $\Gamma(t)=e^{jt}$ para $0\leqslant t \leqslant 3\pi$. Entonces $\Gamma(t)=\cos(t)+j\sin(t)=x(t)+jy(t)$, así
+  \begin{equation*}
+    x(t)=\cos(t),\qquad y(t)=\sin(t)
+  \end{equation*}
+  Como $x^2+y^2=1$, todo punto en esta curva está en el círculo unitario alrededor del origen. Sin embargo, el punto inicial de $\Gamma$ es $\Gamma(0)=1$ y el punto final es $\Gamma(3\pi)=e^{j3\pi}=-1$. Esta curva no es cerrada. Si esta fuera una pista de carreras, la carrera empezaría en el punto 1 de la figura \ref{fig:ejemplo_circunferencia_abierta_gamma} y terminaría en $-1$. 
+  \input{chapters/2_integracion_fvc/media/circunferencia_abierta.tex}
+  Una pista de carreras circular no significa que los puntos de inicio y fin de la carrera sean el mismo. Esto no es evidente a partir sólo de la gráfica. $\Gamma$ está orientada positivamente, como lo indica la flecha.
+  \label{ej:circunferencia_abierta}
+\end{example}
+\begin{example}
+  Si se tomase el mismo caso que el ejemplo \ref{ej:circunferencia_abierta}, pero ahora el intervalo es $0\leqslant t \leqslant 4\pi$, resulta que ahora la curva si es cerrada, sin embargo $\Gamma(t)$ se mueve alrededor del círculo unitario dos veces conforme $t$ varía en el intervalo.
+  \label{ej:circunferencia_cerrada_no_simple}
+\end{example}
+
+Una curva $\Gamma$ es \textit{simple} si $\Gamma(t_1)\neq \Gamma(t_2)$ siempre que $t_1\neq t_2$. Esto significa que el mismo punto nunca se repite en tiempos diferentes. Se hace una excepción para las curvas cerradas, que requieren que $\Gamma(a)=\Gamma(b)$. Si éste es el único punto en el cual $\Gamma(t_1)=\Gamma(t_2)$ con $t_1\neq t_2$, entonces $\Gamma$ es una \textit{curva cerrada simple}. La curva del ejemplo \ref{ej:circunferencia_cerrada_no_simple} es una curva cerrada, pero no simple. Si se define otra curva, igual a la del ejemplo \ref{ej:circunferencia_cerrada_no_simple} pero el intervalo es $0\leqslant t \leqslant 2\pi$, entonces $\Gamma$ es una curva cerrada simple.
+
+Una curva $\Gamma:[a,b]\to \mathbb{C}$ es \textit{continua} si cada una de sus funciones coordenadas es continua en $[a,b]$. Si $x(t)$ y $y(t)$ son diferenciables en $[a,b]$, $\Gamma$ es una \textit{curva diferenciable}. Si $x'(t)$ y $y'(t)$ son continuas, y no valen cero para el mismo valor de $t$, $\Gamma$ es una \textit{curva suave}. Todas las curvas de los ejemplos anteriores son suaves.
+
+En términos vectoriales, se puede escribir como $\Gamma(t)=x(t)\hat{\imath} + y(t)\hat{\jmath}$ como se ha visto en el capítulo \ref{chpt:recordatorios}. Si $\Gamma$ es diferenciable, y $x'(t)$ y $y'(t)$ no son cero, entonces $\Gamma'(t)=x'(t)\hat{\imath}+y'(t)\hat{\jmath}$ es el vector tangente a la curva en el punto $\Gamma(t)$ (figura \ref{fig:vector_tangente_a_una_curva}). Si $\Gamma$ es suave, entonces las derivadas $x'(t)$ y $y'(t)$ son continuas, así que el vector tangente es continuo (se puede encontrar un único $\Gamma'$ para cada punto de la curva).
+
+\input{chapters/2_integracion_fvc/media/curvas_cmpx.tex}
+
+A veces se forma una curva $\Gamma$ juntando varias curvas $\Gamma_1,\dots, \Gamma_n$ en sucesión. Es importante que, el punto final de $\Gamma_{k-1}$ debe ser el mismo que el punto inicial de la siguiente curva $\Gamma_k$ para $k=1,\dots,n$ (figura \ref{fig:curva_a_trozos}). Una curva así se llama la \textit{concatenación} de $\Gamma_1,\dots,\Gamma_n$. Las curvas $\Gamma_k$ son las \textit{componentes} de esta concatenación. Si cada componente de una concatenación es suave, entonces es una curva \textbf{suave a trozos}. Tiene una tangente continua en cada punto, excepto quizá en los puntos de conexión entre curvas. Si la conexión es de manera suave (como sucede en la conexión entre $\Gamma_3$ y $\Gamma_4$ en la figura \ref{fig:curva_a_trozos}), la concatenación puede tener una tangente en cada uno de estos puntos y ella misma ser suave. En otras palabras, cuando la conexión entre dos curvas es suave, puede existir la derivada en la conexión, y ser tratada como una curva suave completa (y no suave a trozos).

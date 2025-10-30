@@ -1,0 +1,24 @@
+  \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[scale=0.7,>=stealth]
+      % Ejes y grid
+      \draw[step=1cm,gray,loosely dotted] (-0.2,-0.2) grid (4.5,4.5);
+      \draw[->] (-0.5,0) -- (4.5,0) node[right] {\footnotesize$x(t)$};
+      \draw[->] (0,-0.5) -- (0,4.5) node[above] {\footnotesize$y(t)$};
+      \node[below left] at (0,0) {\scriptsize0};
+      \foreach \i in {1,...,4}
+        {
+          \node[below] at (\i,0) {\scriptsize\i}; 
+          \node[left] at (0,\i) {\scriptsize\i}; 
+        }
+      % Curva parabólica 
+      \begin{scope}[very thick,decoration={
+        markings,
+        mark=at position 0.5 with {\arrow{>}}}
+        ] 
+        \draw[red,>->,postaction={decorate}] (0,0) parabola (4,4) node[above right] {$\Gamma(t)$};
+      \end{scope}
+      \end{tikzpicture}
+    \caption{Gráfica de la curva $\Gamma (t) = 2t + jt^2$, $0\leqslant t\leqslant 2$.}
+    \label{fig:ejemplo_parabola_gamma}
+  \end{figure}

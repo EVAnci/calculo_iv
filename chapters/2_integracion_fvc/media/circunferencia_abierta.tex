@@ -1,0 +1,39 @@
+  \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[scale=1.5,>=stealth]
+      % Ejes y grid
+      \draw[step=0.5cm,gray,loosely dotted] (-1.9,-1.4) grid (1.9,1.4);
+      \draw[->] (-2,0) -- (2,0) node[right] {\footnotesize$x(t)$};
+      \draw[->] (0,-1.5) -- (0,1.5) node[above] {\footnotesize$y(t)$};
+      % leyenda de números de ejes
+      \node[below left] at (0,0) {\scriptsize0};
+      % eje x
+      \node[below] at (0.5,0) {\scriptsize$\frac{1}{2}$}; 
+      \node[below right] at (1,0) {\scriptsize $\Gamma(0)=1$}; 
+      \node[below] at (-0.5,0) {\scriptsize$-\frac{1}{2}$}; 
+      \node[below left] at (-1,0) {\scriptsize $\Gamma(3\pi)=-1$}; 
+      % eje y
+      \node[left] at (0,0.5) {\scriptsize$\frac{1}{2}$}; 
+      \node[above left] at (0,1) {\scriptsize 1}; 
+      \node[left] at (0,-0.5) {\scriptsize$-\frac{1}{2}$}; 
+      \node[below left] at (0,-1) {\scriptsize -1}; 
+
+      \begin{scope}[very thick,decoration={
+        markings,
+        mark=at position 0.2 with {\arrow{>}},
+        mark=at position 0.6 with {\arrow{>}},
+        mark=at position 0.9 with {\arrow{>}},
+      }] 
+        \draw[red,postaction={decorate}] (0,0) circle (1);
+      \end{scope}
+      
+      \coordinate (A) at (1,0);
+      \coordinate (B) at (-1,0);
+      \coordinate (C) at (45:1);
+      \foreach \point in {A,B,C}
+        \fill [black,opacity=.5] (\point) circle (2pt);
+      \node[above right] at (C) {\scriptsize$\Gamma(t)=e^{jt}$};
+    \end{tikzpicture}
+    \caption{$\Gamma(t)=e^{jt}$ para $0\leqslant t\leqslant 3\pi$.}
+    \label{fig:ejemplo_circunferencia_abierta_gamma}
+  \end{figure}
