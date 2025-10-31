@@ -1,0 +1,70 @@
+\section{Resumen}
+
+\begin{tcolorbox}[title=Función de variable compleja,resumen]
+Una función compleja $f$ asigna a cada número complejo $z$ (de un dominio $S$) un número complejo $w$. Se escribe como $w = f(z)$.
+
+Dado que $z = x + jy$ y $w = u + jv$, una función compleja $f(z)$ siempre se puede expresar como un par de funciones reales de dos variables reales, $x$ e $y$:
+$$
+w = f(z) = u(x, y) + jv(x, y)
+$$
+Donde $u(x, y)$ es la parte real de $w$, y $v(x, y)$ es la parte imaginaria.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Limite y continuidad,resumen]
+La definición de límite es similar a la del cálculo real, pero con una diferencia crucial: para que el límite $\lim_{z\to z_0}f(z)$ exista, debe tender al mismo valor sin importar la dirección o trayectoria por la que $z$ se aproxime a $z_0$ en el plano complejo. Una función es continua en $z_0$ si el límite existe, $f(z_0)$ existe, y ambos son iguales.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Analiticidad,resumen]
+Este es el concepto central del análisis complejo.
+\begin{itemize}
+  \item Se dice que una función $f(z)$ es analítica en un dominio $D$ si está definida y es diferenciable en todos los puntos de $D$.
+  \item Se dice que $f(z)$ es analítica en un punto $z_0$ si es analítica en una vecindad (un disco abierto) alrededor de $z_0$.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Derivada,resumen]
+La derivada de una función compleja $f$ en $z_0$ se define como:
+$$
+f'(z_0) = \lim_{\Delta z \to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}
+$$
+Debido a que $\Delta z$ puede tender a cero desde cualquier dirección, este es un requisito mucho más estricto que en el cálculo real. Por ejemplo, la función $f(z) = \bar{z}$ (conjugado de $z$) es continua en todas partes, pero no es diferenciable en ningún punto, ya que el límite depende de la trayectoria de aproximación.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Ecuaciones de Cauchy-Riemann,resumen]
+Las ecuaciones de Cauchy-Riemann (CR) son la herramienta que nos permite determinar si una función $f(z) = u(x, y) + jv(x, y)$ es analítica.
+
+Las ecuaciones son:
+\begin{enumerate}
+  \item $\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}$
+  \item $\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}$
+\end{enumerate}
+
+\tcblower
+
+Condición Necesaria para la Analiticidad: Si una función $f(z)$ es diferenciable (y por tanto, analítica) en un punto $z_0$, entonces las derivadas parciales de $u$ y $v$ existen en ese punto y deben satisfacer las ecuaciones de CR.
+
+La demostración de esto se basa en calcular el límite de la derivada por dos trayectorias distintas (una horizontal, $\Delta z = \Delta x$, y una vertical, $\Delta z = j\Delta y$) y, como la derivada debe ser única, los resultados de ambas trayectorias deben ser iguales.
+\begin{itemize}
+  \item Trayectoria \texttt{(I)} da: $f'(z_0) = u_x + jv_x$
+  \item Trayectoria \texttt{(II)} da: $f'(z_0) = v_y - ju_y$
+\end{itemize}
+Al igualar las partes reales ($u_x = v_y$) e imaginarias ($v_x = -u_y$), se obtienen las ecuaciones de CR.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Función armónica,resumen]
+  La ecuación de Laplace o el operador laplaciano aplicado a $f$ es 
+  $$
+  \nabla^2 f=f_{xx}+f_{yy}=0
+  $$
+  Entonces se dice que $f$ es una función armónica.
+
+  \tcblower
+
+  Si $f(z) = u(x,y) + jv(x,y)$ es analítica en un dominio $D$, entonces tanto $u$ como $v$ deben satisfacer la ecuación de Laplace en $D$. Es decir, las partes real e imaginaria de una función analítica son siempre funciones armónicas. Esta es la condición suficiente de analiticidad.
+
+  Esto se demuestra derivando las ecuaciones de CR ($u_x = v_y$ y $u_y = -v_x$). Al derivar la primera respecto a $x$ y la segunda respecto a $y$, y asumiendo que las derivadas parciales mixtas son iguales (lo cual es cierto para funciones analíticas), se obtiene $u_{xx} + u_{yy} = 0$. Un proceso similar demuestra que $v_{xx} + v_{yy} = 0$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Armónica conjugada,resumen]
+  Si $u$ y $v$ son funciones armónicas y, además, satisfacen las ecuaciones de Cauchy-Riemann en un dominio $D$ (formando así una función analítica $f = u + jv$), se dice que $v$ es la función armónica conjugada de $u$ en $D$.
+\end{tcolorbox}
