@@ -6,17 +6,135 @@ $$
 \int_\Gamma f(z)\,dz = \int_a^b f(\Gamma(t))\Gamma'(t)\,dt
 $$
 Como $z=\Gamma(t)$ en la curva, esta integral se escribe frecuentemente como
-$$
+\begin{equation}
 \int_\Gamma f(z)\,dz = \int_a^b f(z(t))z'(t)\,dt
-$$
+\label{eq:definicion_de_integral_compleja}
+\end{equation}
 Esta formulación tiene la ventaja de sugerir la manera que $\int_\Gamma f(z)dz$ es evaluada. Reemplazando $z$ con $z(t)$ en la curva y encontrando la expresión $dz=z'(t)dt$ sobre el intervalo $a\leqslant t\leqslant b$. 
 \end{definition}
 
 \begin{example}
   Evaluar $\int_\Gamma \bar{z} dz$ si $\Gamma(t)=e^{jt}$ para $0\leqslant t\leqslant \pi$.
 
-  La gráfica de $\Gamma$ es la mitad superior del circulo unitario, orientado en sentido contrario al movimiento de las manecillas del reloj de 1 a -1. En $\Gamma$, $z(t)=e^{jt}$ y $z'(t)=je^{jt}$. Más aún, $f(z(t))=\overline{z(t)}=e^{-jt}$ ya que $t$ es real. Entonces 
+  La gráfica de $\Gamma$ es la mitad superior del circulo unitario, orientado en sentido contrario al movimiento de las manecillas del reloj de $1$ a $-1$. En $\Gamma$, $z(t)=e^{jt}$ y $z'(t)=je^{jt}$. Más aún, $f(z(t))=\overline{z(t)}=e^{-jt}$ ya que $t$ es real. Entonces 
   $$
   \int_\Gamma f(z)dz=\int_0^\pi e^{-jt}\cdot je^{jt}dt=\int_0^\pi dt = \pi j
   $$
+  \label{ej:integral_de_linea_en_complejos}
 \end{example}
+
+Es importante destacar que la integral del ejemplo \ref{ej:integral_de_linea_en_complejos} nos daba una curva paramétrica, esto no siempre es así. Aquí $\Gamma=e^{jt}$ con $0\leqslant t \leqslant \pi$, que es media circunferencia, pero podemos representar la \textbf{misma curva} con distintas parametrizaciones, y el resultado de la integral será el mismo. De hecho, todas las distintas parametrizaciones de media circunferencia con el mismo sentido de evolución que $\Gamma$ se denominan curvas equivalentes y el resultado de la integral es el mismo. Esto no quiere decir que el resultado de la integral sea igual para distintas curvas, sin embargo este tema lo trataremos más adelante.
+
+\begin{example}
+  Digamos que tomamos la curva $\Gamma:[0,\pi]\to \mathbb{C}$ tal que $\Gamma(t)=e^{jt}$. Una curva equivalente es $\Phi:[0,2\pi]\to\mathbb{C}$ tal que
+  $$
+  \Phi(t)=e^{jt/2}
+  $$
+  Véase que $\Phi$ representa media circunferencia, al igual que lo hace $\Gamma$, sin embargo su expresión paramétrica es diferente.\footnote{$\Phi$: Letra griega mayúscula ``Phi''}
+\end{example}
+
+Hasta aquí solo se ha integrado sobre curvas suaves. Se puede extender la definición a una integral sobre curvas suaves a trozos sumando las integrales sobre las componentes de la concatenación.
+
+\begin{definition}
+  Sea $\Gamma$ una concatenación de curvas suaves $\Gamma_1,\dots,\Gamma_n$. Sea $f$ continua en cada $\Gamma_k$. Entonces
+  $$
+  \int_\Gamma f(z)dz=\sum_{k=1}^n \int_{\Gamma_k} f(z)dz
+  $$
+\end{definition}
+
+\subsection{La integral compleja en términos de integrales reales}
+
+Es posible pensar en la integral de una función compleja sobre una curva como una suma de integrales de línea de funciones de valor real. Sea $f(z)=u(x,y)+jv(x,y)$ y, en la curva $\Gamma$, supongamos que $z(t)=x(t)+jy(t)$ para $t\in[a,b]$. Ahora
+$$
+f(z(t))=u(x(t),y(t)) + jv(x(t),y(t)) \qquad \text{y} \qquad z'(t)=x'(t)+jv'(t)
+$$
+entonces al hacer $f(z(t))\cdot z'(t)$, teniendo en cuenta la definición \ref{eq:definicion_de_integral_compleja},
+\begin{align*}
+  \int_\Gamma f(z)dz =& \int_a^b [u(x(t),y(t))x'(t)-v(x(t),y(t))y'(t)]dt + \\
+                      & +j\int_a^b [v(x(t),y(t))x'(t)+u(x(t),y(t))y'(t)]dt
+\end{align*}
+En la notación de integrales de línea reales
+\begin{equation}
+  \int_\Gamma f(z)dz = \int_\Gamma u\,dx-v\,dy + j\int_\Gamma v\,dx+u\,dy
+\end{equation}
+
+Su forma de cálculo es similar a las integrales de línea reales que ya conocemos.
+
+\subsection{Propiedades de las integrales complejas}
+
+Cualquier cosa llamada integral, debe cumplir ciertas propiedades. A continuación vamos a definir las propiedades que cumplen las integrales complejas.
+
+\subsubsection{Linealidad}
+
+Sea $\Gamma$ una curva suave a trozos y sean $f$ y $g$ continuas en $\Gamma$. Sean $\alpha$ y $\beta$ números complejos. Entonces:
+$$
+\int_\Gamma (\alpha f(z)+\beta g(z))dz = \alpha \int_\Gamma f(z) dz + \beta \int_\Gamma g(z)dz
+$$
+El resultado puede extenderse a más sumas y constantes.
+
+\subsubsection{Inversión de la orientación}
+
+Sea $\Gamma:[a,b]\to\mathbb{C}$ una curva suave y $f$ continua en $\Gamma$. Entonces, una curva $\varPhi$ definida como
+$$
+\varPhi(t)=\Gamma(a+b-t) \qquad \text{para } a\leqslant t \leqslant b
+$$
+de modo que $\varPhi$ empieza donde termina $\Gamma$ ($\varPhi(a)=\Gamma(b)$) y termina donde $\Gamma$ empieza ($\varPhi(b)=\Gamma(a)$), es la curva $\Gamma$ recorrida en sentido inverso. Invertir la orientación cambia el signo de la integral
+$$
+\int_\Gamma f(z)dz=-\int_\varPhi f(z)dz
+$$
+
+\subsection{Independencia de la trayectoria}
+
+Si bien esto podría haber sido un enunciado más de las propiedades de las integrales complejas, se ha separado ya que se enunciará el teorema y se demostrará. Esto es una versión compleja del teorema fundamental del cálculo. Establece que si $f$ tiene una antiderivada continua $F$, entonces el valor de $\int_\Gamma f(z)dz$ es el valor de $F$ en el punto final de $\Gamma$ menos el valor de $F$ en el punto inicial.
+
+\begin{theorem}\label{teo:independencia_de_la_trayectoria}
+  Sea $f$ continua en un conjunto abierto $G$ y suponemos que $F'(z)=f(z)$ para $z$ en $G$. Sea $\Gamma:[a,b]\to G$ una curva suave en $G$. Entonces
+  $$
+  \int_\Gamma f(z)dz = F(\Gamma(b))-F(\Gamma(a))
+  $$
+\end{theorem}
+
+\begin{proof}
+  Con $\Gamma(t)=z(t)=x(t)+jy(t)$ y $F(z)=U(x,y)+jV(x,y)$,
+  \begin{align*}
+    \int_\Gamma f(z)\,dz &= \int_a^b f(z(t))z'(t)\,dt = \int_a^b F'(z(t))z'(t)\,dt = \int_a^b \frac{d}{dt}F(z(t))\,dt \\
+                         &= \int_a^b \frac{d}{dt} U(x(t),y(t))dt + j\int_a^b \frac{d}{dt}V(x(t),y(t))dt
+  \end{align*}
+  Ahora es factible aplicar el teorema fundamental del cálculo a las dos integrales reales de la derecha para obtener
+  \begin{align*}
+    \int_\Gamma f(z)\,dz &= U(x(b),y(b))+jV(x(b),y(b))-U(x(a),y(a))-jV(x(a),y(a)) \\ 
+                         &= F(x(b),y(b))-F(x(a),y(a)) = \boxed{F(\Gamma(b))-F(\Gamma(a))}
+  \end{align*}
+\end{proof}
+
+\begin{example}
+  Calcular $\int_\Gamma (z^2+jz)dz$ con $\Gamma(t)=t^5-jt\cos(t)$ para $t\in[0,1]$.
+
+  Este es un cálculo elemental, pero muy tedioso si se resuelve aplicando 
+  $$
+  \int_0^1 f(z(t))z'(t)dt 
+  $$
+  Sin embargo, si $G$ es todo el plano complejo, entonces $G$ es abierto, y $F(z)=z^3/3 +jz^2/2$ satisface $F'(z)=f(z)$. El punto inicial de $\Gamma$ es $\Gamma(0)=0$ y el punto final es $\Gamma(1)=1-j\cos(1)$. Por tanto,
+  \begin{align*}
+    \int_\Gamma (z^2 +jz)dz &= F(\Gamma(1))-F(\Gamma(0)) \\ 
+                            &= F(1-j\cos(1))-\cancel{F(0)} \\ 
+                            &= \frac{(1-j\cos(1))^3}{3}+\frac{j(1-j\cos(1))^2}{2} \\ 
+                            &= (1-j\cos(1))^2 \left( \frac{1-j\cos(1)}{3} + \frac{j}{2} \right)
+  \end{align*}
+\end{example}
+
+Una consecuencia del teorema \ref{teo:independencia_de_la_trayectoria} es que bajo las condiciones dadas, el valor de $\int_\Gamma f(z)\,dz$ depende solamente de los puntos inicial y final de la curva. Si $\varPhi$ es también una curva suave en $G$ teniendo el mismo punto inicial y final que $\Gamma$, entonces
+$$
+\int_\Gamma f(z)dz = \int_\varPhi f(z)dz
+$$
+Esto se llama \textbf{independencia de la trayectoria}.
+
+Otra importante consecuencia del teorema es que si $\Gamma$ es una curva cerrada en $G$, entonces los puntos inicial y final coinciden y
+$$
+\oint_\Gamma f(z)dz = 0
+$$
+Consideraremos esta circunstancia con más detalle cuando veamos el \textit{teorema de Cauchy}. Aquí, el símbolo $\oint$ indica que la integral de línea se realiza sobre una curva \textit{cerrada}, de modo que no se deba aclarar que $\Gamma$ es una curva cerrada.
+
+\subsection{Integrales de series de funciones}
+
+Es usual que en cursos de ingeniería o física 
