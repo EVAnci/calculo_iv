@@ -23,7 +23,7 @@ Esta formulación tiene la ventaja de sugerir la manera que $\int_\Gamma f(z)dz$
   \label{ej:integral_de_linea_en_complejos}
 \end{example}
 
-Es importante destacar que la integral del ejemplo \ref{ej:integral_de_linea_en_complejos} nos daba una curva paramétrica, esto no siempre es así. Aquí $\Gamma=e^{jt}$ con $0\leqslant t \leqslant \pi$, que es media circunferencia, pero podemos representar la \textbf{misma curva} con distintas parametrizaciones, y el resultado de la integral será el mismo. De hecho, todas las distintas parametrizaciones de media circunferencia con el mismo sentido de evolución que $\Gamma$ se denominan curvas equivalentes y el resultado de la integral es el mismo. Esto no quiere decir que el resultado de la integral sea igual para distintas curvas, sin embargo este tema lo trataremos más adelante.
+Es importante destacar que la integral del ejemplo \ref{ej:integral_de_linea_en_complejos} nos daba una curva paramétrica, esto no siempre es así. Aquí $\Gamma=e^{jt}$ con $0\leqslant t \leqslant \pi$, que es media circunferencia, pero podemos representar la \textbf{misma curva} con distintas parametrizaciones, y el resultado de la integral será el mismo. De hecho, todas las distintas parametrizaciones de media circunferencia con el mismo sentido de evolución que $\Gamma$ se denominan curvas equivalentes y el resultado de la integral es el mismo. Esto no quiere decir que el resultado de la integral sea igual para distintas curvas, de hecho, en general para funciones no analíticas el resultado de distintas trayectorias es distinto.
 
 \begin{example}
   Digamos que tomamos la curva $\Gamma:[0,\pi]\to \mathbb{C}$ tal que $\Gamma(t)=e^{jt}$. Una curva equivalente es $\Phi:[0,2\pi]\to\mathbb{C}$ tal que
@@ -74,13 +74,13 @@ El resultado puede extenderse a más sumas y constantes.
 
 \subsubsection{Inversión de la orientación}
 
-Sea $\Gamma:[a,b]\to\mathbb{C}$ una curva suave y $f$ continua en $\Gamma$. Entonces, una curva $\varPhi$ definida como
+Sea $\Gamma:[a,b]\to\mathbb{C}$ una curva suave y $f$ continua en $\Gamma$. Entonces, una curva $\Phi$ definida como
 $$
-\varPhi(t)=\Gamma(a+b-t) \qquad \text{para } a\leqslant t \leqslant b
+\Phi(t)=\Gamma(a+b-t) \qquad \text{para } a\leqslant t \leqslant b
 $$
-de modo que $\varPhi$ empieza donde termina $\Gamma$ ($\varPhi(a)=\Gamma(b)$) y termina donde $\Gamma$ empieza ($\varPhi(b)=\Gamma(a)$), es la curva $\Gamma$ recorrida en sentido inverso. Invertir la orientación cambia el signo de la integral
+de modo que $\Phi$ empieza donde termina $\Gamma$ ($\varPhi(a)=\Gamma(b)$) y termina donde $\Gamma$ empieza ($\varPhi(b)=\Gamma(a)$), es la curva $\Gamma$ recorrida en sentido inverso. Invertir la orientación cambia el signo de la integral
 $$
-\int_\Gamma f(z)dz=-\int_\varPhi f(z)dz
+\int_\Gamma f(z)dz=-\int_\Phi f(z)dz
 $$
 
 \subsection{Independencia de la trayectoria}
@@ -123,9 +123,9 @@ Esto, podría haber sido un enunciado más de propiedades de integrales compleja
   \end{align*}
 \end{example}
 
-Una consecuencia del teorema \ref{teo:independencia_de_la_trayectoria} es que bajo las condiciones dadas, el valor de $\int_\Gamma f(z)\,dz$ depende solamente de los puntos inicial y final de la curva. Si $\varPhi$ es también una curva suave en $G$ teniendo el mismo punto inicial y final que $\Gamma$, entonces
+Una consecuencia del teorema \ref{teo:independencia_de_la_trayectoria} es que bajo las condiciones dadas, el valor de $\int_\Gamma f(z)\,dz$ depende solamente de los puntos inicial y final de la curva. Si $\Phi$ es también una curva suave en $G$ teniendo el mismo punto inicial y final que $\Gamma$, entonces
 $$
-\int_\Gamma f(z)dz = \int_\varPhi f(z)dz
+\int_\Gamma f(z)dz = \int_\Phi f(z)dz
 $$
 Esto se llama \textbf{independencia de la trayectoria}.
 
@@ -135,7 +135,7 @@ $$
 $$
 Consideraremos esta circunstancia con más detalle cuando veamos el \textit{teorema de Cauchy}. Aquí, el símbolo $\oint$ indica que la integral de línea se realiza sobre una curva \textit{cerrada}, de modo que no se deba aclarar que $\Gamma$ es una curva cerrada.
 
-Ahora, veamos un ejemplo de función no analítica. 
+Ahora, veamos un ejemplo de función no analítica. Es importante recordar que el teorema \ref{teo:independencia_de_la_trayectoria} requiere que $f$ sea una función analítica. Si $f$ no es analítica, nada nos garantiza que la integral sea independiente de la trayectoria.
 \begin{example}
   Integrar $f(z) = \text{Re}(z)$ desde $0$ hasta $1+j$ a lo largo de $\Gamma_1$ y a lo largo de $\Gamma_2$ que consta de $\Gamma_{2a}$ y $\Gamma_{2b}$.
   \begin{figure}[ht]
@@ -193,6 +193,7 @@ Lo bueno, es que si la serie es uniformemente convergente, entonces es posible r
   $$
   \lvert f_n(z) \rvert \leqslant M_n
   $$
+  es decir, todas las funciones son \textbf{acotadas}.
 
   Entonces $\sum_{n=1}^\infty f_n(z)$ converge absolutamente para todo $z$ en $\Gamma$. Más aún, si se denota $\sum_{n=1}^\infty f_n(z)=g(z)$, entonces
   $$
@@ -218,3 +219,12 @@ Con esto, decimos que la serie \(\sum_{n=1}^\infty f_n(z)\) converge absolutamen
 Es decir, la integral de la suma es igual a la suma de las integrales.
 
 La clave está en la convergencia uniforme de la serie \(\sum f_n(z)\). La condición \(|f_n(z)| \leq M_n\) con \(\sum M_n\) convergente es conocida como la prueba M de Weierstrass. Este prueba asegura que la serie \(\sum f_n(z)\) converge uniformemente en \(\Gamma\). Cuando una serie converge uniformemente a una función \(g(z)\) y cada \(f_n\) es continua, entonces \(g(z)\) es continua en \(\Gamma\) y se puede intercambiar la integral con la suma.
+
+Ahora: ¿Recuerda que era una función analítica? - Habíamos dicho: 
+\begin{quote}
+\begin{center}
+``Decimos que una función $f$ es analítica en un dominio $D$ si puede ser representada por una serie de potencias convergente en cada punto de $D$.''
+\end{center}
+\end{quote}
+
+Con esto, podemos concluir que \textbf{toda función analítica} (y por tanto holomorfa) permite la integración término a término al ser expresada como serie, ya que, su expresión como serie será siempre convergente. 
