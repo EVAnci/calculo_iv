@@ -67,7 +67,7 @@ Ahora si, estamos listos para enunciar el teorema de Cauchy.
 
 \subsection[Enunciado del teorema]{El teorema de Cauchy}
 
-\begin{theorem}[Teorema de Cauchy]
+\begin{theorem}[Teorema de Cauchy]\label{teo:cauchy}
   Sea $f(z)$ analítica en un dominio simplemente conexo $D$, entonces para toda trayectoria simple cerrada $\Gamma$ en $D$ se cumple que
   \[
     \oint_\Gamma f(z)dz=0
@@ -102,7 +102,8 @@ Con este teorema, solo se cumple si la función es analítica. Si $f(z)$ no es a
 
 \subsection{Demostración del teorema de Cauchy}
 
-Habiamos visto en la sección \ref{sec2:integral_cmplx_en_terminos_reales} que una integral compleja puede ser expresada en término de integrales reales como sigue
+\begin{proof}
+Habíamos visto en la sección \ref{sec2:integral_cmplx_en_terminos_reales} que una integral compleja puede ser expresada en término de integrales reales como sigue
 \begin{equation}
 \oint_\Gamma f(z)dz = \oint_\Gamma u\,dx - v\,dy + j\oint_\Gamma v\,dx + u\,dy 
 \label{eq:premisa_demostracion_cauchy}
@@ -114,11 +115,29 @@ Debido a que suponemos que $f$ es una función que cumple con el teorema de Cauc
   \label{eq:teorema_de_green_aplicado_a_cauchy_2}
   \oint_\Gamma v\,dx + u\,dy &= \iint_R -u_x - v_y \,dA
 \end{align}
-Como hemos dicho que $f$ es analítica y $u(x,y)$ y $v(x,y)$ cumplen las ecuaciones de CR. Si observamos el integrando del miembro derecho de las ecuaciones \eqref{eq:teorema_de_green_aplicado_a_cauchy_1} y \eqref{eq:teorema_de_green_aplicado_a_cauchy_2} no son más que las ecuaciones de CR reordenadas:
+Donde $R$ es la región acotada por $\Gamma$. Como hemos dicho que $f$ es analítica y $u(x,y)$ y $v(x,y)$ cumplen las ecuaciones de CR. Si observamos el integrando del miembro derecho de las ecuaciones \eqref{eq:teorema_de_green_aplicado_a_cauchy_1} y \eqref{eq:teorema_de_green_aplicado_a_cauchy_2} no son más que las ecuaciones de CR reordenadas:
 $$
-v_y-u_x=0 \rightarrow u_x = v_y  \qquad -u_x-v_y = 0 \rightarrow v_y = -u_x
+ u_x = v_y \rightarrow v_y-u_x=0 \qquad v_y = -u_x \rightarrow -u_x-v_y = 0
 $$
 de tal manera, que no queda más alternativa que 
 $$
 \oint_\Gamma f(z)dz = \oint_\Gamma u\,dx - v\,dy + j\oint_\Gamma v\,dx + u\,dy = 0
 $$
+quedando demostrado el teorema \ref{teo:cauchy}.
+\end{proof}
+
+Adicionalmente, en la sección anterior vimos que la integral de una función analítica es independiente de la trayectoria si existe su primitiva, y además esta es continua sobre la curva en la que se integra. El teorema \ref{teo:independencia_de_la_trayectoria} no es más que consecuencia útil del teorema de Cauchy.
+
+Esta última idea es especialmente útil cuando se relaciona con el concepto de \textbf{deformación de la trayectoria}. Digamos que se nos pide integrar sobre una trayectoria $\Gamma_1$ \textit{difícil} de parametrizar (o de integrar). Entonces, podemos sustituirla por otra $\Gamma_2$ tal que sus puntos terminales sean iguales y el resultado será el mismo \textbf{siempre y cuando $f$ sea analítica}.
+
+\section{El teorema de Cauchy para dominios múltiplemente conexos}
+
+Comenzaremos aplicando el teorema de Cauchy a un dominio \textbf{doblemente conexo} $D$
+
+
+%%% Definición del libro -- Borrar --
+El teorema de Cauchy se aplica a dominios múltiplemente conexos. Primero se explicará este hecho para un dominio doblemente conexo D con curva frontera exterior $C_1$, e interior $C_2$. Si una función \(f(z)\) es analítica en cualquier dominio $D'$ que contiene a $D$ así como a sus curvas frontera, se afirma que
+$$
+\int_{C_1} f(z)dz = \int_{C_2}f(z)dz
+$$
+ambas integrales se consideran en sentido contrario al movimiento de las manecillas del reloj (o al revés, y sin tomar el cuenta si todo el interior de $C_2$ pertenece o no a $D'$)
