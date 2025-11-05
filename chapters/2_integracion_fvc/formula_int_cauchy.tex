@@ -1,6 +1,6 @@
 \section{Fórmula de la integral de Cauchy}
 
-La consecuencia más importante del teorema de la integral de Cauchy es la fórmula de la integral de Cauchy. Esta fórmula es de utilidad para calcular integrales. Igualmente importante es su ro primordial en la demostración del sorprendente hecho de que las funciones analíticas tienen derivadas de todos los órdenes (capítulo \ref{chpt:residuos}: residuos), y por tanto pueden ser representadas mediante series de Taylor. 
+La consecuencia más importante del teorema de la integral de Cauchy es la fórmula de la integral de Cauchy. Esta fórmula es de utilidad para calcular integrales. Igualmente importante es su rol primordial en la demostración del sorprendente hecho de que las funciones analíticas tienen derivadas de todos los órdenes (capítulo \ref{chpt:residuos}: residuos), y por tanto pueden ser representadas mediante series de Taylor. 
 
 \begin{figure}[ht]
   \centering
@@ -27,10 +27,33 @@ La consecuencia más importante del teorema de la integral de Cauchy es la fórm
   Sea $f(z)$ analítica en un dominio simplemente conexo $D$. Entonces para cualquier punto $z_0$ en $D$ y cualquier trayectoria simple cerrada $\Gamma$ en $D$ que contenga a $z_0$ (figura \ref{fig:f_in_cauchy}) se cumple 
   \begin{equation}
     \oint_\Gamma \frac{f(z)}{z-z_0}dz = 2\pi j f(z_0)
+    \label{eq:formula_de_la_integral_de_cauchy}
   \end{equation}
   donde la curva $\Gamma$ se recorre en sentido antihorario.
 \end{theorem}
 
 \begin{proof}
-  Por adición y sustracción, $f(z)=f(z_0)+[f(z)-f(z_0)]
+  Por adición y sustracción, $f(z)=f(z_0)+[f(z)-f(z_0)]$. Al sustituir esto en el miembro izquierdo de la ecuación \eqref{eq:formula_de_la_integral_de_cauchy} y sacando de la integral el factor constante $f(z_0)$, se obtiene
+  \begin{equation}
+    \oint_\Gamma \frac{f(z)}{z-z_0}dz = f(z_0)\oint_\Gamma \frac{1}{z-z_0}dz + \oint_\Gamma \frac{f(z)-f(z_0)}{z-z_0}dz
+    \label{eq:demostracion_formula_integral_cauchy}
+  \end{equation}
+  Resolviendo el primer término del miembro derecho, vemos que $\Gamma$ es una curva paramétrica no conocida que encierra al punto $z_0$. Con ello, podemos aplicar el teorema de deformación \ref{teo:cauchy_doblemente_conexo} y podemos sustituir la curva $\Gamma$ por una circunferencia unitaria $\gamma$ que encierre a $z_0$
+  \begin{gather*}
+    f(z_0)\oint_\Gamma \frac{1}{z-z_0}dz = f(z)\oint_\gamma \frac{1}{z-z_0}dz
+  \end{gather*}
+  Y la curva $\gamma$ puede parametrizarse fácilmente como $\gamma(t)=z_0+re^{jt}$ para $t\in[0\leqslant t \leqslant 2\pi]$. Entonces la integral queda
+  \begin{gather*}
+    \oint_\gamma \frac{1}{z-z_0}dz = j\int_0^{2\pi}\frac{re^{jt}}{\cancel{z_0}+re^{jt}-\cancel{z_0}}dt = j\int_0^{2\pi}1 dt = j2\pi
+  \end{gather*}
+  por tanto la ecuación \eqref{eq:demostracion_formula_integral_cauchy} puede escribirse como
+  \begin{gather*}
+    \oint_\Gamma \frac{f(z)}{z-z_0}dz = j2\pi f(z_0) + \oint_\Gamma \frac{f(z)-f(z_0)}{z-z_0}dz
+  \end{gather*}
+  Siguiendo el mismo razonamiento para la integral del segundo término con $\gamma(t)=z_0+re^{jt}$
+  \begin{align*}
+    \int_0^{2\pi} \frac{f(\gamma(t))-f(z_0)}{e^{jt}} ~ je^{jt} ~dt &= j\int_0^{2\pi} f(\gamma(t))-f(z_0) dt \\
+                                                                   &= j\left( \int_0^{2\pi} f(z_0+e^{jt}) dt - f(z_0)\int_0^{2\pi}1 dt \right)
+  \end{align*}
+
 \end{proof}
