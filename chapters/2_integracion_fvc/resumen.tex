@@ -1,0 +1,84 @@
+## Resumen del Capítulo 2: Integración Compleja
+
+### Introducción (chapters/2_integracion_fvc/main.tex)
+
+Este capítulo introduce la integración de funciones complejas. A diferencia de las funciones reales que se integran sobre intervalos, las funciones complejas se integran sobre curvas en el plano complejo.
+
+---
+
+### 1. Curvas paramétricas en el plano (chapters/2_integracion_fvc/curvas.tex)
+
+Esta sección define formalmente las curvas usadas en la integración compleja.
+
+* **Curva Compleja:** Es una función $\Gamma$ que mapea un intervalo real $[a, b]$ a un conjunto de puntos en el plano complejo ($\Gamma :[a,b]\to\mathbb{C}$).
+* **Orientación:** Las curvas tienen una dirección natural a medida que el parámetro $t$ crece de $a$ a $b$. Tienen un *punto inicial* $\Gamma(a)$ y un *punto final* $\Gamma(b)$.
+* **Curva Simple:** Una curva que no se cruza a sí misma. Es decir, $\Gamma(t_1)\neq \Gamma(t_2)$ para valores distintos $t_1, t_2$.
+* **Curva Cerrada Simple:** Una curva donde el punto inicial y final coinciden ($\Gamma(a)=\Gamma(b)$), pero este es el único punto donde la curva se toca a sí misma.
+* **Curva Suave (Lisa):** Una curva $\Gamma(t) = x(t) + jy(t)$ donde las derivadas $x'(t)$ y $y'(t)$ son continuas y no son simultáneamente cero. El vector $\Gamma'(t)$ es el vector tangente a la curva.
+* **Curva Suave a Trozos (Concatenación):** Una curva formada por la unión de varias curvas suaves conectadas en sucesión.
+
+---
+
+### 2. La integral compleja (chapters/2_integracion_fvc/integral.tex)
+
+Esta sección define la integral compleja y sus propiedades fundamentales.
+
+* **Definición de Integral Compleja:** La integral de una función $f(z)$ continua sobre una curva suave $\Gamma$ (parametrizada por $z(t)$ en $[a,b]$) se calcula como:
+    $$
+    \int_\Gamma f(z)\,dz = \int_a^b f(z(t))z'(t)\,dt
+    $$
+   
+    Básicamente, se sustituye $z$ por $z(t)$ y $dz$ por $z'(t)dt$.
+* **Integral sobre Curvas a Trozos:** Si la curva $\Gamma$ es una concatenación de curvas suaves ($\Gamma_1, \dots, \Gamma_n$), la integral total es la suma de las integrales sobre cada componente.
+* **Propiedades:**
+    * **Linealidad:** La integral de una suma de funciones (multiplicadas por constantes) es la suma de sus integrales.
+    * **Inversión de la Orientación:** Recorrer la curva en sentido inverso cambia el signo de la integral.
+* **Independencia de la Trayectoria (Teorema Fundamental):** Si $f(z)$ es una función analítica y continua en un dominio simplemente conexo $D$, y tiene una antiderivada $F(z)$ (tal que $F'(z)=f(z)$), la integral solo depende de los puntos extremos de la curva:
+    $$
+    \int_\Gamma f(z)dz = F(\Gamma(b))-F(\Gamma(a))
+    $$
+   
+* **Consecuencia para Curvas Cerradas:** Si $f(z)$ es analítica (como en el punto anterior) y $\Gamma$ es una curva cerrada (los puntos inicial y final coinciden), la integral es cero:
+    $$
+    \oint_\Gamma f(z)dz = 0
+    $$
+   
+* **Funciones no Analíticas:** Si la función $f(z)$ *no* es analítica, el resultado de la integral generalmente sí depende de la trayectoria tomada, no solo de los extremos.
+
+---
+
+### 3. Teorema de Cauchy (chapters/2_integracion_fvc/teo_de_cauchy.tex)
+
+Esta sección presenta el teorema más importante de la integración compleja.
+
+* **Conceptos Clave de Dominio:**
+    * **Conjunto Conexo:** Un conjunto donde dos puntos cualesquiera pueden unirse mediante una trayectoria contenida totalmente en el conjunto.
+    * **Conjunto Simplemente Conexo:** Un conjunto conexo que "no tiene agujeros". Formalmente, cualquier trayectoria cerrada simple dibujada dentro del conjunto encierra únicamente puntos que también pertenecen al conjunto. Un disco es simplemente conexo; una corona (anillo) no lo es.
+* **Teorema de Cauchy (para Dominios Simplemente Conexos):**
+    Si $f(z)$ es una función **analítica** en un dominio **simplemente conexo** $D$, entonces para *toda* trayectoria cerrada simple $\Gamma$ contenida en $D$, la integral es cero:
+    $$
+    \oint_\Gamma f(z)dz=0
+    $$
+   
+* **Teorema de Deformación (para Dominios Múltiplemente Conexos):**
+    Si $f(z)$ es analítica en un dominio *no* simplemente conexo (con agujeros), como una corona delimitada por una curva exterior $C_1$ y una curva interior $C_2$. La integral sobre la curva exterior es igual a la integral sobre la curva interior (asumiendo ambas en sentido antihorario):
+    $$
+    \oint_{C_1}f(z)dz = \oint_{C_2}f(z)dz
+    $$
+   
+* **Principio de Deformación:** Este resultado permite "deformar" una trayectoria de integración $\Gamma_1$ a otra $\Gamma_2$ sin cambiar el valor de la integral, siempre y cuando la función $f(z)$ sea analítica en la región entre ambas curvas.
+* **Generalización (Múltiples Agujeros):** Si una curva $C_1$ encierra varias curvas internas ($C_2, C_3, \dots$), la integral sobre $C_1$ es igual a la *suma* de las integrales sobre las curvas internas.
+
+---
+
+### 4. Fórmula de la integral de Cauchy (chapters/2_integracion_fvc/formula_int_cauchy.tex)
+
+Esta sección describe una de las consecuencias más poderosas del Teorema de Cauchy, utilizada para calcular integrales que *no* son cero.
+
+* **Fórmula de la Integral de Cauchy (Teorema):**
+    Sea $f(z)$ analítica en un dominio simplemente conexo $D$. Sea $z_0$ un punto cualquiera dentro de $D$, y $\Gamma$ una trayectoria cerrada simple (en sentido antihorario) en $D$ que encierra a $z_0$. La fórmula establece:
+    $$
+    \oint_\Gamma \frac{f(z)}{z-z_0}dz = j2\pi f(z_0)
+    $$
+   
+* **Importancia:** Esta fórmula es crucial. Permite calcular integrales de funciones con singularidades (como $1/(z-z_0)$) y es fundamental para demostrar que si una función es analítica, entonces sus derivadas de todos los órdenes también existen y son analíticas.
