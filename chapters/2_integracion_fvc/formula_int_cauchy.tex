@@ -1,3 +1,36 @@
 \section{Fórmula de la integral de Cauchy}
 
-La consecuencia más importante del teorema de la integral de Cauchy es la fórmula de la integral de Cauchy.
+La consecuencia más importante del teorema de la integral de Cauchy es la fórmula de la integral de Cauchy. Esta fórmula es de utilidad para calcular integrales. Igualmente importante es su ro primordial en la demostración del sorprendente hecho de que las funciones analíticas tienen derivadas de todos los órdenes (capítulo \ref{chpt:residuos}: residuos), y por tanto pueden ser representadas mediante series de Taylor. 
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \draw[dashed,rotate=20] (0,0) ellipse (3 and 2);
+    \node at (2.3,1) {$D$};
+    \begin{scope}[thick,decoration={
+        markings,
+        mark=at position 0.5 with {
+          \coordinate (G) at (0,0);
+          \node[left] at (0,0) {\footnotesize$\Gamma$}; 
+        },
+        mark=at position 0.6 with {\arrow{>}},
+      }]
+      \draw[red,postaction={decorate}] (0,0) ellipse (1.5 and 0.9);
+      \draw[fill] (0.3,0.2) circle (1pt) node[right] {\footnotesize$z_0$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Fórmula integral de Cauchy.}
+  \label{fig:f_in_cauchy}
+\end{figure}
+
+\begin{theorem}
+  Sea $f(z)$ analítica en un dominio simplemente conexo $D$. Entonces para cualquier punto $z_0$ en $D$ y cualquier trayectoria simple cerrada $\Gamma$ en $D$ que contenga a $z_0$ (figura \ref{fig:f_in_cauchy}) se cumple 
+  \begin{equation}
+    \oint_\Gamma \frac{f(z)}{z-z_0}dz = 2\pi j f(z_0)
+  \end{equation}
+  donde la curva $\Gamma$ se recorre en sentido antihorario.
+\end{theorem}
+
+\begin{proof}
+  Por adición y sustracción, $f(z)=f(z_0)+[f(z)-f(z_0)]
+\end{proof}
