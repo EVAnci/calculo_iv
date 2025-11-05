@@ -26,7 +26,7 @@ La consecuencia más importante del teorema de la integral de Cauchy es la fórm
 \begin{theorem}
   Sea $f(z)$ analítica en un dominio simplemente conexo $D$. Entonces para cualquier punto $z_0$ en $D$ y cualquier trayectoria simple cerrada $\Gamma$ en $D$ que contenga a $z_0$ (figura \ref{fig:f_in_cauchy}) se cumple 
   \begin{equation}
-    \oint_\Gamma \frac{f(z)}{z-z_0}dz = 2\pi j f(z_0)
+    \oint_\Gamma \frac{f(z)}{z-z_0}dz = j2\pi f(z_0)
     \label{eq:formula_de_la_integral_de_cauchy}
   \end{equation}
   donde la curva $\Gamma$ se recorre en sentido antihorario.
@@ -38,7 +38,7 @@ La consecuencia más importante del teorema de la integral de Cauchy es la fórm
     \oint_\Gamma \frac{f(z)}{z-z_0}dz = f(z_0)\oint_\Gamma \frac{1}{z-z_0}dz + \oint_\Gamma \frac{f(z)-f(z_0)}{z-z_0}dz
     \label{eq:demostracion_formula_integral_cauchy}
   \end{equation}
-  Resolviendo el primer término del miembro derecho, vemos que $\Gamma$ es una curva paramétrica no conocida que encierra al punto $z_0$. Con ello, podemos aplicar el teorema de deformación \ref{teo:cauchy_doblemente_conexo} y podemos sustituir la curva $\Gamma$ por una circunferencia unitaria $\gamma$ que encierre a $z_0$
+  Resolviendo el primer término del miembro derecho, vemos que $\Gamma$ es una curva paramétrica no conocida que encierra al punto $z_0$. Con ello, podemos aplicar el teorema de deformación \ref{teo:cauchy_doblemente_conexo} y podemos sustituir la curva $\Gamma$ por una circunferencia centrada en $z_0$ de radio $r$, tal que $r>0$ pero lo suficientemente pequeño como para estar dentro de $D$. De este modo se cumple la siguiente igualdad
   \begin{gather*}
     f(z_0)\oint_\Gamma \frac{1}{z-z_0}dz = f(z)\oint_\gamma \frac{1}{z-z_0}dz
   \end{gather*}
@@ -53,7 +53,19 @@ La consecuencia más importante del teorema de la integral de Cauchy es la fórm
   Siguiendo el mismo razonamiento para la integral del segundo término con $\gamma(t)=z_0+re^{jt}$
   \begin{align*}
     \int_0^{2\pi} \frac{f(\gamma(t))-f(z_0)}{e^{jt}} ~ je^{jt} ~dt &= j\int_0^{2\pi} f(\gamma(t))-f(z_0) dt \\
-                                                                   &= j\left( \int_0^{2\pi} f(z_0+e^{jt}) dt - f(z_0)\int_0^{2\pi}1 dt \right)
+                                                                   &= j\left( \int_0^{2\pi} f(z_0+re^{jt}) dt - f(z_0)\int_0^{2\pi}1 dt \right)
   \end{align*}
-
+  Aquí como la curva $\gamma$ es una circunferencia de radio $r$, podemos decir que $r\to 0$ ($r$ tiende a cero) sin modificar el valor de la integral ya que se cumple el teorema \ref{teo:cauchy_doblemente_conexo} de la deformación. Véase que si $r\to 0$ entonces $f(z_0+re^{jt})\to f(z_0)$, por tanto, para un $r\to 0$ podemos escribir 
+  $$
+   \int_0^{2\pi} f(z_0+re^{jt}) dt - f(z_0)\int_0^{2\pi}1 dt = f(z_0) \int_0^{2\pi}1dt - f(z_0)\int_0^{2\pi}1dt
+  $$
+  siendo entonces cero el único valor posible para la integral
+  $$
+  \oint_\Gamma \frac{f(z)-f(z_0)}{z-z_0}dz = 0
+  $$
+  Quedando entonces la ecuación \eqref{eq:demostracion_formula_integral_cauchy} como 
+  $$
+    \oint_\Gamma \frac{f(z)}{z-z_0}dz = j2\pi f(z_0) + 0
+  $$
+  lo que se quería demostrar.
 \end{proof}
