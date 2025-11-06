@@ -23,7 +23,7 @@ La consecuencia más importante del teorema de la integral de Cauchy es la fórm
   \label{fig:f_in_cauchy}
 \end{figure}
 
-\begin{theorem}
+\begin{theorem}\label{teo:formula_de_la_integral_de_cauchy}
   Sea $f(z)$ analítica en un dominio simplemente conexo $D$. Entonces para cualquier punto $z_0$ en $D$ y cualquier trayectoria simple cerrada $\Gamma$ en $D$ que contenga a $z_0$ (figura \ref{fig:f_in_cauchy}) se cumple 
   \begin{equation}
     \oint_\Gamma \frac{f(z)}{z-z_0}dz = j2\pi f(z_0)
@@ -69,3 +69,41 @@ La consecuencia más importante del teorema de la integral de Cauchy es la fórm
   $$
   lo que se quería demostrar.
 \end{proof}
+
+\subsection{Ejemplos}
+
+El teorema \ref{teo:formula_de_la_integral_de_cauchy} nos brinda una forma muy sencilla de calcular integrales. Para entender la aplicación veamos algunos ejemplos.
+
+\begin{example}
+  Evaluar 
+  $$
+  \oint_\Gamma \frac{e^{z^2}}{z-j}dz
+  $$
+  para cualquier trayectoria cerrada que no pase por $j$.
+
+  Tenemos dos posibles casos.
+  \begin{itemize}
+    \item \textbf{Caso I}: $\Gamma$ no encierra a $j$. En este caso la integral es cero por el teorema de Cauchy.
+    \item \textbf{Caso II}: $\Gamma$ encierra a $j$. Por la fórmula de la integral de Cauchy, con $z_0=j$, 
+      $$
+      \oint_\Gamma \frac{e^{z^2}}{z-j}dz = j2\pi f(j) = j\frac{2\pi}{e}
+      $$
+  \end{itemize}
+\end{example}
+
+\begin{example}
+  Evaluar 
+  $$
+  \int_\Gamma \frac{e^{2z}\sin(z^2)}{z-2}dz
+  $$
+  sobre cualquier trayectoria que no pase por 2.
+
+  Al igual que antes, tenemos dos casos posibles.
+  \begin{itemize}
+    \item \textbf{Caso I}: Si $\Gamma$ no encierra a 2, entonces $f(z)/(z-2)$ es analítica y la integral es cero.
+    \item \textbf{Caso II}: Si $\Gamma$ encierra a 2, usamos la fórmula de la integral de Cauchy:
+      $$
+      \int_\Gamma \frac{e^{2z}\sin(z^2)}{z-2}dz = j2\pi f(2) = j2\pi e^4 \sin(4)
+      $$
+  \end{itemize}
+\end{example}
