@@ -1,0 +1,15 @@
+\section{Derivadas de funciones analíticas}
+
+Ahora se demostrará que una función compleja holomorfa (o diferenciable) en $D$ como se mencionó en la sección \ref{sec:definicion_de_analiticidad} también es analítica en $D$. Entonces dicha función tiene derivadas de todos los órdenes en todos los puntos de $D$.
+
+Para funciones reales no hay un resultado como este. Una función real diferenciable puede no tener segunda derivada. Y si tiene segunda derivada, puede no tener una tercera, y así sucesivamente. En otras palabras, si una función real es diferenciable una vez, nada puede concluirse acerca de la existencia de la segunda derivada o derivadas superiores. Así, en este sentido las funciones analíticas complejas se comportan mucho más sencillamente que las funciones que las funciones reales.
+
+\begin{theorem}[Derivadas de una función analítica]\label{teo:derivadas_de_todos_los_ordenes}
+  Si $f(z)$ es analítica en un dominio $D$, entonces tiene derivadas de todos los órdenes en cada punto de $D$, las cuales entonces también son funciones analíticas en $D$.
+
+  La derivada en un punto $z_0\in D$ se calcula como 
+  \begin{equation}
+    f^{(n)}(z_0) = \frac{n!}{j2\pi}\oint_\Gamma \frac{f(z)}{(z-z_0)^{n+1}}dz
+  \end{equation}
+  con $n=1,2,\dots$ y $\Gamma$ una curva simple cerrada que encierra únicamente puntos de $D$ y que contiene a $z_0$. Aquí se asume que el sentido de integración es antihorario.
+\end{theorem}
