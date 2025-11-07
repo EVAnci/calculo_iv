@@ -13,3 +13,36 @@ Para funciones reales no hay un resultado como este. Una función real diferenci
   \end{equation}
   con $n=1,2,\dots$ y $\Gamma$ una curva simple cerrada que encierra únicamente puntos de $D$ y que contiene a $z_0$. Aquí se asume que el sentido de integración es antihorario.
 \end{theorem}
+
+\subsection{Demostración}
+
+Primero, vamos a demostrar que se cumple para la primer derivada, siendo la expresión
+$$
+f'(z_0) = \frac{1}{j2\pi} \oint_\Gamma \frac{f(z)}{(z-z_0)^2}dz
+$$
+
+\begin{proof}
+  Para demostrar que la derivada en un punto $z_0\in D$ puede escribirse usando el teorema \ref{teo:derivadas_de_todos_los_ordenes}, partimos de la definición de derivada 
+  $$
+  f'(z_0) = \lim_{\Delta z \to 0} \frac{f(z+\Delta z)-f(z)}{\Delta z}
+  $$
+  Usando la fórmula de la integral de Cauchy (ecuación \eqref{eq:formula_de_la_integral_de_cauchy}), podemos escribir las funciones del numerador como
+  \begin{align*}
+    f(z_0+\Delta z) &= \frac{1}{j2\pi}\oint_\Gamma \frac{f(z)}{z-(z_0+\Delta z)} dz \\ 
+    f(z_0) &= \frac{1}{j2\pi} \oint_\Gamma \frac{f(z)}{z-z_0}dz
+  \end{align*}
+  Y, reemplazando estas expresiones en el límite y operando algebraicamente:
+  \begin{align*}
+    f'(z_0)=&\lim_{\Delta z \to 0} \frac{1}{j2\pi\Delta z} \left( \oint_\Gamma \frac{f(z)}{z-(z_0+\Delta z)}dz - \oint_\Gamma \frac{f(z)}{z-z_0}dz \right) \\ 
+    =&\lim_{\Delta z \to 0} \frac{1}{j2\pi\Delta z} \left( \oint_\Gamma \frac{f(z)}{z-z_0-\Delta z} - \frac{f(z)}{z-z_0}dz \right) \\ 
+    =&\lim_{\Delta z \to 0} \frac{1}{j2\pi\Delta z} \left( \oint_\Gamma \frac{f(z)(z-z_0)-f(z)(z-z_0-\Delta z)}{(z-z_0-\Delta z)(z-z_0)}dz \right) \\ 
+    =&\lim_{\Delta z \to 0} \frac{1}{j2\pi\Delta z} \left( \oint_\Gamma \frac{\cancel{f(z)z}-\cancel{f(z)z_0}-\cancel{f(z)z}+\cancel{f(z)z_0}+f(z)\Delta z}{(z-z_0-\Delta z)(z-z_0)}dz \right) \\ 
+    =&\lim_{\Delta z \to 0} \frac{\cancel{\Delta z}}{j2\pi\cancel{\Delta z}} \left( \oint_\Gamma \frac{f(z)}{(z-z_0-\Delta z)(z-z_0)}dz \right) \\  
+    f'(z_0)=&\lim_{\Delta z \to 0} \frac{1}{j2\pi} \left( \oint_\Gamma \frac{f(z)}{(z-z_0-\Delta z)(z-z_0)}dz \right) 
+  \end{align*}
+  Y, en esta última expresión, puede verse claramente que si $\Delta z\to 0$, entonces la integral tiende a 
+  $$
+  \boxed{f'(z)=\frac{1}{j2\pi}\oint_\Gamma \frac{f(z)}{(z-z_0)^2}dz}
+  $$
+  quedando demostrado el teorema.
+\end{proof}
