@@ -36,10 +36,22 @@ Una serie, para poder desarrollarse y encontrar su suma (si es que tiene), es ne
   $$
   s_k = z_1+\dots+z_k = s_{k-1} + z_k
   $$
-  Esta última expresión es muy útil, pero no siempre es sencillo determinar la convergencia de una serie aunque se tengan sus sumas parciales.
+  Esta última expresión es muy útil, pero no siempre es sencillo determinar la convergencia de una serie.
 \end{definition}
 
-Si una serie converge a un valor $S$, este valor se llama \textbf{suma de la serie}.
+\begin{definition}[Convergencia de la serie]
+  Al construir las sumas parciales tenemos $s_1,s_2,\dots,s_k,\dots$. Esto no es más que una sucesión. A esta sucesión la llamaremos \textbf{sucesión de sumas parciales} y se denotará como $\{s_k\}$.
+
+  El valor de una serie infinita se define como el límite de sus sumas parciales, si existe:
+  $$
+  \sum_{n=1}^\infty a_n = \lim_{k\to\infty} s_k
+  $$
+  Esto significa que, aunque no podemos realizar una suma infinita directamente, podemos aproximar el resultado observando como se comportan las sumas parciales a medida que $n$ crece.
+
+  Si el límite existe y es finito decimos que converge. Si no, la serie diverge.
+\end{definition}
+
+Si una serie converge a un valor $S$, este valor se llama \textbf{suma de la serie}. En general resulta difícil encontrar una expresión del término $k$-ésimo de las sumas parciales, y por ende calcular la suma de una serie resulta complicado.
 
 \subsection{Criterios de convergencia}
 
@@ -83,3 +95,59 @@ Si $\sum z_n$ es convergente, pero $\sum \lvert z_n \rvert$ diverge la serie se 
 
   Al igual que con la prueba de la razón, si el límite es mayor que 1 diverge, y si es igual a uno, nada se puede concluir respecto de la convergencia.
 \end{theorem}
+
+Existen otros criterios de convergencia, pero estos serán más que suficiente para los fines de este capítulo. 
+
+\subsection{Series de potencias}
+
+Uno de los temas más importantes de este repaso sobre series y sucesiones es el tema de series de potencias y series geométricas (que no son más que un caso particular de las primeras). La ventaja de trabajar con estos dos tipos de series es que, en general será posible saber su convergencia o divergencia de una forma muy sencilla, y además si es convergente podemos calcular la suma.
+
+Primero veamos el caso particular de la serie geométrica rápidamente. 
+\begin{definition}[Serie geométrica]
+Llamamos serie geométrica a la serie de la forma 
+$$
+\sum_{n=0}^\infty ar^n = a + ar + ar^2 + ar^3 + \cdots
+$$
+Esta serie converge si $-1<r<1$, si no diverge. La suma de una serie geométrica puede calcularse como 
+$$
+\lim_{n\to\infty}s_n = \frac{a}{1-r}
+$$
+Donde $a$ es un coeficiente constante cualquiera y $r$ se denomina la \textit{razón} de la serie. La demostración de este resultado no es difícil, pero no se demostrará ya que no es el objetivo del capítulo.
+\end{definition}
+
+Un detalle importante es que el valor de $a$ marca el valor de la primer suma parcial, ya que es el primer término de la serie. A veces puede darse una serie como $5+(1/2) + (1/2)^2 + (1/2)^3 + \dots$. Así resulta complicado ver cual es el valor $a$ si se observa la definición de la serie geométrica. Pero esto puede escribirse como
+$$
+5 + \sum_{n=1}^\infty \left(\frac{1}{2}\right)^n 
+$$
+y entonces la suma de la serie se puede calcular con la fórmula dada y es el primer término $a=5$ y la razón $r=1/2$.
+
+Ahora si, dejamos de entretenernos con las series geométricas y pasamos al caso más general: las series de potencias. 
+
+\begin{definition}[Serie de potencias]
+Una serie de la forma 
+\begin{equation*}
+\sum_{n=0}^\infty c_n(z-z_0)^n = c_0 + c_1(z-z_0) + c_2(z-z_0)^2 + \cdots
+\end{equation*}
+se denomina serie de potencias centrada en $z_0$ o en torno a $z_0$. Observe que cuando $z=z_0$ todos los términos son $0$ para $n\geqslant 1$ y de este modo la serie de potencias siempre es convergente cuando $z=z_0$, pero esto no es nada útil, ya que es una serie trivial (o de términos nulos).
+\end{definition}
+
+Nótese, que a diferencia de la definición de serie geométrica, en la serie de potencias hemos introducido una variable $z$. Esto nos permite generalizar la forma de una serie geométrica y obtener distintos centros. La serie geométrica puede ser vista como una serie de potencias centrada en cero ($z_0=0$).
+
+Para una serie de potencias dada $\sum_{n=0}^\infty c_n(z-z_0)^n$ hay solo tres posibilidades
+\begin{enumerate}
+  \item La serie converge solo cuando $z=z_0$
+  \item La serie converge para toda $z$
+  \item Hay un número positivo $R$ tal que la serie converge si $\lvert z-z_0 \rvert < R$ y diverge si $\lvert z-z_ \rvert > R$
+\end{enumerate}
+
+El número $R$ en el caso 3 se llama radio de convergencia de la serie de potencias. Por convención, el radio de convergencia es $R=0$ en el caso 1 y $R=\infty$ en el caso 2.
+El intervalo de convergencia de una serie de potencias es el intervalo que consiste en todos los valores de $z$ para los cuales la serie converge. En el caso 1 el intervalo consta de un solo punto $z_0$. En el caso 2 el intervalo es $(-\infty, \infty)$. 
+
+\subsection{La serie de Taylor}
+
+Este es, en definitiva, el último tema y más importante de esta sección. Las series de Taylor nos permiten representar funciones como series de potencias (siempre y cuando la función sea representable por la serie). En los números reales vimos que para que una serie sea una buena representación de la función, la serie debe converger a la función. Para que una serie sea convergente a la función, la función en cuestión debe tener derivadas de todo orden. Como ya hemos visto, esto es un problema en los reales, ya que no es posible garantizar la existencia de las derivadas. Sin embargo, las funciones complejas analíticas hemos demostrado que tienen derivadas de todo orden y es posible representarlas como series de potencias.
+
+En variable real, decíamos que la serie de Taylor de una función es 
+$$
+f(x) = f(a) + f'(a)(x - a) + \frac{f''(a)}{2!}(x - a)^2 + \cdots = \boxed{\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x - a)^n}
+$$
