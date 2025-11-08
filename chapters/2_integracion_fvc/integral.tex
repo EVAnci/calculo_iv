@@ -47,13 +47,13 @@ Hasta aquí solo se ha integrado sobre curvas suaves. Se puede extender la defin
 
 Es posible pensar en la integral de una función compleja sobre una curva como una suma de integrales de línea de funciones de valor real. Sea $f(z)=u(x,y)+jv(x,y)$ y, en la curva $\Gamma$, supongamos que $z(t)=x(t)+jy(t)$ para $t\in[a,b]$. Ahora
 $$
-f(z(t))=u(x(t),y(t)) + jv(x(t),y(t)) \qquad \text{y} \qquad z'(t)=x'(t)+jv'(t)
+f(z(t))=u(x(t),y(t)) + jv(x(t),y(t)) \qquad \text{y} \qquad z'(t)=x'(t)+jy'(t)
 $$
-entonces al hacer $f(z(t))\cdot z'(t)$, teniendo en cuenta la definición \ref{eq:definicion_de_integral_compleja},
-\begin{align*}
-  \int_\Gamma f(z)dz =& \int_a^b [u(x(t),y(t))x'(t)-v(x(t),y(t))y'(t)]dt + \\
-                      & +j\int_a^b [v(x(t),y(t))x'(t)+u(x(t),y(t))y'(t)]dt
-\end{align*}
+usaremos la notación $u(x(t),y(t))=u(t)$, $v(x(t),y(t))=v(t)$, $x(t)=x_t$ y $y(t)=y_t$ que es más compacta. Entonces al hacer $f(z(t))\cdot z'(t)$, teniendo en cuenta la definición \ref{eq:definicion_de_integral_compleja},
+\begin{gather*}
+  \int_\Gamma f(z)dz = \int_a^b (u(t)\,x'_t-v(t)\,y'_t)dt  
+                       +j\int_a^b (v(t)\,x'_t+u(t)\,y'_t)dt
+\end{gather*}
 En la notación de integrales de línea reales
 \begin{equation}
   \int_\Gamma f(z)dz = \int_\Gamma u\,dx-v\,dy + j\int_\Gamma v\,dx+u\,dy
@@ -102,7 +102,7 @@ Esto, podría haber sido un enunciado más de propiedades de integrales compleja
     \int_\Gamma f(z)\,dz &= \int_a^b f(z(t))z'(t)\,dt = \int_a^b F'(z(t))z'(t)\,dt = \int_a^b \frac{d}{dt}F(z(t))\,dt \\
                          &= \int_a^b \frac{d}{dt} U(x(t),y(t))dt + j\int_a^b \frac{d}{dt}V(x(t),y(t))dt
   \end{align*}
-  Ahora es factible aplicar el teorema fundamental del cálculo a las dos integrales reales de la derecha para obtener
+  Ahora es factible aplicar el teorema fundamental del cálculo a las dos integrales reales de arriba para obtener
   \begin{align*}
     \int_\Gamma f(z)\,dz &= U(x(b),y(b))+jV(x(b),y(b))-U(x(a),y(a))-jV(x(a),y(a)) \\ 
                          &= F(x(b),y(b))-F(x(a),y(a)) = \boxed{F(\Gamma(b))-F(\Gamma(a))}
@@ -195,7 +195,7 @@ Lo bueno, es que si la serie es uniformemente convergente, entonces es posible r
   $$
   \lvert f_n(z) \rvert \leqslant M_n
   $$
-  es decir, todas las funciones son \textbf{acotadas}.
+  es decir, todas las funciones son \textbf{acotadas}, y la serie de los números $M_n$ es convergente.
 
   Entonces $\sum_{n=1}^\infty f_n(z)$ converge absolutamente para todo $z$ en $\Gamma$. Más aún, si se denota $\sum_{n=1}^\infty f_n(z)=g(z)$, entonces
   $$
@@ -203,7 +203,7 @@ Lo bueno, es que si la serie es uniformemente convergente, entonces es posible r
   $$
 \end{theorem}
 
-Este teorema es importante porque nos abre la puerta al teorema de Cauchy. Si bien no se demostrará, se explicará el concepto que cubre.
+Este teorema es importante porque nos abre la puerta al teorema de los Residuos que lo veremos con detalle en el capitulo \ref{chpt:residuos}. Si bien no se demostrará, se explicará el concepto que cubre.
 
 El teorema garantiza que, bajo ciertas hipótesis, la integral de una serie de funciones es igual a la serie de las integrales de cada función. Esto es útil porque en general no se puede intercambiar integrales y series sin verificar condiciones adicionales.
 
@@ -211,7 +211,8 @@ Antes de enunciar el teorema, se pide
 \begin{itemize}
   \item Que la curva $\Gamma$ sea suave, para que la integral esté bien definida.
   \item Que cada función $f_n$ sea continua sobre $\Gamma$.
-  \item Que cada $f_n$ esté acotada uniformemente por $M_n$ en toda la curva. La serie \(\sum_{n=1}^\infty M_n\) converge (es decir, la suma de las \(M_n\) es finita).
+  \item Que cada $f_n$ esté acotada uniformemente por $M_n$ en toda la curva. 
+  \item Y la serie \(\sum_{n=1}^\infty M_n\) converge.
 \end{itemize}
 
 Con esto, decimos que la serie \(\sum_{n=1}^\infty f_n(z)\) converge absolutamente para todo \(z\) en \(\Gamma\). Esto significa que la serie de los valores absolutos \(\sum_{n=1}^\infty |f_n(z)|\) converge, lo que implica que la serie original también converge. Entonces, si denotamos \(g(z) = \sum_{n=1}^\infty f_n(z)\), entonces:

@@ -51,7 +51,7 @@ Este capítulo introduce la integración de funciones complejas. A diferencia de
 \begin{tcolorbox}[title=Conceptos de dominios,resumen]
   \textbf{Conjunto Conexo}: Un conjunto donde dos puntos cualesquiera pueden unirse mediante una trayectoria contenida totalmente en el conjunto.
 
-  \textbf{Conjunto Simplemente Conexo}: Un conjunto conexo que ``no tiene agujeros''. Formalmente, cualquier trayectoria cerrada simple dibujada dentro del conjunto encierra únicamente puntos que también pertenecen al conjunto. Un disco es simplemente conexo; una corona (anillo) no lo es.
+  \textbf{Dominio Simplemente Conexo}: Un conjunto abierto conexo que ``no tiene agujeros''. Formalmente, cualquier trayectoria cerrada simple dibujada dentro del conjunto encierra únicamente puntos que también pertenecen al conjunto. Un disco es simplemente conexo; una corona (anillo) no lo es.
 \end{tcolorbox}
 
 \begin{tcolorbox}[title=Teorema de Cauchy,resumen]
@@ -86,3 +86,12 @@ $$
 \textbf{Importancia}: Esta fórmula es crucial. Permite calcular integrales de funciones con singularidades (como $1/(z-z_0)$) y es fundamental para demostrar que si una función es analítica, entonces sus derivadas de todos los órdenes también existen y son analíticas.
 \end{tcolorbox}
 
+\begin{tcolorbox}[title=Derivada de una función analítica,resumen]
+  Si $f(z)$ es analítica en un dominio $D$, entonces tiene derivadas de todos los órdenes en cada punto de $D$, las cuales entonces también son funciones analíticas en $D$.
+
+  La derivada en un punto $z_0\in D$ se calcula como 
+  $$
+    f^{(n)}(z_0) = \frac{n!}{j2\pi}\oint_\Gamma \frac{f(z)}{(z-z_0)^{n+1}}dz
+  $$
+  con $n=1,2,\dots$ y $\Gamma$ una curva simple cerrada que encierra únicamente puntos de $D$ y que contiene a $z_0$. Aquí se asume que el sentido de integración es antihorario.
+\end{tcolorbox}

@@ -2,7 +2,7 @@
 
 Ahora se demostrará que una función compleja holomorfa (o diferenciable) en $D$ como se mencionó en la sección \ref{sec:definicion_de_analiticidad} también es analítica en $D$. Entonces dicha función tiene derivadas de todos los órdenes en todos los puntos de $D$.
 
-Para funciones reales no hay un resultado como este. Una función real diferenciable puede no tener segunda derivada. Y si tiene segunda derivada, puede no tener una tercera, y así sucesivamente. En otras palabras, si una función real es diferenciable una vez, nada puede concluirse acerca de la existencia de la segunda derivada o derivadas superiores. Así, en este sentido las funciones analíticas complejas se comportan mucho más sencillamente que las funciones que las funciones reales.
+Para funciones reales no hay un resultado como este. Una función real diferenciable puede no tener segunda derivada. Y si tiene segunda derivada, puede no tener una tercera, y así sucesivamente. En otras palabras, si una función real es diferenciable una vez, nada puede concluirse acerca de la existencia de la segunda derivada o derivadas superiores. Así, en este sentido las funciones analíticas complejas se comportan mucho más sencillamente que las funciones reales.
 
 \begin{theorem}[Derivadas de una función analítica]\label{teo:derivadas_de_todos_los_ordenes}
   Si $f(z)$ es analítica en un dominio $D$, entonces tiene derivadas de todos los órdenes en cada punto de $D$, las cuales entonces también son funciones analíticas en $D$.
@@ -10,6 +10,7 @@ Para funciones reales no hay un resultado como este. Una función real diferenci
   La derivada en un punto $z_0\in D$ se calcula como 
   \begin{equation}
     f^{(n)}(z_0) = \frac{n!}{j2\pi}\oint_\Gamma \frac{f(z)}{(z-z_0)^{n+1}}dz
+  \label{eq:derivada_de_orden_n}
   \end{equation}
   con $n=1,2,\dots$ y $\Gamma$ una curva simple cerrada que encierra únicamente puntos de $D$ y que contiene a $z_0$. Aquí se asume que el sentido de integración es antihorario.
 \end{theorem}
@@ -24,7 +25,7 @@ $$
 \begin{proof}
   Para demostrar que la derivada en un punto $z_0\in D$ puede escribirse usando el teorema \ref{teo:derivadas_de_todos_los_ordenes}, partimos de la definición de derivada 
   $$
-  f'(z_0) = \lim_{\Delta z \to 0} \frac{f(z+\Delta z)-f(z)}{\Delta z}
+  f'(z_0) = \lim_{\Delta z \to 0} \frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}
   $$
   Usando la fórmula de la integral de Cauchy (ecuación \eqref{eq:formula_de_la_integral_de_cauchy}), podemos escribir las funciones del numerador como
   \begin{align*}
@@ -33,16 +34,88 @@ $$
   \end{align*}
   Y, reemplazando estas expresiones en el límite y operando algebraicamente:
   \begin{align*}
-    f'(z_0)=&\lim_{\Delta z \to 0} \frac{1}{j2\pi\Delta z} \left( \oint_\Gamma \frac{f(z)}{z-(z_0+\Delta z)}dz - \oint_\Gamma \frac{f(z)}{z-z_0}dz \right) \\ 
-    =&\lim_{\Delta z \to 0} \frac{1}{j2\pi\Delta z} \left( \oint_\Gamma \frac{f(z)}{z-z_0-\Delta z} - \frac{f(z)}{z-z_0}dz \right) \\ 
-    =&\lim_{\Delta z \to 0} \frac{1}{j2\pi\Delta z} \left( \oint_\Gamma \frac{f(z)(z-z_0)-f(z)(z-z_0-\Delta z)}{(z-z_0-\Delta z)(z-z_0)}dz \right) \\ 
-    =&\lim_{\Delta z \to 0} \frac{1}{j2\pi\Delta z} \left( \oint_\Gamma \frac{\cancel{f(z)z}-\cancel{f(z)z_0}-\cancel{f(z)z}+\cancel{f(z)z_0}+f(z)\Delta z}{(z-z_0-\Delta z)(z-z_0)}dz \right) \\ 
-    =&\lim_{\Delta z \to 0} \frac{\cancel{\Delta z}}{j2\pi\cancel{\Delta z}} \left( \oint_\Gamma \frac{f(z)}{(z-z_0-\Delta z)(z-z_0)}dz \right) \\  
-    f'(z_0)=&\lim_{\Delta z \to 0} \frac{1}{j2\pi} \left( \oint_\Gamma \frac{f(z)}{(z-z_0-\Delta z)(z-z_0)}dz \right) 
+    f'(z_0)=&\lim_{\Delta z \to 0} \frac{1}{j2\pi\Delta z} 
+      \left( 
+        \oint_\Gamma \frac{f(z)}{z-(z_0+\Delta z)}dz - 
+        \oint_\Gamma \frac{f(z)}{z-z_0}dz 
+      \right) \\ 
+    =&\lim_{\Delta z \to 0} \frac{1}{j2\pi\Delta z} 
+      \left( 
+        \oint_\Gamma \frac{f(z)}{z-z_0-\Delta z} - 
+        \frac{f(z)}{z-z_0}dz 
+      \right) \\ 
+    =&\lim_{\Delta z \to 0} \frac{1}{j2\pi\Delta z} 
+      \left( 
+        \oint_\Gamma f(z)\frac{(z-z_0)-(z-z_0-\Delta z)}{(z-z_0-\Delta z)(z-z_0)}dz 
+      \right) \\ 
+    =&\lim_{\Delta z \to 0} \frac{1}{j2\pi\Delta z} 
+      \left( 
+        \oint_\Gamma f(z)\frac
+          {\cancel{z}-\cancel{z_0}-\cancel{z}+\cancel{z_0}+f(z)\Delta z}
+          {(z-z_0-\Delta z)(z-z_0)}dz 
+      \right) \\ 
+    =&\lim_{\Delta z \to 0} \frac{\cancel{\Delta z}}{j2\pi\cancel{\Delta z}} 
+      \left( 
+        \oint_\Gamma \frac{f(z)}{(z-z_0-\Delta z)(z-z_0)}dz 
+      \right) \\  
+    f'(z_0)=&\lim_{\Delta z \to 0} \frac{1}{j2\pi} 
+      \left( 
+        \oint_\Gamma \frac{f(z)}{(z-z_0-\Delta z)(z-z_0)}dz 
+      \right) 
   \end{align*}
   Y, en esta última expresión, puede verse claramente que si $\Delta z\to 0$, entonces la integral tiende a 
   $$
   \boxed{f'(z)=\frac{1}{j2\pi}\oint_\Gamma \frac{f(z)}{(z-z_0)^2}dz}
   $$
-  quedando demostrado el teorema.
+  lo que se quería demostrar.
+\end{proof}
+
+Ahora, para demostrar que el teorema \ref{teo:derivadas_de_todos_los_ordenes} se cumple para todo $n$, vamos a suponer que la ecuación \eqref{eq:derivada_de_orden_n}:
+\begin{equation*}
+  f^{(n)}(z_0) = \frac{n!}{j2\pi}\oint_\Gamma \frac{f(z)}{(z-z_0)^{n+1}}dz
+\end{equation*}
+es cierta, y demostraremos que se cumple para $n+1$, quedando demostrada así, para todo $n=1,2,\dots$.
+
+\begin{proof}
+  Suponemos entonces que la ecuación \eqref{eq:derivada_de_orden_n} se cumple. Entonces
+  \begin{equation}
+    f^{(n+1)}(z_0) = \lim_{\Delta z\to 0} \frac{f^{(n)}(z_0+\Delta z)-f^{(n)}(z_0)}{\Delta z} 
+    \label{eq:derivada_n_mas_uno}
+  \end{equation}
+  Por hipótesis, hemos dicho que \eqref{eq:derivada_de_orden_n} se cumple, por lo que podemos expresar las funciones del numerador de \eqref{eq:derivada_n_mas_uno} como 
+  \begin{align*}
+    f^{(n)}(z_0+\Delta z) &= 
+      \frac{n!}{j2\pi}
+      \oint_\Gamma \frac{f(z)}{(z-z_0-\Delta z)^{n+1}} dz \\ 
+    f^{(n)}(z_0) &= 
+      \frac{n!}{j2\pi}
+      \oint_\Gamma \frac{f(z)}{(z-z_0)^{n+1}} dz 
+  \end{align*}
+  Reemplazando estas expresiones en el límite 
+  \begin{align*}
+    f^{(n+1)}(z_0) &= \lim_{\Delta z \to 0} \frac{n!}{j2\pi\Delta z} 
+      \oint_\Gamma \frac{f(z)}{(z-z_0-\Delta z)^{n+1}}-
+        \frac{f(z)}{(z-z_0)^{n+1}}dz \\ 
+                   &= \lim_{\Delta z \to 0} \frac{n!}{j2\pi\Delta z} 
+                   \oint_{\Gamma} f(z) \frac{(z-z_0)^{n+1}-(z-z_0-\Delta z)^{n+1}}
+                   {(z-z_0-\Delta z)^{n+1}(z-z_0)^{n+1}}
+  \end{align*}
+  y de alguna manera se obtiene que
+  $$
+  (z-z_0)^{n+1}-(z-z_0-\Delta z)^{n+1} = \Delta z(n+1)(z-z_0)^n
+  $$
+  De forma tal, que al reemplazar en la integral resulta 
+  $$
+  f^{(n+1)}(z_0) = \lim_{\Delta z \to 0} 
+    \frac{n!(n+1)\cancel{\Delta z}}{j2\pi\cancel{\Delta z}} 
+    \oint_\Gamma \frac
+      {f(z)\cancel{(z-z_0)^n}}
+      {(z-z_0-\Delta z)^{n+1}(z-z_0)^{\cancel{n+1}}} ~ dz
+  $$
+  y tras aplicar el límite, al igual que para la primera derivada, cuando $\Delta z\to0$ resulta  
+  $$
+  f^{(n+1)}(z_0) = \frac{(n+1)!}{j2\pi} \oint_\Gamma 
+  \frac{f(z)}{(z-z_0)^{n+2}}~ dz
+  $$
+  quedando así demostrado el teorema \ref{teo:derivadas_de_todos_los_ordenes}.
 \end{proof}

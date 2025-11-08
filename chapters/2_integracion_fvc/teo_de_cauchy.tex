@@ -27,7 +27,7 @@ A pesar de que esta conclusión puede parecer obvia para las curvas cerradas que
 En la sección \ref{sec:1_curvas_y_regiones_en_el_plano_complejo} estuvimos analizando algunas regiones del plano complejo y sus propiedades. Esto lo hicimos para poder definir el dominio de una función compleja. Ahora vamos a profundizar algunos aspectos sobre las regiones del plano complejo para poder enunciar correctamente el teorema de Cauchy.
 
 \begin{definition}[Trayectoria]
-  Una trayectoria es una curva simple, suave a trozos. Una trayectoria pertenece a un conjunto $S$ si su gráfica está contenida dentro de $S$
+  Una trayectoria es una curva simple, suave a trozos. Una trayectoria pertenece a un conjunto $S$ si su gráfica está contenida dentro de $S$.
 \end{definition}
 
 Algunas de las curvas paramétricas que hemos realizado anteriormente (como la figura \ref{fig:ejemplo_parabola_gamma}) son trayectorias en $\mathbb{C}$. Así, una trayectoria es una concatenación de curvas suaves que no se cruzan a sí mismas.
@@ -74,7 +74,7 @@ Ahora si, estamos listos para enunciar el teorema de Cauchy.
   \]
 \end{theorem}
 
-Con este teorema, solo se cumple si la función es analítica. Si $f(z)$ no es analítica nada podemos asegurar con respecto a su resultado, ya que puede o no ser cero. Veamos un ejemplo de cada una.
+Este teorema, solo se cumple si la función es analítica. Si $f(z)$ no es analítica nada podemos asegurar con respecto a su resultado, ya que puede o no ser cero. Veamos un ejemplo de cada una.
 
 \begin{example}
   Dada $f(z)=e^z$ calcular su integral sobre la curva $\Gamma(t)=e^{jt}$ con $t\in[0,2\pi]$ que es la cirfunferencia unitaria. Como $f$ es analítica para todo $z\in\mathbb{C}$, entonces
@@ -115,7 +115,7 @@ Debido a que suponemos que $f$ es una función que cumple con el teorema de Cauc
   \label{eq:teorema_de_green_aplicado_a_cauchy_2}
   \oint_\Gamma v\,dx + u\,dy &= \iint_R -u_x - v_y \,dA
 \end{align}
-Donde $R$ es la región acotada por $\Gamma$. Como hemos dicho que $f$ es analítica y $u(x,y)$ y $v(x,y)$ cumplen las ecuaciones de CR. Si observamos el integrando del miembro derecho de las ecuaciones \eqref{eq:teorema_de_green_aplicado_a_cauchy_1} y \eqref{eq:teorema_de_green_aplicado_a_cauchy_2} no son más que las ecuaciones de CR reordenadas:
+Donde $R$ es la región acotada por $\Gamma$. Como hemos dicho que $f$ es analítica y $u(x,y)$ y $v(x,y)$ cumplen las ecuaciones de CR si observamos el integrando del miembro derecho de las ecuaciones \eqref{eq:teorema_de_green_aplicado_a_cauchy_1} y \eqref{eq:teorema_de_green_aplicado_a_cauchy_2} no son más que las ecuaciones de CR reordenadas:
 $$
  u_x = v_y \rightarrow v_y-u_x=0 \qquad v_y = -u_x \rightarrow -u_x-v_y = 0
 $$
@@ -174,7 +174,7 @@ Ahora, sabemos que $D$ es todo el plano complejo menos un punto. ¿Es $D$ simple
 $$
 \oint_\Gamma f(z) dz = \int_{0}^{2\pi} \frac{1}{e^{jt}} j e^{jt}\, dt = j\int_0^{2\pi}1 \,dt = \boxed{2\pi j}
 $$
-¿Y qué pasaría si aumentamos el tamaño de la curva $\Gamma$ o damos una curva cualquiera $\Phi$ que encierre el punto $z_0$ pero sea complicada de parametrizar? 
+¿Y qué pasaría si aumentamos el tamaño de la curva $\Gamma$ o damos una curva cualquiera $\Phi$ que encierre el punto $z_0$ pero sea difícil de parametrizar? 
 \end{example}
 Bueno, a primera vista debemos calcular la integral volviendo a la definición, sin embargo, el teorema de Cauchy se puede generalizar para dominios múltiplemente conexos. Digamos, llamaremos $D\subseteq D'$ a un dominio $D$ menor o igual que $D'$, tal que $f$ es analítica en $D'$ (y por tanto en $D$).
 
