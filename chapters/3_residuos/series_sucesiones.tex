@@ -1,0 +1,85 @@
+
+\section{Revisión: series y sucesiones}
+\label{sec:series_y_sucesiones}
+
+\begin{definition}[Sucesión]
+  Una sucesión de números es una función que toma valores naturales o enteros, y devuelve valores reales, o complejos en este caso.
+  $$
+  \{z_n\}=z_1,z_2,\dots
+  $$
+  Cada uno de los $z_n$ es llamado término de la sucesión.
+\end{definition}
+
+Una sucesión puede o no ser convergente. Decimos que una sucesión es convergente si existe el siguiente límite y $L$ es finito.
+$$
+\lim_{n\to\infty} z_n = L
+$$
+
+\begin{definition}[Serie]
+  Una serie es la suma de los términos de una sucesión 
+  $$
+  \sum_{n=1}^\infty z_n.
+  $$
+  Aquí, $n$ comienza en $1$, pero podría comenzar desde otro valor entero.
+\end{definition}
+
+Una serie, para poder desarrollarse y encontrar su suma (si es que tiene), es necesario sumar todos sus términos. Sin embargo, la suma es una \textbf{operación binaria}. Esto significa que toma sólo dos números. No podemos sumar los $n$ o infinitos términos de una sola pasada. Para ello, usamos las \textbf{sumas parciales}.
+
+\begin{definition}[Sumas parciales]
+  Dada una serie $\sum_{n=1}^\infty z_n$ las sumas parciales $s_n$ se desarrollan tal que 
+  \begin{enumerate}
+    \item $s_1=z_1$
+    \item $s_2=z_1+z_2=s_1+z_2$
+    \item $s_3=z_1+z_2+z_3=s_2+z_3$
+  \end{enumerate}
+  Y así sucesivamente, donde la suma $k$-ésima puede escribirse como 
+  $$
+  s_k = z_1+\dots+z_k = s_{k-1} + z_k
+  $$
+  Esta última expresión es muy útil, pero no siempre es sencillo determinar la convergencia de una serie aunque se tengan sus sumas parciales.
+\end{definition}
+
+Si una serie converge a un valor $S$, este valor se llama \textbf{suma de la serie}.
+
+\subsection{Criterios de convergencia}
+
+Los criterios o pruebas de convergencia de una serie son útiles para comprobar la convergencia de una serie. Es decir, nos permiten aplicar un procedimiento para saber rápidamente si una serie converge.
+
+A continuación se listarán las pruebas de convergencia como teoremas.
+
+\begin{theorem}[Divergencia]
+  Si una serie $\sum z_n$ converge, entonces 
+  $$
+  \lim_{n\to\infty}z_n = 0
+  $$
+  Esto es una condición necesaria de convergencia, pero no suficiente.
+\end{theorem}
+
+\begin{theorem}[Convergencia absoluta]
+  Una serie $\sum z_n$ se denomina absolutamente convergente si 
+  $$
+  \sum_{n=1}^\infty \lvert z_n \rvert = S
+  $$
+  es convergente.
+\end{theorem}
+
+Si $\sum z_n$ es convergente, pero $\sum \lvert z_n \rvert$ diverge la serie se llama condicionalmente convergente.
+
+\begin{theorem}[Prueba de la razón]
+  Si una serie $\sum z_n$ es absolutamente convergente, entonces se cumple que 
+  $$
+  \lim_{n\to\infty} \left\lvert \frac{z_{n+1}}{z_n} \right\rvert < 1
+  $$
+  Es importante aclarar que esto tampoco es una condición suficiente. Por ejemplo, la serie armónica $\sum 1/z$ cumple con esta prueba, pero es divergente.
+
+  Lo que podemos asegurar con este teorema es que si dicho limite es mayor que 1, diverge. Y por otro lado, si ese límite es 1, el criterio no puede garantizar convergencia ni divergencia.
+\end{theorem}
+
+\begin{theorem}[Prueba de la raíz]
+  Si una serie $\sum z_n$ converge absolutamente, entonces cumple que
+  $$
+  \lim_{n\to\infty}\sqrt[n]{\lvert z_n \rvert} < 1
+  $$
+
+  Al igual que con la prueba de la razón, si el límite es mayor que 1 diverge, y si es igual a uno, nada se puede concluir respecto de la convergencia.
+\end{theorem}
