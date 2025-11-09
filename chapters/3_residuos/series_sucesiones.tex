@@ -18,7 +18,7 @@ $$
 \begin{definition}[Serie]
   Una serie es la suma de los términos de una sucesión 
   $$
-  \sum_{n=1}^\infty z_n.
+  \sum_{n=1}^\infty z_n = z_1 + z_2 + z_3 +\cdots
   $$
   Aquí, $n$ comienza en $1$, pero podría comenzar desde otro valor entero.
 \end{definition}
@@ -36,7 +36,7 @@ Una serie, para poder desarrollarse y encontrar su suma (si es que tiene), es ne
   $$
   s_k = z_1+\dots+z_k = s_{k-1} + z_k
   $$
-  Esta última expresión es muy útil, pero no siempre es sencillo determinar la convergencia de una serie.
+  Esta última expresión es muy útil, pero no siempre es sencilla de encontrar. La suma $k$-ésima (o $n$-ésima en otras bibliografías) nos determinar la convergencia de una serie.
 \end{definition}
 
 \begin{definition}[Convergencia de la serie]
@@ -48,10 +48,9 @@ Una serie, para poder desarrollarse y encontrar su suma (si es que tiene), es ne
   $$
   Esto significa que, aunque no podemos realizar una suma infinita directamente, podemos aproximar el resultado observando como se comportan las sumas parciales a medida que $n$ crece.
 
-  Si el límite existe y es finito decimos que converge. Si no, la serie diverge.
+  Si el límite existe y es finito decimos que converge. Si no, la serie diverge. Si una serie converge a un valor $S$, este valor se llama \textbf{suma de la serie}. En general resulta difícil encontrar una expresión del término $k$-ésimo de las sumas parciales, y por ende calcular la suma de una serie resulta complicado.
 \end{definition}
 
-Si una serie converge a un valor $S$, este valor se llama \textbf{suma de la serie}. En general resulta difícil encontrar una expresión del término $k$-ésimo de las sumas parciales, y por ende calcular la suma de una serie resulta complicado.
 
 \begin{definition}[Residuo]
   Si se busca aproximar el valor de la suma de la serie con los primeros $k$ términos, entonces la suma aproximada $S_k$ es
@@ -131,7 +130,7 @@ Un detalle importante es que el valor de $a$ marca el valor de la primer suma pa
 $$
 5 + \sum_{n=1}^\infty \left(\frac{1}{2}\right)^n 
 $$
-y entonces la suma de la serie se puede calcular con la fórmula dada y es el primer término $a=5$ y la razón $r=1/2$.
+y entonces la suma de la serie se puede calcular con la fórmula dada y es el primer término $a=1/2$ y la razón $r=1/2$ y a esto, luego podemos sumarle $5$.
 
 Ahora si, dejamos de entretenernos con las series geométricas y pasamos al caso más general: las series de potencias. 
 
