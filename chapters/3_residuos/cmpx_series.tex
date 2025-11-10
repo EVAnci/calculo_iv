@@ -1,0 +1,64 @@
+\section{Representación en serie de potencias}
+
+Ya se sabe que una serie de potencias tiene un radio de convergencia (llámese $R$). Una función $f$ puede ser representada por una serie de potencias, digamos centrada en $z_0$. Entonces se dice que $f(z)$ está representada por la serie de potencias o que está desarrollada en serie de potencias si 
+\begin{equation}
+  f(z)=\sum_{n=0}^\infty c_n (z-z_0)^n = c_0 + c_1(z-z_0) + c_2(z-z_0)^2 + \dots
+\end{equation}
+la función es igual a la suma de la serie de potencias (o bien, la serie converge a $f(z)$). Esta representación es única, es decir, una función no puede representarse por dos series de potencias diferentes con el mismo centro.
+
+\subsection{Series de Taylor}
+
+A continuación se demostrará que \textbf{toda} función analítica $f(z)$ puede representarse mediante series de potencias, denominadas series de Taylor de $f(z)$ y que son de la misma forma que en \texttt{Cálculo III}, con $x$ sustituida por el complejo $z$.
+
+La herramienta importante en la obtención de la fórmula de Taylor es la fórmula de la integral de Cauchy que ya hemos visto:
+\begin{equation}
+f(z)=\frac{1}{j2\pi} \oint_\Gamma \frac{f(z^\ast)}{z^\ast -z}dz^\ast
+\label{eq:formula_integral_cauchy(sec3)}
+\end{equation}
+Aquí hemos llamado $z^\ast$ a la variable y $z$ al punto (que usualmente llamabamos $z_0$). Un esquema de la situación puede verse en la figura \ref{fig:formula_integral_cauchy(sec3)}.
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[>=stealth]
+    \draw[->,gray] (0,0) -- (4,0) node[right] {\scriptsize$x$};
+    \draw[->,gray] (0,0) -- (0,3) node[right] {\scriptsize$y$};
+
+    \draw[red,fill=red!10,thick] (2,1.5) circle (1.2);
+
+    \path[red] (2,1.5) -- +(20:1.2) node[right] {$C$};
+
+    \fill[black] (2,1.5) circle (2pt) node[right] {$z_0$};
+
+    \draw[thick] (1.7,2) circle (1pt) node[right] {$z$};
+
+    \fill[black] (2,1.5) -- +(45:1.2) circle (2pt) node[above right] {$z^\ast$};
+
+    \draw[->] (2,1.5) -- node[below] {$r$} +(200:1.2cm);
+  \end{tikzpicture}
+  \caption{Esquema de la ecuación \eqref{eq:formula_integral_cauchy(sec3)}}
+  \label{fig:formula_integral_cauchy(sec3)}
+\end{figure}
+
+Un detalle que será de utilidad es que si observamos la figura \ref{fig:formula_integral_cauchy(sec3)} vemos que la distancia desde el centro ($z_0$) al punto $z$ es en cualquier caso menor que la distancia desde el centro a $z^\ast$, por tanto:
+\begin{equation}
+  \left\lvert \frac{z-z_0}{z^\ast -z_0} \right\rvert < 1
+  \label{eq:distancias_al_centro}
+\end{equation}
+
+La siguiente idea es desarrollar $1/(z^\ast - z)$ de la ecuación \eqref{eq:formula_integral_cauchy(sec3)} como serie geométrica. Aplicando algunos pasos algebraicos, primero se obtiene
+\begin{equation*}
+  \frac{1}{z^\ast -z}= \frac{1}{z^\ast-z_0-(z-z_0)}=\frac{1}{(z^\ast- z_0)\left(1-\frac{z-z_0}{z^\ast -z_0}\right)}
+\end{equation*}
+Si llamamos $q=\frac{z-z_0}{z^\ast -z_0}$ para mantener una notación más compacta a esta última expresión, podemos escribirla como
+\begin{equation}
+  \frac{1}{z^\ast -z} = \left(\frac{1}{z^\ast -z_0}\right)\left(\frac{1}{1-q}\right)
+  \label{eq:suma_geometrica}
+\end{equation}
+donde $q$ es la razón de la serie geométrica. Anteriormente, en la ecuación \eqref{eq:distancias_al_centro} hemos dicho que ?.. Entonces, podemos escribir la expresión \eqref{eq:suma_geometrica} de la siguiente manera
+\begin{equation}
+  \frac{1}{z^\ast-z}=\sum_{k=1}^{n} = 1 + q + \dots + q^n
+  \label{eq:serie_geometrica_taylor}
+\end{equation}
+
+Ahora que tenemos esta última expresión, podemos escribir $1/(z^\ast-z)$ de la integral de la primera ecuación \eqref{eq:formula_integral_cauchy(sec3)} como en la sumatoria de \eqref{eq:serie_geometrica_taylor}.
+
+Y como la serie geométrica es un caso particular de una serie de potencias, también se cumple que cuando es convergente, converge uniformemente. De este modo podemos aplicar las propiedades de diferenciación e integración a la sumatoria. 

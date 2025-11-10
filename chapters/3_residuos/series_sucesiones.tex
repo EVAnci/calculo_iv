@@ -36,13 +36,13 @@ Una serie, para poder desarrollarse y encontrar su suma (si es que tiene), es ne
   $$
   s_k = z_1+\dots+z_k = s_{k-1} + z_k
   $$
-  Esta última expresión es muy útil, pero no siempre es sencilla de encontrar. La suma $k$-ésima (o $n$-ésima en otras bibliografías) nos determinar la convergencia de una serie.
+  Esta última expresión es muy útil, pero no siempre es sencilla de encontrar. La suma $k$-ésima (o $n$-ésima en otras bibliografías) nos permite determinar la convergencia de una serie.
 \end{definition}
 
 \begin{definition}[Convergencia de la serie]
   Al construir las sumas parciales tenemos $s_1,s_2,\dots,s_k,\dots$. Esto no es más que una sucesión. A esta sucesión la llamaremos \textbf{sucesión de sumas parciales} y se denotará como $\{s_k\}$.
 
-  El valor de una serie infinita se define como el límite de sus sumas parciales, si existe:
+  La suma de una serie infinita se define como el límite de sus sumas parciales, si existe:
   $$
   \sum_{n=1}^\infty a_n = \lim_{k\to\infty} s_k
   $$
@@ -66,7 +66,7 @@ Una serie, para poder desarrollarse y encontrar su suma (si es que tiene), es ne
 
 \subsection{Criterios de convergencia}
 
-Los criterios o pruebas de convergencia de una serie son útiles para comprobar la convergencia de una serie. Es decir, nos permiten aplicar un procedimiento para saber rápidamente si una serie converge.
+Los criterios o pruebas de convergencia de una serie son útiles para comprobar la convergencia de una serie. Es decir, nos permiten aplicar un procedimiento para obtener conclusiones rápidamente sobre la convergencia de una serie.
 
 A continuación se listarán las pruebas de convergencia como teoremas.
 
@@ -162,3 +162,4 @@ En variable real, decíamos que la serie de Taylor de una función es
 $$
 f(x) = f(a) + f'(a)(x - a) + \frac{f''(a)}{2!}(x - a)^2 + \cdots = \boxed{\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x - a)^n}
 $$
+con lo que la revisión de series queda terminada. A continuación expandiremos este concepto de serie de Taylor para números complejos.
