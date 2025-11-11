@@ -40,7 +40,7 @@ La consecuencia más importante del teorema de la integral de Cauchy es la fórm
   \end{equation}
   Resolviendo el primer término del miembro derecho, vemos que $\Gamma$ es una curva paramétrica no conocida que encierra al punto $z_0$. Con ello, podemos aplicar el teorema de deformación \ref{teo:cauchy_doblemente_conexo} y podemos sustituir la curva $\Gamma$ por una circunferencia centrada en $z_0$ de radio $r$, tal que $r>0$ pero lo suficientemente pequeño como para estar dentro de $D$. De este modo se cumple la siguiente igualdad
   \begin{gather*}
-    f(z_0)\oint_\Gamma \frac{1}{z-z_0}dz = f(z)\oint_\gamma \frac{1}{z-z_0}dz
+    f(z_0)\oint_\Gamma \frac{1}{z-z_0}dz = f(z_0)\oint_\gamma \frac{1}{z-z_0}dz
   \end{gather*}
   Y la curva $\gamma$ puede parametrizarse fácilmente como $\gamma(t)=z_0+re^{jt}$ para $t\in[0\leqslant t \leqslant 2\pi]$. Entonces la integral queda
   \begin{gather*}
@@ -107,3 +107,49 @@ El teorema \ref{teo:formula_de_la_integral_de_cauchy} nos brinda una forma muy s
       $$
   \end{itemize}
 \end{example}
+
+\subsection{Fórmula de la integral de Cauchy para dominios de conexidad superior}
+
+Podemos obtener una fórmula de la integral de Cauchy para dominios múltiplemente conexos. 
+
+\begin{theorem}
+  Si $f(z)$ es analítica sobre $\Gamma_1$ t $\Gamma_2$ y en el dominio en forma de anillo (o corona) acotado por las curvas (figura \ref{fig:dominio_coronta_que_incluye_a_z_0}) y $z_0$ es cualquier punto en ese dominio entonces
+
+  \input{chapters/2_integracion_fvc/media/integral_cauchy_multiplemente_conexo_1.tex}
+  
+\begin{equation}
+  f(z_0) = \frac{1}{j2\pi}\ointctrclockwise_{\Gamma_1} \frac{f(z)}{z-z_0}dz + \frac{1}{j2\pi}\ointclockwise_{\Gamma_2}\frac{f(z)}{z-z_0}dz
+  \label{eq:formula_de_la_integral_de_cauchy_para_dominio_multiplementeconexo}
+\end{equation}
+en donde la integral exterior (sobre $\Gamma_1$) se toma en sentido antihorario, y la interior se toma en sentido horario.
+\end{theorem}
+
+\begin{proof}
+  Para demostrar este teorema primero trazamos una nueva trayectoria en sentido antihorario que encierre a $z_0$. De este modo el nuevo gráfico resulta:
+  \input{chapters/2_integracion_fvc/media/integral_cauchy_multiplemente_conexo_2.tex}
+
+  Con esto, partimos de la ecuación \eqref{eq:dom_de_conex_sup} o teorema de deformación para dominios múltiplemente conexos de conexidad superior:
+  $$
+  \ointctrclockwise_{\Gamma_1} \frac{f(z)}{z-z_0}dz = -\ointclockwise_{\Gamma_2} \frac{f(z)}{z-z_0}dz + \ointctrclockwise_{\Gamma_3}\frac{f(z)}{z-z_0}dz 
+  $$
+  Operando algebráicamente resulta
+  $$
+  \ointctrclockwise_{\Gamma_1} \frac{f(z)}{z-z_0}dz + \ointclockwise_{\Gamma_2}\frac{f(z)}{z-z_0}dz = \ointctrclockwise_{\Gamma_3} \frac{f(z)}{z-z_0}dz 
+  $$
+  Dividiendo miembro a miembro por $j2\pi$ queda 
+  $$
+  \frac{1}{j2\pi}\ointctrclockwise_{\Gamma_1} \frac{f(z)}{z-z_0}dz + \frac{1}{j2\pi}\ointctrclockwise_{\Gamma_2}\frac{f(z)}{z-z_0}dz = \frac{1}{j2\pi}\ointctrclockwise_{\Gamma_3} \frac{f(z)}{z-z_0}dz 
+  $$
+  Y si se observa el miembro derecho, es una integral de línea sobre la curva $\Gamma_3$ que encierra al punto $z_0$. Esto entonces podemos sustituirlo por $f(z_0)$ por la fórmula de la integral de Cauchy \eqref{eq:formula_de_la_integral_de_cauchy}. Entonces, llegamos a 
+  $$
+  f(z_0) = \frac{1}{j2\pi}\ointctrclockwise_{\Gamma_1} \frac{f(z)}{z-z_0}dz + \frac{1}{j2\pi}\ointclockwise_{\Gamma_2}\frac{f(z)}{z-z_0}dz
+  $$
+  Quedando así demostrada la ecuación \eqref{eq:formula_de_la_integral_de_cauchy_para_dominio_multiplementeconexo} del teorema.
+\end{proof}
+
+Nótese, que la curva $\Gamma_2$ se recorre en sentido horario. Si esta curva se reemplaza por otra curva $\gamma_2$ que se recorre en sentido antihorario la expresión resulta:
+\begin{equation}
+  f(z_0) = \frac{1}{j2\pi}\ointctrclockwise_{\Gamma_1} \frac{f(z)}{z-z_0}dz - \frac{1}{j2\pi}\ointctrclockwise_{\gamma_2}\frac{f(z)}{z-z_0}dz
+  \label{eq:formula_de_la_integral_de_cauchy_para_dominio_multiplementeconexo_todo_antihorario}
+\end{equation}
+Este último resultado puede ser útil en la demostración de la serie de Laurent (sección \ref{sec:serie_de_laurent}).

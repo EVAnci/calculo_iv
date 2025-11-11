@@ -1,0 +1,26 @@
+  \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+      \begin{scope}[decoration={
+          markings,
+          mark=at position 0.8 with {\arrow{>} \node[below right] {$\Gamma_1$};},
+        }]
+        \draw[red,thick,fill=red!10,rotate=20,postaction={decorate}] (0,0) ellipse (2.8 and 1.5);
+      \end{scope}
+      \begin{scope}[decoration={
+          markings,
+          mark=at position 0.8 with {\arrow{<} \node[below right] {$\Gamma_2$};},
+        }]
+        \draw[red,thick,fill=white,rotate=30,postaction={decorate}] (-0.5,0.2) ellipse (1 and 0.5);
+      \end{scope}
+      \begin{scope}[decoration={
+          markings,
+          mark=at position 0.4 with {\arrow{>} \node[left] {$\Gamma$};},
+        }]
+        \draw[thick,rotate=20,postaction={decorate}] (1.5,0.2) ellipse (0.4 and 0.7);
+      \end{scope}
+      \draw[thick,fill=white] (1.4,0.8) circle (2pt) node[below] {$z_0$};
+    \end{tikzpicture}
+    \caption{Trayectoria $\Gamma$ encierra a $z_0$.}
+    \label{fig:dominio_coronta_que_incluye_a_z_0_2}
+  \end{figure}

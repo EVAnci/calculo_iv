@@ -1,4 +1,5 @@
 \section{Teorema de Cauchy}
+\label{sec:teorema_de_cauchy}
 
 El teorema de Cauchy (o integral de Cauchy) es considerado el teorema fundamental de la integración compleja. El enunciado del teorema usa implícitamente el teorema de la curva de Jordan, que establece que una curva continua, simple y cerrada en el plano separa al plano en dos conjuntos abiertos. Uno de estos conjuntos es no acotado y se llama el \textit{exterior}, y el otro es acotado y se llama el \textit{interior}. La curva misma no pertenece a ninguno de estos conjuntos, pero marca la frontera de ambos.
 
@@ -300,6 +301,7 @@ Entonces la concatenación $\Phi_1 = \gamma_1 \oplus \Gamma_1 \oplus \gamma_2 \o
 \subsection{Dominios de conexidad superior}
 
 Para dominios de conexidad superior la idea es la misma. Así, para un dominio triplemente conexo se usan tres cortes $\gamma_1$, $\gamma_2$ y $\gamma_3$. Al sumar las integrales como antes, las integrales sobre los cortes se cancelan y la suma de las integrales sobre $C_1$ (sentido contrario a las manecillas del reloj) y $C_2$, $C_3$ (en sentido del movimiento de las manecillas del reloj) es cero. Así la integral sobre $C_1$ es igual a la suma de las integrales sobre $C_2$ y $C_3$, en donde ahora las tres se consideran en sentido contrario a las manecillas del reloj.
-$$
+\begin{equation}
 \oint_{C_1} f(z)dz = \oint_{C_2} f(z)dz + \oint_{C_3} f(z)dz
-$$
+\label{eq:dom_de_conex_sup}
+\end{equation}
