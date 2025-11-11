@@ -1,4 +1,5 @@
 \subsection{Serie de Laurent}
+\label{sec:serie_de_laurent}
 
 En aplicaciones, a menudo es necesario desarrollar una función $f(z)$ alrededor de puntos en los cuales ya no es analítica, sino singular. Así, el teorema de Taylor deja de ser aplicable, por lo que se requiere un nuevo tipo de series, denominadas series de Laurent, que constan de potencias enteras positivas y negativas de $z-z_0$ y que son convergentes en alguna corona (acotada por dos círculos con centro en $z_0$) en donde $f(z)$ es analítica. La función $f(z)$ puede tener puntos singulares no sólo fuera del circulo más grande (como en las series de Taylor), sino también dentro del círculo más pequeño, lo cual es una nueva característica.
 
@@ -9,7 +10,7 @@ En aplicaciones, a menudo es necesario desarrollar una función $f(z)$ alrededor
   \end{equation}
   donde la serie del primer término es la serie de Taylor y la serie del segundo término es la extensión de Laurent. Los coeficientes de esta serie de Laurent están definidos por las integrales
   $$
-  c_n=\frac{1}{j2\pi}\oint_\Gamma \frac{f(z^\ast)}{(z^\ast-z_0)^{n+1}}dz^\ast \qquad b_n =\frac{1}{j2\pi}\oint_\Gamma (z^\ast - z_0)^{n-1}f(z^\ast)dz^\ast
+  c_k=\frac{1}{j2\pi}\oint_\Gamma \frac{f(z^\ast)}{(z^\ast-z_0)^{k+1}}dz^\ast \qquad b_k =\frac{1}{j2\pi}\oint_\Gamma (z^\ast - z_0)^{k-1}f(z^\ast)dz^\ast
   $$
   cada integral se toma en sentido antihorario alrededor de cualquier trayectoria cerrada $\Gamma$ que esté en la corona y abarque el circulo interior como se muestra en la figura \ref{fig:teorema_de_laurent}.
   
@@ -19,11 +20,13 @@ En aplicaciones, a menudo es necesario desarrollar una función $f(z)$ alrededor
 \begin{figure}[ht]
   \centering
   \begin{tikzpicture}[>=stealth]
+    \draw[dashed,fill=gray!20,thick] (0,0) circle (2.1);
     \draw[red,fill=red!10,thick] (0,0) circle (2);
-    \draw[red,thick,fill=white] (0,0) circle (0.6);
+    \draw[red,thick,fill=gray!20] (0,0) circle (0.7);
+    \draw[dashed,thick,fill=white] (0,0) circle (0.6);
 
     \path[red] (0,0) -- +(20:2) node[right] {$\Gamma_1$};
-    \path[red] (0,0) -- +(280:0.6) node[below] {$\Gamma_2$};
+    \path[red] (0,0) -- +(280:0.7) node[below] {$\Gamma_2$};
     \draw[thick] (0,0) circle (2pt) node[right] {$z_0$};
 
     \begin{scope}[decoration={
@@ -39,10 +42,36 @@ En aplicaciones, a menudo es necesario desarrollar una función $f(z)$ alrededor
   \label{fig:teorema_de_laurent}
 \end{figure}
 
+Aquí, en la figura \ref{fig:teorema_de_laurent} las líneas discontinuas indican el dominio donde $f(z)$ es analítica y continua. Como las curvas $\Gamma_1$ y $\Gamma_2$ están dentro de esa región, entonces también son continuas y $f$ es analítica sobre ellas.
+
 \begin{proof}
-  Sea $z$ cualquier punto en la corona dada. Entonces por la fórmula de la integral de Cauchy, se tiene que
+  Sea $z$ cualquier punto en la corona dada (ver figura \ref{fig:teorema_de_laurent}). Entonces por la fórmula de la integral de Cauchy para dominios múltiplemente conexos (ecuación \eqref{eq:formula_de_la_integral_de_cauchy_para_dominio_multiplementeconexo_todo_antihorario}) se tiene  
+  \begin{equation}
+  f(z)=\frac{1}{j2\pi}\ointctrclockwise_{\Gamma_1}\frac{f(z^\ast)}{z^\ast-z}dz^\ast -\frac{1}{j2\pi}\ointctrclockwise_{\Gamma_2}\frac{f(z^\ast)}{z^\ast-z}dz^\ast 
+  \label{eq:aplicación_ecuacion_cauchy_multiplemente_conexo}
+  \end{equation}
+  Cada una de las integrales anteriores se transforma como se hizo en la sección \ref{sec:serie_de_taylor}. La primera integral es precisamente como en la sección \ref{sec:serie_de_taylor}, por lo que se obtiene exactamente le mismo resultado
+  \begin{equation}
+    \frac{1}{j2\pi}\ointctrclockwise_{\Gamma_1} \frac{f(z^\ast)}{z^\ast -z_0}dz^\ast = \sum_{k=0}^\infty c_k(z-z_0)^k
+  \end{equation}
+  donde, al igual que en la sección \ref{sec:serie_de_taylor} el coeficiente $c_k$ es 
   $$
-  \frac{1}{j2\pi}\oint_{\Gamma_1}\frac{f(z^\ast)}{z^\ast-z}dz^\ast -\frac{1}{j2\pi}\oint_{\Gamma_2}\frac{f(z^\ast)}{z^\ast-z}dz^\ast 
+  c_k = \frac{1}{j2\pi}\oint_{\Gamma_1} \frac{f(z^\ast)}{(z^\ast-z_0)^{k+1}}dz^\ast
   $$
-  %pg 149
+  Aquí es posible sustituir $\Gamma_1$ por $\Gamma$ por el teorema de la deformación \ref{teo:cauchy_doblemente_conexo}, ya que $z_0$, el punto donde el integrando de la integral no es analítico, no es un punto de la corona. Lo anterior demuestra la fórmula para el coeficiente $c_k$.
+
+  Ahora consideramos la segunda integral de \eqref{eq:aplicación_ecuacion_cauchy_multiplemente_conexo} y a partir de ella se obtendrá una fórmula para $b_k$. 
+
+  Al ver la trayectoria $\Gamma_2$ el punto $z$ está por fuera de esta (según el teorema de las curvas de jordan (sección: \ref{sec:serie_de_taylor})). Ahora, a diferencia de la demostración que realizamos en la serie de Taylor, tenemos que la distancia del centro ($z_0$) al punto $z^\ast$ será siempre \textbf{mayor} que la distancia del centro a $z$. Entonces
+  \begin{equation}
+    \left\lvert \frac{z^\ast -z_0}{z-z_0} \right\rvert < 1
+  \end{equation}
+  por consiguiente, es necesario desarrollar $1-(z^\ast-z)$ en el integrando en potencias de $(z^\ast-z_0)/(z-z_0)$ (en vez del recíproco de esto) a fin de obtener una serie \textit{convergente}. Se encuentra 
+  $$
+  \frac{1}{z^\ast-z} = \frac{1}{z^\ast -z_0 -(z-z_0)}
+  $$
+  Aquí, si sacamos factor común $-(z-z_0)$ obtenemos 
+  $$
+  \frac{-1}{(z-z_0)\left( 1-\frac{z^\ast-z_0}{z-z_0} \right)}
+  $$
 \end{proof}
