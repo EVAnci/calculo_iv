@@ -205,7 +205,7 @@ Bueno, a primera vista debemos calcular la integral volviendo a la definición, 
 \caption{Curvas $C_1$ y $C_2$ delimitan el anillo $D$.}
 \label{fig:curvas_delimitadoras_dominio_conexo}
 \end{figure}
-El dominio $D$ además es una corona abierta tal que los bordes del dominio son las curvas $C_1$ y $C_2$ como se muestra en la figura \ref{fig:curvas_delimitadoras_dominio_conexo}. En este caso $C_1$ y $C_2$ son circunferencias con orientación contraria al las manecillas del reloj, pero podría ser cualquier curva cerrada simple. Además sin tomar en cuenta si todo el interior de $C_2$ pertenece o no a $D'$ ya que aquí se aisla la singularidad.
+El dominio $D$ además es una corona abierta tal que los bordes del dominio son las curvas $C_1$ y $C_2$ como se muestra en la figura \ref{fig:curvas_delimitadoras_dominio_conexo}. En este caso $C_1$ y $C_2$ son circunferencias con orientación contraria al las manecillas del reloj, pero podría ser cualquier curva cerrada simple. Además sin tomar en cuenta si todo el interior de $C_2$ pertenece o no a $D'$ ya que aquí se aisla la singularidad. A continuación veremos el teorema de la deformación o primer colorario de Cauchy.
 
 \begin{theorem}[Deformación]
 Entonces, el teorema de Cauchy para dominios doblemente conexo dice que, como $f$ es analítica en $D'$ que contiene a las curvas $C_1$ y $C_2$, entonces se cumple que
@@ -219,7 +219,7 @@ De modo que, para continuar con el ejemplo, cualquier curva $\Phi$ que encierre 
 
 La demostración de este teorema es relativamente sencilla, aunque se introduce algo de nueva notación. Diremos que, si una integral se realiza sobre una curva cerrada $\Gamma$ en sentido opuesto a las manecillas del reloj, usaremos el símbolo $\ointctrclockwise$. Por otro lado, si $\Gamma$ tiene sentido a favor de las manecillas del reloj, la integral sobre $\Gamma$ se escribe como $\ointclockwise$.
 
-\subsection{Demostración del teorema}
+\subsection{Demostración del primer colorario}
 
 Al dominio $D$ (corona) que definimos en el teorema \ref{teo:cauchy_doblemente_conexo} (ver figura \ref{fig:curvas_delimitadoras_dominio_conexo}) podemos practicarle dos cortes, tal que el resultado sea como se muestra en la figura \ref{fig:cortes_del_dominio}.
 
@@ -298,7 +298,7 @@ Entonces la concatenación $\Phi_1 = \gamma_1 \oplus \Gamma_1 \oplus \gamma_2 \o
   quedando demostrado el teorema.
 \end{proof}
 
-\subsection{Dominios de conexidad superior}
+\subsection{Segundo colorario de Cauchy}
 
 Para dominios de conexidad superior la idea es la misma. Así, para un dominio triplemente conexo se usan tres cortes $\gamma_1$, $\gamma_2$ y $\gamma_3$. Al sumar las integrales como antes, las integrales sobre los cortes se cancelan y la suma de las integrales sobre $C_1$ (sentido contrario a las manecillas del reloj) y $C_2$, $C_3$ (en sentido del movimiento de las manecillas del reloj) es cero. Así la integral sobre $C_1$ es igual a la suma de las integrales sobre $C_2$ y $C_3$, en donde ahora las tres se consideran en sentido contrario a las manecillas del reloj.
 \begin{equation}

@@ -15,7 +15,7 @@ Para funciones reales no hay un resultado como este. Una función real diferenci
   con $n=1,2,\dots$ y $\Gamma$ una curva simple cerrada que encierra únicamente puntos de $D$ y que contiene a $z_0$. Aquí se asume que el sentido de integración es antihorario.
 \end{theorem}
 
-\subsection{Demostración}
+\subsection{Demostración derivada \textit{n}-ésima}
 
 Primero, vamos a demostrar que se cumple para la primer derivada, siendo la expresión
 $$
@@ -70,52 +70,30 @@ $$
   lo que se quería demostrar.
 \end{proof}
 
-Ahora, para demostrar que el teorema \ref{teo:derivadas_de_todos_los_ordenes} se cumple para todo $n$, vamos a suponer que la ecuación \eqref{eq:derivada_de_orden_n}:
-\begin{equation*}
-  f^{(n)}(z_0) = \frac{n!}{j2\pi}\oint_\Gamma \frac{f(z)}{(z-z_0)^{n+1}}dz
-\end{equation*}
-es cierta, y demostraremos que se cumple para $n+1$, quedando demostrada así, para todo $n=1,2,\dots$.
+Ahora, para demostrar que el teorema \ref{teo:derivadas_de_todos_los_ordenes} se cumple para todo $n$, vamos a suponer que la ecuación \eqref{eq:derivada_de_orden_n} es cierta, y demostraremos que se cumple para $n+1$, quedando demostrada así, para todo $n=1,2,\dots$.
 
 \begin{proof}
-  Suponemos entonces que la ecuación \eqref{eq:derivada_de_orden_n} se cumple. Entonces
-  \begin{equation}
-    f^{(n+1)}(z_0) = \lim_{\Delta z\to 0} \frac{f^{(n)}(z_0+\Delta z)-f^{(n)}(z_0)}{\Delta z} 
-    \label{eq:derivada_n_mas_uno}
-  \end{equation}
-  Por hipótesis, hemos dicho que \eqref{eq:derivada_de_orden_n} se cumple, por lo que podemos expresar las funciones del numerador de \eqref{eq:derivada_n_mas_uno} como 
+  Suponemos entonces que la ecuación \eqref{eq:derivada_de_orden_n} se cumple:
+  $$
+  f^{(n)}(z_0)=\frac{n!}{j2\pi}\oint_\Gamma \frac{f(z)}{(z-z_0)^{n+1}}dz
+  $$
+  Aquí realizamos un cambio de variable. Llamamos $z_0\rightarrow z$ y $z\rightarrow t$, entonces la ecuación queda
+  $$
+  f^{(n)}(z)=\frac{n!}{j2\pi}\oint_\Gamma \frac{f(t)}{(t-z)^{n+1}}dt
+  $$
+  Ahora, derivamos a $f^{(n)}$ respecto de $z$, resultando
+  $$
+  \frac{d~f^{(n)}(z)}{dz}=\frac{d}{dz}\left[\frac{n!}{j2\pi}\oint_\Gamma \frac{f(t)}{(t-z)^{n+1}}dt\right]
+  $$
+  Observando el miembro derecho, vemos que la integral depende de $t$, por tanto podemos introducir la operación derivada sin cambiar el valor de la integral. Como la derivada es respecto de $z$ solo afecta el denominador de la integral, resultando
   \begin{align*}
-    f^{(n)}(z_0+\Delta z) &= 
-      \frac{n!}{j2\pi}
-      \oint_\Gamma \frac{f(z)}{(z-z_0-\Delta z)^{n+1}} dz \\ 
-    f^{(n)}(z_0) &= 
-      \frac{n!}{j2\pi}
-      \oint_\Gamma \frac{f(z)}{(z-z_0)^{n+1}} dz 
+    f^{(n+1)}(z)&=\frac{n!}{j2\pi}\oint_\Gamma f(t) \frac{d}{dz}\left[\frac{1}{(t-z)^{n+1}}\right] dt \\ 
+                &= \frac{n!}{j2\pi}\oint_\Gamma f(t) \frac{-(n+1)}{(t-z)^{n+2}}(-1) dt \\ 
+                &= \frac{(n+1)\, n!}{j2\pi}\oint_\Gamma \frac{f(t)}{(t-z)^{n+2}} dt
   \end{align*}
-  Reemplazando estas expresiones en el límite 
-  \begin{align*}
-    f^{(n+1)}(z_0) &= \lim_{\Delta z \to 0} \frac{n!}{j2\pi\Delta z} 
-      \oint_\Gamma \frac{f(z)}{(z-z_0-\Delta z)^{n+1}}-
-        \frac{f(z)}{(z-z_0)^{n+1}}dz \\ 
-                   &= \lim_{\Delta z \to 0} \frac{n!}{j2\pi\Delta z} 
-                   \oint_{\Gamma} f(z) \frac{(z-z_0)^{n+1}-(z-z_0-\Delta z)^{n+1}}
-                   {(z-z_0-\Delta z)^{n+1}(z-z_0)^{n+1}}
-  \end{align*}
-  y de alguna manera se obtiene que
-  $$
-  (z-z_0)^{n+1}-(z-z_0-\Delta z)^{n+1} = \Delta z(n+1)(z-z_0)^n
-  $$
-  De forma tal, que al reemplazar en la integral resulta 
-  $$
-  f^{(n+1)}(z_0) = \lim_{\Delta z \to 0} 
-    \frac{n!(n+1)\cancel{\Delta z}}{j2\pi\cancel{\Delta z}} 
-    \oint_\Gamma \frac
-      {f(z)\cancel{(z-z_0)^n}}
-      {(z-z_0-\Delta z)^{n+1}(z-z_0)^{\cancel{n+1}}} ~ dz
-  $$
-  y tras aplicar el límite, al igual que para la primera derivada, cuando $\Delta z\to0$ resulta  
-  $$
-  f^{(n+1)}(z_0) = \frac{(n+1)!}{j2\pi} \oint_\Gamma 
-  \frac{f(z)}{(z-z_0)^{n+2}}~ dz
-  $$
+  Aplicando la propiedad del factorial y devolviendo los nombres iniciales de las variables $z\rightarrow z_0$ y $t\rightarrow z$, resulta la expresión
+  \begin{equation*}
+    f^{(n+1)}(z_0)=\frac{(n+1)!}{j2\pi}\oint_\Gamma \frac{f(z)}{(z-z_0)^{n+2}}dz
+  \end{equation*}
   quedando así demostrado el teorema \ref{teo:derivadas_de_todos_los_ordenes}.
 \end{proof}
