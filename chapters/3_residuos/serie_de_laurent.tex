@@ -51,27 +51,123 @@ Aquí, en la figura \ref{fig:teorema_de_laurent} las líneas discontinuas indica
   \label{eq:aplicación_ecuacion_cauchy_multiplemente_conexo}
   \end{equation}
   Cada una de las integrales anteriores se transforma como se hizo en la sección \ref{sec:serie_de_taylor}. La primera integral es precisamente como en la sección \ref{sec:serie_de_taylor}, por lo que se obtiene exactamente le mismo resultado
-  \begin{equation}
+  \begin{equation*}
     \frac{1}{j2\pi}\ointctrclockwise_{\Gamma_1} \frac{f(z^\ast)}{z^\ast -z_0}dz^\ast = \sum_{k=0}^\infty c_k(z-z_0)^k
-  \end{equation}
+  \end{equation*}
   donde, al igual que en la sección \ref{sec:serie_de_taylor} el coeficiente $c_k$ es 
   $$
   c_k = \frac{1}{j2\pi}\oint_{\Gamma_1} \frac{f(z^\ast)}{(z^\ast-z_0)^{k+1}}dz^\ast
   $$
-  Aquí es posible sustituir $\Gamma_1$ por $\Gamma$ por el teorema de la deformación \ref{teo:cauchy_doblemente_conexo}, ya que $z_0$, el punto donde el integrando de la integral no es analítico, no es un punto de la corona. Lo anterior demuestra la fórmula para el coeficiente $c_k$.
+  Aquí es posible sustituir $\Gamma_1$ por $\Gamma$ por el teorema de la deformación \ref{teo:cauchy_doblemente_conexo}, ya que $z_0$, el punto donde el integrando de la integral no es analítico, no es un punto de la corona. Lo anterior demuestra la fórmula para el coeficiente $c_k$ ya que esto, al igual que en la sección \ref{sec:serie_de_taylor} es la expresión de la derivada $k$-ésima sobre el factorial de $k$
+  $$
+  c_k = \frac{f^{(k)}(z_0)}{k!}
+  $$
+  quedando demostrado el primer coeficiente.
 
-  Ahora consideramos la segunda integral de \eqref{eq:aplicación_ecuacion_cauchy_multiplemente_conexo} y a partir de ella se obtendrá una fórmula para $b_k$. 
+  Ahora, para el segundo coeficiente, consideramos la segunda integral de \eqref{eq:aplicación_ecuacion_cauchy_multiplemente_conexo} y a partir de ella se obtendrá una fórmula para $b_k$. 
 
-  Al ver la trayectoria $\Gamma_2$ el punto $z$ está por fuera de esta (según el teorema de las curvas de jordan (sección: \ref{sec:serie_de_taylor})). Ahora, a diferencia de la demostración que realizamos en la serie de Taylor, tenemos que la distancia del centro ($z_0$) al punto $z^\ast$ será siempre \textbf{mayor} que la distancia del centro a $z$. Entonces
+  Al ver la trayectoria $\Gamma_2$ el punto $z$ está por fuera de esta (según el teorema de las curvas de jordan (sección: \ref{sec:teorema_de_cauchy})). Ahora, a diferencia de la demostración que realizamos en la serie de Taylor, tenemos que la distancia del centro ($z_0$) al punto $z^\ast$ será siempre \textbf{menor} que la distancia del centro a $z$. Recordando que el punto $z^\ast$ está sobre la curva $\Gamma_2$ y el punto $z$ está en la corona. Entonces
   \begin{equation}
     \left\lvert \frac{z^\ast -z_0}{z-z_0} \right\rvert < 1
   \end{equation}
-  por consiguiente, es necesario desarrollar $1-(z^\ast-z)$ en el integrando en potencias de $(z^\ast-z_0)/(z-z_0)$ (en vez del recíproco de esto) a fin de obtener una serie \textit{convergente}. Se encuentra 
+  por consiguiente, es necesario desarrollar $1/(z^\ast-z)$ en el integrando en potencias de $(z^\ast-z_0)/(z-z_0)$ (en vez del recíproco de esto) a fin de obtener una serie \textit{convergente}. En el integrando de la integral del segundo término de la ecuación \eqref{eq:aplicación_ecuacion_cauchy_multiplemente_conexo} se encuentra  
   $$
   \frac{1}{z^\ast-z} = \frac{1}{z^\ast -z_0 -(z-z_0)}
   $$
   Aquí, si sacamos factor común $-(z-z_0)$ obtenemos 
   $$
-  \frac{-1}{(z-z_0)\left( 1-\frac{z^\ast-z_0}{z-z_0} \right)}
+  \frac{-1}{(z-z_0)\left( 1-\frac{z^\ast-z_0}{z-z_0} \right)} = -\frac{1}{(z-z_0)}\cdot\frac{1}{\left(1-\frac{z^\ast-z_0}{z-z_0}\right)}
   $$
+  Entonces de la misma forma que hicimos para demostrar la serie de Taylor, desarrollamos una serie geométrica, pero ahora buscamos una serie tal que su razón sea $q=\frac{z^\ast-z_0}{z-z_0}$. Tenemos entonces:
+  $$
+  \sum_{k=0}^\infty \left(\frac{z^\ast-z_0}{z-z_0}\right)^k = 1 + q + q^2 + \cdots = \frac{1}{1-q} \Rightarrow \frac{1}{z^\ast-z} = -\frac{1}{(z-z_0)}\cdot\sum_{k=0}^\infty q^k
+  $$
+  Reescribiendo esta última expresión en limpio y realizando algunas operaciones algebráicas resulta 
+  $$
+  \frac{1}{z^\ast-z} = -\frac{1}{(z-z_0)}\cdot\sum_{k=0}^\infty \left(\frac{z^\ast-z_0}{z-z_0}\right)^k = -\sum_{k=0}^\infty \frac{(z^\ast-z_0)^k}{(z-z_0)^{k+1}}
+  $$
+  Reemplazamos esta serie en la segunda integral de la ecuación \eqref{eq:aplicación_ecuacion_cauchy_multiplemente_conexo} resulta 
+  \begin{gather*}
+  -\frac{1}{j2\pi}\oint_{\Gamma_2} \frac{f(z^\ast)}{z^\ast-z}dz^\ast =
+  \frac{1}{j2\pi}\oint_{\Gamma_2} f(z^\ast)\sum_{k=0}^\infty \frac{(z^\ast-z_0)^k}{(z-z_0)^{k+1}} \, dz^\ast 
+  \end{gather*}
+  Entonces, siguiendo el mismo razonamiento que antes, ya que la serie geométrica converge uniformemente, podemos usar reglas de diferenciación e integración, por tanto introducimos la integral dentro de la sumatoria
+  $$
+  \sum_{k=0}^\infty \frac{1}{j2\pi}\oint_{\Gamma_2}f(z^\ast)\frac{(z^\ast-z_0)^k}{(z-z_0)^{k+1}}\,dz^\ast
+  $$
+  Como el denominador no depende de la variable de integración ($z^\ast$), entonces podemos sacarlo de la integral 
+  $$
+  \sum_{k=0}^\infty \frac{1}{j2\pi(z-z_0)^{k+1}}\oint_{\Gamma_2}f(z^\ast)(z^\ast-z_0)^k\,dz^\ast
+  $$
+  Como esta integral se realiza dentro de la corona y $z_0$ no pertenece a la corona, entonces $f$ es analítica sobre la corona. Esto implica que podemos usar el teorema de la deformación (o primer colorario de Cauchy) e integrar sobre la curva $\Gamma$.
+
+  Y por último, para acomodar el índice realizamos un desplazamiento de índice de la serie. En vez de comenzar en cero, comenzará en uno, y todos los índices dentro de la serie tendrán una unidad menos, siendo entonces 
+  $$
+  \sum_{k=1}^\infty \frac{1}{j2\pi(z-z_0)^k}\oint_{\Gamma} f(z^\ast)(z^\ast-z_0)^{k-1}\,dz^\ast
+  $$
+  Entonces llamamos $b_k$ a 
+  $$
+  b_k = \frac{1}{j2\pi}\oint_{\Gamma} f(z^\ast)(z^\ast-z_0)^{k-1}\,dz^\ast
+  $$
+  quedando la expresión final como 
+  $$
+  \sum_{k=1}^\infty \frac{b_k}{(z-z_0)^k}
+  $$
+  quedando demostrado el teorema.
 \end{proof}
+
+\subsection{Una expresión compacta para la serie de Laurent}
+
+Claro está que la serie de Laurent es una generalización de la serie de Taylor. Véase que si la función $f(z)$ no es singular en $z_0$ (ni en ningún punto en el interior de $\Gamma_2$) entonces la serie de Laurent se reduce a la serie de Taylor con centro en $z=z_0$ analítico.
+
+Si observamos la serie de Laurent con cuidado, vemos que son dos sumatorias. Estas sumatorias pueden reescribirse como una sola sumatoria desde menos infinito a más infinito (o para $k\in\mathbb{Z}$). Veamos, 
+$$
+f(z)=\sum_{k=0}^\infty c_k (z-z_0)^k + \sum_{k=1}^\infty b_k(z-z_0)^{-k}
+$$
+donde 
+$$
+c_k = \frac{1}{j2\pi}\oint_\Gamma \frac{f(z^\ast)}{(z^\ast-z_0)^{k+1}}\,dz \qquad b_k = \frac{1}{j2\pi}\oint_\Gamma \frac{f(z^\ast)}{(z^\ast-z_0)^{-k+1}}\,dz
+$$
+Entonces, vemos que tanto el coeficiente $b_k$ como $(z^\ast-z_0)$ usando expresiones como las de la serie de Taylor solo cambian su signo. Bajo este punto de vista, como el primer término recorre el intervalo $[0,\infty)$ y el segundo término recorre $(-\infty,1]$ podemos escribir la serie de forma compacta como 
+\begin{equation}
+f(z)=\sum_{-\infty}^\infty c_k(z-z_0)^k
+\label{eq:serie_de_laurent_compacta}
+\end{equation}
+donde $c_k$ es, como ya hemos visto anteriormente,
+$$
+c_k=\frac{1}{j2\pi}\oint_\Gamma \frac{f(z^\ast)}{(z-z_0)^{k+1}}\,dz
+$$
+
+Y, si recordamos, $z^\ast$ es la variable que hemos designado para recorrer la curva. Sin embargo, cuando realizamos la integral de línea, $z$ toma los valores de la curva misma, entonces este último coeficiente puede escribirse de una forma más práctica,
+$$
+c_k=\frac{1}{j2\pi}\oint_\Gamma \frac{f(z)}{(z-z_0)^{k+1}}\,dz
+$$
+siendo esta notación más cómoda para encontrar el término $c_k$, para un $k$ dado.
+
+\subsection{Clasificación de singularidades}
+
+Como bien ya vimos en la sección \ref{sec:singularidad} una singularidad son los puntos de una función donde esta no es diferenciable. La serie de Laurent nos permite conocer y clasificar mejor los distintos tipos de singularidades.
+
+Si se desarrollan algunos pocos términos de la serie de Laurent, tal como está expresada en \eqref{eq:serie_de_laurent_compacta} desde un valor $-n$ hasta $n$ resultará
+\begin{align*}
+  f(z)=&\frac{c_{-n}}{(z-z_0)^n}+\frac{c_{-n+1}}{(z-z_0)^{n-1}}+\frac{c_{-n+2}}{(z-z_0)^{n-2}}+\cdots \\ 
+       &\cdots + \frac{c_{-1}}{(z-z_0)} + c_0 + c_1(z-z_0)+c_2(z-z_0)^2 + \cdots \\ 
+       &\cdots + c_{n-1}(z-z_0)^{n-1} + c_n(z-z_0)^n
+\end{align*}
+
+Entonces, a partir de esta expresión de la serie de Laurent definimos las siguientes singularidades.
+
+\begin{definition}[Esencial]
+  Las singularidades esenciales acontecen cuando el número de términos con exponente negativo en el desarrollo en serie de Laurent es infinito. En ese caso $z=z_0$ constituye una \textbf{singularidad esencial}.
+\end{definition}
+\begin{definition}[Polo]
+  Los puntos singulares no esenciales, también llamados comúnmente polos, tienen lugar cuando el número de términos con exponente negativo del desarrollo de Laurent es finito. 
+
+  Aquel número finito (llámese $m$) de términos negativos que tiene la serie de Laurent se denomina \textit{orden} del polo. Así entonces, sería un polo de orden $m$. O lo que es lo mismo, que $z=z_0$ es un polo múltiple de $f(z)$, cuyo orden de multiplicidad es $m$.
+\end{definition}
+
+\begin{example}[Algunos ejemplos de singularidades]
+  Un ejemplo de singularidad esencial es la función $f(z)=e^{1/z}$ que tiene una singularidad esencial en $z=0$. 
+
+  Por otro lado, un ejemplo de polo múltiple es $f(z)=a/z^4$ que tiene un polo múltiple de orden $4$ en $z=0$.
+\end{example}
