@@ -96,3 +96,104 @@ $$
 $$
 donde $c_k=f^{(k)}(z_0)/k!$.
 \end{proof}
+
+Se dice que una función compleja es \textit{analítica} en $z_0$ si tiene un desarrollo en serie de potencias en algún disco abierto alrededor de $z_0$. Se acaba de probar que una función que es diferenciable en un disco abierto alrededor de un punto es analítica en ese punto.
+
+Solo se han calculado los coeficientes de una serie de Taylor por las fórmulas de derivación o integración. Cuando es posible, en la práctica se usan series conocidas y operaciones tales como diferenciación e integración para obtener una representación en serie de una función. Esta estrategia hace uso del siguiente teorema sobre la unicidad de las representaciones en serie de potencias.
+\begin{theorem}[Unicidad de la serie de Taylor]
+  Suponemos que, en algún disco $\lvert z-z_0\rvert < r$, $f$ tiene dos representaciones en serie de Taylor
+  $$
+  \sum_{k=0}^\infty c_n(z-z_0)^k \qquad \sum_{k=0}^\infty d_n (z-z_0)^k
+  $$
+  Entonces para $k=0,1,2,\dots$ tenemos que 
+  $$
+  c_k = \frac{f^{(k)}(z_0)}{k!} \qquad d_k = \frac{f^{(k)}(z_0)}{k!}
+  $$
+  Entonces las dos series son iguales (ya que sus coeficientes son iguales). Por tanto una función $f$ que puede ser representada en serie de Taylor centrada en un punto $z_0$ tiene una única representación.
+\end{theorem}
+
+Ahora veamos algunos ejemplos. 
+
+\begin{example}
+  Encontrar el desarrollo de Taylor de $f(z)=e^z$ alrededor de $z=j$.
+
+  Se sabe que para todo $z$, 
+  $$
+  e^z = \sum_{n=0}^\infty \frac{z^n}{n!}
+  $$
+  Para un desarrollo alrededor de $j$, la serie de potencias debe estar en términos de potencias de $z-j$. De esta manera 
+  $$
+  e^z = e^{z-j+j}=e^j e^{z-j}=\sum_{n=0}^\infty \frac{e^j}{n!}(z-j)^n
+  $$
+  Esta serie converge para todo $z$.
+
+  En este ejemplo, hubiera sido igual de fácil calcular los coeficientes de Taylor directamente:
+  $$
+  c_n = \frac{f^{(n)}(j)}{n!} = \frac{e^j}{n!}
+  $$
+  \label{ej:desplazamiento_serie_de_taylor}
+\end{example}
+
+\begin{example}
+  Escribir la serie de Maclaurin para $f(z)=\cos(z^3)$.
+
+  Un desarrollo de Maclauin es una serie de Taylor alrededor de cero. Para todo $z$,
+  $$
+  \cos(z)=\sum_{n=0}^\infty \frac{(-1)^n}{(2n)!}z^{2n}
+  $$
+  Todo lo que se necesita hacer es reemplazar $z$ con $z^3$:
+  $$
+  \cos(z^3)=\sum_{n=0}^\infty \frac{(-1)^n}{(2n)!}z^{6n}
+  $$
+  Como es un desarrollo alrededor del origen, es el desarrollo que se buscaba.
+  \label{ej:sustitucion_serie_de_taylor}
+\end{example}
+
+Si ha prestado atención, en estos ejemplos no hemos necesitado desarrollar o encontrar la ley de formación de los términos $c_n$, hemos usado el conocimiento que tenemos para desarrollar series de Taylor en variable real, y la hemos reemplazado por la variable compleja. En la mayor parte de los casos puede ser complicado o consumir mucho tiempo determinar los coeficientes de la serie de Taylor a partir de la fórmula en el teorema de Taylor, y existen formas mejores y más rápidas para efectuar lo anterior. A continuación se mostraran algunos ejemplos útiles para aplicar distintos métodos y obtener el desarrollo en serie de Taylor.
+
+\subsection{Métodos prácticos para representar en serie de Taylor}
+
+El primer ejemplo \ref{ej:desplazamiento_serie_de_taylor} usa un sencillo método denominado método del \textit{desplazamiento}. Corremos el centro de una serie conocida a otro centro pedido.
+
+El ejemplo \ref{ej:sustitucion_serie_de_taylor} es un claro ejemplo del segundo método, denominado el método de \textit{sustitución}, que consiste en tener el desarrollo de una función determinada $f(z)$ con la cual es posible desarrollar otra función $g(z)$ tal que, como en el caso del ejemplo $f(z^n)=g(z)$ y reemplazar o sustituir la variable.
+
+\begin{example}(Método de desarrollo en serie geométrica)
+  Desarrollar 
+  $$
+  f(z)=\frac{1}{c-bz}
+  $$ 
+  en potencias de $(z-a)$, en donde $c-ab\neq 0$ y $b\neq 0$.
+
+  Para obtener potencias de $z-a$, se aplica álgebra simple:
+  $$
+  \frac{1}{c-bz}=\frac{1}{c-ab-b(z-a)}=\frac{1}{(c-ab)\left(1-\frac{b(z-a)}{c-ab}\right)}
+  $$
+  A la última expresión, si llamamos $q=\frac{b(z-a)}{c-ab}$, entonces $q$ es la razón de una serie geométrica, y se la puede desarrollar tal que
+  $$
+  \frac{1}{1-q}=\sum_{n=0}^\infty q^n = \sum_{n=0}^\infty \left(\frac{b(z-a)}{c-ab}\right)^n
+  $$
+  Así, resulta 
+  $$
+  \frac{1}{c-bz}=\frac{1}{(c-ab)\left(1-\frac{b(z-a)}{c-ab}\right)} = \frac{1}{(c-ab)}\sum_{n=0}^\infty \left(\frac{b(z-a)}{c-ab}\right)^n
+  $$
+  Quedando así desarrollada la expresión.
+\end{example}
+
+\begin{example}(Método de integración)
+  Encontrar la serie de Maclaurin de $f(z)=\tan^{-1}(z)$. 
+
+  El primer coeficiente es $c_1=f'(z)$, y la derivada de $f$ es 
+  $$
+  \frac{1}{1+z^2}
+  $$
+  Si se integra este último resultado, evidentemente se vuelve a obtener $f$, entonces podemos desarrollar la serie de Taylor de este último resultado (aplicaremos el método de sustitución en este caso) y luego integrar término a término. 
+  $$
+  \frac{1}{1+z^2}=\frac{1}{1-(-z^2)}=\sum_{n=0}^\infty (-z^2)^n = \sum_{n=0}^\infty (-1)^n z^{2n}
+  $$
+  Ahora, integrando término a término (usando la integral indefinida para obtener la primitiva), tenemos 
+  \begin{align*}
+    \int\frac{1}{1+z^2}dz&=\int\sum_{n=0}^\infty (-1)^n z^{2n}dz \\ 
+    \tan^{-1}(z) &= \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)}z^{2n+1}
+  \end{align*}
+  Esta serie representa el valor principal de $w=u+jv=\tan^{-1}(z)$, definido como el valor para el que $\lvert u \rvert < \pi/2$.
+\end{example}
