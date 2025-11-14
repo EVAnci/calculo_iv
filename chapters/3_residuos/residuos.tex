@@ -2,4 +2,24 @@
 
 Un concepto muy importante que surge de la serie de Laurent es el de \textit{residuo}, con gran aplicación en el capítulo de transformada de Laplace y permite definir uno de los métodos más prácticos de antitransformación.
 
-En cada singularidad de una función de variable compleja existe un residuo, cuya definición surge de la propia serie de Laurent.
+Para ver una conexión entre la serie de Laurent y la integral de una función, suponga que $f$ tiene un desarrollo de Laurent 
+$$
+f(z)=\sum_{-\infty}^\infty c_n(z-z_0)^n 
+$$
+en algún anillo $0<\lvert z-z_0\rvert <R$. Sea $\Gamma$ una trayectoria cerrada en este anillo que encierra a $z_0$. De acuerdo con el teorema \ref{teo:laurent} (serie de Laurent), los coeficientes de Laurent están dados por una fórmula integral. En particular el coeficiente $1/(z-z_0)$ es 
+$$
+c_{-1}=\frac{1}{j2\pi}\oint_\Gamma f(z)dz
+$$
+Por tanto,
+$$
+\oint_\Gamma f(z)dz=j2\pi (c_{-1})
+$$
+Si conoce este coeficiente en el desarrollo de Laurent puede obtener el valor de esta integral. Este hecho da una importancia especial a este coeficiente, de manera que tomará el nombre de \textit{residuo}.
+
+\begin{definition}[Residuo]
+  Sea $f$ con una singularidad aislada en $z_0$ y desarrollo de Laurent $f(z)=\sum_{n=-\infty}^\infty c_n(z-z_0)^n$ en alguna corona $0<\lvert z-z_0\rvert < R$. Entonces el coeficiente $c_{-1}$ se llama \textbf{residuo} de $f$ en $z_0$ y se denota 
+  $$
+  \text{Res}(f,z_0)
+  $$
+  % page 493 (azul)
+\end{definition}

@@ -1,0 +1,33 @@
+\section{Resumen}
+
+\begin{tcolorbox}[title=Serie de Taylor,resumen]
+  Una función $f$ puede ser representada en serie de Taylor alrededor de un punto $z_0$ mediante 
+  $$
+  f(z)=\sum_{k=0}^\infty c_k(z-z_0)^k
+  $$
+  donde el coeficiente $c_k$ se calcula como
+  $$
+  c_k = \frac{f^{(k)}}{k!}=\frac{1}{j2\pi}\oint_\Gamma \frac{f(z)}{(z-z_0)^{k+1}}dz
+  $$
+  Siempre y cuando $f$ sea analítica en el disco encerrado por la curva $\Gamma$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Serie de Laurent,resumen]
+  Si una función no es analítica en $z_0$ el desarrollo en serie de Taylor no es válido. Entonces puede desarrollarse en serie de Laurent mediante 
+  $$
+  f(z)=\sum_{-\infty}^\infty c_k(z-z_0)^k
+  $$
+  donde $c_k$ se calcula como
+  $$
+  c_k = \frac{1}{j2\pi}\oint_\Gamma \frac{f(z)}{(z-z_0)^{k+1}}dz
+  $$
+  Esta serie puede escribirse en dos partes: la serie de Taylor, y la parte principal de la serie de Laurent, de modo que resulta
+  $$
+  f(z)=\sum_{k=0}^\infty c_k(z-z_0)^k +\sum_{k=1}^\infty \frac{b_k}{(z-z_0)^{k}}
+  $$
+  donde $c_k$ se calcula exactamente igual que antes, y $b_k$ se calcula como
+  $$
+  b_k=\frac{1}{j2\pi}\oint_\Gamma (z-z_0)^{k-1}f(z)dz
+  $$
+  Generalmente se prefiere la forma compacta de la serie de Laurent, pero la ventaja de la forma expandida es que permite ver claramente que la serie de Laurent es la suma de la serie de Taylor más la parte principal de la serie de Laurent, que permite desarrollar una función en lugares donde no es analítica (y probablemente no esté definida).
+\end{tcolorbox}

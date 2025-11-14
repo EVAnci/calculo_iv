@@ -8,13 +8,14 @@ En aplicaciones, a menudo es necesario desarrollar una función $f(z)$ alrededor
   \begin{equation}
     f(z)=\sum_{k=0}^\infty c_k(z-z_0)^k + \sum_{k=1}^\infty \frac{b_k}{(z-z_0)^k}
   \end{equation}
-  donde la serie del primer término es la serie de Taylor y la serie del segundo término es la extensión de Laurent. Los coeficientes de esta serie de Laurent están definidos por las integrales
+  donde la serie del primer término es la serie de Taylor y la serie del segundo término es la extensión de Laurent denominada \textbf{parte principal} de la serie de Laurent. Los coeficientes de esta serie de Laurent están definidos por las integrales
   $$
   c_k=\frac{1}{j2\pi}\oint_\Gamma \frac{f(z^\ast)}{(z^\ast-z_0)^{k+1}}dz^\ast \qquad b_k =\frac{1}{j2\pi}\oint_\Gamma (z^\ast - z_0)^{k-1}f(z^\ast)dz^\ast
   $$
   cada integral se toma en sentido antihorario alrededor de cualquier trayectoria cerrada $\Gamma$ que esté en la corona y abarque el circulo interior como se muestra en la figura \ref{fig:teorema_de_laurent}.
   
   Esta serie converge y representa a $f(z)$ en la corona abierta que se obtiene a partir de la corona dada al incrementar de manera continua el circulo $\Gamma_1$ y reducir $\Gamma_2$ hasta que ambos círculos llegan a un punto donde $f(z)$ es singular.
+  \label{teo:laurent}
 \end{theorem}
 
 \begin{figure}[ht]
@@ -144,9 +145,75 @@ c_k=\frac{1}{j2\pi}\oint_\Gamma \frac{f(z)}{(z-z_0)^{k+1}}\,dz
 $$
 siendo esta notación más cómoda para encontrar el término $c_k$, para un $k$ dado.
 
+\subsection{Métodos prácticos para representar en serie de Laurent}
+
+Así como para las series de Taylor, para obtener los coeficientes de la serie de Laurent en términos generales no se utilizan fórmulas de integración, sino varios métodos, algunos de los cuales se ilustrarán con ejemplos. Si mediante un procedimiento así se encuentra una serie de Laurent, entonces la unicidad garantiza que debe ser la serie de Laurent de la función dada en la corona dada. Es decir, cuando representamos una función $f(z)$ puede tener diferentes series de Laurent con el mismo centro, pero estas son en coronas distintas.
+
+\begin{example}[Uso de la serie de Maclaurin]
+  Encontrar la serie de Laurent de $z^{-5}\sin(z)$ con centro en $0$. 
+
+  Sabemos que 
+  $$
+  \sin(z)=\sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}z^{2n+1} 
+  $$
+  Podemos dividir esta serie por $z^5$, resultando
+  $$
+  z^{-5}\sin(z) = \sum{n=0}^\infty \frac{(-1)^n}{(2n+1)!} \frac{z^{2n+1}}{z^5} = \boxed{\sum{n=0}^\infty \frac{(-1)^n}{(2n+1)!} z^{2n-4}}
+  $$
+  Aquí la ``corona'' de convergencia es todo el plano complejo sin el origen.
+\end{example}
+
+\begin{example}[Sustitución]
+  Encontrar la serie de Laurent de $z^2 e^{1/z}$ con centro en cero.
+
+  Sabemos que 
+  $$
+  e^z = \sum_{n=0}^\infty \frac{z^n}{n!}
+  $$
+  Entonces 
+  $$
+  e^{1/z} = \sum{n=0}^\infty \frac{1}{n!}\cdot\left(\frac{1}{z}\right)^n = \sum_{n=0}^\infty \frac{1}{n!\,z^n}
+  $$
+  Luego, multiplicando por $z^2$
+  $$
+  z^2 e^{1/z} = \sum_{n=0}^\infty \frac{z^2}{n!\,z^n} = \boxed{\sum_{n=0}^\infty \frac{1}{n!\,z^{n-2}}}
+  $$
+  donde $\lvert z \rvert > 0$.
+\end{example}
+
+\begin{example}[Desarrollo de series en coronas concéntricas diferentes]
+  Encontrar todas las series de Laurent de 
+  $$
+  f(z)=\frac{1}{z^3-z^4}
+  $$
+  con centro en $0$.
+
+  Tenemos que 
+  $$
+  \frac{1}{z^3-z^4} = \frac{1}{z^3}\cdot\frac{1}{1-z}
+  $$
+  Por tanto, podemos desarrollar por serie geométrica $1/(1-z)$, siendo 
+  $$
+  \frac{1}{z^3-z^4} = \frac{1}{z^3}\sum_{n=0}^\infty z^n = \boxed{\sum_{n=0}^\infty z^{n-3}}
+  $$
+  donde $z$ es válida en la corona $0<\lvert z \rvert < 1$. 
+
+  Sin embargo, también podemos desarrollar la misma $1/(1-z)$ en potencias negativas (que será válida en otra corona).
+  $$
+  \frac{1}{1-z}=\frac{-1}{z(1-z^{-1})}=-\sum_{n=0}^\infty \frac{1}{z^{n+1}}
+  $$
+  Entonces, siguiendo el mismo razonamiento que con la primer corona, tenemos
+  $$
+  \frac{1}{z^3-z^4}=\sum_{n=0}^\infty \frac{1}{z^{n+1}}\cdot \frac{1}{z^3} = \boxed{\sum_{n=0}^\infty \frac{1}{z^{n+4}}}
+  $$
+  donde $z$ es válida en la corona $\lvert z \rvert >1$.
+\end{example}
+
+Existen varios métodos más para evitar calcular las integrales y encontrar la ley de formación, sin embargo estos métodos abarcan los casos más generales y son suficientes para el objetivo del capítulo.
+
 \subsection{Clasificación de singularidades}
 
-Como bien ya vimos en la sección \ref{sec:singularidad} una singularidad son los puntos de una función donde esta no es diferenciable. La serie de Laurent nos permite conocer y clasificar mejor los distintos tipos de singularidades.
+Como bien ya vimos en la sección \ref{sec:singularidad} una singularidad son los puntos de una función donde esta no es diferenciable (y quizá ni siquiera este definida). La serie de Laurent nos permite conocer y clasificar mejor los distintos tipos de singularidades.
 
 Si se desarrollan algunos pocos términos de la serie de Laurent, tal como está expresada en \eqref{eq:serie_de_laurent_compacta} desde un valor $-n$ hasta $n$ resultará
 \begin{align*}
@@ -157,13 +224,23 @@ Si se desarrollan algunos pocos términos de la serie de Laurent, tal como está
 
 Entonces, a partir de esta expresión de la serie de Laurent definimos las siguientes singularidades.
 
+\begin{definition}[Aislada]
+  Una función compleja $f$ tiene una singularidad aislada en $z_0$ si $f$ es diferenciable en un anillo $0<\lvert z-z_0\rvert < R$ (la distancia al punto $z_0$ es mayor que cero y menor que $R$). 
+\end{definition}
+Por ejemplo, $1/z$ tiene una singularidad aislada en $0$, y $\sin(z)/(z-\pi)$ tiene una singularidad aislada en $\pi$.
+
 \begin{definition}[Esencial]
-  Las singularidades esenciales acontecen cuando el número de términos con exponente negativo en el desarrollo en serie de Laurent es infinito. En ese caso $z=z_0$ constituye una \textbf{singularidad esencial}.
+  Las singularidades esenciales acontecen cuando el número de términos con exponente negativo (o la parte principal de la serie) en el desarrollo en serie de Laurent es infinito. En ese caso $z=z_0$ constituye una \textbf{singularidad esencial}.
 \end{definition}
 \begin{definition}[Polo]
   Los puntos singulares no esenciales, también llamados comúnmente polos, tienen lugar cuando el número de términos con exponente negativo del desarrollo de Laurent es finito. 
 
   Aquel número finito (llámese $m$) de términos negativos que tiene la serie de Laurent se denomina \textit{orden} del polo. Así entonces, sería un polo de orden $m$. O lo que es lo mismo, que $z=z_0$ es un polo múltiple de $f(z)$, cuyo orden de multiplicidad es $m$.
+\end{definition}
+\begin{definition}[Removible]
+  Un punto $z_0$ es una singularidad removible de $f$ si $c_n=0$ para $n=-1,-2,\dots$. Es decir, no tiene términos negativos en la serie de Laurent.
+
+  Este tipo de singularidades son de poco interés ya que la singularidad, como su nombre lo indica, pueden quitarse.
 \end{definition}
 
 \begin{example}[Algunos ejemplos de singularidades]
