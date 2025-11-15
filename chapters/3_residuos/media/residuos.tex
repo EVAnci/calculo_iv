@@ -1,0 +1,44 @@
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[>=stealth]
+    \begin{scope}[decoration={
+        markings,
+        mark=at position 0.3 with {\arrow{>}},
+        mark=at position 0.6 with {\arrow{>}},
+        mark=at position 0.9 with {\arrow{>} \node[below right] {$\Gamma$};},
+      }]
+      \draw[gray,very thick,rotate=20,postaction={decorate}] (0,0) ellipse (3 and 2);
+    \end{scope}
+    \begin{scope}[decoration={
+        markings,
+        mark=at position 0.1 with {\arrow{>} \node[right] {$\gamma_1$};},
+      }]
+      \draw[gray,postaction={decorate}] (1.5,0.8) circle (0.7);
+    \end{scope}
+    \draw[fill] (1.5,0.8) circle (2pt) node[left] {$z_1$};
+    \begin{scope}[decoration={
+        markings,
+        mark=at position 0.1 with {\arrow{>} \node[right] {$\gamma_2$};},
+      }]
+      \draw[gray,postaction={decorate}] (0,1.2) circle (0.7);
+    \end{scope}
+    \draw[fill] (0,1.2) circle (2pt) node[left] {$z_2$};
+    \begin{scope}[decoration={
+        markings,
+        mark=at position 0.1 with {\arrow{>} \node[right] {$\gamma_3$};},
+      }]
+      \draw[gray,postaction={decorate}] (0.8,-0.7) circle (0.7);
+    \end{scope}
+    \draw[fill] (0.8,-0.7) circle (2pt) node[left] {$z_3$};
+    \begin{scope}[decoration={
+        markings,
+        mark=at position 0.1 with {\arrow{>} \node[right] {$\gamma_n$};},
+      }]
+      \draw[gray,postaction={decorate}] (-1.5,-0.8) circle (0.7);
+    \end{scope}
+    \draw[fill] (-1.5,-0.8) circle (2pt) node[left] {$z_n$};
+  \end{tikzpicture}
+  \caption{}
+  \label{fig:residuos}
+\end{figure}

@@ -14,12 +14,65 @@ Por tanto,
 $$
 \oint_\Gamma f(z)dz=j2\pi (c_{-1})
 $$
-Si conoce este coeficiente en el desarrollo de Laurent puede obtener el valor de esta integral. Este hecho da una importancia especial a este coeficiente, de manera que tomará el nombre de \textit{residuo}.
+Si conoce este coeficiente en el desarrollo de Laurent puede obtener el valor de esta integral. Este hecho da una importancia especial a este coeficiente, de manera que tomará el nombre de \textit{residuo}. Como ya hemos visto en ejemplos anteriores, es posible conocer la serie de Laurent de una función sin tener que calcular los coeficientes. Entonces, puede encontrarse la serie de Laurent usando alguno de los métodos utilizados en los ejemplos a fin de evaluar la integral.
 
 \begin{definition}[Residuo]
   Sea $f$ con una singularidad aislada en $z_0$ y desarrollo de Laurent $f(z)=\sum_{n=-\infty}^\infty c_n(z-z_0)^n$ en alguna corona $0<\lvert z-z_0\rvert < R$. Entonces el coeficiente $c_{-1}$ se llama \textbf{residuo} de $f$ en $z_0$ y se denota 
   $$
-  \text{Res}(f,z_0)
+  \text{Res}\left[f(z) \right\rvert_{z=z_0}
   $$
-  % page 493 (azul)
+  o también puede encontrarse como $\text{Res}(f,z_0)$ en algunas bibliografías.
 \end{definition}
+
+Esta idea puede extenderse para el caso en que $\Gamma$ encierra múltiples singularidades.
+\input{chapters/3_residuos/media/residuos.tex}
+
+\begin{theorem}[Teorema del residuo]
+  Sea $\Gamma$ una trayectoria cerrada y $f$ diferenciable en $\Gamma$ y en todos los puntos encerrados por $\Gamma$, excepto para $z_1,~z_2,\dots,~z_n$, que son todas singularidades aisladas de $f$ encerradas por $\Gamma$ (ver figura \ref{fig:residuos}). Entonces
+  $$
+  \oint_\Gamma f(z)dz = j2\pi\sum_{k=1}^\infty \text{Res}\left[f(z)\right\rvert_k
+  $$
+  En palabras, el valor de esta integral es $j2\pi$ veces la suma de los residuos de $f$ en las singularidades de $f$ encerradas por $\Gamma$.
+\end{theorem}
+
+\begin{proof}
+  Encerramos cada una de las singularidades $z_k$ en una trayectoria cerrada $\gamma_k$ que quede contenida dentro de $\Gamma$, que no encierre otras singularidades y que no interseque ninguna otra $\gamma_m$. Por el teorema de la deformación para dominios de conexidad superior (o segundo colorario de Cauchy, ecuación \ref{eq:dom_de_conex_sup}),
+  $$
+  \oint_\Gamma f(z)dz = \sum_{k=1}^n \oint_{\gamma_k}f(z)dz = j2\pi \sum_{k=1}^n \text{Res}\left[f(z)\right\rvert_{z_k}
+  $$
+  quedando demostrado.
+\end{proof}
+
+El teorema del residuo es efectivo en la medida de nuestra eficiencia para evaluar los residuos de una función en sus singularidades. Si realmente tuviera que escribir el desarrollo de Laurent de $f$ alrededor de cada singularidad para mostrar el coeficiente del $1/(z-z_k)$ término, el teorema sería difícil de aplicar en muchos ejemplos. Lo que aumenta su importancia, es que, al menos para los polos, es una manera eficiente de calcular los residuos.
+
+\subsection{Evaluación de los residuos}
+
+Para que esta forma de resolver integrales pueda implementarse y resultar de utilidad, es necesario encontrar la manera de evaluar los residuos.
+
+Tal como se verá, resulta más fácil evaluar y calcular un residuo que resolver una integral, por lo que este método constituye un aporte interesante en la resolución de integrales complejas.
+
+Entonces se deben distinguir las diferentes posibilidades que pueden presentarse para definir un residuo, a saber:
+\begin{itemize}
+  \item Residuo en un polo simple,
+  \item Residuo en un polo múltiple,
+  \item Residuo en el infinito.
+\end{itemize}
+
+\begin{theorem}[Residuo en un polo simple]
+  Si $f$ tiene un polo simple en $z_0$. Entonces 
+  $$
+  \text{Res}\left[f(z)\right\rvert_{z=z_0} = \lim_{z\to z_0}(z-z_0)f(z)
+  $$
+  es el residuo de $f$ en $z_0$.
+\end{theorem}
+\begin{proof}
+  Si $f$ tiene un polo simple en $z_0$, entonces su desarrollo de Laurent alrededor de $z_0$ es 
+  $$
+  f(z)=\frac{c_{-1}}{z-z_0}+\sum_{k=0}^\infty c_k(z-z_0)^k
+  $$
+  en alguna corona $0<\lvert z-z_0\rvert <R$. Entonces, si despejamos $c_{-1}
+  \begin{align*}
+    f(z)&=\frac{1}{z-z_0}\left( \frac{c_{-1}}{z-z_0} + \sum_{n=0}^\infty c_k(z-z_0)^{k+1} \right) \\ 
+    (z-z_0)f(z)&=\frac{c_{-1}}{z-z_0} + \sum_{n=0}^\infty c_k(z-z_0)^{k+1}
+  \end{align*}
+\end{proof}
