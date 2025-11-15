@@ -176,6 +176,10 @@ El ejemplo \ref{ej:sustitucion_serie_de_taylor} es un claro ejemplo del segundo 
   $$
   \frac{1}{c-bz}=\frac{1}{(c-ab)\left(1-\frac{b(z-a)}{c-ab}\right)} = \frac{1}{(c-ab)}\sum_{n=0}^\infty \left(\frac{b(z-a)}{c-ab}\right)^n
   $$
+  Y por último, podemos introducir el factor dentro de la serie, siendo entonces 
+  $$
+  \frac{1}{c-bz}=\sum_{n=0}^\infty \frac{(b(z-a))^n}{(c-ab)^{n+1}}
+  $$
   Quedando así desarrollada la expresión.
 \end{example}
 
@@ -186,7 +190,7 @@ El ejemplo \ref{ej:sustitucion_serie_de_taylor} es un claro ejemplo del segundo 
   $$
   \frac{1}{1+z^2}
   $$
-  Si se integra este último resultado, evidentemente se vuelve a obtener $f$, entonces podemos desarrollar la serie de Taylor de este último resultado (aplicaremos el método de sustitución en este caso) y luego integrar término a término. 
+  Si se integra este último resultado, evidentemente se vuelve a obtener $f$, entonces podemos desarrollar la serie de Taylor de este último resultado (desarrollaremos como serie geométrica en este caso) y luego integrar término a término. 
   $$
   \frac{1}{1+z^2}=\frac{1}{1-(-z^2)}=\sum_{n=0}^\infty (-z^2)^n = \sum_{n=0}^\infty (-1)^n z^{2n}
   $$

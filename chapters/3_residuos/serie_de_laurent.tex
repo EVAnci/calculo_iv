@@ -127,16 +127,16 @@ f(z)=\sum_{k=0}^\infty c_k (z-z_0)^k + \sum_{k=1}^\infty b_k(z-z_0)^{-k}
 $$
 donde 
 $$
-c_k = \frac{1}{j2\pi}\oint_\Gamma \frac{f(z^\ast)}{(z^\ast-z_0)^{k+1}}\,dz \qquad b_k = \frac{1}{j2\pi}\oint_\Gamma \frac{f(z^\ast)}{(z^\ast-z_0)^{-k+1}}\,dz
+c_k = \frac{1}{j2\pi}\oint_\Gamma \frac{f(z^\ast)}{(z^\ast-z_0)^{k+1}}\,dz^\ast \qquad b_k = \frac{1}{j2\pi}\oint_\Gamma \frac{f(z^\ast)}{(z^\ast-z_0)^{-k+1}}\,dz^\ast
 $$
-Entonces, vemos que tanto el coeficiente $b_k$ como $(z^\ast-z_0)$ usando expresiones como las de la serie de Taylor solo cambian su signo. Bajo este punto de vista, como el primer término recorre el intervalo $[0,\infty)$ y el segundo término recorre $(-\infty,1]$ podemos escribir la serie de forma compacta como 
+Entonces, en la parte principal de la serie de Laurent, vemos que tanto el coeficiente $b_k$ como $(z^\ast-z_0)$ tienen un exponente $k$ negativo. En esta circunstancia, podemos decir que el exponente es positivo, pero el intervalo es $(-\infty,1]$. Entonces como el primer término recorre el intervalo $[0,\infty)$ y el segundo término recorre $(-\infty,1]$ podemos escribir la serie de forma compacta como 
 \begin{equation}
 f(z)=\sum_{-\infty}^\infty c_k(z-z_0)^k
 \label{eq:serie_de_laurent_compacta}
 \end{equation}
 donde $c_k$ es, como ya hemos visto anteriormente,
 $$
-c_k=\frac{1}{j2\pi}\oint_\Gamma \frac{f(z^\ast)}{(z-z_0)^{k+1}}\,dz
+c_k=\frac{1}{j2\pi}\oint_\Gamma \frac{f(z^\ast)}{(z^\ast-z_0)^{k+1}}\,dz^\ast
 $$
 
 Y, si recordamos, $z^\ast$ es la variable que hemos designado para recorrer la curva. Sin embargo, cuando realizamos la integral de línea, $z$ toma los valores de la curva misma, entonces este último coeficiente puede escribirse de una forma más práctica,
@@ -158,7 +158,7 @@ Así como para las series de Taylor, para obtener los coeficientes de la serie d
   $$
   Podemos dividir esta serie por $z^5$, resultando
   $$
-  z^{-5}\sin(z) = \sum{n=0}^\infty \frac{(-1)^n}{(2n+1)!} \frac{z^{2n+1}}{z^5} = \boxed{\sum{n=0}^\infty \frac{(-1)^n}{(2n+1)!} z^{2n-4}}
+  z^{-5}\sin(z) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} \frac{z^{2n+1}}{z^5} = \boxed{\sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} z^{2n-4}}
   $$
   Aquí la ``corona'' de convergencia es todo el plano complejo sin el origen.
 \end{example}
@@ -172,7 +172,7 @@ Así como para las series de Taylor, para obtener los coeficientes de la serie d
   $$
   Entonces 
   $$
-  e^{1/z} = \sum{n=0}^\infty \frac{1}{n!}\cdot\left(\frac{1}{z}\right)^n = \sum_{n=0}^\infty \frac{1}{n!\,z^n}
+  e^{1/z} = \sum_{n=0}^\infty \frac{1}{n!}\cdot\left(\frac{1}{z}\right)^n = \sum_{n=0}^\infty \frac{1}{n!\,z^n}
   $$
   Luego, multiplicando por $z^2$
   $$
@@ -186,27 +186,27 @@ Así como para las series de Taylor, para obtener los coeficientes de la serie d
   $$
   f(z)=\frac{1}{z^3-z^4}
   $$
-  con centro en $0$.
-
-  Tenemos que 
+  con centro en $0$. Nótese que si queremos encontrar el coeficiente $c_k$ usando la fórmula de Taylor es imposible. $f(0)$ y $f(1)$ no están definidos para este caso. Entonces, no es posible hacer un desarrollo en serie de Taylor de esta función centrada en $z_0=0$ debido a que las derivadas en cero no existen.
+  
+  Tenemos que, 
   $$
   \frac{1}{z^3-z^4} = \frac{1}{z^3}\cdot\frac{1}{1-z}
   $$
-  Por tanto, podemos desarrollar por serie geométrica $1/(1-z)$, siendo 
+  Por tanto, como la serie de Laurent si es válida en este caso, podemos desarrollar por serie geométrica $1/(1-z)$ que converge si $0<\lvert z\rvert <1$, siendo 
   $$
-  \frac{1}{z^3-z^4} = \frac{1}{z^3}\sum_{n=0}^\infty z^n = \boxed{\sum_{n=0}^\infty z^{n-3}}
+  \frac{1}{z^3-z^4} = \frac{1}{z^3}\sum_{n=0}^\infty z^n = \sum_{n=0}^\infty z^{n-3}=\boxed{\sum_{k=-3}^\infty z^{k}}
   $$
-  donde $z$ es válida en la corona $0<\lvert z \rvert < 1$. 
+  donde $z$ es válida en la corona $0<\lvert z \rvert < 1$. Aquí, vemos que $k$ toma tres valores negativos en la serie. Esto será importante ya que nos permite determinar que esta singularidad ($z_0=0$) es un polo múltiple de orden tres. 
 
-  Sin embargo, también podemos desarrollar la misma $1/(1-z)$ en potencias negativas (que será válida en otra corona).
+  Sin embargo, también podemos desarrollar la misma $1/(1-z)$ en potencias negativas (que será válida en la corona $1<z$).
   $$
   \frac{1}{1-z}=\frac{-1}{z(1-z^{-1})}=-\sum_{n=0}^\infty \frac{1}{z^{n+1}}
   $$
   Entonces, siguiendo el mismo razonamiento que con la primer corona, tenemos
   $$
-  \frac{1}{z^3-z^4}=\sum_{n=0}^\infty \frac{1}{z^{n+1}}\cdot \frac{1}{z^3} = \boxed{\sum_{n=0}^\infty \frac{1}{z^{n+4}}}
+  \frac{1}{z^3-z^4}=-\sum_{n=0}^\infty \frac{1}{z^{n+1}}\cdot \frac{1}{z^3} = -\sum_{n=0}^\infty \frac{1}{z^{n+4}} = -\sum_{k=-4}^\infty z^{-k} = \boxed{-\sum_{m=-\infty}^4 z^{m}}
   $$
-  donde $z$ es válida en la corona $\lvert z \rvert >1$.
+  donde $z$ es válida en la corona $\lvert z \rvert >1$. En este último caso se podría pensar que se ha llegado a una contradicción. ¿Infinitos términos negativos? El detalle es que, si bien la serie está centrada en $z_0=0$, es válida en la corona $\lvert z\rvert >1$ que \textbf{no incluye a} $z_0$. Por tanto no describe el comportamiento cerca de $z_0$, más bien, describe el comportamiento cerca de $z\to\infty$. 
 \end{example}
 
 Existen varios métodos más para evitar calcular las integrales y encontrar la ley de formación, sin embargo estos métodos abarcan los casos más generales y son suficientes para el objetivo del capítulo.
@@ -224,11 +224,6 @@ Si se desarrollan algunos pocos términos de la serie de Laurent, tal como está
 
 Entonces, a partir de esta expresión de la serie de Laurent definimos las siguientes singularidades.
 
-\begin{definition}[Aislada]
-  Una función compleja $f$ tiene una singularidad aislada en $z_0$ si $f$ es diferenciable en un anillo $0<\lvert z-z_0\rvert < R$ (la distancia al punto $z_0$ es mayor que cero y menor que $R$). 
-\end{definition}
-Por ejemplo, $1/z$ tiene una singularidad aislada en $0$, y $\sin(z)/(z-\pi)$ tiene una singularidad aislada en $\pi$.
-
 \begin{definition}[Esencial]
   Las singularidades esenciales acontecen cuando el número de términos con exponente negativo (o la parte principal de la serie) en el desarrollo en serie de Laurent es infinito. En ese caso $z=z_0$ constituye una \textbf{singularidad esencial}.
 \end{definition}
@@ -240,11 +235,25 @@ Por ejemplo, $1/z$ tiene una singularidad aislada en $0$, y $\sin(z)/(z-\pi)$ ti
 \begin{definition}[Removible]
   Un punto $z_0$ es una singularidad removible de $f$ si $c_n=0$ para $n=-1,-2,\dots$. Es decir, no tiene términos negativos en la serie de Laurent.
 
-  Este tipo de singularidades son de poco interés ya que la singularidad, como su nombre lo indica, pueden quitarse.
+  Este tipo de singularidades son de poco interés ya que la singularidad, como su nombre lo indica, puede quitarse.
 \end{definition}
 
 \begin{example}[Algunos ejemplos de singularidades]
   Un ejemplo de singularidad esencial es la función $f(z)=e^{1/z}$ que tiene una singularidad esencial en $z=0$. 
 
-  Por otro lado, un ejemplo de polo múltiple es $f(z)=a/z^4$ que tiene un polo múltiple de orden $4$ en $z=0$.
+  Por otro lado, un ejemplo de polo múltiple es $f(z)=a/z^4$ que tiene un polo múltiple de orden $4$ en $z=0$. Para comprobar este caso, vamos a desarrollar su serie. En este caso, esta función tiene un desarrollo denominado desarrollo trivial, porque ya está en la forma de una serie de Laurent:
+  $$
+  \frac{1}{z^4}=\sum_{-\infty}^\infty c_nz^n
+  $$
+  donde $c_{-4}=1$ y todos los demás coeficientes $c_n=0$. Así la serie es simplemente 
+  $$
+  \frac{1}{z^4}
+  $$
+  Una vez desarrollada esta serie, multiplicamos por un escalar $a$ para obtener la función inicial.
+
+  ¿Y por qué decimos que tiene un polo de multiplicidad cuatro? Porque el primer término negativo que tenemos es $c_{-4}$. Entonces, decimos que los términos componentes de la serie dados por los coeficientes $c_k$ son: 
+  $$
+  c_{-4}=1,~c_{-3}=0,~c_{-2}=0,~c_{-1}=0,~c_{0}=0,~c_1=0,\dots
+  $$
+  quedando así, definido el polo de orden cuatro.
 \end{example}

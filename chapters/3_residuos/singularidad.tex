@@ -2,7 +2,11 @@
 \label{sec:singularidad}
 
 \begin{definition}
-  Los puntos singulares de una función analítica $f(z)$ son puntos en los que $f(z)$ deja de ser analítica. Más precisamente, $z=c$ se denomina \textit{punto singular} de $f(z)$ si $f(z)$ no es diferenciable en $z=c$, aunque todo disco con centro en $c$ contiene puntos en lo que $f(z)$ es diferenciable. También se dice que $f(z)$ tiene una singularidad en $z=c$.
+  Los puntos singulares de una función analítica $f(z)$ son puntos en los que $f(z)$ deja de ser analítica. Más precisamente, $z=z_0$ se denomina \textit{punto singular} de $f(z)$ si $f(z)$ no es diferenciable (y quizá ni siquiera esté definida) en $z=z_0$, aunque toda vecindad de $z=z_0$ contiene puntos en los cuales $f(z)$ es analítica.
+\end{definition}
+
+\begin{definition}[Singularidad aislada]
+  $z=z_0$ se denomina singularidad aislada de $f(z)$ si $z=z_0$ tiene una vecindad sin ninguna otra singularidad de $f(z)$.
 \end{definition}
 
 \begin{example}[Algunos ejemplos sobre funciones con singularidades]
@@ -12,5 +16,5 @@
   $$
   tiene una singularidad en $z=1$
 
-  La función $\tan(z)$ tiene singularidades en $z=\pm \pi/2,\pm3\pi/2,\dots$.
+  La función $\tan(z)$ tiene singularidades aisladas en $z=\pm \pi/2,\pm3\pi/2,\dots$.
 \end{example}
