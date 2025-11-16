@@ -156,10 +156,88 @@ Para terminar de afianzar los conceptos veamos un ejemplo.
   $$
   Entonces, evaluando cada uno de los residuos en \eqref{eq:ej:polos}, resulta
   $$
-  \oint_\Gamma \frac{j4z-1}{\sin(z)}dz = j2\pi \left( \cancel{(j4\pi-1) + \cancel{j40}-1 + \cancel{(-j4\pi+1)} + (-j8\pi+1) \right)
+    \oint_\Gamma \frac{j4z-1}{\sin(z)}dz = j2\pi \left( (j4\pi+1) + (-1) + (-j4\pi+1) + (j8\pi-1) \right)
   $$
   reescribiendo todo, el resultado de la integral es 
   $$
-  \oint_\Gamma \frac{j4z-1}{\sin(z)}dz = j2\pi (j8\pi-4) = -16\pi^2-j8\pi
+  \oint_\Gamma \frac{j4z-1}{\sin(z)}dz = j2\pi (j8\pi) = -16\pi^2
   $$
 \end{example}
+
+\begin{theorem}[Residuo en un polo múltiple]
+  Sea $f$ con un polo de orden $m$ en $z_0$. Entonces
+  $$
+  \res_{z=z_0}f(z)=\frac{1}{(m-1)!}\cdot \lim_{z\to z_0} \left( \frac{d^{m-1}}{dz^{m-1}}\left[(z-z_0)^m f(z)\right] \right)
+  $$
+  Si $m=1$ (polo simple), entonces $(m-1)!=0!=1$ por definición, y la derivada de orden $(m-1)$ está definida para ser exactamente la propia función. Con estas convenciones, la conclusión del teorema se reduce al resultado para los residuos en polos simples cuando $m=1$.
+\end{theorem}
+
+\begin{proof}
+  En alguna corona alrededor de $z_0$,
+  $$
+  f(z)=\frac{c_{-m}}{(z-z_0)^m} + \frac{c_{-m+1}}{(z-z_0)^{m-1}} + \cdots + \frac{c_{-1}}{z-z_0} 
+  + \sum_{n=0}^\infty c_n(z-z_0)^n
+  $$
+  Se quiere encontrar $c_{-1}$. Al multiplicar ambos miembros por $(z-z_0)^m$, se obtiene 
+  $$
+  (z-z_0)^m f(z) = c_{-m} + c_{-m+1}(z-z_0) + \cdots + c_{-1}(z-z_0)^{m-1}+ \sum_{n=0}^\infty c_n(z-z_0)^{n+m}
+  $$
+  Si esta expresión se deriva miembro a miembro respecto de $z$, derivando una vez se obtendrá:
+  $$
+  g'(z) = c_{-m+1} + \cdots + c_{-1}(m-1)(z-z_0)^{m-2} + \sum_{n=0}^\infty c_n (n+m)(z-z_0)^{n+m-1}
+  $$
+  donde $g'(z)$ es 
+  $$
+  g'(z)=\frac{d}{dz}\left[(z-z_0)^m f(z)\right]
+  $$
+  que se ha utilizado por motivos de espacio en la hoja.
+
+  Siguiendo con la demostración, al derivar ha desaparecido el primer coeficiente $c_{-m}$ que es una constante y en los restantes términos baja el exponente que corresponde a la potencia del paréntesis. Además la potencia del paréntesis disminuye en una unidad, quedando la expresión $g'(z)$.
+
+  Derivando una segunda vez, tenemos
+  \begin{align*}
+    g''(z) =& 2c_{-m+2} + \cdots + c_{-1}(m-1)(m-2)(z-z_0)^{m-3} + \notag\\ 
+            &+\sum_{n=0}^\infty c_n(n+m)(n+m-1)(z-z_0)^{n+m-2}
+  \end{align*}
+  Si se continúan tomando las derivadas sucesivas hasta la derivada de orden $(m-1)$ obtendremos el coeficiente $c_{-1}$ que es el residuo. Derivar dos veces nos ha servido para entender la ley de formación de las derivadas, entonces, podemos decir que, derivando $(m-1)$ veces obtenemos
+  \begin{align*}
+    g^{(m-1)}(z) = c_{-1}(m-1)! + \sum_{n=0}^\infty c_n (n+m)(n+m-1)\cdots(n+1)(z-z_0)^{n+1}
+  \end{align*}
+  Ahora, al aplicar límite para $z\to z_0$ tenemos que la expresión dentro de la sumatoria tiende a cero, y la expresión resultante es
+  \begin{gather*}
+    \lim_{z\to z_0}\left( \frac{d^{m-1}}{dz^{m-1}}\left[(z-z_0)^mf(z)\right]\right) = c_{-1}(m-1)! \\ 
+    c_{-1} = \frac{1}{(m-1)!}\cdot\lim_{z\to z_0}\left( \frac{d^{m-1}}{dz^{m-1}}\left[(z-z_0)^mf(z)\right]\right)
+  \end{gather*}
+  lo que se quería demostrar.
+\end{proof}
+
+Con este resultado, podemos ver claramente que si el polo es de orden uno, entonces volvemos a la fórmula de polo simple. Entonces esto es una generalización para un polo de orden $m$.
+
+\subsection{Residuo en el infinito}
+
+Este caso se presenta separado a los residuos de polo simple y múltiple ya que su comportamiento y utilidad es diferente.
+
+En el análisis complejo, trabajamos usualmente en el plano complejo finito, es decir, con valores de $z$ en $\mathbb{C}$. Pero para manejar comportamientos ``lejanos'' (cuando $\lvert z \rvert$ tiende a infinito), usamos el plano complejo extendido o \textbf{esfera de Riemann}. Esto es como agregar un punto extra llamado $\infty$ (infinito) al plano complejo, convirtiéndolo en una esfera compacta.
+
+Esto nos permite evaluar un residuo en el infinito, para una singularidad que se presente en un valor no finito de $z$.
+
+En el plano complejo usual, para evaluar $f(z)$ en $(z\to\infty)$, resulta claro que debemos contar con una curva $\Phi$ infinitamente grande tal que ``encierre'' a la singularidad de la ubicación no finita.
+
+Esto ya plantea una evidente dificultad, dado que la posibilidad de trazar esa curva no existe realmente.
+
+Para poder estudiar el comportamiento de una función en $\infty$, hacemos un cambio de variable: 
+$$
+g(t)=f\left(\frac{1}{t}\right)
+$$
+donde $t=1/z$. Entonces cuando $z\to\infty$ claramente $t\to0$. Entonces podemos estudiar el comportamiento de $f$ en el infinito usando una curva $\Gamma$ pequeña que encierre al origen. Para no complicar los cálculos, podemos decir que $\Gamma$ es una circunferencia.
+
+Siendo el residuo buscado:
+\begin{equation}
+  \res_{z=\infty}f(z)=\lim_{z\to\infty} \left(\frac{1}{j2\pi} \oint_\Phi f(z)dz\right)
+\end{equation}
+donde $\Phi$ debe ser una curva tan grande como se quiera.
+
+Aplicando la transformación realizada, y usando $t$ como variable, tendríamos
+$$
+\res{t=0}f\left(\frac{1}{t}\right) = \lim_{t\to 1} \left( \frac{1}{j2\pi}\oint_\Gamma f\left(\frac{1}{t} d\frac{1}{t}\right) \right)
+$$
