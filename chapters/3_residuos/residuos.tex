@@ -221,23 +221,115 @@ En el análisis complejo, trabajamos usualmente en el plano complejo finito, es 
 
 Esto nos permite evaluar un residuo en el infinito, para una singularidad que se presente en un valor no finito de $z$.
 
-En el plano complejo usual, para evaluar $f(z)$ en $(z\to\infty)$, resulta claro que debemos contar con una curva $\Phi$ infinitamente grande tal que ``encierre'' a la singularidad de la ubicación no finita.
-
-Esto ya plantea una evidente dificultad, dado que la posibilidad de trazar esa curva no existe realmente.
+En el plano complejo usual, para evaluar $f(z)$ en $(z\to\infty)$, resulta claro que debemos contar con una curva $\Phi$ infinitamente grande tal que ``encierre'' a la singularidad de la ubicación no finita. Esto ya plantea una evidente dificultad, dado que la posibilidad de trazar esa curva no existe realmente.
 
 Para poder estudiar el comportamiento de una función en $\infty$, hacemos un cambio de variable: 
-$$
+\begin{equation*}
 g(t)=f\left(\frac{1}{t}\right)
-$$
+\end{equation*}
 donde $t=1/z$. Entonces cuando $z\to\infty$ claramente $t\to0$. Entonces podemos estudiar el comportamiento de $f$ en el infinito usando una curva $\Gamma$ pequeña que encierre al origen. Para no complicar los cálculos, podemos decir que $\Gamma$ es una circunferencia.
 
 Siendo el residuo buscado:
-\begin{equation}
+$$
   \res_{z=\infty}f(z)=\lim_{z\to\infty} \left(\frac{1}{j2\pi} \oint_\Phi f(z)dz\right)
-\end{equation}
+$$
 donde $\Phi$ debe ser una curva tan grande como se quiera.
 
 Aplicando la transformación realizada, y usando $t$ como variable, tendríamos
+\begin{equation}
+\res_{t=0}f\left(\frac{1}{t}\right) = \lim_{t\to 0} \left( \frac{1}{j2\pi}\oint_\Gamma f\left(\frac{1}{t} \right) d\frac{1}{t}\right)
+\label{eq:residuo_infty_cero}
+\end{equation}
+donde $\Gamma$ es una pequeña curva incremental alrededor del origen.
+
+De la expresión \eqref{eq:residuo_infty_cero} podemos resolver el diferencial $d(1/t)$ para obtener una expresión respecto de la variable $t$. Consideremos la función $h(t)=t^{-1}$, entonces
 $$
-\res{t=0}f\left(\frac{1}{t}\right) = \lim_{t\to 1} \left( \frac{1}{j2\pi}\oint_\Gamma f\left(\frac{1}{t} d\frac{1}{t}\right) \right)
+h(t)=\frac{1}{t} \quad \rightarrow \quad h'(t)=\frac{d}{dt}(t^{-1})=-1\cdot t^{-2} = -\frac{1}{t^2}
 $$
+y por definición de diferencial $(dh=h'(t)dt)$ resulta 
+$$
+d\left(\frac{1}{t}\right)= -\frac{1}{t^2}dt
+$$
+y, reemplazando en \eqref{eq:residuo_infty_cero} resultará:
+\begin{equation}
+  \res_{t=0}\left[f\left(\frac{1}{t}\right)\right] = \lim_{t\to 0}\left( -\frac{1}{j2\pi}\oint_\Gamma \frac{f(1/t)}{t^2} dt \right)
+  \label{eq:residuo_infty_diferenciado}
+\end{equation}
+
+En este punto se puede realizar un artificio matemático con referencia a la sustitución propuesta, perfectamente válido porque no hay nada que impida realizarlo. Lo único que si debe respetarse siempre, es que, cuando hablamos de $z$ nos referimos a una curva $\Phi$ infinitamente grande y cuando hablamos de $t$ nos referimos a una curva $\Gamma$ infinitamente pequeña.
+
+Cumpliendo con las precauciones mencionadas, la sustitución entre $z$ y $1/t$ es reversible a voluntad, porque fue formulada sin realizar ninguna condición para plantearla o retrotraerla.
+
+Entonces, escribimos 
+$$
+\frac{1}{t^2} = \frac{1}{t}\cdot \frac{1}{t} = z\cdot\frac{1}{t}
+$$
+Luego, reemplazamos esta expresión dentro de el integrando de la ecuación \eqref{eq:residuo_infty_diferenciado} y reemplazamos $f(1/t)=f(z)$, siendo la expresión resultante 
+$$
+\res_{t=0}\left[f(1/t)\right] = \lim_{t\to 0} \left( -\frac{1}{j2\pi}\oint_\Gamma z\frac{f(z)}{t}dt \right) 
+$$
+
+En esta última expresión, se aprecia que $z$ y $f(z)$ a ojos de la integral son constantes, ya que se integra sobre $\Gamma$, y por tanto la variable de integración es $t$, por tanto pueden extraerse como factores constantes. Luego, quedará la siguiente expresión
+\begin{equation}
+\res_{t=0}\left[f(1/t)\right] = \lim_{t\to 0} \left( -\frac{zf(z)}{j2\pi} \oint_\Gamma \frac{1}{t}dt \right)
+\label{eq:residuo_infinito_diferenciado}
+\end{equation}
+Observando la figura \ref{fig:residuo_infty_curva_gamma}, la curva $\Gamma$ alrededor del origen  y suponiendo que la misma
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[>=stealth]
+    \draw[->,gray] (-1.8,0) -- (1.8,0) node[right] {\scriptsize$x$};
+    \draw[->,gray] (0,-1.8) -- (0,1.8) node[above] {\scriptsize$y$};
+    \begin{scope}[decoration={
+        markings,
+        mark=at position 0.4 with {\node[above left] {$\Gamma$};}
+      }]
+      \draw[very thick,red,postaction={decorate}] (0,0) circle (1.5);
+    \end{scope}
+    \draw[->,red,thick] (0,0) -- (40:1.5) node[midway, above] {\scriptsize\color{black}$r$};
+    \draw[red] (0.3,0) arc [start angle=0, end angle=40, radius=0.3] node[right] {\scriptsize\color{black}$\theta$};
+    \draw[fill] (40:1.5) circle (1pt) node[above right] {\scriptsize\color{black}$t$};
+  \end{tikzpicture}
+  \caption{}
+  \label{fig:residuo_infty_curva_gamma}
+\end{figure}
+se trata de una circunferencia, la variable paramétrica $t$ se desplazará a lo largo de ella, con un cierto radio pequeño $r$ y un ángulo $\theta\in[0,2\pi]$ para dar un giro completo.
+
+Por tanto, podemos resolver la integral de línea dentro de la expresión \eqref{eq:residuo_infty_diferenciado}. Parametrizando la curva en función de $\theta$ resulta que $t=re^{j\theta}$ y $dt=jre^{j\theta}d\theta$. Entonces
+$$
+\oint_\Gamma \frac{1}{t}dt = \int_0^{2\pi}\frac{1}{re^{j\theta}}\cdot jre^{j\theta}d\theta = j2\pi
+$$
+De manera que, volviendo a la expresión \eqref{eq:residuo_infty_diferenciado}, resulta 
+$$
+\res_{t=0}\left[f\left(\frac{1}{t}\right)\right]=\lim_{t\to 0}\left( -\frac{zf(z)}{j2\pi}j2\pi \right)
+$$
+Y, en esta última expresión ya podemos homogeneizar las variables, utilizando solamente $z$, quedando la expresión 
+$$
+\boxed{
+\res_{z=\infty}f(z)=-\lim_{z\to\infty}zf(z)
+}
+$$
+Que es la expresión final para calcular el residuo en el infinito de una función $f(z)$. Este residuo en el infinito puede servir para la resolución de algunas integrales, teniendo en cuenta la siguiente propiedad:
+\begin{quote}
+  ``Para funciones holomorfas la suma de los residuos en las singularidades aisladas más el residuo en el infinito debe dar cero.''
+\end{quote}
+$$
+\res_{z=\infty} f(z) + \sum_{k=1}^n \res_{z=z_k} f(z) = 0
+$$
+Veamos un ejemplo. 
+
+\begin{example}
+  Suponiendo tener una función $f(z)$ que sea 
+  $$
+  f(z)=\frac{z}{(z-2)(z-3)}
+  $$
+  y se pretende calcular el residuo en alguna singularidad no finita de esta función fraccionaria, o residuo en el infinito coloquialmente. Resultará, aplicando la fórmula de cálculo obtenida para el residuo en el infinito:
+  $$
+  \res_{z=\infty}\left[\frac{z}{(z-2)(z-3)}\right]=-\lim_{z\to\infty}\left(z\frac{z}{(z-2)(z-3)}\right) = -1
+  $$
+  Siendo este el resultado del residuo de $f$ en el infinito.
+\end{example}
+
+Cuando se obtiene un valor para el residuo en el infinito significa que la función $f(z)$ tiene alguna singularidad no finita, o sea en las proximidades de $z\to\infty$. Cuando no es así, si el cálculo resulta indeterminado o no finito, vale decir que no se puede obtener un valor para el residuo, se interpreta entonces que no hay singularidad no finita para esa función.
+
+En el caso de que $\res_{\infty}f(z)=0$, significa que el residuo existe y es nulo, por lo tanto, quiere decir que si hay alguna singularidad de la función en el infinito.
