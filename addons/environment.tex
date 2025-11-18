@@ -4,11 +4,15 @@
 % Config of the \newtheorem envs
 % This avoids the italic font in theorem
 % envs
-\theoremstyle{definition}
+\theoremstyle{remark}
 
 % Definition environment. Follows the structure
 % Definición <chapter><section><number>
 \newtheorem{definition}{Definición}[section]
+
+% Property environment. Follows the structure
+% Propiedad <chapter><section><number>
+\newtheorem{property}{Propiedad}[section]
 
 % Theorem environment
 % Teorema <chapter><section><number>
@@ -17,10 +21,6 @@
 % Example environment. Follows the structure
 % Ejemplo <chapter><section><A,B,C,...> 
 % A,B,C requieres a new counter.
-% \theoremstyle{remark}
-% \newtheorem{example}{Ejemplo}[section]
-% \renewcommand{\theexample}{\thesection.\Alph{example}}
-\theoremstyle{remark}
 \newtheorem{example}{Ejemplo}[section]
 \renewcommand{\theexample}{\thesection.\Alph{example}}
 

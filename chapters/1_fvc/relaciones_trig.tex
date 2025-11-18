@@ -1,0 +1,101 @@
+\section{Relaciones útiles}
+
+\subsection{Las funciones hiperbólicas}
+
+Las funciones hiperbólicas nacen de la misma fuente que las funciones trigonométricas, pero buscan representar una hipérbola rectangular en vez de una circunferencia unitaria. La identidad fundamental en trigonometría surge de
+\[
+\cos^2(t)+\sin^2(t)=1
+\]
+que es la ecuación de la circunferencia unitaria. La función paramétrica
+\[
+t\mapsto (\cos(t),\sin(t))
+\]
+recorre precisamente esa circunferencia.
+
+En cambio, la identidad hiperbólica
+\[
+\cosh^2(t) - \senoh^2(t) =1
+\]
+es la ecuación de la hipérbola
+\[
+x^2-y^2=1.
+\]
+Por tanto, la función
+\[
+t\mapsto (\cosh(t),\senoh(t))
+\]
+parametriza una rama de la hipérbola, de la misma manera elegante en que \((\cos(t),\sin(t))\) parametriza la circunferencia.
+
+Así aparece el nombre ``hiperbólicas'': son las funciones naturales asociadas a la geometría de la hipérbola, igual que las circulares son naturales para la circunferencia.
+
+\subsection{Relaciones en variable compleja}
+
+Para trabajar con variables complejas conviene tener en cuenta las identidades que conectan las funciones trigonométricas, las hiperbólicas y las exponenciales. A continuación se presentan las expresiones que serán de utilidad al momento de trabajar con funciones de variable compleja.
+
+Comencemos con las definiciones exponenciales. Para cualquier \(z\in\mathbb{C}\),
+\begin{gather*}
+\sin(z)=\frac{e^{jz}-e^{-jz}}{2j},\qquad
+\cos(z)=\frac{e^{jz}+e^{-jz}}{2}, \\
+\senoh(z)=\frac{e^{z}-e^{-z}}{2},\qquad
+\cosh(z)=\frac{e^{z}+e^{-z}}{2}.
+\end{gather*}
+
+Desde aquí salen las relaciones fundamentales entre lo trigonométrico y lo hiperbólico. Basta sustituir \(z\mapsto jz\) en las definiciones para obtener las siguientes propiedades,
+\begin{property}[Relación entre trigonométricas e hiperbólicas]
+  \begin{gather*}
+   \sin(jz)=j\,\senoh(z),\qquad
+   \cos(jz)=\cosh(z), \\
+   \senoh(jz)=j\,\sin(z),\qquad
+   \cosh(jz)=\cos(z).
+  \end{gather*}
+   \label{prop:rel_trig_hiper}
+Estas identidades permiten moverse cómodamente entre expresiones trigonométricas y expresiones hiperbólicas.
+\end{property}
+
+Unas consecuencias muy útiles que salen de la propiedad \ref{prop:rel_trig_hiper}:
+\begin{property}[Identidades de paridad]
+  \begin{gather*}
+   \sin(-z)=-\sin(z),\qquad \cos(-z)=\cos(z), \\ 
+   \senoh(-z)=-\senoh(z),\qquad \cosh(-z)=\cosh(z).
+  \end{gather*}
+\end{property}
+
+\begin{property}[Sumas de ángulos]
+  \begin{gather*}
+    \sin(z+w)=\sin(z)\cos(w)+\cos(z)\sin(w), \\
+    \cos(z+w)=\cos(z)\cos(w)-\sin(z)\sin(w),
+  \end{gather*}
+  y en el lado hiperbólico
+  \begin{gather*}
+    \senoh(z+w)=\senoh(z)\cosh(w)+\cosh(z)\senoh(w), \\
+    \cosh(z+w)=\cosh(z)\cosh(w)+\senoh(z)\senoh(w).
+  \end{gather*}
+\end{property}
+
+\begin{property}[Fórmulas de Euler desdobladas]
+   Es una propiedad muy cómoda para separar parte real e imaginaria de \(\sin(x+jy)\) y \(\cos(x+jy)\). Se obtienen expandiendo \(e^{j(x+jy)}\):
+   \begin{gather*}
+     \sin(x+jy)=\sin(x)\,\cosh(y) + j\cos(x)\,\senoh(y), \\
+     \cos(x+jy)=\cos(x)\,\cosh(y) - j\sin(x)\,\senoh(y).
+   \end{gather*}
+\end{property}
+
+\begin{property}[Identidad]
+   \[
+   \cos^2(z)+\sin^2(z)=1,\qquad \cosh^2(z)-\senoh^2(z)=1.
+   \]
+   la primera viene de \(e^{jz}\) y la segunda de \(e^{z}\). Son válidas en todo \(\mathbb{C}\).
+\end{property}
+
+\begin{property}[Relación entre $\tan$ y $\tanh$]
+  \begin{gather*}
+    \tan(z)=\frac{\sin(z)}{\cos(z)}=\frac{e^{jz}-e^{-jz}}{j(e^{jz}+e^{-jz})}, \qquad
+    \tanh(z)=\frac{\senoh(z)}{\cosh(z)}=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}.
+  \end{gather*}
+  Y la relación entre ambas 
+  \[
+    \tan(jz)=j\,\tanh(z),\qquad \tanh(jz)=j\,\tan(z).
+  \]
+Lo agradable es que estas relaciones no requieren distinguir entre ``ángulos reales'' y ``complejos''; las identidades son válidas en todo dominio donde las funciones están definidas y son holomorfas.
+\end{property}
+

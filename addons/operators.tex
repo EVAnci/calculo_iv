@@ -3,3 +3,10 @@
 \DeclareMathOperator{\Seno}{sen}
 
 \renewcommand{\sin}{\Seno}
+
+% As we can't redefine \sinh (like with \sin)
+% we just create a new command (idk if it's the 
+% best way of doing this, but it works)
+\DeclareMathOperator{\senoh}{senh}
+% This should be fixed. As newcommand \senoh is 
+% just a text with senh() 
