@@ -1,0 +1,173 @@
+\chapter{Ejercicios Recomendados}
+
+Esta sección contiene una serie de ejercicios generales, recomendados de cada capítulo. Hacer estos ejercicios puede servir para terminar de afianzar los conocimientos antes de rendir un examen.
+
+Cada ejercicio se colocará con la respuesta, pero sin el procedimiento.
+
+\section{Funciones de variable compleja}
+
+\begin{exercise}
+  Verificar la siguiente identidad:
+  $$
+  (\cos(\theta)+j\sin(\theta))^n = \cos(n\theta) + j\sin(n\theta)
+  $$
+  \textit{Solución}: Si se verifica, es llamada fórmula de Moivre.
+\end{exercise}
+
+\begin{exercise}
+  Expresar las siguientes funciones de variable compleja en la forma $f(z)=u(x,y)+jv(x,y)$.
+  \begin{enumerate}
+    \item Para $f(z)=3z^{-2}+2z$. 
+
+      \textit{Solución}:
+      $$
+      u(x,y) = \frac{3(x^2-y^2)}{(x^2+y^2)}+2x \qquad v(x,y)=2y-\frac{6xy}{(x^2+y^2)^2}
+      $$
+    \item Para $f(z)=\sin(2z)$.
+
+      \textit{Solución}:
+      $$
+      u(x,y) = \sin(2x)\,\cosh(2y) \qquad v(x,y)=\cos(2x)\,\senoh(2y)
+      $$
+    \item Para $f(z)=\ln(z)$.
+
+      \textit{Solución}:
+      $$
+      u(x,y) = \frac{1}{2}\ln(x^2+y^2) \qquad v(x,y)=\arctan\left(\frac{y}{x}\right)
+      $$
+  \end{enumerate}
+  \label{ej:expresar_funciones_como_u_y_v}
+\end{exercise}
+
+\begin{exercise}
+  Comprobar si las funciones del ejercicio \ref{ej:expresar_funciones_como_u_y_v} cumplen las ecuaciones de Cauchy-Riemann.
+
+  \textit{Soluciones}:
+  \begin{enumerate}
+    \item Para $f(z)=3z^{-2}+2z$ las derivadas de $u$ y $v$ son:
+      \begin{gather*}
+        u_x = \frac{-6x^3+18y^2}{(x^2+y^2)^3}+2 \qquad v_y = u_x \\ 
+        u_y = -\frac{18x^2y-6y^3}{(x^2+y^2)^3} \qquad v_x = -u_y
+      \end{gather*}
+      Por tanto, si cumple con las ecuaciones de Cauchy-Riemann.
+    
+    \item Para $f(z)=\sin(2z)$ las derivadas de $u$ y $v$ son:
+      \begin{gather*}
+        u_x = 2\cos(2x)\,\cosh(2y) \qquad v_y = u_x \\ 
+        u_y = 2\sin(2x)\,\senoh(2y) \qquad v_x = -u_y
+      \end{gather*}
+      Por tanto, si cumple con las ecuaciones de Cauchy-Riemann.
+
+    \item Para $f(z)=\ln(z)$ las derivadas de $u$ y $v$ son:
+      \begin{gather*}
+        u_x = \frac{x}{x^2+y^2} \qquad v_y = u_x \\ 
+        y_y = \frac{y}{x^2+y^2} \qquad v_x = -u_y
+      \end{gather*}
+      Por tanto, si cumple con las ecuaciones de Cauchy-Riemann.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Hallar la función analítica $f(z)$ a partir de su parte real $u(x,y)=2e^x\cos(y)$ con la condición $f(0)=7$.
+
+  \textit{Solución}: Integrando sobre las ecuaciones de Cauchy-Riemann obtenemos
+  $$
+  v(x,y) = 2e^x\sin(y) + C
+  $$
+  Para cumplir la condición $f(0)=7$ reemplazamos sobre $f(z)=2e^x\cos(y) + j (2e^x\sin(y) + C)$, para determinar $C$, resultando 
+  $$
+  C=-5j \quad \Rightarrow \quad f(z)=2e^x\cos(y) + j2e^x\sin(y) + 5
+  $$
+  Escrito en notación compacta:
+  $$
+  f(z)=2e^z + 5
+  $$
+\end{exercise}
+
+\begin{exercise}
+  Comprobar la función $u(x,y)=x^3-3xy^2$ es armónica y, en caso de ser afirmativo, calcular su armónica conjugada.
+
+  \textit{Solución}: Si es armónica. Su armónica conjugada es 
+  $$
+  v(x,y)=3x^2y-y^3 +C
+  $$
+  Y, tomando una solución particular con $C=0$, componen la función:
+  $$
+  f(z)=x^3-3xy^2+j3x^2y - jy^3 \qquad \Rightarrow \qquad f(z)=z^3
+  $$
+\end{exercise}
+
+\section{Integración Compleja}
+
+\begin{exercise}
+  Calcular las siguientes integrales utilizando las fórmulas de Cauchy.
+  \begin{enumerate}
+    \item Teniendo la curva $\Gamma$ dada por: 
+      \begin{itemize}
+        \item $\lvert z-1 \rvert =4$
+        \item $\lvert z-2\rvert + \lvert z+2\rvert = 6$
+      \end{itemize}
+      Resolver: 
+      $$
+      \oint_\Gamma \frac{e^{3z}}{z-j\pi}dz
+      $$
+    \item Teniendo en cuenta $\Gamma$ dada por $\lvert z-1 \rvert =2$ resolver 
+      $$
+      \oint_\Gamma \frac{z}{2z-5}dz
+      $$
+  \end{enumerate}
+  \textit{Soluciones}:
+  \begin{enumerate}
+    \item Para $\lvert z-1 \rvert =4$ tenemos 
+      \begin{gather*}
+        \text{Si } z = j\pi \quad \Rightarrow \quad \lvert j\pi - 1 \rvert < 4  
+      \end{gather*}
+      Entonces la singularidad del integrando queda encerrada en $\Gamma$. Usamos la fórmula de la integral de Cauchy:
+      $$
+      \oint_\Gamma \frac{e^{3z}}{z-j\pi}dz = j2\pi e^{-3j\pi} = \boxed{j\frac{2\pi}{e^{j3\pi}}}
+      $$
+      Para $\lvert z-2\rvert + \lvert z+2\rvert = 6$ representa una elipse como se muestra en la figura \ref{fig:ej:integral_elipse} tenemos que: 
+      \begin{gather*}
+        \text{Si }z=j\pi \quad \Rightarrow \quad \lvert j\pi-2\rvert + \lvert j\pi+2\rvert \approx 7.45 > 6 
+      \end{gather*}
+      \begin{figure}[ht]
+        \centering
+        \begin{tikzpicture}[scale=0.75,>=stealth]
+          \draw[->,thin] (-4,0) -- (4,0) node[right] {$\Re(z)$};
+          \draw[->,thin] (0,-3.5) -- (0,3.5) node[right] {$\Im(z)$};
+          \begin{scope}[decoration={
+              markings,
+              mark=at position 0.1 with {\node[above right] {$\Gamma$};},
+            }]
+            \draw[very thick,red,postaction={decorate}] (0,0) ellipse (3 and 2.236);
+          \end{scope}
+          \foreach \x in {-3,-2,2,3} {
+            \draw[thin] (\x,1pt) -- (\x,-1pt) node[below left] {\scriptsize$\x$};
+          }
+          \foreach \y\r in {-3.14/$-\pi$,-2.236/$-\sqrt{5}$,2.236/$\sqrt{5}$} {
+            \draw[thin] (-1pt,\y) -- (1pt,\y) node[above right] {\scriptsize\r};
+          }
+          \draw[thick,fill=white] (0,-3.14) circle (2pt);
+        \end{tikzpicture}
+        \caption{Figura de la curva $\Gamma$ del ejercicio \ref{ej:integral_elipse}.}
+        \label{fig:ej:integral_elipse}
+      \end{figure}
+      Por tanto queda fuera de la curva $\Gamma$ y 
+      $$
+      \oint_\Gamma \frac{e^{3z}}{z-j\pi}dz = 0
+      $$
+    \item Primero operamos sobre el denominador del integrando:
+      $$
+      2z-5 = 0 \quad\Rightarrow\quad z = \frac{5}{2}
+      $$
+      Para $\lvert z-1 \rvert =2$ tenemos que
+      \begin{gather*}
+        \text{Si } z=\frac{5}{2} \quad \Rightarrow \quad \lvert 5/2 -1 \rvert < 2
+      \end{gather*}
+      Por tanto está dentro de $\Gamma$. Usamos la fórmula de la integral de Cauchy:
+      $$
+      \oint_\Gamma \frac{z}{2z-5}dz = j5\pi 
+      $$
+  \end{enumerate}
+  \label{ej:integral_elipse}
+\end{exercise}

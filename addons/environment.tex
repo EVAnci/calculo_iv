@@ -31,3 +31,7 @@
 
 % Rename proof to Demostracion
 \addto\captionsspanish{\renewcommand{\proofname}{Demostración}}
+
+% Same as example, but with exercise
+\newtheorem{exercise}{Ejercicio}[section]
+\renewcommand{\theexercise}{\thesection.\Alph{exercise}}
