@@ -171,3 +171,38 @@ Cada ejercicio se colocará con la respuesta, pero sin el procedimiento.
   \end{enumerate}
   \label{ej:integral_elipse}
 \end{exercise}
+
+\section{Teorema de los Residuos}
+
+\begin{exercise}
+  Hallar la serie de Laurent alrededor de las siguientes singularidades indicadas para cada una de las siguientes funciones. 
+  \begin{enumerate}
+    \item $f(z)=\frac{z}{(z+1)(z+2)}$ alrededor de $z=-1$ y luego alrededor de $z=-2$.
+    \item $f(z)=\frac{e^{3z}}{(z-1)^3}$ alrededor de $z=1$.
+    \item $f(z)=\frac{\cos(2z)}{z^2}$ alrededor de $z=0$.
+  \end{enumerate}
+  \textit{Soluciones}: 
+  \begin{enumerate}
+    \item Serie de Laurent desarrollada con centro en $z=-1$:
+      $$
+      f(z)=-\frac{1}{z+1} + 2\cdot\sum_{n=0}^\infty (-1)^{n}(z+1)^{n}
+      $$
+      Donde el radio de convergencia (o corona donde la serie es válida) es $0<\lvert z+1 \lvert < 1$.
+
+      Luego, la misma función desarrollada en serie de Laurent con centro en $z=-2$:
+      $$
+      f(z)=\frac{2}{z+2} + \sum_{n=0}^\infty (z+2)^n
+      $$
+      válida en la corona $0<\lvert z+2\rvert <1$.
+    \item La serie de Laurent con centro en $z=1$:
+      $$
+      f(z)=e^3\cdot\sum_{n=0}^\infty \frac{3^n}{n!}(z-1)^{n-3}
+      $$
+      en la corona $0<\lvert z-1 \rvert <\infty$.
+    \item La serie de Laurent con centro en $z=0$ es:
+      $$
+      f(z)=\sum_{n=0}^\infty (-1)^n\frac{4^n}{(2n)!}z^{2n-2}
+      $$
+      válida en la corona $0<\lvert z \rvert < \infty$.
+  \end{enumerate}
+\end{exercise}
