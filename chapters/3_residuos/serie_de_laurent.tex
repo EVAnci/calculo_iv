@@ -209,7 +209,45 @@ Así como para las series de Taylor, para obtener los coeficientes de la serie d
   donde $z$ es válida en la corona $\lvert z \rvert >1$. En este último caso se podría pensar que se ha llegado a una contradicción. ¿Infinitos términos negativos? El detalle es que, si bien la serie está centrada en $z_0=0$, es válida en la corona $\lvert z\rvert >1$ que \textbf{no incluye a} $z_0$. Por tanto no describe el comportamiento cerca de $z_0$, más bien, describe el comportamiento cerca de $z\to\infty$. 
 \end{example}
 
-Existen varios métodos más para evitar calcular las integrales y encontrar la ley de formación, sin embargo estos métodos abarcan los casos más generales y son suficientes para el objetivo del capítulo.
+Y, por último veremos un método que es bastante útil cuando no se ha podido aplicar alguno de los métodos anteriores. En este caso, podemos separar la singularidad en cuestión, y expresar a la función $f$ como un producto de funciones, tal que:
+$$
+f(z)=\frac{g(z)}{(z-z_0)^n} = \frac{1}{(z-z_0)^n}\cdot g(z)
+$$
+Aquí la función $g(z)$ puede ser cualquier función, pero debe cumplir que en una vecindad del punto $z_0$ es analítica. Por tanto, es posible desarrollarla en serie de Taylor alrededor de $z_0$.
+
+Una vez desarrollada la función $g(z)$ en serie de Taylor, se vuelve a la expresión de la función original, multiplicando el cociente singular y $g$. Veamos un ejemplo.
+
+\begin{example}
+  Se busca calcular la serie de Laurent de  
+  $$
+  f(z)=\frac{z}{(z+1)(z+2)}
+  $$
+  alrededor de $z=-2$.
+
+  Primero factorizamos la función separando la singularidad, definiendo así $g$ analítica en $z=-2$:
+  \begin{gather*}
+    \frac{1}{z+2}\cdot\frac{z}{z+1} \qquad \rightarrow \qquad g(z)=\frac{z}{z+1}
+  \end{gather*}
+  Como $g$ es analítica desarrollamos por Taylor, usando el método más conveniente. En este caso resolvemos por definición:
+  \begin{gather*}
+    g(-2) = 2, \quad g'(-2)=1, \quad g''(-2)=2\cdot 3, \quad g'''(-2)=2\cdot3\cdot 4
+  \end{gather*}
+  Y en general: $g^{(n)}(-2) = n!$ para $1\leqslant n$. Entonces, reemplazando en la fórmula de la serie de Taylor 
+  $$
+  g(z)=2 + \sum_{n=1}^\infty (z+2)^n = \frac{z}{z+2}
+  $$
+  Multiplicando a $f(z)$,
+  $$
+  f(z)=\frac{z}{(z+1)(z+2)}=\frac{2}{z+2} + \sum_{n=1}^\infty (z+2)^{n-1}
+  $$
+  Reescribiendo la expresión usando el índice $k=n-1$:
+  $$
+  f(z)=\frac{z}{(z+1)(z+2)}=\boxed{\frac{2}{z+2} + \sum_{k=0}^\infty (z+2)^{k}}
+  $$
+  siendo válida para la corona $0<\lvert z+2 \rvert < 1$.
+\end{example}
+
+Existen varios métodos más, como las fracciones parciales, para evitar calcular los coeficientes a mano, sin embargo estos métodos abarcan los casos más generales y son suficientes para el objetivo del capítulo.
 
 \subsection{Clasificación de singularidades}
 
