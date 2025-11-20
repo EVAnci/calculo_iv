@@ -1,7 +1,7 @@
 \subsection{Serie de Laurent}
 \label{sec:serie_de_laurent}
 
-En aplicaciones, a menudo es necesario desarrollar una función $f(z)$ alrededor de puntos en los cuales ya no es analítica, sino singular. Así, el teorema de Taylor deja de ser aplicable, por lo que se requiere un nuevo tipo de series, denominadas series de Laurent, que constan de potencias enteras positivas y negativas de $z-z_0$ y que son convergentes en alguna corona (acotada por dos círculos con centro en $z_0$) en donde $f(z)$ es analítica. La función $f(z)$ puede tener puntos singulares no sólo fuera del circulo más grande (como en las series de Taylor), sino también dentro del círculo más pequeño, lo cual es una nueva característica.
+En aplicaciones, a menudo es necesario desarrollar una función $f(z)$ alrededor de puntos en los cuales ya no es analítica, sino singular. Así, el teorema de Taylor deja de ser aplicable, por lo que se requiere un nuevo tipo de series, denominadas series de Laurent, que constan de potencias enteras positivas y negativas de $z-z_0$ y que son convergentes en alguna corona (acotada por dos círculos con centro en $z_0$) en donde $f(z)$ es analítica. La función $f(z)$ puede tener puntos singulares no sólo fuera del círculo más grande (como en las series de Taylor), sino también dentro del círculo más pequeño, lo cual es una nueva característica.
 
 \begin{theorem}[Teorema de Laurent]
   Si $f(z)$ es analítica sobre dos círculos concéntricos\footnote{Recuerde que por la definición de analiticidad, esto significa que $f(z)$ es analítica en algún dominio que contiene a la corona, así como a sus círculos frontera.} $\Gamma_1$ y $\Gamma_2$ con centro en $z_0$ y en la corona entre éstos, entonces $f(z)$ puede representarse mediante la serie de Laurent
@@ -12,9 +12,9 @@ En aplicaciones, a menudo es necesario desarrollar una función $f(z)$ alrededor
   $$
   c_k=\frac{1}{j2\pi}\oint_\Gamma \frac{f(z^\ast)}{(z^\ast-z_0)^{k+1}}dz^\ast \qquad b_k =\frac{1}{j2\pi}\oint_\Gamma (z^\ast - z_0)^{k-1}f(z^\ast)dz^\ast
   $$
-  cada integral se toma en sentido antihorario alrededor de cualquier trayectoria cerrada $\Gamma$ que esté en la corona y abarque el circulo interior como se muestra en la figura \ref{fig:teorema_de_laurent}.
+  cada integral se toma en sentido antihorario alrededor de cualquier trayectoria cerrada $\Gamma$ que esté en la corona y abarque el círculo interior como se muestra en la figura \ref{fig:teorema_de_laurent}.
   
-  Esta serie converge y representa a $f(z)$ en la corona abierta que se obtiene a partir de la corona dada al incrementar de manera continua el circulo $\Gamma_1$ y reducir $\Gamma_2$ hasta que ambos círculos llegan a un punto donde $f(z)$ es singular.
+  Esta serie converge y representa a $f(z)$ en la corona abierta que se obtiene a partir de la corona dada al incrementar de manera continua el círculo $\Gamma_1$ y reducir $\Gamma_2$ hasta que ambos círculos llegan a un punto donde $f(z)$ es singular.
   \label{teo:laurent}
 \end{theorem}
 
@@ -39,7 +39,7 @@ En aplicaciones, a menudo es necesario desarrollar una función $f(z)$ alrededor
       \draw[thick,rotate=15,postaction={decorate}] (0.1,-0.2) ellipse (1.2 and 1.5);
     \end{scope}
   \end{tikzpicture}
-  \caption{Teorema de Laurent}
+  \caption{Teorema de Laurent.}
   \label{fig:teorema_de_laurent}
 \end{figure}
 

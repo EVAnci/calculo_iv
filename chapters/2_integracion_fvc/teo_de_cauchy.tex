@@ -55,16 +55,16 @@ Una trayectoria simple y cerrada cumple con el teorema de Jordan. Es decir, sepa
 Todo disco abierto es simplemente conexo. Si dibuja una trayectoria cerrada en un disco abierto, esta trayectoria cerrada encerará solamente puntos en el disco abierto. El anillo o corona de la figura \ref{fig:corona_complx} no es simplemente conexo. A pesar de ser conexo, se puede dibujar una trayectoria cerrada contenida en el anillo que encierra puntos que no pertenecen al anillo (son aquellos puntos excluidos por la frontera interna).
 
 \begin{definition}[Dominio simplemente conexo]
-  Como se vió en la sección \ref{sec:1_curvas_y_regiones_en_el_plano_complejo} un dominio es un conjunto conexo abierto. Ahora, decimos que un dominio $D$ es simplemente conexo si además de cumplir con la definición de dominio cumple con la definición \ref{def:simplemente_conexo}.
+  Como se vio en la sección \ref{sec:1_curvas_y_regiones_en_el_plano_complejo} un dominio es un conjunto conexo abierto. Ahora, decimos que un dominio $D$ es simplemente conexo si además de cumplir con la definición de dominio cumple con la definición \ref{def:simplemente_conexo}.
 \end{definition}
 
-Por ejemplo, en la figura \ref{fig:doblemente_conexo} si se traza una trayectoria circular $\Gamma$ dento de la región pintada, esta encierra puntos que no pertenecen a $D$ (que son los puntos dentro de la elipse pequeña que delimita el interior de la región). Lo mismo sucede con la región de la figura \ref{fig:triplemente_conexo}.
+Por ejemplo, en la figura \ref{fig:doblemente_conexo} si se traza una trayectoria circular $\Gamma$ dentro de la región pintada, esta encierra puntos que no pertenecen a $D$ (que son los puntos dentro de la elipse pequeña que delimita el interior de la región). Lo mismo sucede con la región de la figura \ref{fig:triplemente_conexo}.
 
 Por otro lado, si se observan las figuras \ref{fig:simple_simple} y \ref{fig:simple_complicada} es imposible trazar una curva $\Gamma$ dentro de la región pintada que encierre puntos fuera de la región.
 
 \input{chapters/2_integracion_fvc/media/conexidad_dominios.tex}
 
-Ahora si, estamos listos para enunciar el teorema de Cauchy.
+Ahora sí, estamos listos para enunciar el teorema de Cauchy.
 
 \subsection[Enunciado del teorema]{El teorema de Cauchy}
 
@@ -109,7 +109,7 @@ Habíamos visto en la sección \ref{sec2:integral_cmplx_en_terminos_reales} que 
 \oint_\Gamma f(z)dz = \oint_\Gamma u\,dx - v\,dy + j\oint_\Gamma v\,dx + u\,dy 
 \label{eq:premisa_demostracion_cauchy}
 \end{equation}
-Debido a que suponemos que $f$ es una función que cumple con el teorema de Cauchy, entonces $f$ es analítica en $D$, y por tanto $f'(z)$ existe en $D$. Esto implica que $f$ también cumple con las ecuaciones de \textit{Cauchy-Riemann}. Entonces, la ecuación \ref{eq:premisa_demostracion_cauchy} podemos escribirla usando el teorema de Green (ver sección \ref{chpt:recordatorios}) como sigue
+Debido a que suponemos que $f$ es una función que cumple con el teorema de Cauchy, entonces $f$ es analítica en $D$ y, por tanto, $f'(z)$ existe en $D$. Esto implica que $f$ también cumple con las ecuaciones de \textit{Cauchy-Riemann}. Entonces, la ecuación \ref{eq:premisa_demostracion_cauchy} podemos escribirla usando el teorema de Green (ver sección \ref{chpt:recordatorios}) como sigue
 \begin{align}
   \label{eq:teorema_de_green_aplicado_a_cauchy_1}
   \oint_\Gamma u\,dx - v\,dy &= \iint_R v_x - u_y \,dA \\ 
@@ -149,7 +149,7 @@ $$
 f(x,y) = \frac{x}{x^2+y^2} - j\frac{y}{x^2+y^2}
 $$
 
-Al intentear aplicar el teorema de Cauchy usual debemos verificar que $f$ sea analítica. Entonces verificamos las eciones de Cauchy-Riemman:
+Al intentar aplicar el teorema de Cauchy usual debemos verificar que $f$ sea analítica. Entonces verificamos las ecuaciones de Cauchy-Riemman:
 $$
 u_x = \frac{y^2-x^2}{(x^2+y^2)^2} \qquad v_y = \frac{y^2-x^2}{(x^2+y^2)^2}
 $$
@@ -205,7 +205,7 @@ Bueno, a primera vista debemos calcular la integral volviendo a la definición, 
 \caption{Curvas $C_1$ y $C_2$ delimitan el anillo $D$.}
 \label{fig:curvas_delimitadoras_dominio_conexo}
 \end{figure}
-El dominio $D$ además es una corona abierta tal que los bordes del dominio son las curvas $C_1$ y $C_2$ como se muestra en la figura \ref{fig:curvas_delimitadoras_dominio_conexo}. En este caso $C_1$ y $C_2$ son circunferencias con orientación contraria al las manecillas del reloj, pero podría ser cualquier curva cerrada simple. Además sin tomar en cuenta si todo el interior de $C_2$ pertenece o no a $D'$ ya que aquí se aisla la singularidad. A continuación veremos el teorema de la deformación o primer colorario de Cauchy.
+El dominio $D$ además es una corona abierta tal que los bordes del dominio son las curvas $C_1$ y $C_2$ como se muestra en la figura \ref{fig:curvas_delimitadoras_dominio_conexo}. En este caso $C_1$ y $C_2$ son circunferencias con orientación contraria al las manecillas del reloj, pero podría ser cualquier curva cerrada simple. Además sin tomar en cuenta si todo el interior de $C_2$ pertenece o no a $D'$ ya que aquí se aísla la singularidad. A continuación veremos el teorema de la deformación o primer colorario de Cauchy.
 
 \begin{theorem}[Deformación]
 Entonces, el teorema de Cauchy para dominios doblemente conexo dice que, como $f$ es analítica en $D'$ que contiene a las curvas $C_1$ y $C_2$, entonces se cumple que

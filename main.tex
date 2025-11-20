@@ -40,6 +40,15 @@
 % Tcolorbox environment 
 \usepackage{tcolorbox}
 
+\usepackage{fancyhdr}
+\usepackage{lastpage} % opcional: para "página X de Y"
+\pagestyle{fancy}
+\fancyhf{} % limpia encabezados/pies
+\renewcommand{\headrulewidth}{0pt} % sin línea horizontal 
+\fancyfoot[R]{\scriptsize\color{lightgray} Anci, Elio Valentino } 
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{8pt}
+
 % Minimal Titlepage 
 \title{Cálculo IV}
 \author{Elio Valentino Anci}
@@ -81,6 +90,8 @@
 \include{chapters/2_integracion_fvc/main}
 
 \include{chapters/3_residuos/main}
+
+\include{chapters/4_integracion_real/main}
 
 \include{chapters/0_recordatorios/main}
 

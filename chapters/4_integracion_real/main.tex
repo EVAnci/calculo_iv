@@ -1,0 +1,50 @@
+\chapter[Integración de variable real]{Integración de funciones en $\mathbb{R}$}
+
+En este breve capítulo veremos cómo es posible utilizar el teorema de los residuos y las formas de resolución de integrales de variable compleja para resolver integrales de variable real.
+
+En el estudio de la integración compleja, como vimos en el capítulo \ref{chpt:integlacion_compleja}, es habitual interpretar una integral de línea como la integral de una función compleja sobre una curva parametrizada. La parametrización permite traducir la información geométrica de la curva en una integral ordinaria sobre un intervalo real. Este procedimiento es fundamental: toda integral de línea se reduce, en última instancia, a una integral real mediante una elección adecuada de parámetro.
+
+Cuando el objetivo es evaluar integrales reales mediante técnicas de análisis complejo, el razonamiento se invierte. Se observa la integral real dada y se la interpreta como la parte real (o imaginaria, según el caso) de la integral de una función compleja sobre cierta curva en el plano complejo. A partir de esa reinterpretación geométrica, la integral se completa en un contorno cerrado apropiado y se aplica el Teorema de los Residuos.
+
+En síntesis, el método consiste en reconocer que una integral real puede verse como un caso particular de una integral de línea compleja cuya parametrización ya está implícita. Al ``deshacer'' esa parametrización y situarla en un contorno adecuado, la teoría de los residuos proporciona una herramienta poderosa para su evaluación. Esta perspectiva unifica ambos tipos de integrales y muestra cómo la geometría del plano complejo enriquece el análisis de integrales reales.
+
+\section{Integrales trigonométricas}
+
+Primero se consideran integrales del tipo 
+\begin{equation}
+  I = \int_0^{2\pi} K(\cos(\theta),\sin(\theta))d\theta
+\end{equation}
+en donde $K$ es una función racional de $\cos(\theta)$ y $\sin(\theta)$, por ejemplo 
+$$
+F(\cos(\theta),\sin(\theta))=f(\theta)=\frac{\sin^2\theta}{5-4\cos\theta}
+$$
+y es finita sobre el intervalo de integración, es decir $F$ no tiene comportamiento asintótico en el intervalo.
+
+La idea será probar que esta integral real es igual a una integral de cierta función compleja sobre el círculo unitario. Después usará el teorema del residuo para evaluar esta integral compleja, obteniendo el valor de la integral real.
+
+Para llevar a cabo esta estrategia, sea $\gamma$ el círculo unitario, recorrido en sentido antihorario. Parametrizamos $\gamma$ por $\gamma(\theta)=e^{j\theta}$ para $0\leqslant \theta \leqslant 2\pi$. En esta curva $z=e^{j\theta}$ y $\bar{z}=e^{-j\theta}=1/z$, así
+\begin{align*}
+  \cos(\theta) =& \frac{1}{2}\left( e^{j\theta}+e^{-j\theta} \right) = \frac{1}{2}\left(z+\frac{1}{z}\right) \\ 
+  \sin(\theta) =& \frac{1}{2j}\left( e^{j\theta}-e^{-j\theta} \right) = \frac{1}{2j}\left(z-\frac{1}{z}\right)
+\end{align*}
+Y, podemos obtener una expresión para $d\theta$ a partir de la definición de diferencial 
+$$
+dz=je^{j\theta}d\theta = jzd\theta \quad \Rightarrow \quad d\theta = \frac{1}{jz}dz
+$$
+Ahora se tiene 
+$$
+\oint_\gamma K\left(\frac{z+\bar{z}}{2},\frac{z-\bar{z}}{2j}\right)\frac{1}{jz}dz = \int_0^{2\pi}K(\cos(\theta),\sin(\theta))d\theta
+$$
+Esto convierte la integral a evaluar en la integral de la función compleja $f(z)$ sobre el círculo unitario, donde 
+$$
+f(z)=K\left(\frac{z+\bar{z}}{2},\frac{z-\bar{z}}{2j}\right)\frac{1}{jz}
+$$
+Entonces, para resolver la integral real, se usa el teorema del residuo para evaluar $\oint_\gamma f(z)dz$, obteniendo así,
+$$
+\int_0^{2\pi}K(\cos(\theta),\sin(\theta))d\theta = j2\pi \sum_{k=1}^n \res_{z=z_k}f(z)
+$$
+La suma de la derecha es sobre todos los polos $z_1,z_2,\dots,z_n$ encerrados por el círculo unitario. La función $f$ debe ser analítica sobre la curva, por tanto no pueden haber singularidades en el círculo unitario mismo.
+
+\begin{example}
+  
+\end{example}
