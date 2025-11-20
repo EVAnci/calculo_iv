@@ -206,3 +206,29 @@ Cada ejercicio se colocará con la respuesta, pero sin el procedimiento.
       válida en la corona $0<\lvert z \rvert < \infty$.
   \end{enumerate}
 \end{exercise}
+
+\begin{exercise}
+  Calcular el residuo de la siguiente función en sus polos.
+  $$
+  f(z)=\frac{z^2-2z}{(z+1)^2(z^2+4)}
+  $$
+  \textit{Solución}: reescribimos la función factorizando:
+  $$
+  f(z)=\frac{z^2-2z}{(z+1)^2(z+2j)(z-2j)}
+  $$
+  Calculamos el residuo para cada uno de los polos.
+  \begin{itemize}
+    \item Para $z=-1$ hay un polo múltiple. El residuo es 
+      $$
+      \res_{z=-1}f(z)=\frac{1}{1!}\lim_{z\to-1}\left(\frac{d}{dz}\left(\frac{z^2-2z}{z^2+4}\right)\right) = -\frac{14}{25}
+      $$
+    \item Para $z=2j$ hay un polo simple. El residuo es 
+      $$
+      \res_{z=2j}f(z)=\lim_{z\to2j} \left(\frac{z^2-2z}{(z+1)^2(z+2j)}\right) = \frac{7}{25} + \frac{1}{25}j
+      $$
+    \item Para $z=-2j$ hay un polo simple. El residuo es 
+      $$
+      \res_{z=-2j}f(z)=\lim_{z\to-2j}\left( \frac{z^2-2z}{(z+1)^2(z-2j)} \right) = \frac{7}{25}-\frac{1}{25}j
+      $$
+  \end{itemize}
+\end{exercise}

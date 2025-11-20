@@ -30,3 +30,31 @@
   b_k=\frac{1}{j2\pi}\oint_\Gamma (z-z_0)^{k-1}f(z)dz
   $$
 \end{tcolorbox}
+
+\begin{tcolorbox}[title=Residuos,resumen]
+  Se llama residuo al coeficiente $c_{-1}$ en la serie de Laurent:
+  $$
+  c_{-1}=\frac{1}{j2\pi}\oint_\Gamma f(z)dz
+  $$
+
+  \tcblower
+
+  \textbf{Teorema del residuo}: Sea $\Gamma$ una trayectoria cerrada y $f$ analítica en $\Gamma$ y en su interior, menos en las singularidades $z_1,z_2,\dots,z_n$. Entonces 
+  $$
+  \oint_\Gamma f(z)dz = j2\pi\sum_{k=1}^n \res_{z=z_k}f(z)
+  $$
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Evaluación de residuos,resumen]
+  En general, sea $f$ una función con un polo de orden $m$ (puede ser orden 1 y ser simple). Entonces
+  $$
+  \res_{z=z_0}f(z)=\frac{1}{(m-1)!}~\lim_{z\to z_0}\left(\frac{d^{m-1}}{dz^{m-1}}[(z-z_0)^m f(z)]\right)
+  $$
+
+  \tcblower
+
+  Únicamente para polos simples, para una función $f(z)=\frac{p(z)}{q(z)}$, el residuo puede calcularse como 
+  $$
+  \res_{z=z_0} f(z) = \frac{p(z_0)}{q'(z_0)}
+  $$
+\end{tcolorbox}
