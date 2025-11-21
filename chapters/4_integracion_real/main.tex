@@ -41,7 +41,7 @@ f(z)=K\left(\frac{z+\bar{z}}{2},\frac{z-\bar{z}}{2j}\right)\frac{1}{jz}
 $$
 Entonces, para resolver la integral real, se usa el teorema del residuo para evaluar $\oint_\gamma f(z)dz$, obteniendo así,
 \begin{equation}
-\int_0^{2\pi}K(\cos(\theta),\sin(\theta))d\theta = j2\pi \sum_{k=1}^n \res_{z=z_k}f(z)
+  \boxed{\int_0^{2\pi}K(\cos(\theta),\sin(\theta))d\theta = j2\pi \sum_{k=1}^n \res_{z=z_k}f(z)}
 \label{eq:integral_real_trig}
 \end{equation}
 La suma de la derecha es sobre todos los polos $z_1,z_2,\dots,z_n$ encerrados por el círculo unitario. La función $f$ debe ser analítica sobre la curva, por tanto no pueden haber singularidades en el círculo unitario mismo.
@@ -80,14 +80,178 @@ Al aplicar este método, si se obtiene un número que no es real, hay que verifi
 
 \section{Lema de Jordan}
 
+El lema de Jordan\footnote{Matemático francés: Marie Ennemond Camille Jordan.} nos permitirá demostrar que pueden resolverse otro tipo de integrales reales además del que ya vimos en la sección anterior.
+
 Si una función $Q(z)$ satisface las siguientes condiciones:
 \begin{enumerate}
   \item $Q(z)$ es analítica en todo el semiplano superior, excepto en un número finito de polos.
+  \item $Q(z)$ tiende uniformemente a cero cuando $z\to\infty$, para $0<\text{arg}(z)<\pi$.
+  \item $m$ es un número real positivo (o bien $m\in\mathbb{R}^+$).
 \end{enumerate}
+Entonces, se cumple que 
+\begin{equation}
+  \lim_{R\to\infty} \left( \int_\gamma Q(z)\,e^{jmz}\, dz \right) = 0
+  \label{eq:lema_de_jordan}
+\end{equation}
+Donde $\Gamma$ es una semicircunferencia de radio $R$ y centro en el origen, como se muestra en la figura \ref{fig:curva_de_jordan}.
 
-\section{Integrales trigonométricas impropias}
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[>=stealth]
+    \path (-2.5,0) -- (-2,0); % solo para terminar de centrar
+    \draw[->,gray] (-2,0) -- (2,0) node[right] {\scriptsize$\Re(z)$};
+    \draw[->,gray] (0,-0.2) -- (0,2) node[above] {\scriptsize$\Im(z)$};
+
+    \begin{scope}[decoration={
+        markings,
+        mark=at position 0.1 with {\arrow{>} \node[above right] {$\gamma$};},
+        mark=at position 0.5 with {\arrow{>}},
+        mark=at position 0.9 with {\arrow{>}},
+      }]
+      \draw[red,very thick,postaction={decorate}] (1.7,0) arc (0:180:1.7);
+    \end{scope}
+    \node[below] at (1.7,0)  {\scriptsize$R$};
+    \node[below] at (-1.7,0) {\scriptsize$-R$};
+
+    \draw[->] (0,0) -- (60:1.7);
+    \draw[fill] (60:1.7) circle (1pt) node[above] {\scriptsize\color{black}$z$};
+    \draw (0.5,0) arc (0:60:0.5) node[below=1pt] {\scriptsize\color{black}$\theta$};
+  \end{tikzpicture}
+  \caption{}
+  \label{fig:curva_de_jordan}
+\end{figure}
+
+Como se ve en la figura \ref{fig:curva_de_jordan}, la variable que se desplaza a lo largo de $\Gamma$ es $z=Re^{j\theta}$, por esta razón, cuando se dice $\lvert z \rvert \to \infty$ equivale a decir $R\to\infty$, dado que el módulo de $z$ es $R$
+$$
+z=Re^{j\theta} \Rightarrow \lvert z \rvert = \lvert Re^{j\theta}\rvert = R.
+$$
+
+La expresión \eqref{eq:lema_de_jordan} es el lema de Jordan y su demostración es muy extensa y complicada por lo cual la omitimos. Solo usaremos este resultado para obtener un nuevo tipo de integrales reales que pueden ser resueltas a través de la integración compleja.
+
+\section{Integrales impropias}
+
+En este apartado consideraremos integrales reales del tipo 
+$$
+\int_{-\infty}^\infty f(x)dx
+$$
+Tal integral, para la que el intervalo de integración no es finito, se denomina integral impropia, y significa que 
+$$
+\int_{-\infty}^\infty f(x)dx = \lim_{a\to-\infty} \int_a^0 f(x)dx + \lim_{b\to\infty} \int_0^b f(x)dx
+$$
+Si ambos límites existen, entonces es posible juntar ambas integrales en un intervalo que abarca todo $\mathbb{R}$.
+
+Aquí, se supone que $f(x)$ es una función racional real cuyo denominador es diferente de cero para todo $x$. El numerador puede contener distintos tipos de funciones. Veremos cada una en detalle a continuación.
+
+\subsection[Analítica racional trigonométrica en el eje real]{Analítica racional trigonométrica en $\mathbb{R}$}
 
 Ahora se consideran integrales reales de la forma 
-$$
+\begin{equation}
+\int_{-\infty}^\infty Q(x)\cos(mx)dx \qquad \text{o bien,} \qquad \int_{-\infty}^\infty Q(x)\sin(mx)dx
+\label{eq:forma_integral_trigonometrica_impropia}
+\end{equation}
+donde $Q(x)$ es una función racional sin polos en el eje real que cumple con las condiciones del lema de Jordan, por ejemplo $1/(x^2+1)$ tiene polos complejos conjugados y converge a cero uniformemente cuando $\lvert x\rvert \to \infty$.
 
+Entonces, consideramos siguiente integral:
+\begin{equation}
+\oint_\Gamma Q(z)e^{jmz}dz
+\label{eq:integral_de_jordan}
+\end{equation}
+donde $\Gamma$ es una semicircunferencia cerrada (ver figura \ref{fig:integral_de_jordan}).
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[>=stealth]
+    \path (-2.5,0) -- (-2,0); % solo para terminar de centrar
+    \draw[->,gray] (-2,0) -- (2,0) node[right] {\scriptsize$\Re(z)$};
+    \draw[->,gray] (0,-0.2) -- (0,2.2) node[above] {\scriptsize$\Im(z)$};
+
+    \begin{scope}[decoration={
+        markings,
+        mark=at position 0.1 with {\arrow{>} \node[above right] {$\gamma_1$};},
+        mark=at position 0.3 with {\arrow{>} \node[above right] {\Gamma};},
+        mark=at position 0.5 with {\arrow{>}},
+        mark=at position 0.7 with {\arrow{>} \node[above right] {$\gamma_2$};},
+        mark=at position 0.9 with {\arrow{>}},
+      }]
+      \draw[red,very thick,postaction={decorate}] (1.7,0) arc (0:180:1.7) -- cycle;
+    \end{scope}
+    \node[below] at (1.7,0)  {\scriptsize$R$};
+    \node[below] at (-1.7,0) {\scriptsize$-R$};
+  \end{tikzpicture}
+  \caption{Concatenación: $\Gamma=\gamma_1\oplus\gamma_2$.}
+  \label{fig:integral_de_jordan}
+\end{figure}
+
+La integral \eqref{eq:integral_de_jordan} se realiza sobre $\Gamma$ que es una concatenación de curvas. Entonces podemos descomponer la integral como:
 $$
+\oint_\Gamma Q(z)e^{jmz}dz = \int_{\gamma_1} Q(z)e^{jmz}dz + \int_{\gamma_2} Q(z)e^{jmz}dz
+$$
+Pero la curva $\gamma_2$ solo toma valores reales de $z$, entonces la integral sobre $\gamma_2$ termina siendo una integral real en el intervalo $[-R,R]$,
+$$
+\oint_\Gamma Q(z)e^{jmz}dz = \int_{\gamma_1} Q(z)e^{jmz}dz + \int_{-R}^R Q(x)e^{jmx}dx
+$$
+Ahora, si aplicamos límite para $R\to\infty$, resulta
+$$
+\lim_{R\to\infty}\oint_\Gamma Q(z)e^{jmz}dz = \lim_{R\to\infty}\int_{\gamma_1} Q(z)e^{jmz}dz + \lim_{R\to\infty}\int_{-R}^R Q(x)e^{jmx}dx
+$$
+pero, el primer término del miembro derecho es la expresión \eqref{eq:lema_de_jordan} (el lema de Jordan), por tanto es igual a cero. La integral del miembro izquierdo, cuando $R\to\infty$ abarca todo el semiplano superior, por tanto, como es una integral sobre una curva cerrada, podemos evaluarla usando el teorema de los residuos. Resultando
+$$
+j2\pi\cdot\sum_{k=1}^n \res_{z=z_k} Q(z)e^{jmz} = \int_{-\infty}^\infty Q(x)e^{jmx}dx
+$$
+donde $z_1,z_2,\dots,z_n$ son polos en el semiplano superior. Por otro lado, como $e^{jmx} = \cos(mx) + j\sin(mx)$,
+$$
+j2\pi\cdot\sum_{k=1}^n \res_{z=z_k} Q(z)e^{jmz} = \int_{-\infty}^\infty Q(x)\cos(mx)\,dx + j\int_{-\infty}^\infty Q(x) \sin(mx)\,dx
+$$
+Entonces, por comparación, se concluye que 
+\begin{gather*}
+  \int_{-\infty}^\infty Q(x)\cos(mx)dx = \Re\left( j2\pi\cdot\sum_{k=1}^n \res_{z=z_k} Q(z)e^{jmz} \right) \\ 
+  \int_{-\infty}^\infty Q(x)\sin(mx)dx = \Im\left( j2\pi\cdot\sum_{k=1}^n \res_{z=z_k} Q(z)e^{jmz} \right) 
+\end{gather*}
+o, en palabras, la integral de $Q(x)\cos(mx)$ es la parte real de la suma de los residuos de $\oint_\Gamma Q(z)e^{jmz}dz$, y la integral de $Q(x)\sin(mx)$ es la parte imaginaria.
+
+\begin{example}
+  Evaluar la siguiente integral impropia:
+  $$
+  \int_{-\infty}^\infty \frac{\cos(3x)}{x^2+1} \,dx
+  $$
+  \textit{Solución}: Verificamos el integrando, vemos que el denominador no tiene raíces reales, los polos son $z_1=j$ y $z_2=-j$, y $m=3$, por tanto cumple la forma del integrando en la expresión \eqref{eq:forma_integral_trigonometrica_impropia}, entonces, aplicamos el resultando
+  $$
+  \int_{-\infty}^\infty \frac{\cos(3x)}{x^2+1} \,dx = \Re\left(j2\pi \res_{z=z_1} \frac{e^{j3z}}{z^2 + 1}\right)
+  $$
+  donde $z_1=j$ es el único polo en el semiplano superior. El polo $z_2=-j$ está en el semiplano inferior y, por tanto, no está dentro de la región. 
+  Resolviendo el residuo, resulta 
+  $$
+  \int_{-\infty}^\infty \frac{\cos(3x)}{x^2+1} \,dx = \Re\left(\frac{\cancel{j2}\pi}{\cancel{j2}e^3}\right) = \boxed{\frac{\pi}{e^3}}
+  $$
+  quedando calculada la integral.
+  \label{ej:integral_trig_impropia}
+\end{example}
+\begin{example}
+  A partir del ejemplo \ref{ej:integral_trig_impropia}, calcular 
+  $$
+  \int_0^\infty \frac{\cos(3x)}{x^2+1}\,dx 
+  $$
+  \textit{Solución}: Por definición de integral impropia:
+  $$
+  \lim_{a\to-\infty} \int_a^0 \frac{\cos(3x)}{x^2+1}\,dx + \lim_{b\to\infty} \int_0^b\frac{\cos(3x)}{x^2+1}\,dx = \lim_{c\to\infty} \int_{-c}^c \frac{\cos(3x)}{x^2+1}\,dx
+  $$
+  Entonces, como la función del integrando es par, se cumple que $f(x)=f(-x)$, entonces
+  $$
+  2 \int_0^\infty\frac{\cos(3x)}{x^2+1}\,dx = \int_{-\infty}^\infty \frac{\cos(3x)}{x^2+1}\,dx
+  \Rightarrow 
+  \int_0^\infty\frac{\cos(3x)}{x^2+1}\,dx = \frac{1}{2}\int_{-\infty}^\infty \frac{\cos(3x)}{x^2+1}\,dx
+  $$
+  De modo que
+  $$
+  \int_0^\infty \frac{\cos(3x)}{x^2+1}\,dx = \boxed{\frac{\pi}{2e^3}}
+  $$
+  quedando resuelta la integral.
+\end{example}
+
+\subsection[Analítica trigonométrica con polos en el eje real]{Analítica trigonométrica con polos en $\mathbb{R}$}
+
+Ahora se consideran integrales reales de la forma 
+\begin{equation}
+\int_{-\infty}^\infty Q(x)\cos(mx)dx \qquad \text{o bien,} \qquad \int_{-\infty}^\infty Q(x)\sin(mx)dx
+\label{eq:forma_integral_trigonometrica_impropia_con_singularidad}
+\end{equation}
+donde $Q(x)$ es una función racional con polos en el eje real que cumple con las condiciones del lema de Jordan, por ejemplo $1/x$ tiene un polo en el eje real y converge a cero uniformemente cuando $\lvert x\rvert \to \infty$.
