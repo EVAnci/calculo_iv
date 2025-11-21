@@ -40,11 +40,54 @@ $$
 f(z)=K\left(\frac{z+\bar{z}}{2},\frac{z-\bar{z}}{2j}\right)\frac{1}{jz}
 $$
 Entonces, para resolver la integral real, se usa el teorema del residuo para evaluar $\oint_\gamma f(z)dz$, obteniendo así,
-$$
+\begin{equation}
 \int_0^{2\pi}K(\cos(\theta),\sin(\theta))d\theta = j2\pi \sum_{k=1}^n \res_{z=z_k}f(z)
-$$
+\label{eq:integral_real_trig}
+\end{equation}
 La suma de la derecha es sobre todos los polos $z_1,z_2,\dots,z_n$ encerrados por el círculo unitario. La función $f$ debe ser analítica sobre la curva, por tanto no pueden haber singularidades en el círculo unitario mismo.
 
+Así que el procedimiento para evaluar $\int_0^{2\pi} K(\cos\theta,\sin\theta)d\theta$ consiste en calcular $f(z)$, determinar sus polos dentro del círculo unitario, evaluar ahí los residuos y aplicar la ecuación \eqref{eq:integral_real_trig}.
+
 \begin{example}
-  
+  Demostrar, aplicando el método de evaluación de integrales reales visto, que 
+  $$
+  \int_0^{2\pi}\frac{1}{\sqrt{2}-\cos(\theta)}d\theta = 2\pi
+  $$
+  Se usa $\cos(\theta)=\frac{1}{2}(z+\bar{z})$ y $d\theta = dz/jz$. Así la integral se vuelve 
+  $$
+  \oint_\gamma \frac{dz/jz}{\sqrt{2}-\frac{1}{2}\left(z+\frac{1}{z}\right)} = \oint_\gamma \frac{1}{-\frac{j}{2}(z^2-2\sqrt{2}z+1)} dz
+  $$
+  Aplicando la fórmula resolvente para encontrar las raíces del denominador
+  $$
+  -\frac{2}{j}\oint_\gamma \frac{1}{(z-\sqrt{2}-1)(z-\sqrt{2}+1)}
+  $$
+  Así, vemos que si $z$ toma el valor $z_1=\sqrt{2}+1$ está fuera de $\gamma$. Sin embargo, si toma $z_2=\sqrt{2}-1$ está dentro de $\gamma$, entonces el residuo es 
+  $$
+  \res_{z=z_2}f(z)=\lim_{z\to z_2} \frac{1}{1-z_1} = \frac{1}{z_2-z_1} = \frac{1}{\sqrt{2}-1-\sqrt{2}-1} = -\frac{1}{2}
+  $$
+  Reemplazando este resultado para resolver la integral, resulta 
+  $$
+  -\frac{2}{j}\oint_\gamma \frac{1}{(z-z_1)(z-z_2)} =-\frac{2}{j}j2\pi\left(-\frac{1}{2}\right) = 2\pi 
+  $$
+  y, consecuentemente
+  $$
+  \int_0^{2\pi}\frac{1}{\sqrt{2}-\cos(\theta)}d\theta = 2\pi
+  $$
+  lo que se quería demostrar.
 \end{example}
+
+Al aplicar este método, si se obtiene un número que no es real, hay que verificar los cálculos, ya que una integral real tiene un valor real.
+
+\section{Lema de Jordan}
+
+Si una función $Q(z)$ satisface las siguientes condiciones:
+\begin{enumerate}
+  \item $Q(z)$ es analítica en todo el semiplano superior, excepto en un número finito de polos.
+\end{enumerate}
+
+\section{Integrales trigonométricas impropias}
+
+Ahora se consideran integrales reales de la forma 
+$$
+
+$$
