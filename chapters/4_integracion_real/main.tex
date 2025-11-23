@@ -9,6 +9,7 @@ Cuando el objetivo es evaluar integrales reales mediante técnicas de análisis 
 En síntesis, el método consiste en reconocer que una integral real puede verse como un caso particular de una integral de línea compleja cuya parametrización ya está implícita. Al ``deshacer'' esa parametrización y situarla en un contorno adecuado, la teoría de los residuos proporciona una herramienta poderosa para su evaluación. Esta perspectiva unifica ambos tipos de integrales y muestra cómo la geometría del plano complejo enriquece el análisis de integrales reales.
 
 \section{Integrales trigonométricas}
+\label{sec:integrales_reales_trigonometricas}
 
 Primero se consideran integrales del tipo 
 \begin{equation}
@@ -443,6 +444,7 @@ Despejando la integral real, llegamos a la fórmula generalizada final:
 Esta expresión nos dice que para calcular la integral impropia, tomamos los residuos completos de los polos superiores y la \textit{mitad} del residuo de los polos que están justo en la ``frontera'' (el eje real).
 
 \subsection[Racionales analíticas en el eje real]{Racionales analíticas en $\mathbb{R}$}
+\label{sec:racionales_analiticas}
 
 Ahora se consideran integrales reales de la forma 
 $$
@@ -486,7 +488,7 @@ tal que podamos encontrar una expresión para la integral real. Para hacer esto 
 
 Aplicando el Teorema de los Residuos, la integral sobre $\Gamma$ es:
 $$
-\oint_\Gamma \frac{p(z)}{q(z)}dz = j2\pi \sum_{k} \text{Res}\left( \frac{p(z)}{q(z)}, z_k \right)
+\oint_\Gamma \frac{p(z)}{q(z)}dz = j2\pi \sum_{k=1}^m \res_{z=z_k}\left( \frac{p(z)}{q(z)} \right)
 $$
 donde la suma se realiza sobre los polos $z_k$ ubicados estrictamente en el semiplano superior ($\Im(z_k) > 0$).
 Descomponiendo la integral:

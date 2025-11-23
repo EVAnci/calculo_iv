@@ -232,3 +232,62 @@ Cada ejercicio se colocará con la respuesta, pero sin el procedimiento.
       $$
   \end{itemize}
 \end{exercise}
+
+\section{Integración de funciones reales}
+
+\begin{exercise}
+  Resolver la siguiente integral real utilizando los métodos de resolución de variable compleja.
+  $$
+  I = \int_{-\infty}^\infty \frac{x\sin(2x)}{x^2+4x+20}dx
+  $$
+  \textit{Solución}: Primero analizamos el integrando. Es de la forma $Q(x)\sin(mx)$, donde $Q$ no tiene raíces reales, sino complejas conjugadas. Además $Q$ tiende uniformemente a cero cuando $x\to \infty$. Entonces llamamos al polo $z_0=-2+4j$ que está en el semiplano superior.
+
+  Se utiliza la solución vista en la sección \ref{sec:racional_trigonometrica_analitica_en_r}, entonces 
+  $$
+  \int_{-\infty}^\infty \frac{x\sin(2x)}{x^2+4x+20}dx = \Im\left( j2\pi\cdot\res_{z=z_0}Q(z)e^{j2z} \right) 
+  $$
+  dando como resultado 
+  $$
+  \int_{-\infty}^\infty \frac{x\sin(2x)}{x^2+4x+20}dx = \frac{\pi}{2e^8}(\sin(4)+2\cos(4))
+  $$
+  quedando resuelta la integral.
+\end{exercise}
+
+\begin{exercise}
+  Resolver utilizando residuos.
+  $$
+  \int_{-\infty}^\infty \frac{x^3}{(1+x^2)^3}dx
+  $$
+  \textit{Solución}: Analizamos la integral: es del tipo $\int_{-\infty}^\infty p(x)/q(x)dx$. Vemos que $q$ es tres grados mayor que $p$, entonces podemos asegurar convergencia. El polo en el semiplano superior es $z_0=j$. Usando el resultado de la sección \ref{sec:racionales_analiticas},
+  $$
+  \oint_\Gamma \frac{z^3}{(1+z^2)^3}dz = j2\pi \cdot \res_{z=i} \frac{z^3}{(1+z^2)^3} = \int_{-\infty}^\infty \frac{x^3}{(1+x^2)^3}dx
+  $$
+  Aquí $z_0$ es un polo múltiple de orden tres, por tanto el residuo es 
+  $$
+  \res_{z=i} \frac{z^3}{(1+z^2)^3} =\frac{1}{2!} \lim_{z\to j} \frac{d^2}{dz^2}\left(\frac{z^3}{(z+j)^3}\right) = 0
+  $$
+  Resultando entonces la integral 
+  $$
+  \int_{-\infty}^\infty \frac{x^3}{(1+x^2)^3}dx = 0
+  $$
+  Lo cual tiene sentido por ser el integrando una función impar.
+\end{exercise}
+
+\begin{exercise}
+  Demostrar que 
+  $$
+  \int_0^{2\pi} \frac{1}{(2+\cos(\theta))^2}d\theta = \frac{4\pi\sqrt{3}}{9}
+  $$
+  \textit{Solución}: Usando el resultado de \ref{sec:integrales_reales_trigonometricas}, llamamos $f(z)$ a 
+  $$
+  f(z)=\frac{1}{jz\left(2+(\frac{z+\bar{z}}{2})\right)} = \frac{4z}{j((z+2+\sqrt{3})(z+2-\sqrt{3}))^2}
+  $$
+  Se tiene solo un polo de orden dos dentro de la circunferencia unitaria. Llamamos $z_0=-2+\sqrt{3}$. Entonces
+  \begin{align*}
+    \frac{4\pi\sqrt{3}}{9} &= j2\pi \res_{z=z_0}f(z) \\ 
+                           &=j2\pi\lim_{z\to z_0}\frac{d}{dz}\left(\frac{4z}{j(z+2+\sqrt{3})^2}\right) \\ 
+                           &= 8\pi \lim_{z\to z_0}\frac{2+\sqrt{3}-z}{(z+2+\sqrt{3})^3} \\ 
+    \frac{4\pi\sqrt{3}}{9} &= \frac{4\pi\sqrt{3}}{9}
+  \end{align*}
+  quedando demostrada la identidad.
+\end{exercise}
