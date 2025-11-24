@@ -1,0 +1,49 @@
+\section{Condiciones de Dirichlet}
+
+La convergencia de una serie de Fourier involucra tres aspectos distintos y fundamentales:
+\begin{enumerate}
+  \item Que existan los coeficientes genéricos $a_n$, $b_n$ y puedan hallarse (sino, no habría convergencia ni serie infinita).
+  \item Que exista la serie (además de la existencia de $a_n$ y $b_n$, se requiere que la función pueda expresarse como una serie infinita).
+  \item Que la función desarrollada en serie de Fourier pueda aproximarse por un número finito de términos (se pueden despreciar el resto de términos a partir de cierto ``$n$'' y sin embargo, la expresión se aproxime lo suficiente a la original).
+\end{enumerate}
+
+\subsection{Condición débil}
+
+Debe cumplirse para que la serie sea convergente, pero que se cumpla no nos garantiza que la serie converge (es una condición necesaria pero no suficiente).
+
+Es decir, sabemos que si esta condición no se cumple es divergente o la serie no existe. Por tanto, debe cumplirse. Sin embargo que se cumpla no nos garantiza que la serie converja, entonces nada podemos decir respecto de su convergencia.
+
+La condición débil reside en la existencia de los coeficientes. Como los coeficientes vienen definidos a través de una integral, la existencia de los coeficientes implica que la integral sea finita:
+\begin{align*}
+  a_n&=\frac{2}{T}\int_{-T/2}^{T/2}f(t)\cos\left(\frac{2n\pi}{T}t\right)\,dt<\infty\\
+  b_n&=\frac{2}{T}\int_{-T/2}^{T/2}f(t)\sin\left(\frac{2n\pi}{T}t\right)\,dt<\infty
+\end{align*}
+Aquí $T$ es una constante (el período) y las funciones coseno y seno están acotadas entre $-1$ y $1$. Por tanto, solo deberá ser finita la integral del valor absoluto de $f(t)$. Así:
+$$
+\int_{-T/2}^{T/2}\lvert f(t)\rvert \,dt <\infty
+$$
+Ya que el coseno (o el seno) sólo afectaría a $f$ en un factor menor o igual a 1, o cambiaría de signo.
+
+Una integral más visual y sencilla es la que se muestra a continuación, que cumple con el objetivo de prescindir del signo 
+$$
+\int_{-T/2}^{T/2}[f(t)]^2\,dt<\infty
+$$
+
+\subsection{Condición fuerte}
+
+Esta condición incorpora las restricciones adicionales, que la hacen necesaria y suficiente. Para que una serie de Fourier sea uniformemente convergente, la función desarrollada $f(x)$ debe permanecer finita y tener un número finito de máximos y mínimos.
+
+La condición débil y la condición fuerte son llamadas condiciones de Dirichlet\footnote{Johann Peter Gustav Lejeune Dirichlet (1805-1859) fue un matemático alemán.} que garantizan que la serie de Fourier de una función periódica converja puntualmente a la función original (excepto en sus puntos de discontinuidad). Estas condiciones son:
+\begin{enumerate}
+  \item La función debe ser absolutamente integrable en un periodo (la condición débil):
+    $$
+    \int_{-T/2}^{T/2} |f(t)| \, dt < \infty
+    $$
+    Esto asegura que los coeficientes de Fourier existan y puedan calcularse.
+  \item La función debe tener un número finito de discontinuidades en un periodo: No puede tener infinitas discontinuidades en un intervalo finito.
+  \item La función debe tener un número finito de máximos y mínimos en un periodo: No puede oscilar infinitamente.
+\end{enumerate}
+
+Si una función satisface estas condiciones, entonces su serie de Fourier converge a $f(t)$ en los puntos donde $f$ es continua, y al promedio de los límites izquierdo y derecho en los puntos de discontinuidad.
+
+Con esto, hemos finalizado el capítulo de revisión de Fourier.
