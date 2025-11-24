@@ -214,3 +214,21 @@ Esto coincide perfectamente con lo que ya sabíamos: si $\vec{F} = \nabla f$ (es
 Hemos establecido una condición necesaria: Si un campo $\vec{F}$ es conservativo, necesariamente debe cumplir que $Q_x = P_y$. Ahora, la pregunta inversa: ¿Es esta una condición suficiente? Es decir, si encuentro un campo donde $Q_x = P_y$, ¿puedo garantizar que es conservativo?
 
 La respuesta es ``casi''. Es suficiente siempre y cuando la región $D$ donde el campo está definido no tenga ``agujeros''. A esto se le llama una región simplemente conexa.
+
+\section*{Síntesis del capítulo}
+
+Hemos recorrido el camino desde la integración sobre una curva hasta la integración sobre una región plana, estableciendo un puente fundamental en el cálculo vectorial.
+
+\begin{enumerate}
+    \item \textbf{Integral de Línea Escalar:} $\int_C f\,ds$. Mide la acumulación de una magnitud escalar (como la masa de un alambre) a lo largo de una curva.
+    
+    \item \textbf{Integral de Línea Vectorial:} $\int_C \vec{F}\cdot d\vec{r}$. Mide la contribución del campo en la dirección del movimiento (como el trabajo realizado). Depende de la orientación de la curva.
+    
+    \item \textbf{Teorema de Green:} Es la herramienta que conecta la frontera ($C$) con el interior ($D$). Nos dice que la circulación macroscópica alrededor del borde es la suma de las rotaciones microscópicas ($\text{rot }\vec{F}$) en el interior.
+    $$
+    \oint_{\partial D} P\,dx + Q\,dy = \iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA
+    $$
+\end{enumerate}
+
+\textbf{Perspectiva hacia Variable Compleja:}
+Este teorema es la base fundamental para entender las funciones analíticas. Si interpretamos un número complejo $z = x + iy$ y una función $f(z) = u + iv$, las condiciones para que una integral de línea compleja sea cero (Teorema de Cauchy-Goursat) son una consecuencia directa de aplicar el Teorema de Green y las ecuaciones de Cauchy-Riemann ($u_x = v_y$ y $u_y = -v_x$).
