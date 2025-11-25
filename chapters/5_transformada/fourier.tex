@@ -92,7 +92,7 @@ Si observamos la ecuación \ref{eq:coeficientes_serie}, vemos que $C_k$ represen
     \item Los armónicos en el gráfico de frecuencias se juntan cada vez más. Veamos este último inciso más en detalle con un breve ejemplo.
 \end{itemize}
 \begin{example}
-  Si miramos la figura \ref{fig:grafico_de_frecuencia}, vemos que $f(t)$, con su periodo original $T$ tiene una frecuencia determinada $\omega$. Si aumentamos el periodo tal que $T'=2T$, entonces la nueva frecuencia $\omega'=2\pi/(2T)=\omega/T$. Es decir, esta nueva $g(t)$ que es idéntica a $f(t)$ pero tiene un período dos veces mayor, tiene la mitad de frecuencia. Esto conlleva a que su gráfico de frecuencias comparado con el de $f(t)$ sea como muestra la figura \ref{fig:grafico_de_frecuencia_de_g}
+  Si miramos la figura \ref{fig:grafico_de_frecuencia}, vemos que $f(t)$, con su periodo original $T$ tiene una frecuencia determinada $\omega$. Si aumentamos el periodo tal que $T'=2T$, entonces la nueva frecuencia $\omega'=2\pi/(2T)=\omega/2$. Es decir, esta nueva $g(t)$ que es idéntica a $f(t)$ pero tiene un período dos veces mayor, tiene la mitad de frecuencia. Esto conlleva a que su gráfico de frecuencias comparado con el de $f(t)$ sea como muestra la figura \ref{fig:grafico_de_frecuencia_de_g}
   \begin{figure}[ht]
     \centering
     \begin{tikzpicture}
@@ -104,16 +104,24 @@ Si observamos la ecuación \ref{eq:coeficientes_serie}, vemos que $C_k$ represen
         \draw[red,very thick,fill] (\k,0) -- ($(\k,1/\i)$) circle (2pt);
         \draw[red,very thick,fill] (-\k,0) -- ($(-\k,1/\i)$) circle (2pt);
       }
+      \foreach \x in {1,2,3,4} {
+        \node[below] at (\x,0) {\scriptsize$\omega_\x$};
+        \node[below] at (-\x,0) {\scriptsize$\omega_{-\x}$};
+      }
 
       \draw[dashed] (0,1) -- (1,1) node[right] {\scriptsize$\omega/2$};
       \draw[thin] (0,0) -- (0,-.4);
       \draw[thin] (.5,0) -- (.5,-.4);
       \draw[<->,>=stealth] (0,-.3) -- (.5,-.3) node[midway,below] {\scriptsize$\Delta\omega$};
     \end{tikzpicture}
-    \caption{Aumento del periodo provoca menor frecuencia y más armónicos.}
+    \caption{Aumenta el período, menor frecuencia y más armónicos.}
     \label{fig:grafico_de_frecuencia_de_g}
   \end{figure}
 \end{example}
+
+\begin{tcolorbox}[title=Detalle de notación]
+  Usualmente, se designa a $k\omega$ como $\omega_k$, indicando el $k$-ésimo múltiplo de la frecuencia fundamental $\omega$.
+\end{tcolorbox}
 
 Para evitar que los coeficientes $C_k$ tiendan a cero cuando $T\to \infty$ (debido al factor $1/T$), multiplicamos la ecuación \ref{eq:coeficientes_serie} por $T$, siendo la siguiente expresión la definición de transformada:
 \begin{equation}
@@ -143,7 +151,7 @@ que es la antitransformada de Fourier.
 \begin{definition}[Antitransformada de Fourier]
   Sea $F(\omega)$ la transformada de Fourier, su antitransformada $\mathcal{F}^{-1}\{F(\omega)\}$, definida como la operación inversa de la transformada, es 
   \begin{equation}
-  \mathcal{F}^{-1}\{F(\omega)\}=f(t)=\int_{-\infty}^\infty \frac{F(\omega)}{2\pi}e^{j\omega t}d\omega
+  \mathcal{F}^{-1}\{F(\omega)\}=f(t)=\frac{1}{2\pi}\int_{-\infty}^\infty F(\omega)e^{j\omega t}d\omega
   \label{eq:antitransformada}
   \end{equation}
 \end{definition}
@@ -164,5 +172,211 @@ $$
 $$
 Y la antitransformada de una cierta función del dominio de la frecuencia $\omega$ como $H(\omega)$ será:
 $$
-\mathcal{F}^{-1}\{H(\omega)\} = \frac{1}{2\pi} \int_{-\infty}^{\infty} H(\omega) e^{j\omega t}d\omega
+\mathcal{F}^{-1}\{H(\omega)\}=h(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} H(\omega) e^{j\omega t}d\omega
 $$
+
+\subsection{Ejemplos}
+
+A continuación analizaremos algunos ejemplos de funciones las cuales transformará.
+
+\begin{example}[Transformada de la función cajón]
+  Supongamos que contamos con una función del tiempo periódica que es un tren de pulsos, pero sólo tomamos uno de ellos, en la posición central, que es un pulso rectangular de amplitud unitaria como se muestra en la figura \ref{fig:pulso_rectangular}, cuyo espectro de frecuencias (o función de frecuencia) se quiere conocer.
+  \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+      \draw[->,gray] (-3,0) -- (3,0) node[right] {\scriptsize$t$};
+      \draw[->,gray] (0,0) -- (0,1.5) node[above] {\scriptsize$f(t)$};
+      \draw[very thick,red] (-3,0) -- (-1.57,0) node[below, black] {\scriptsize$-\pi/2$} -- (-1.57,1) -- (1.57,1) 
+      -- (1.57,0) node[below, black] {\scriptsize$\pi/2$} -- (2.92,0);
+      \draw[fill] (0,1) circle (1pt) node[above right] {\scriptsize$1$};
+      \draw[fill] (0,0) circle (1pt) node[below] {\scriptsize$0$};
+    \end{tikzpicture}
+    \caption{Función cajón o pulso rectangular.}
+    \label{fig:pulso_rectangular}
+  \end{figure}
+  Para conocer el espectro de frecuencias necesitamos calcular la transformada de Fourier del pulso rectangular. Entonces, aplicando la definición de transformada (ecuación \eqref{eq:transformada_definicion_formal}), necesitamos calcular
+  $$
+  F(\omega) = \int_{-\infty}^\infty f(t)e^{-j\omega t}dt
+  $$
+  Observando la función $f(t)$, resulta claro que la integral se puede desdoblar en tres integrales. Como la función la podemos definir por partes como:
+  $$
+  f(t)=\begin{cases}
+    0 & t < -\pi/2 \\ 
+    1 & -\pi/2\leq t \leq \pi/2 \\ 
+    0 & \pi/2 < t
+  \end{cases}
+  $$
+  Entonces la integral sobre el intervalo $(-\infty,\infty)$ es 
+  $$
+  \int_{-\infty}^\infty f(t)e^{-j\omega t}dt = \int_{-\infty}^{-\pi/2} f(t)e^{-j\omega t}dt + \int_{-\pi/2}^{\pi/2} f(t)e^{-j\omega t}dt + \int_{\pi/2}^\infty f(t)e^{-j\omega t}dt
+  $$
+  Donde, la integral en el intervalo $(-\infty,-\pi/2)$ y $(\pi/2,\infty)$ son cero. Entonces, resulta 
+  $$
+    F(\omega) = \int_{-\pi/2}^{\pi/2} (1)e^{-j\omega t}dt = \left.-\frac{e^{-j\omega t}}{j\omega} \right\rvert_{-\pi/2}^{\pi/2}
+  $$
+  Operando algebraicamente,
+  \begin{align*}
+              &= \frac{1}{j\omega}(e^{j\omega(\pi/2)}-e^{-j\omega(\pi/2)}) \\ 
+              &= \frac{2}{2}\cdot \frac{1}{j\omega}(e^{j\omega(\pi/2)}-e^{-j\omega(\pi/2)}) \\ 
+    F(\omega) &= \frac{2}{\omega}\sin\left(\frac{\omega\pi}{2}\right)  
+  \end{align*}
+  Y de esta última expresión puede obtenerse una función muy elegante, llamada \textit{seno cardinal}, que se define como $\sin(x)/x$. Para obtener esta expresión multiplicamos y dividimos entre $\pi$, 
+  $$
+  \pi\frac{2}{\pi\omega}\sin\left(\frac{\omega\pi}{2}\right) = \pi \left[\frac{1}{(\pi\omega)/2}\sin\left(\frac{\omega\pi}{2}\right)\right]
+  $$
+  resultando 
+  $$
+  \boxed{F(\omega) = \pi\sinc\left(\frac{\omega\pi}{2}\right)}
+  $$
+  \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines = middle,
+        xlabel = $\omega$,
+        ylabel = $F(\omega)$,
+        ymin = -1, ymax = 3.8,
+        xmin = -13, xmax = 13,
+        grid = major,
+        grid style = dotted,
+        width = 12cm, height = 6cm,
+        % Estilo de las etiquetas
+        every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+        every axis y label/.style={at={(current axis.above origin)},anchor=south},
+        ytick = {-1.5708, 0, 1.5708, 3.14159}, 
+        yticklabels = {$-\frac{\pi}{2}$, $0$, $\frac{\pi}{2}$, $\pi$},
+        xtick = {-12,-10,-8,-6,-4,-2,2,4,6,8,10,12}
+      ]
+        
+        \addplot [
+            domain=-13:13, 
+            samples=300,
+            color=red, 
+            very thick,
+            smooth
+        ] 
+        % Si x es 0, devuelve 1. Si no, calcula sin(x en grados)/x
+        {x == 0 ? pi : pi * sin(deg(x*pi/2))/(x*pi/2)};
+        \addplot[mark=*, color=red] coordinates {(0,3.14159)};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico de $F(\omega)$ de la función cajón.}
+  \end{figure}
+  El espectro continuo (o función de la frecuencia continua), dado por la curva envolvente de la función seno cardinal, es llamado \textit{espectro de banda}. Mientras que el espectro discreto, si se toman solo las ordenadas para cada valor de la frecuencia $[\omega=k\omega_0]$, es el \textit{espectro de línea}. Gráficamente se vería algo como lo representado en la figura \ref{fig:espectro_discreto_para_cajon}.
+  \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines = middle,
+        xlabel = $\omega$,
+        ylabel = $F(\omega)$,
+        ymin = -1, ymax = 3.8,
+        xmin = -13, xmax = 13,
+        grid = major,
+        grid style = dotted,
+        width = 12cm, height = 6cm,
+        % Estilo de las etiquetas
+        every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+        every axis y label/.style={at={(current axis.above origin)},anchor=south},
+        ytick = {-1.5708, 0, 1.5708, 3.14159}, 
+        yticklabels = {$-\frac{\pi}{2}$, $0$, $\frac{\pi}{2}$, $\pi$},
+        xtick = {-12,-10,-8,-6,-4,-2,2,4,6,8,10,12}
+      ]
+        
+        \addplot [
+            domain=-13:13, 
+            samples=300,
+            color=gray, 
+            thin,
+            dashed,
+            smooth
+        ] 
+        % Si x es 0, devuelve 1. Si no, calcula sin(x en grados)/x
+        {x == 0 ? pi : pi * sin(deg(x*pi/2))/(x*pi/2)};
+
+        \addplot [
+            ycomb,              % Tipo de gráfico "peine"
+            color=red,
+            very thick,
+            mark=*,             % Pone un punto al final de la línea (opcional)
+            mark options={scale=0.5},
+            % Aquí definimos exactamente dónde quieres las líneas:
+            samples at={-11,-9,...,-1, 1,3,...,11} 
+        ] 
+        % Reutilizamos la MISMA fórmula matemática
+        {x == 0 ? pi : pi * sin(deg(x*pi/2))/(x*pi/2)};
+
+        \addplot[mark=*, color=red] coordinates {(0,3.14159)};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico de espectro discreto para $F(\omega)$.}
+    \label{fig:espectro_discreto_para_cajon}
+  \end{figure}
+
+  Si quisiera expresarse la función del tiempo que corresponde al pulso rectangular, podría encontrarse a partir de la integral:
+  $$
+  f(t)=\frac{1}{2}\int_{-\pi/2}^{\pi/2} \sinc\left(\frac{\omega\pi}{2}\right)e^{j\omega t}d\omega
+  $$
+  que es la función del tiempo que describe analíticamente al pulso rectangular.
+\end{example}
+
+Ahora, consideremos la transformada de algunas funciones simples, tales como la función constante, el coseno y la exponencial.
+
+\begin{example}[Función constante]
+  Sea la función constante unitaria: 
+  $$
+  f(t)=1
+  $$
+  \begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{.48\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \draw[->,gray] (-3,0) -- (3,0) node[right] {\scriptsize$t$};
+        \draw[->,gray] (0,-.2) -- (0,1.3) node[above] {\scriptsize$f(t)$};
+        \draw[very thick,red] (-3,1) -- (3,1) node[midway,below right,black] {\scriptsize$1$};
+        \node[below right] at (0,0) {\scriptsize$0$}; 
+        \draw[fill] (0,1) circle (1pt);
+      \end{tikzpicture}
+      \caption{Gráfico de la función unitaria.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{.48\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \draw[->,gray] (-3,0) -- (3,0) node[right] {\scriptsize$t$};
+        \draw[->,gray] (0,-.2) -- (0,1.3) node[above] {\scriptsize$f(t)$};
+        \draw[very thick,red] (-3,0) -- (-2,0) node[below,black] {\scriptsize$-\Delta/2$} -- (-2,1) -- 
+          (2,1) node[midway,below right,black] {\scriptsize$1$} -- (2,0) node[below,black] {\scriptsize$\Delta/2$} -- (2.92,0);
+        \draw[fill] (0,1) circle (1pt);
+      \end{tikzpicture}
+      \caption{Gráfico del pulso en $[-\Delta/2,\Delta/2]$.}
+    \end{subfigure}
+    \caption{}
+    \label{fig:ej:constante_unitaria}
+  \end{figure}
+  Suponiendo que, en el caso del ejemplo del pulso rectangular anterior, éste hubiera tenido duración $\Delta$, se podría interpretar al la función constante unitaria como un pulso de duración $\Delta\to\infty$, como muestra la figura \ref{fig:ej:constante_unitaria}.
+
+  Entonces, la transformada podría resolverse usando el resultado del ejemplo anterior, haciendo:
+  $$
+  F(\omega) = \lim_{\Delta \to \infty}\left(\Delta \sinc\left(\frac{\omega\Delta}{2}\right)\right)
+  $$
+  Y, multiplicando por $2\pi$, resulta:
+  $$
+  F(\omega) = 2\pi \lim_{ \Delta\to \infty}\left(\frac{\Delta}{2\pi} \sinc\left(\frac{\omega\Delta}{2}\right)\right)
+  $$
+  Donde puede demostrarse que ese límite equivale a un impulso al origen de la variable $\omega$. Intuitivamente, se aprecia que la función seno cardinal tiende a cero para $\Delta \to\infty$, pero permanece un factor $\Delta$ en el numerador que lleva el resultado a ser un impulso:
+  $$
+  F(\omega) = 2\pi\delta(\omega)
+  $$
+  donde $\delta(\omega)$ es la función delta de Dirac. Esta es la transformada de Fourier de la función constante unitaria expresada por un impulso unitario de energía $2\pi$.
+  \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+      \draw[->,gray] (-2,0) -- (2,0) node[right] {\scriptsize$\omega$};
+      \draw[->,gray] (0,-.2) -- (0,1.3) node[above] {\scriptsize$F(\omega)$};
+      \draw[very thick,red,->] (0,0) -- (0,1) node[below right,black] {\scriptsize$2\pi\delta(\omega)$};
+    \end{tikzpicture}
+    \caption{Gráfico de la transformada $\mathcal{F}\{f(t)=1\}$.}
+  \end{figure}
+\end{example}
