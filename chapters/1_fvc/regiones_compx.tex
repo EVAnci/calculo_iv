@@ -1,8 +1,7 @@
 \section{Curvas y regiones en el plano complejo}
 \label{sec:1_curvas_y_regiones_en_el_plano_complejo}
 
-En esta sección se considerarán algunas curvas y regiones importantes, así como algunos conceptos relacionados con éstas, que serán usados con frecuencia. Lo anterior también será de ayuda para familiarizarse aún más con el plano complejo.
-
+En esta sección se considerarán algunas curvas y regiones importantes, así como algunos conceptos relacionados con éstas, que serán usados con frecuencia. 
 \subsection{Circunferencias y discos}
 
 La distancia entre dos puntos $z$ y $a$ está dada por $\lvert z-a \rvert$. Por tanto, una circunferencia $C$ de radio $\rho$ y centro en $a$ puede definirse como
@@ -13,15 +12,49 @@ La distancia entre dos puntos $z$ y $a$ está dada por $\lvert z-a \rvert$. Por 
 Es decir, todos los puntos que equidistan de $a$ y su distancia es $\rho$. En la figura \ref{fig:circ_compx}, $z$ representa la circunferencia roja, es decir, todos los puntos que satisfacen \ref{eq:circ}
 \begin{figure}[ht]
   \centering
-  \begin{tikzpicture}[scale=0.7]
-    \draw[->] (-1,0) -- (5,0) node[below right] {$\operatorname{Re}(z)$};
-    \draw[->] (0,-1) -- (0,5) node[above left] {$\operatorname{Im}(z)$};
-    \filldraw[blue] (2.5,2.5) circle (2pt) node[above right] {$a$};
-    \draw[red] (2.5,2.5) circle (1.5);
-    \draw[teal] (2.5,2.5) -- (1,2.5) node[midway, above] {$\color{teal}\rho$};
-  \end{tikzpicture}
-  \caption{Circunferencia en el plano complejo.}
-  \label{fig:circ_compx}
+  \begin{subfigure}[b]{.45\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[->] (-1,0) -- (3,0) node[right] {\scriptsize$\operatorname{Re}(z)$};
+      \draw[->] (0,-.3) -- (0,3) node[above] {\scriptsize$\operatorname{Im}(z)$};
+      \filldraw[blue] (1.5,1.5) circle (2pt) node[above right] {\scriptsize$a$};
+      \draw[red] (1.5,1.5) circle (1);
+      \draw[->] (1.5,1.5) -- (.5,1.5) node[midway, above] {\scriptsize$\rho$};
+    \end{tikzpicture}
+    \caption{Circunferencia unitaria.}
+    \label{fig:circ_compx}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{.45\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+      % Ejes
+      \draw[->] (-1,0) -- (5,0) node[right] {\scriptsize$\operatorname{Re}(z)$};
+      \draw[->] (0,-.3) -- (0,5) node[above] {\scriptsize$\operatorname{Im}(z)$};
+
+      % Centro a
+      \filldraw[blue] (2.5,2.5) circle (2pt) node[below] {\scriptsize$a$};
+
+      % Región sombreada entre las dos circunferencias
+      \fill[red!15, even odd rule] 
+        (2.5,2.5) circle (2.3)
+        (2.5,2.5) circle (1.5);
+
+      % Contornos
+      \draw[red, dashed] (2.5,2.5) circle (1.5);
+      \draw[red, dashed] (2.5,2.5) circle (2.3);
+
+      % Radio de la menor
+      \draw[->] (2.5,2.5) -- ++(60:1.5)
+        node[midway, right] {\scriptsize$\rho_1$};
+      % Radio de la mayor
+      \draw[->] (2.5,2.5) -- ++(120:2.3)
+        node[midway, below left] {\scriptsize$\rho_2$};
+    \end{tikzpicture}
+    \caption{Corona en el plano complejo.}
+    \label{fig:corona_complx}
+  \end{subfigure}
+  \caption{}
 \end{figure}
 
 En particular, la circunferencia unitaria; es decir, la circunferencia de radio 1 y centro en el origen $a=0$, es
@@ -50,35 +83,6 @@ representa el exterior del círculo $C$. Además, la región entre dos círculos
   \rho_1 < \lvert z-a \rvert < \rho_2,
 \end{equation}
 en donde $a$ es el centro de los círculos. Tal región se denomina \textit{anillo circular abierto} o \textbf{corona} abierta (figura \ref{fig:corona_complx}).
-\begin{figure}[ht]
-  \centering
-  \begin{tikzpicture}[scale=0.7]
-    % Ejes
-    \draw[->] (-1,0) -- (5,0) node[below right] {$\operatorname{Re}(z)$};
-    \draw[->] (0,-1) -- (0,5) node[above left] {$\operatorname{Im}(z)$};
-
-    % Centro a
-    \filldraw[blue] (2.5,2.5) circle (2pt) node[below] {$a$};
-
-    % Región sombreada entre las dos circunferencias
-    \fill[red!15, even odd rule] 
-      (2.5,2.5) circle (2.3)
-      (2.5,2.5) circle (1.5);
-
-    % Contornos
-    \draw[red, dashed] (2.5,2.5) circle (1.5);
-    \draw[red, dashed] (2.5,2.5) circle (2.3);
-
-    % Radio de la menor
-    \draw[->] (2.5,2.5) -- ++(60:1.5)
-      node[midway, right] {$\rho_1$};
-    % Radio de la mayor
-    \draw[->] (2.5,2.5) -- ++(120:2.3)
-      node[midway, below left] {$\rho_2$};
-  \end{tikzpicture}
-  \caption{Corona en el plano complejo.}
-  \label{fig:corona_complx}
-\end{figure}
 
 Veamos un ejemplo.
 \begin{example}
@@ -86,10 +90,10 @@ Veamos un ejemplo.
 
   \textbf{Solución}: La desigualdad es válida precisamente para todos los $z$ cuya distancia a $a=3-j$ no es mayor que $4$. Por tanto, se trata de un disco circular cerrado de radio $4$ con centro en $3-j$.
 
-  Gráficamente tenemos
+  Gráficamente puede verse la región en la figura \ref{fig:ejemplo_de_region}.
   \begin{figure}[ht]
     \centering
-    \begin{tikzpicture}[scale=0.7]
+    \begin{tikzpicture}[scale=0.8]
       \begin{axis}[
         axis lines = middle,
         xlabel = {$\operatorname{Re}(z)$},
@@ -102,6 +106,8 @@ Veamos un ejemplo.
         \filldraw[blue] (3,-1) circle (2pt) node[below] {$a$};
       \end{axis}
     \end{tikzpicture}
+    \caption{Circunferencia centrada en $(3,-1)$.}
+    \label{fig:ejemplo_de_region}
   \end{figure}
 \end{example}
 
