@@ -48,11 +48,11 @@ Antes de pasar a ver la definición de transformada de Fourier, vamos a definir 
 
 Antes de dar la definición rigurosa de transformada de Fourier, vamos a motivar dicha definición a partir de las series de Fourier. Sea $f:\mathbb{R}\to\mathbb{C}$ una función que, en principio, consideraremos restringida a un intervalo finito de tiempo $T$. Podemos expresar $f(t)$ mediante su serie exponencial de Fourier:
 \begin{equation}
-    f(t)=\sum_{k=-\infty}^{\infty} C_k e^{j k \omega_0 t}
+    f(t)=\sum_{k=-\infty}^{\infty} C_k e^{j k \omega t}
 \end{equation}
-donde $\omega_0 = \frac{2\pi}{T}$ es la frecuencia fundamental y los coeficientes vienen dados por:
+donde $\omega = \frac{2\pi}{T}$ es la frecuencia fundamental y los coeficientes vienen dados por:
 \begin{equation}
-    C_k = \frac{1}{T}\int_{-T/2}^{T/2}f(t) e^{-jk\omega_0 t} dt
+    C_k = \frac{1}{T}\int_{-T/2}^{T/2}f(t) e^{-jk\omega t} dt
     \label{eq:coeficientes_serie}
 \end{equation}
 Aquí, $f(t)$ es periódica con periodo $T$. Un detalle que no debe pasar por alto es que la función dada, $f(t)$, ya cuenta con sus propias características, esté o no representada por una serie. Si suponemos a esta presunta $f(t)$ periódica, entonces, ella tendrá su período $T$ y, por lo tanto, su frecuencia $\omega$. Por ejemplo $f(t)=\cos(t)$ tiene por sí misma $T=2\pi$ y $\omega=1$. Al representar una determinada $f(t)$ mediante una serie de Fourier, se está escribiendo esta misma función como una combinación lineal de senos y cosenos. 
@@ -62,16 +62,16 @@ Una representación gráfica hipotética de la amplitud de las frecuencias compo
   \centering
   \begin{tikzpicture}
     \draw[->,gray] (-4.8,0) -- (4.8,0) node[right] {$k\omega$};
-    \draw[->,gray] (0,-.1) -- (0,1.8) node[above] {$|C_k|$};
+    \draw[->,gray] (0,-.1) -- (0,2.8) node[above] {$|C_k|$};
 
-    \draw[red,very thick,fill] (0,0) node[below] {\color{black}\scriptsize$0$} -- (0,1) circle (2pt) node[above=3pt,fill=white,inner sep=0pt] {\scriptsize$\lvert C_0\rvert$};
+    \draw[red,very thick,fill] (0,0) node[below] {\color{black}\scriptsize$0$} -- (0,2) circle (2pt) node[above=3pt,fill=white,inner sep=0pt] {\scriptsize$C_0$};
     \foreach \k\i in {1/2,2/3,3/4,4/5} {
-      \draw[red,very thick,fill] (\k,0) node[below] {\color{black}\scriptsize$\k\omega$} -- ($(\k,1/\i)$) circle (2pt) node[above] {\scriptsize$\lvert C_\k\rvert$};
-      \draw[red,very thick,fill] (-\k,0) node[below] {\color{black}\scriptsize$-\k\omega$} -- ($(-\k,1/\i)$) circle (2pt) node[above] {\scriptsize$\lvert C_\k\rvert$};
+      \draw[red,very thick,fill] (\k,0) node[below] {\color{black}\scriptsize$\k\omega$} -- ($(\k,1/\i*2)$) circle (2pt) node[above] {\scriptsize$\lvert C_\k\rvert$};
+      \draw[red,very thick,fill] (-\k,0) node[below] {\color{black}\scriptsize$-\k\omega$} -- ($(-\k,1/\i*2)$) circle (2pt) node[above] {\scriptsize$\lvert C_\k\rvert$};
     }
     \draw[dashed, smooth] plot coordinates {
-      (-4,0.2) (-3,0.25) (-2,0.3333) (-1,0.5) (0,1)
-      (1,0.5) (2,0.3333) (3,0.25) (4,0.2)
+      (-4,0.4) (-3,0.5) (-2,0.6666) (-1,1) (0,2)
+      (1,1) (2,0.6666) (3,0.5) (4,0.4)
     };
   \end{tikzpicture}
   \caption{Representación de la amplitud de frecuencia discreta o de línea.}
@@ -82,35 +82,87 @@ Esto nos sirve para definir algunos conceptos.
   Llamamos envolvente a la curva suave que une cada punto $C_k$ en la gráfica de amplitud de frecuencias.
 \end{definition}
 \begin{definition}[Densidad espectral]
-  Llamamos densidad espectral de frecuencia a la cantidad que nos dice que tan concentrada está la amplitud $C_k$ alrededor de la frecuencia $\omega_k$.
+  Llamamos densidad espectral de frecuencia a la cantidad que nos dice que tan concentrada está la amplitud ($C_k$) alrededor de la frecuencia $\omega_k$.
 \end{definition}
 Ahora, nuestro objetivo es analizar funciones \textbf{no periódicas} (o aperiódicas). Una función aperiódica puede interpretarse matemáticamente como una función periódica cuyo periodo tiende a infinito ($T \to \infty$).
 
-Si observamos la ecuación \ref{eq:coeficientes_serie}, vemos que $C_k$ representa la amplitud de la frecuencia discreta $k\omega_0$. A medida que aumentamos el periodo $T$:
+Si observamos la ecuación \ref{eq:coeficientes_serie}, vemos que $C_k$ representa la amplitud de la frecuencia discreta $k\omega$. A medida que aumentamos el periodo $T$:
 \begin{itemize}
-    \item La frecuencia fundamental $\omega_0 = 2\pi/T$ disminuye, haciéndose cada vez más pequeña. Llamémosla $\Delta \omega$.
-    \item Las líneas espectrales (los armónicos) en el gráfico de frecuencias se juntan cada vez más.
+    \item La frecuencia fundamental $\omega = 2\pi/T$ disminuye, haciéndose cada vez más pequeña. 
+    \item Los armónicos en el gráfico de frecuencias se juntan cada vez más. Veamos este último inciso más en detalle con un breve ejemplo.
 \end{itemize}
+\begin{example}
+  Si miramos la figura \ref{fig:grafico_de_frecuencia}, vemos que $f(t)$, con su periodo original $T$ tiene una frecuencia determinada $\omega$. Si aumentamos el periodo tal que $T'=2T$, entonces la nueva frecuencia $\omega'=2\pi/(2T)=\omega/T$. Es decir, esta nueva $g(t)$ que es idéntica a $f(t)$ pero tiene un período dos veces mayor, tiene la mitad de frecuencia. Esto conlleva a que su gráfico de frecuencias comparado con el de $f(t)$ sea como muestra la figura \ref{fig:grafico_de_frecuencia_de_g}
+  \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+      \draw[->,gray] (-4.8,0) -- (4.8,0) node[right] {$k\omega$};
+      \draw[->,gray] (0,-.1) -- (0,1.8) node[above] {$|C_k|$};
 
-Para evitar que los coeficientes $C_k$ tiendan a cero cuando $T\to \infty$ (debido al factor $1/T$), multiplicamos la ecuación \ref{eq:coeficientes_serie} por $T$ para eliminar el factor de decaimiento:
+      \draw[red,very thick,fill] (0,0) -- (0,1) circle (2pt);
+      \foreach \k\i in {.5/1.5,1/2,1.5/2.5,2/3,2.5/3.5,3/4,3.5/4.5,4/5} {
+        \draw[red,very thick,fill] (\k,0) -- ($(\k,1/\i)$) circle (2pt);
+        \draw[red,very thick,fill] (-\k,0) -- ($(-\k,1/\i)$) circle (2pt);
+      }
+
+      \draw[dashed] (0,1) -- (1,1) node[right] {\scriptsize$\omega/2$};
+      \draw[thin] (0,0) -- (0,-.4);
+      \draw[thin] (.5,0) -- (.5,-.4);
+      \draw[<->,>=stealth] (0,-.3) -- (.5,-.3) node[midway,below] {\scriptsize$\Delta\omega$};
+    \end{tikzpicture}
+    \caption{Aumento del periodo provoca menor frecuencia y más armónicos.}
+    \label{fig:grafico_de_frecuencia_de_g}
+  \end{figure}
+\end{example}
+
+Para evitar que los coeficientes $C_k$ tiendan a cero cuando $T\to \infty$ (debido al factor $1/T$), multiplicamos la ecuación \ref{eq:coeficientes_serie} por $T$, siendo la siguiente expresión la definición de transformada:
+\begin{equation}
+C_k \cdot T = \int_{-T/2}^{T/2} f(t) e^{-j(k\omega) t} dt \quad \Rightarrow \quad F(\omega_k) = \int_{-T/2}^{T/2} f(t) e^{-j(k\omega) t} dt
+\label{eq:transformada_discreta}
+\end{equation}
+Con esta última expresión, podemos escribir la serie de Fourier compleja que representa a $f(t)$ de la siguiente manera:
 $$
-C_k \cdot T = \int_{-T/2}^{T/2} f(t) e^{-j(k\omega_0) t} dt
+C_k = \frac{F(\omega_k)}{T} \quad \Rightarrow \quad f(t)=\sum_{k=-\infty}^{\infty}\frac{F(\omega_k)}{T}e^{j\omega_k t}
+$$
+Y como último paso, antes de aplicar límite, podemos sustituir $1/T$ en la expresión de arriba por $\frac{1}{2\pi/\omega}$, resultando:
+$$
+f(t)=\sum_{k=-\infty}^{\infty}\frac{F(\omega_k)}{2\pi}e^{j\omega_k t}\omega
 $$
 Ahora, aplicamos el límite cuando $T \to \infty$. En este proceso ocurren tres cambios fundamentales:
 \begin{enumerate}
-    \item El intervalo de integración $[-T/2, T/2]$ se expande a toda la recta real $(-\infty, \infty)$.
-    \item La frecuencia discreta $k\omega_0$ se convierte en una variable continua $\omega$, dado que el espaciado entre frecuencias $\Delta \omega \to 0$.
-    \item La magnitud $C_k \cdot T$ se convierte en nuestra función transformada $F(\omega)$.
+  \item El intervalo de integración $[-T/2, T/2]$ en la integral \eqref{eq:transformada_discreta} se expande a toda la recta real $(-\infty, \infty)$.
+  \item La frecuencia $\omega\to0$, y por tanto $\Delta \omega \to 0$. Entonces, podemos decir que, en el infinito, $\omega\to\Delta\omega$. 
+  \item La frecuencia discreta $k\omega$ se convierte en una variable continua $\omega$, dado que el espaciado entre frecuencias $\Delta \omega \to 0$, y por este motivo, la sumatoria dará pasos infinitesimales, pasando a ser una integral.
 \end{enumerate}
-
-De esta forma, llegamos a la definición formal de la Transformada de Fourier como una función integral de variable compleja.
-
-\begin{definition}[Transformada de Fourier]
-    Sea $f(t)$ una función tal que $\int_{-\infty}^{\infty} |f(t)| dt < \infty$. Se define la Transformada de Fourier de $f(t)$, denotada por $F(\omega)$ o $\mathcal{F}\{f(t)\}$, como:
-    \begin{equation}
-        F(\omega) = \int_{-\infty}^{\infty} f(t) e^{-j\omega t} dt
-        \label{eq:transformada_definicion_formal}
-    \end{equation}
-    Esta función $F:\mathbb{R}\to\mathbb{C}$ representa la \textbf{densidad espectral} de la señal $f(t)$, indicando cómo se distribuye la amplitud y fase de la señal en el dominio continuo de la frecuencia.
+Entonces, aplicando los cambios mencionados a la serie resulta:
+\begin{align*}
+  f(t)&=\lim_{T\to\infty}\sum_{k=-\infty}^{\infty}\frac{F(\omega_k)}{2\pi}e^{j\omega_k t}\Delta\omega \\
+  f(t)&=\int_{-\infty}^\infty \frac{F(\omega)}{2\pi}e^{j\omega t}d\omega
+\end{align*}
+que es la antitransformada de Fourier.
+\begin{definition}[Antitransformada de Fourier]
+  Sea $F(\omega)$ la transformada de Fourier, su antitransformada $\mathcal{F}^{-1}\{F(\omega)\}$, definida como la operación inversa de la transformada, es 
+  \begin{equation}
+  \mathcal{F}^{-1}\{F(\omega)\}=f(t)=\int_{-\infty}^\infty \frac{F(\omega)}{2\pi}e^{j\omega t}d\omega
+  \label{eq:antitransformada}
+  \end{equation}
 \end{definition}
 
+Del mismo modo, aplicando los tres cambios también al cálculo del coeficiente en la ecuación \eqref{eq:transformada_discreta} (y por ende también a $F(\omega)$), llegamos a la definición formal de la Transformada de Fourier como sigue.
+
+\begin{definition}[Transformada de Fourier]
+  Sea $f(t)$ una función tal que $\int_{-\infty}^{\infty} |f(t)| dt < \infty$. Se define la Transformada de Fourier de $f(t)$, denotada por $F(\omega)$ o $\mathcal{F}\{f(t)\}$, como:
+  \begin{equation}
+    F(\omega) = \int_{-\infty}^{\infty} f(t) e^{-j\omega t} dt
+    \label{eq:transformada_definicion_formal}
+  \end{equation}
+\end{definition}
+
+Este par de expresiones: \eqref{eq:antitransformada} y \eqref{eq:transformada_definicion_formal} definen la operación de transformación que permite obtener la función de la frecuencia de una función que está en el dominio del tiempo y reconducir a la función del tiempo partiendo de la que está en dominio de la frecuencia. Se puede plantear la operación y su reconstrucción utilizando operadores, tales como el operador transformada y el operador inverso, antitransformada de Fourier. Así, la transformada de Fourier de una función $g(t)$ resultaría:
+$$
+\mathcal{F}\{g(t)\} = G(\omega) =\int_{-\infty}^\infty g(t)e^{-j\omega t}dt
+$$
+Y la antitransformada de una cierta función del dominio de la frecuencia $\omega$ como $H(\omega)$ será:
+$$
+\mathcal{F}^{-1}\{H(\omega)\} = \frac{1}{2\pi} \int_{-\infty}^{\infty} H(\omega) e^{j\omega t}d\omega
+$$
