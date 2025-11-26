@@ -74,13 +74,13 @@ Entonces se deben distinguir las diferentes posibilidades que pueden presentarse
   $$
   ya que, es la serie de Taylor más la parte principal de la serie de Laurent, que, como tiene un polo simple, tiene un único término en alguna corona $0<\lvert z-z_0\rvert <R$. Entonces, si despejamos $c_{-1}$
   \begin{align*}
-    f(z)&= \frac{c_{-1}}{z-z_0} + \sum_{n=0}^\infty c_k\frac{(z-z_0)^{k+1}}{(z-z_0)} \\ 
-    f(z)&=\frac{1}{z-z_0}\left( c_{-1} + \sum_{n=0}^\infty c_k(z-z_0)^{k+1} \right) \\ 
-    (z-z_0)f(z)&=c_{-1} + \sum_{n=0}^\infty c_k(z-z_0)^{k+1} 
+    f(z)&= \frac{c_{-1}}{z-z_0} + \sum_{k=0}^\infty c_k\frac{(z-z_0)^{k+1}}{(z-z_0)} \\ 
+    f(z)&=\frac{1}{z-z_0}\left( c_{-1} + \sum_{k=0}^\infty c_k(z-z_0)^{k+1} \right) \\ 
+    (z-z_0)f(z)&=c_{-1} + \sum_{k=0}^\infty c_k(z-z_0)^{k+1} 
   \end{align*}
   así, podemos hacer que la sumatoria converja a cero aplicando un límite 
   \begin{align*}
-    \lim_{z\to z_0} (z-z_0)f(z) &= \lim_{z\to z_0} c_{-1}\sum_{n=0}^\infty c_k(z-z_0)^{k+1} \\ 
+    \lim_{z\to z_0} (z-z_0)f(z) &= \lim_{z\to z_0} c_{-1}\sum_{k=0}^\infty c_k(z-z_0)^{k+1} \\ 
     \lim_{z\to z_0} (z-z_0)f(z) &= c_{-1} = \res_{z=z_0} f(z)
   \end{align*}
   quedando entonces la expresión que se quería demostrar.
