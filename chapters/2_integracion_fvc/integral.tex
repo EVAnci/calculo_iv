@@ -148,8 +148,10 @@ Ahora, veamos un ejemplo de función no analítica. Es importante recordar que e
       \draw[thin,gray] (1.6,-1pt) -- (1.6,1pt) node[below] {\scriptsize 1};
       \draw[thin,gray] (-1pt,1.6) -- (1pt,1.6) node[left] {\scriptsize 1};
 
-      \draw[thick,dashed,blue!50!green] (0,0) -- (1.6,1.6) node[left=6pt] {\scriptsize$\Gamma_1$};
-      \draw[thick,dashed,red] (0,0) -- (1.6,0) -- (1.6,1.6) node[below right] {\scriptsize$\Gamma_2$};
+      \draw[very thick,dashed,blue!50!green] (0,0) -- (1.6,1.6) node[left=6pt] {\scriptsize$\Gamma_1$};
+      \draw[very thick,dashed,red] (0,0) -- (1.6,0) -- (1.6,1.6) node[below right] {\scriptsize$\Gamma_2$};
+      \node[below,red] at (.8,0) {\scriptsize$\Gamma_{2a}$};
+      \node[left,red] at (1.6,.8) {\scriptsize$\Gamma_{2b}$};
     \end{tikzpicture}
   \end{figure}
   Aquí $\Gamma_1$ puede representarse como $z(t)=t+jt$ para $t\in[0,1]$, de modo que
