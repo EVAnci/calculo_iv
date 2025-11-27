@@ -1,0 +1,32 @@
+\section{Transformada de Laplace}
+
+\begin{definition}
+  La transformada de Laplace $\mathcal{L}[f(t)]$ de una función $F(s)$ definida por 
+  \begin{equation}
+    \mathcal{L}[f(s)](s) = \int_0^\infty e^{-st}dt
+  \end{equation}
+  para todo $s$ tal que esta integral converja.
+\end{definition}
+
+La transformada de Laplace convierte una función $f$ en una nueva llamada $\mathcal{L}[f(t)]$. Con frecuencia $t$ es la variable independiente para $f$ y $s$ es la variable independiente para $\mathcal{L}[f]$. Así, $f(t)$ es la función $f$ evaluada en $t$ y $\mathcal{L}[f](s)$ es la función $\mathcal{L}[f]$ evaluada en $s$.
+
+Es necesario convenir en usar letras minúsculas para la función transformada de Laplace, y su letra mayúscula para la función que resulta. En notación 
+$$
+F = \mathcal{L}[f], \quad G = \mathcal{L}[g], \quad H = \mathcal{L}[h]
+$$
+y así sucesivamente.
+
+\begin{example}
+  Sea $f(t)=e^{at}$, siendo $a$ cualquier número real. Entonces
+  \begin{align*}
+    \mathcal{L}[f(t)] &= F(s) = \int_0^\infty e^{-st}e^{at}dt = \int_0^\infty e^{(a-s)t}dt \\ 
+                        &= \lim_{k\to\infty}\int_0^k e^{(a-s)t}dt =\lim_{k\to\infty}\left[\frac{1}{a-s}e^{(a-s)t}\right\rvert_0^k \\ 
+                        &= \lim_{k\to\infty} \frac{e^{(a-s)k}}{a-s} - \frac{\cancel{e^0}}{a-s} \\ 
+                        &= \lim_{k\to\infty} \frac{e^{(a-s)k}}{a-s}-\frac{1}{a-s}
+  \end{align*}
+  Aquí, vemos que si $a-s>0$, como $k\to\infty$, el límite diverge. Por otro lado, si $a-s=0$ es una indeterminación, porque está en el denominador. Entonces, el único valor posible que puede tomar es $a-s<0$ o, en otras palabras, $a<s$. En ese caso, el primer término del miembro derecho desaparece, ya que el exponente de la función exponencial queda negativo y el término tiende a cero. En consecuencia, la transformada resulta 
+  $$
+  \mathcal{L}[f(t)] = F(s) = -\frac{1}{a-s} = \frac{1}{s-a}
+  $$
+  con $a<s$.
+\end{example}
