@@ -97,7 +97,11 @@ Estos teoremas nos van a permitir generar nuevas transformadas sin resolver la i
                        &= \left[ e^{-st}f(t)\right\rvert_0^k - \int_0^k f(t)(-se^{-st})dt \\
                        &= e^{-sk}\cdot f(k) - \cdot f(0) + s\int_0^k f(t)e^{-st}dt
   \end{align*}
-  Tomando el límite conforme $k\to\infty$ podemos usar la suposición $\lim_{k\to\infty}e^{-sk}f(k)=0$ para obtener 
+  Tomando el límite conforme $k\to\infty$ podemos usar la suposición inicial:
+  $$
+  \lim_{k\to\infty}e^{-sk}f(k)=0
+  $$
+  para obtener 
   \begin{align*}
     \mathcal{L}[f'(t)] &= \lim_{k\to\infty} \left[ e^{-sk}f(k)-f(0) +s\int_0^k e^{-st}f(t)dt \right] \\ 
                        &= -f(0)+s\int_1^\infty e^{-st}f(t)dt = sF(s)-f(0)
